@@ -1,0 +1,53 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+    
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" style="padding-bottom: 12.5px; padding-top: 12.5px" data-toggle="dropdown" class="dropdown-toggle">
+                    <img height="25" src="~/Content/Images/DefaultUserLogo.png" />
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("Edit","Account")">Settings</a></li>
+                    <li><a href="@Url.Action("Logout","Account")">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <div id="loginModal" class="modal" >
+        <div id="dialogContent" class="modal-dialog">
+            
+        </div>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+
+        <li><a href="@Url.Action("Register", "Account")"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="@Url.Action("Login", "Account")" onclick="loginClickHandler(event, this)"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+}
+
+<script>
+    function loginClickHandler(event, element) {
+        $.ajaxSetup({ cache: false });
+        event.preventDefault();
+        $.get(element.href, function (data) {
+            $('#dialogContent').html(data);
+            $('#loginModal').modal('show');
+        });
+    }
+</script>
+
+
+
+
+
+
+

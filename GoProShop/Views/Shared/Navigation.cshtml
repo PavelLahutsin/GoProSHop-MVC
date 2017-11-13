@@ -1,0 +1,62 @@
+﻿<div class="megamenu">
+    <button class="dropbtn dropdown-toggle" data-toggle="dropdown" onclick="myFunction()">Dropdown 
+            <span class="caret"></span>
+        </button>
+        <div class="megamenu-content" id="myDropdown">
+            <div class="row">
+                <div class="column">
+                    <h3 class="text-center">Category 1</h3>
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+                <div class="column">
+                    <h3 class="text-center">Category 2</h3>
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+                <div class="column">
+                    <h3 class="text-center">Category 3</h3>
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+<ul class="nav navbar-nav navbar-left">
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Catalog<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="@Url.Action("Orders", "Admin")">Orders</a></li>
+            <li><a href="@Url.Action("PriceList", "Admin")">Price list</a></li>
+            <li><a href="@Url.Action("Stores", "Admin")">Stores</a></li>
+        </ul>
+    </li>
+    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="@Url.Action("Orders", "Admin")">Orders</a></li>
+            <li><a href="@Url.Action("PriceList", "Admin")">Price list</a></li>
+            <li><a href="@Url.Action("Stores", "Admin")">Stores</a></li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+            var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+                myDropdown.classList.remove('show');
+            }
+        }
+    }
+</script>

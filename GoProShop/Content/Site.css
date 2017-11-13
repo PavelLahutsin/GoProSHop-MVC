@@ -1,0 +1,158 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    min-height: calc(100vh - 140px);
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #000000;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fint in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.header-strip {
+    border-bottom: 3px solid #428bca;
+}
+
+.logo-user-img {
+    height: 30px;
+    width: 30px;
+}
+
+.product-group {
+    height: auto;
+    max-height: 400px;
+    overflow-x: hidden;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.megamenu {
+    float: left;
+}
+
+/* Dropdown button */
+.dropbtn {
+    font-size: 14px;
+    border: none;
+    outline: none;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: inherit;
+}
+
+    .dropbtn .caret {
+        color: #cccccc;
+    }
+
+    /* Add a red background color to navbar links on hover */
+    .dropbtn:hover {
+        background-color: black;
+    }
+
+/* Dropdown content (hidden by default) */
+.megamenu-content {
+    margin-top: 3px;
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    left: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+/* Show the dropdown menu on hover */
+/*.megamenu:hover .megamenu-content {
+    display: block;
+}*/
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    background-color: white;
+    height: 250px;
+}
+
+    /* Style links inside the columns */
+    .column a {
+        float: none;
+        color: black;
+        padding: 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+        /* Add a background color on hover */
+        .column a:hover {
+            color: white;
+        }
+
+.show {
+    display: block;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.close-thik:after {
+    cursor: hand;
+    content: '✖'; /* UTF-8 symbol */
+}
+
+.registration-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+    .registration-nav li {
+        float: left;
+    }
+
+        .registration-nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+            /* Change the link color to #111 (black) on hover */
+            .registration-nav li a:hover {
+                background-color: #111;
+            }

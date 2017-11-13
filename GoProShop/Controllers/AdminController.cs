@@ -1,0 +1,28 @@
+﻿using System.Web.Mvc;
+
+namespace GoProShop.Controllers
+{
+    public class AdminController : Controller
+    {
+        // GET: Admin
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Orders()
+        {
+            return View();
+        }
+
+        public ActionResult PriceList()
+        {
+            return View();
+        }
+
+        public ActionResult Stores()
+        {
+            return View();
+        }
+    }
+}

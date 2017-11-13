@@ -1,0 +1,52 @@
+﻿@model GoProShop.ViewModels.UserLoginVM
+
+<div class="modal-content">
+
+    <div class="modal-header">
+        <ul class="registration-nav">
+            <li><a data-ajax="true" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-update="#modalContent" href="@Url.Action("Login", "Account")">Registration</a></li>
+            <li><a data-ajax="true" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-update="#modalContent" href="@Url.Action("Register", "Account")">Registration</a></li>
+            <li style="float: right"><a class="close-thik" data-dismiss="modal"></a></li>
+        </ul>
+    </div>
+    <div id="modalContent">
+        @using (Ajax.BeginForm("Login", "Account", new AjaxOptions
+        {
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "POST",
+            UpdateTargetId = "modalContent"
+        }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal" area-hidden="true">close</button>
+                <button class="btn btn-primary" type="submit">login</button>
+            </div>
+
+        }
+    </div>
+</div>
+
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+
