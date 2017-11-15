@@ -54,7 +54,6 @@ namespace GoProShop.DAL.EF
         public IBaseRepository<Store> Stores => _storeRepository ??
             (_storeRepository = new BaseRepository<Store>(_context));
 
-
         public ApplicationUserManager UserManager => _userManager ??
             (_userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_context)));
 

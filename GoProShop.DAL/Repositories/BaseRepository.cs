@@ -15,13 +15,7 @@ namespace GoProShop.DAL.Repositories
             _context = context;
         }
 
-        public DbSet<T> Entities
-        {
-            get
-            {
-                return _context.Set<T>();
-            }
-        }
+        public DbSet<T> Entities => _context.Set<T>();
 
         public virtual T Create(T entity)
         {

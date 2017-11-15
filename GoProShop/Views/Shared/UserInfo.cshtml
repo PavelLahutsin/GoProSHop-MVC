@@ -6,6 +6,7 @@
 
     
         <ul class="nav navbar-nav navbar-right">
+            <li><a style="padding-right: 0" href="@Url.Action("Edit","Account")">Hello, @User.Identity.Name</a></li>
             <li class="dropdown">
                 <a href="#" style="padding-bottom: 12.5px; padding-top: 12.5px" data-toggle="dropdown" class="dropdown-toggle">
                     <img height="25" src="~/Content/Images/DefaultUserLogo.png" />
@@ -22,15 +23,24 @@
 else
 {
     <div id="loginModal" class="modal" >
-        <div id="dialogContent" class="modal-dialog">
-            
-        </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <ul class="registration-nav">
+                        <li><a data-ajax="true" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-update="#modalContent" href="@Url.Action("Login", "Account")">Login</a></li>
+                        <li><a data-ajax="true" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-update="#modalContent" href="@Url.Action("Register", "Account")">Registration</a></li>
+                        <li style="float: right"><a class="close-thik" data-dismiss="modal"></a></li>
+                    </ul>
+                </div>
+                 <div id="dialogContent">
+
+                 </div>
+                </div>
+            </div>
     </div>
 
     <ul class="nav navbar-nav navbar-right">
-
-        <li><a href="@Url.Action("Register", "Account")"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="@Url.Action("Login", "Account")" onclick="loginClickHandler(event, this)"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="@Url.Action("Login", "Account")" onclick="loginClickHandler(event, this)"><span class="glyphicon glyphicon-user"></span> Login</a></li>
     </ul>
 }
 

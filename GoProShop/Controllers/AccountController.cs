@@ -64,7 +64,7 @@ namespace GoProShop.Controllers
                 throw new ArgumentNullException(nameof(user));
 
             if (!ModelState.IsValid)
-                return View(user);
+                return PartialView(user);
 
             await _userService.Create(Mapper.Map<UserDTO>(user));
             return RedirectToAction("Index", "Home");
