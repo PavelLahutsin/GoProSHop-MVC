@@ -36,17 +36,17 @@ namespace GoProShop.Controllers
             if (model == null)
                 throw new ArgumentNullException(nameof(model));
 
-            if (ModelState.IsValid)
-            {
-                var claim = await _userService.Authenticate(Mapper.Map<UserLoginDTO>(model));
+            if (!ModelState.IsValid)
+                return PartialView("Login", model);
 
-                if (claim != null)
-                {
-                    _userService.SignIn(claim);
-                    return RedirectToAction("Index", "Home");
-                }
-                ModelState.AddModelError("", "Wrong login or password");
-            }          
+            var claim = await _userService.Authenticate(Mapper.Map<UserLoginDTO>(model));
+
+            if (claim != null)
+            {
+                _userService.SignIn(claim);
+                return RedirectToAction("Index", "Home");
+            }
+            ModelState.AddModelError("", "Wrong login or password");
             return PartialView("Login", model);
         }
 
@@ -64,8 +64,8 @@ namespace GoProShop.Controllers
                 throw new ArgumentNullException(nameof(user));
 
             if (!ModelState.IsValid)
-                return PartialView(user);
-
+                return PartialView("Register", user);
+            
             await _userService.Create(Mapper.Map<UserDTO>(user));
             return RedirectToAction("Index", "Home");
         }
