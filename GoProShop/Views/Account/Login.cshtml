@@ -4,24 +4,26 @@
         @using (Ajax.BeginForm("Login", "Account", new AjaxOptions
         { UpdateTargetId = "modalContent",
             HttpMethod = "POST",
-            InsertionMode = InsertionMode.Replace}) )
+            InsertionMode = InsertionMode.Replace, OnSuccess = ""}) )
         {
             <div class="modal-body">
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(false,null, new { @class = "text-danger"})
-                <div class="form-horizontal">
+                <div>
                     <div class="form-group">
-                          @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
+                          @Html.LabelFor(model => model.Name, new {htmlattributes = new { @style = "margin-left: 20px;"} })
+                          @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control login-form-control", @placeholder = "Enter your login or email"}})
                     </div>
 
                     <div class="form-group">
-                         @Html.EditorFor(model => model.Password, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.LabelFor(model => model.Password)
+                         @Html.EditorFor(model => model.Password, new {htmlAttributes = new {@class = "form-control login-form-control", @placeholder = "Enter your password" } })
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal" area-hidden="true">close</button>
-                <button class="btn btn-primary" type="submit">login</button>
+                <button class="btn btn-primary login-btn" type="submit"><strong>Login</strong></button>
+                @Html.ActionLink("Forgot your password?", "RestorePassword", "Account")
             </div>
         }
     </div>

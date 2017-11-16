@@ -22,7 +22,7 @@ else
                 <div class="modal-header">
                     <ul class="registration-nav">
                         <li><a data-ajax="true" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-update="#modalContent" href="@Url.Action("Login", "Account")">Login</a></li>
-                        <li><a data-ajax="true" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-update="#modalContent" href="@Url.Action("Register", "Account")">Registration</a></li>
+                        <li><a data-ajax="true" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-update="#modalContent" href="@Url.Action("Register", "Account")">Register</a></li>
                         <li style="float: right"><a class="close-thik" data-dismiss="modal"></a></li>
                     </ul>
                 </div>
@@ -33,7 +33,7 @@ else
     </div>
 
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="@Url.Action("Login", "Account")" onclick="loginClickHandler(event, this)"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+        <li><a href="@Url.Action("Login", "Account")" onclick="loginClickHandler(event, this)"> Sign in</a></li>
     </ul>
 }
 

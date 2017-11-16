@@ -9,36 +9,35 @@
     {
         <div class="modal-body">
             @Html.AntiForgeryToken()
-            @Html.ValidationSummary(false, null, new {@class = "text-danger"})
-            <div class="form-horizontal">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        @Html.EditorFor(model => model.Email, new {htmlAttributes = new {@class = "form-control"}})
-                    </div>
-                </div>
+            @Html.ValidationSummary(false, null, new { @class = "text-danger" })
 
-                <div class="form-group">
-                    <div class="col-md-12">
-                        @Html.EditorFor(model => model.UserName, new {htmlAttributes = new {@class = "form-control"}})
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-12">
-                        @Html.EditorFor(model => model.Password, new {htmlAttributes = new {@class = "form-control"}})
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-12">
-                        @Html.EditorFor(model => model.PasswordConfirm, new {htmlAttributes = new {@class = "form-control"}})
-                    </div>
-                </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control login-form-control", @placeholder = "Enter your email", } })
             </div>
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control login-form-control", @placeholder = "Enter your user name" } })
+            </div>
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control login-form-control", @placeholder = "Enter your password" } })
+            </div>
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.PasswordConfirm, new { htmlAttributes = new { @class = "form-control login-form-control", @placeholder = "Confirm your password" } })
+            </div>
+            <div class="form-group">
+                <label class="check-box-container">
+                    <input type="checkbox" checked="checked">Subscribe for our gopro news
+                    <span class="checkmark"></span>
+                </label>
+      
+
+            </div>
+
         </div>
         <div class="modal-footer">
-            <button class="btn btn-default" data-dismiss="modal" area-hidden="true">close</button>
-            <button class="btn btn-primary" type="submit">register</button>
+                <button class="btn btn-primary login-btn" type="submit"><strong>Register</strong></button>
         </div>
     }
 </div>
