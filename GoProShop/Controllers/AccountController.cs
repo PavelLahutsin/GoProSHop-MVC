@@ -44,7 +44,8 @@ namespace GoProShop.Controllers
             if (claim != null)
             {
                 _userService.SignIn(claim);
-                return RedirectToAction("Index", "Home");
+                var result = new { success = true };
+                return Json(result);
             }
             ModelState.AddModelError("", "Wrong login or password");
             return PartialView("Login", model);
@@ -67,7 +68,8 @@ namespace GoProShop.Controllers
                 return PartialView("Register", user);
             
             await _userService.Create(Mapper.Map<UserDTO>(user));
-            return RedirectToAction("Index", "Home");
+            var result = new { success = true };
+            return Json(result);
         }
 
         public ActionResult Logout()

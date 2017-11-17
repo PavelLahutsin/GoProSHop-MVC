@@ -4,7 +4,8 @@
     {
         UpdateTargetId = "modalContent",
         HttpMethod = "POST",
-        InsertionMode = InsertionMode.Replace
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "unloadModal"
     }))
     {
         <div class="modal-body">
@@ -31,10 +32,7 @@
                     <input type="checkbox" checked="checked">Subscribe for our gopro news
                     <span class="checkmark"></span>
                 </label>
-      
-
             </div>
-
         </div>
         <div class="modal-footer">
                 <button class="btn btn-primary login-btn" type="submit"><strong>Register</strong></button>

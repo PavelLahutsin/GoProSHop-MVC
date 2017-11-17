@@ -55,7 +55,7 @@ textarea {
 }
 
 .login-form-control, .login-btn{
-    border-radius: 20px;
+    border-radius: 5px;
     height: 40px;
 }
 
