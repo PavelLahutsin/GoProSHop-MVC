@@ -21,8 +21,8 @@ else
             <div class="modal-content">
                 <div class="modal-header">
                     <ul class="registration-nav">
-                        <li><a data-ajax="true" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-update="#modalContent" href="@Url.Action("Login", "Account")">Login</a></li>
-                        <li><a data-ajax="true" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-update="#modalContent" href="@Url.Action("Register", "Account")">Register</a></li>
+                        <li><a data-ajax="true" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-update="#modalContent" href="@Url.Action("Login", "Account")"><strong>Login</strong></a></li>
+                        <li><a data-ajax="true" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-update="#modalContent" href="@Url.Action("Register", "Account")"><strong>Register</strong></a></li>
                         <li style="float: right"><a class="close-thik" data-dismiss="modal"></a></li>
                     </ul>
                 </div>
@@ -36,17 +36,6 @@ else
         <li><a href="@Url.Action("Login", "Account")" onclick="loginClickHandler(event, this)"> Sign in</a></li>
     </ul>
 }
-
-<script>
-    function loginClickHandler(event, element) {
-        $.ajaxSetup({ cache: false });
-        event.preventDefault();
-        $.get(element.href, function (data) {
-            $('#dialogContent').html(data);
-            $('#loginModal').modal('show');
-        });
-    }
-</script>
 
 
 
