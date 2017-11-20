@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using GoProShop.BLL.Services.Interfaces;
-using GoProShop.DAL.Interfaces;
 using GoProShop.ViewModels;
 
 namespace GoProShop.Attributes

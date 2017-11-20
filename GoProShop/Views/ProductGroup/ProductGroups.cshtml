@@ -1,0 +1,26 @@
+﻿@model IEnumerable<GoProShop.ViewModels.ProductGroupVM>
+
+@{
+    var options = new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "products"
+    };
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading"><strong>Product groups</strong></div>
+    <div class="panel-body">
+        <div class="form-group" style="margin: 7px;">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <div class="list-group product-group">
+            @foreach (var productGroup in Model)
+            {
+                @Ajax.ActionLink(productGroup.Name, "GroupProducts", "Product",  new { id = productGroup.Id }, options, new { @class = "list-group-item list-group-product-groups" })
+            }
+        </div>
+    </div>
+</div>
+

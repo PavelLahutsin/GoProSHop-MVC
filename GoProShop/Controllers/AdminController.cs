@@ -1,9 +1,15 @@
-﻿using System.Web.Mvc;
+﻿using AutoMapper;
+using GoProShop.BLL.DTO;
+using GoProShop.BLL.Services.Interfaces;
+using GoProShop.ViewModels;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace GoProShop.Controllers
 {
     public class AdminController : Controller
     {
+
         // GET: Admin
         public ActionResult Index()
         {

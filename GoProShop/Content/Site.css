@@ -38,7 +38,7 @@ textarea {
 
 .product-group {
     height: auto;
-    max-height: 400px;
+    max-height: 380px;
     overflow-x: hidden;
 }
 
@@ -54,13 +54,15 @@ textarea {
     float: left;
 }
 
-.login-form-control, .login-btn{
+.login-form-control {
     border-radius: 5px;
     height: 40px;
 }
 
-.login-btn{
-    width: 100px;
+.login-btn {
+    border-radius: 20px;
+    height: 40px;
+    width: 100%;
 }
 
 /* Dropdown button */
@@ -220,4 +222,17 @@ textarea {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+ .validation-summary-errors li {
+    list-style: none;
+}
+
+ .panel-body{
+     padding:0;
+ }
+
+.list-group-product-groups {
+    border: 0;
+    margin-bottom: 0px;
 }

@@ -1,32 +1,52 @@
 ﻿
 @model GoProShop.ViewModels.UserLoginVM
-    <div id="modalContent">
-        @using (Ajax.BeginForm("Login", "Account", new AjaxOptions
-        { UpdateTargetId = "modalContent",
-            HttpMethod = "POST",
-            InsertionMode = InsertionMode.Replace,
-            OnSuccess = "unloadModal"}) )
-        {
-            <div class="modal-body">
-                @Html.AntiForgeryToken()
-                <div class="alert-danger">
-                    @Html.ValidationSummary(false, null, new { @class = "text-danger" })
-                </div>
-                <div>
-                    <div class="form-group">
-                          @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control login-form-control", @placeholder = "Enter your login or email"}})
-                    </div>
+<div id="modalContent">
+    @using (Ajax.BeginForm("Login", "Account", new AjaxOptions
+    {
+        UpdateTargetId = "modalContent",
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "unloadModal"
+    }))
+    {
 
-                    <div class="form-group">
-                         @Html.EditorFor(model => model.Password, new {htmlAttributes = new {@class = "form-control login-form-control", @placeholder = "Enter your password" } })
+        <div class="modal-body">
+            <div class="row text-center">
+                <h5><strong>SIGN IN</strong></h5>
+            </div>
+            @Html.AntiForgeryToken()
+            <div class="alert-danger" style="border-radius: 5px">
+                @Html.ValidationSummary(false, null, new { @class = "text-danger" })
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control login-form-control", @placeholder = "Enter your login or email" } })
+            </div>
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control login-form-control", @placeholder = "Enter your password" } })
+            </div>
+
+        </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary login-btn" type="submit"><strong>Login</strong></button>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-md-12" style="padding-top: 10px">
+                        <a href="@Url.Action("RestorePassword","Account")">
+                            <span class="fa fa-lock"></span>  Forgot your password?
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary login-btn" type="submit"><strong>Login</strong></button>
-                @Html.ActionLink("Forgot your password?", "RestorePassword", "Account")
-            </div>
-        }
-    </div>
+    }
+</div>
 
 
