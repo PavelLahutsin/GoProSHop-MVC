@@ -22,7 +22,7 @@ namespace GoProShop.Controllers
 
         public ActionResult PriceList()
         {
-            return View();
+            return PartialView();
         }
 
         public ActionResult Stores()

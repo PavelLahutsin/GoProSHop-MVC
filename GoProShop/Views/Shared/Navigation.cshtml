@@ -36,14 +36,7 @@
         </ul>
     </li>
     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-    <li class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="@Url.Action("Orders", "Admin")">Orders</a></li>
-            <li><a href="@Url.Action("PriceList", "Admin")">Price list</a></li>
-            <li><a href="@Url.Action("Stores", "Admin")">Stores</a></li>
-        </ul>
-    </li>
+    <li>@Html.ActionLink("Admin", "Index","Admin")</li>
 </ul>
 
 <script>
