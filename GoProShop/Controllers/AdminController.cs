@@ -9,7 +9,6 @@ namespace GoProShop.Controllers
 {
     public class AdminController : Controller
     {
-
         // GET: Admin
         public ActionResult Index()
         {
