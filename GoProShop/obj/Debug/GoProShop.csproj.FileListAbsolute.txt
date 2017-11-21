@@ -853,3 +853,9 @@ E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop\obj\Debug\GoProShop.csprojRe
 E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop\obj\Debug\GoProShop.csproj.CoreCompileInputs.cache
 E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop\obj\Debug\GoProShop.dll
 E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop\obj\Debug\GoProShop.pdb
+E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\MvcSiteMapProvider.dll
+E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\MvcSiteMapProvider.WebActivator.dll
+E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\WebActivatorEx.dll
+E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\Microsoft.Web.Administration.dll
+E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\MvcSiteMapProvider.xml
+E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\MvcSiteMapProvider.WebActivator.xml
