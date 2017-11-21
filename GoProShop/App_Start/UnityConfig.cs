@@ -20,6 +20,8 @@ namespace GoProShop
                 .RegisterType<IUnitOfWork, UnitOfWork>()
                 .RegisterType(typeof(IBaseRepository<>), typeof(BaseRepository<>))
                 .RegisterType<IUserService, UserService>()
+                .RegisterType<IProductGroupService, ProductGroupService>()
+                .RegisterType<IProductService, ProductService>()
                 .RegisterType<IAuthenticationManager>(new InjectionFactory(x => HttpContext.Current.GetOwinContext().Authentication));
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

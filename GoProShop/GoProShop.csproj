@@ -192,10 +192,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductGroupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\IdProvider.cs" />
+    <Compile Include="ViewModels\ProductGroupVM.cs" />
+    <Compile Include="ViewModels\ProductVM.cs" />
     <Compile Include="ViewModels\UserEditVM.cs" />
     <Compile Include="ViewModels\UserLoginVM.cs" />
     <Compile Include="ViewModels\UserRegisterVM.cs" />
@@ -261,6 +266,8 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\ProductGroup\ProductGroups.cshtml" />
+    <Content Include="Views\Product\GroupProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GoProShop.DAL.Interfaces
 {
-    public interface IGoProShopContext : IDisposable
+    public interface IGoProShopContext
     {
 
         DbSet<Customer> Customers { get; set; }

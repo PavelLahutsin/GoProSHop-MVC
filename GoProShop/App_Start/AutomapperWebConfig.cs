@@ -12,11 +12,8 @@ namespace GoProShop.App_Start
             cfg.CreateMap<UserRegisterVM, UserDTO>().ReverseMap();
             cfg.CreateMap<UserLoginVM, UserLoginDTO>().ReverseMap();
             cfg.CreateMap<UserEditVM, UserDTO>().ReverseMap();
+            cfg.CreateMap<ProductGroupVM, ProductGroupDTO>().ReverseMap();
+            cfg.CreateMap<ProductVM, ProductDTO>().ReverseMap();
         };
-
-        public static void Configure()
-        {
-            Mapper.Initialize(ConfigAction);
-        }
     }
 }

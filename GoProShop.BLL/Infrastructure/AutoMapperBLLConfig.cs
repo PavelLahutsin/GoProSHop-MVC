@@ -10,11 +10,8 @@ namespace GoProShop.BLL.Infrastructure
         public static readonly Action<IMapperConfigurationExpression> ConfigAction = cfg =>
         {
             cfg.CreateMap<UserDTO, ApplicationUser>().ReverseMap();
+            cfg.CreateMap<ProductGroupDTO, ProductGroup>().ReverseMap();
+            cfg.CreateMap<ProductDTO, Product>().ReverseMap();
         };
-
-        public static void Configure()
-        {
-            Mapper.Initialize(ConfigAction);
-        }
     }
 }
