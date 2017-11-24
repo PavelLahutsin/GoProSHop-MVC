@@ -10,7 +10,6 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row">
             <div class="navbar navbar-inverse navbar-static-top header-strip" role="navigation">
                 <div class="container">
                     <div class="navbar-collapse collapse">
@@ -24,9 +23,8 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="container body-content p-0">
+        <div class="container-fluid body-content">
             @RenderBody()
         </div>
 
@@ -49,12 +47,33 @@
                 $('#loginModal').modal('show');
             });
         }
+
         function unloadModal(data) {
             if (data.success) {
                 $('#loginModal').modal('hide');
                 window.location.reload(true);
             }
         };
+
+          //$('.list-group').on('click', '> a', function (e) {
+        //    var $this = $(this);
+        //    $('.list-group').find('.active').removeClass('active');
+        //    $this.addClass('active');
+        //});
+
+        function adminTabClickHandler(event, element) {
+            var $this = $(this);
+            $this.addClass('active');
+            event.preventDefault();
+            $.get(element.href, function (partialView) {
+                $('#adminContent').html(partialView);          
+            });
+        };
+
+        $('.nav-tabs').on('click', 'li', function () {
+            $('.nav-tabs li.active').removeClass('active');
+            $(this).addClass('active');
+        });
 
     </script>
 </body>

@@ -1,17 +1,18 @@
-﻿<div class="container" style="margin-bottom: 20px; margin-top: 20px; padding-left: 0; padding-right: 0">
-    <div class="col-md-3" style="padding-left: 0;">
-        @{ Html.RenderAction("ProductGroups", "ProductGroup"); }
+﻿
+<div class="col-md-3" style="padding-left: 0;">
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Группа товаров</strong></div>
+        <div class="panel-body">
+            @{ Html.RenderAction("ProductGroups", "ProductGroup"); }
+        </div>
     </div>
-    <div class="col-md-9" style="padding-right: 0;">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <strong>Groups of products</strong>
-            </div>
-            <div class="panel-body">
-                <div id="products">
-                </div>
+</div>
+<div class="col-md-9" style="padding-right: 0;">
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Товары</strong></div>
+        <div class="panel-body" style="padding: 7px;">
+            <div id="products">
             </div>
         </div>
     </div>
 </div>
-

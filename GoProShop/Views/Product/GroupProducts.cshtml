@@ -1,58 +1,38 @@
 ﻿@model IEnumerable<GoProShop.ViewModels.ProductVM>
 
-<div>    
-    <div class="row" style="margin-top: 15px; margin-bottom: 15px">
-        <div class="form-inline">
-            <button class="btn btn-success"><span class="fa fa-plus"></span></button>
-        </div>
+<div>
+    <div class="form-inline" style="padding-bottom: 15px; padding-top: 15px">
+        <button class="btn btn-success btn-sm"><span class="fa fa-plus"> Добавить</span></button>
     </div>
 
-    <table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductGroupId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table table-bordered table-hover">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductGroupId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Image)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    <a class="btn btn-primary btn-sm" href="@Url.Action("Details","Product", new { id = item.Id })"><span class="fa fa-info-circle"></span> </a>
-                    <a class="btn btn-danger btn-sm" href="@Url.Action("Delete","Product", new { id = item.Id })"><span class="fa fa-close"></span> </a>
-                </td>
+                <th width="70%">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th width="15%">
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th class="text-center" width="15%">Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-default btn-sm" href="@Url.Action("Details","Product", new { id = item.Id })"><span class="fa fa-info-circle"></span> </a>
+                        <a class="btn btn-default btn-sm" href="@Url.Action("Delete","Product", new { id = item.Id })"><span class="fa fa-close"></span> </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

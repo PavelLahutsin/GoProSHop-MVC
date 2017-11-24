@@ -1,31 +1,18 @@
-﻿@{
-    ViewBag.Title = "Index";
-}
-
-<div class="container">
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#home">Dashboard</a></li>
-        <li><a data-toggle="tab" href="#menu1">Orders</a></li>
-        <li><a data-toggle="tab" href="#products">Products</a></li>
-        <li><a data-toggle="tab" href="#menu2">Stores</a></li>
-        <li><a data-toggle="tab" href="#menu2">Charts</a></li>
+﻿
+<div class="container-admin">
+    <ul class="nav nav-tabs" style="padding-top: 20px; margin-bottom: 20px;">
+        <li class="active"><a href="#"><i class="fa fa-home admin-tab-icon"></i>  Главная</a></li>
+        <li><a data-toggle="tab" href=""><i class="fa fa-list-alt admin-tab-icon"></i>  Заказы</a></li>
+        <li><a href="@Url.Action("PriceList", "Admin")" onclick="adminTabClickHandler(event, this)"><i class="fa fa-table admin-tab-icon"></i>  Прайс</a> </li>
+        <li><a data-toggle="tab" href="#menu2"><i class="fa fa-tasks admin-tab-icon"></i> Склады</a></li>
+        <li><a data-toggle="tab" href="#menu2"><i class="fa fa-bar-chart admin-tab-icon"></i> Диаграммы</a></li>
     </ul>
-    <div style="height: 40px; background-color: #f5f5f5">
-        @Html.MvcSiteMap().SiteMapPath()
-    </div>
-    
-    <div class="tab-content">
-        <div id="home" class="tab-pane fade in active">
-            <h3>HOME</h3>
-            <p>Some content.</p>
-        </div>
-        <div id="products" class="tab-pane fade">
-            @Html.Partial("PriceList")
-        </div>
-        <div id="menu2" class="tab-pane fade">
-            <h3>Menu 2</h3>
-            <p>Some content in menu 2.</p>
-        </div>
+</div>
+<div class="container">
+    <div id="adminContent">
     </div>
 </div>
+
+
+
 

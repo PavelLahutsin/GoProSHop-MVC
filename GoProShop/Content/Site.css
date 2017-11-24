@@ -1,8 +1,6 @@
 ﻿/* Set padding to keep content from hitting the edges */
 .body-content {
     min-height: calc(100vh - 140px);
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
 .footer {
@@ -21,11 +19,6 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 500px;
-}
 
 .header-strip {
     border-bottom: 3px solid #428bca;
@@ -38,7 +31,7 @@ textarea {
 
 .product-group {
     height: auto;
-    max-height: 380px;
+    max-height: 360px;
     overflow-x: hidden;
 }
 
@@ -75,6 +68,7 @@ textarea {
     padding-bottom: 15px;
     background-color: inherit;
 }
+
     .dropbtn .caret {
         color: #cccccc;
     }
@@ -224,15 +218,40 @@ textarea {
     transform: rotate(45deg);
 }
 
- .validation-summary-errors li {
+.validation-summary-errors li {
     list-style: none;
 }
 
- .panel-body{
-     padding:0;
- }
+.panel-body {
+    padding: 0;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
 
 .list-group-product-groups {
     border: 0;
     margin-bottom: 0px;
+}
+
+.container-admin {
+    background-color: #f5f5f5;
+}
+
+.admin-tab-icon {
+    color: #0079ff;
+}
+
+.nav-tabs li > a {
+    color: #737373;
+}
+
+.nav-tabs > li > a:hover {
+    background-color: #f5f5f5;
+    border-color: #f5f5f5;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus {
+    border-top: 3px solid #428bca;
+    background-color: white;  
 }
