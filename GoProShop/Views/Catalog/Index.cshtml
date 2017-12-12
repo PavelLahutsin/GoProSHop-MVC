@@ -1,0 +1,28 @@
+﻿@{
+    var currentId = Url.RequestContext.RouteData.Values["id"];
+}
+<div class="container-fluid">
+    <div class="container" style="padding-top: 25px">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Action("SideMenu", "ProductGroup")
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well well-sm">
+                            <div class="form-inline">
+                                <text style="padding-right: 15px"><strong>Сортировать по:</strong></text>
+                                <a style="padding-right: 15px" href="#"><span class="badge">Цене</span></a>
+                                <a href="#">Рейтингу</a>
+                            </div>
+                        </div>
+                        <div id="products">
+                            @Html.Action("SubGroupProducts", "Product", new { id = currentId })
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,6 +8,8 @@ using GoProShop.DAL.EF;
 using GoProShop.DAL.Repositories;
 using System.Web;
 using Microsoft.Owin.Security;
+using GoProShop.ViewModels.Interfaces;
+using GoProShop.ViewModels;
 
 namespace GoProShop
 {
@@ -15,13 +17,15 @@ namespace GoProShop
     {
         public static void RegisterComponents()
         {
-			var container = new UnityContainer()
+            var container = new UnityContainer()
                 .RegisterType<IGoProShopContext, GoProShopContext>()
                 .RegisterType<IUnitOfWork, UnitOfWork>()
                 .RegisterType(typeof(IBaseRepository<>), typeof(BaseRepository<>))
                 .RegisterType<IUserService, UserService>()
-                .RegisterType<IProductGroupService, ProductGroupService>()
+                .RegisterType<IProductSubGroupService, ProductSubGroupService>()
                 .RegisterType<IProductService, ProductService>()
+                .RegisterType<IProductGroupService, ProductGroupService>()
+                .RegisterType<ICart, Cart>()
                 .RegisterType<IAuthenticationManager>(new InjectionFactory(x => HttpContext.Current.GetOwinContext().Authentication));
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

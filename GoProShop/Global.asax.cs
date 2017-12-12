@@ -22,6 +22,8 @@ namespace GoProShop
                 AutoMapperWebConfig.ConfigAction.Invoke(x);
                 AutoMapperBLLConfig.ConfigAction.Invoke(x);
             });
+
+           // Mapper.AssertConfigurationIsValid();
         }
     }
 }

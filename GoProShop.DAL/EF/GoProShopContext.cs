@@ -25,6 +25,8 @@ namespace GoProShop.DAL.EF
 
         public DbSet<StoredProduct> StoredProducts { get; set; }
 
+        public DbSet<ProductSubGroup> ProductSubGroups { get; set; }
+
         public DbSet<ProductGroup> ProductGroups { get; set; }
     }
 }

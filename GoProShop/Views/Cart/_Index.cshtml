@@ -1,0 +1,13 @@
+﻿@model GoProShop.ViewModels.Cart
+
+<div class="nav navbar-right">
+    <div id="shopping-cart">
+        <a class="btn btn-primary btn-sm navbar-btn" href="@Url.Action("CartView","Cart")" onclick="mainModalClickCartHandler(this,event)">
+            <span class="fa fa-shopping-cart"></span> Корзина
+            @if (Model != null)
+            {
+                <span class="badge cart-badge"> @Model.Count </span>
+            } 
+        </a>
+    </div>
+</div>

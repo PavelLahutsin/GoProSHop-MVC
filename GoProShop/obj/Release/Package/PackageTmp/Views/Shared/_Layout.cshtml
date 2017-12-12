@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/bundles/styles")
+    @Scripts.Render("~/bundles/jquery-head")
+</head>
+<body>
+    <div class="container-fluid" style="font-family: 'Open Sans', 'sans-serif'">
+        <div class="navbar navbar-inverse navbar-static-top header-strip" role="navigation">
+            <div class="container">
+                <div class="navbar-brand" style="padding-bottom: 10px; padding-top: 10px">
+                    <a href="@Url.Action("Index", "Home")">
+                        <img height="30" src="~/Content/Images/LogoWhite.png" />
+                    </a>
+                </div>
+                @{ Html.RenderAction("ProductGroups", "ProductGroup"); }
+
+                <form class="navbar-form navbar-left">
+                    <div class="input-group" style="max-width: 600px; padding-top: 3px;">
+                        <input type="text" class="form-control" placeholder="Поиск...">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                @Html.Partial("~/Views/Account/_LoginPartial.cshtml")
+            </div>
+        </div>
+
+
+        <div class="body-content">
+            @RenderBody()
+        </div>
+
+        <footer class="footer">
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+
+    <script>
+        function loginClickHandler(event, element) {
+            $.ajaxSetup({ cache: false });
+            event.preventDefault();
+            $.get(element.href, function (data) {
+                $('#dialogContent').html(data);
+                $('#loginModal').modal('show');
+            });
+        }
+
+        function mainModalClickButtonHandler(event) {
+            $.ajaxSetup({ cache: false });
+            event.preventDefault();
+            $.get('/Product/Create', function (data) {
+                $('#mainDialogContent').html(data);
+                $('#mainModal').modal('show');
+            });
+        }
+
+        function mainModalClickHandler(event, element, elementId) {
+            $.ajaxSetup({ cache: false });
+            event.preventDefault();
+            $.get(element.href, { id: elementId }, function (data) {
+                $('#mainDialogContent').html(data);
+                $('#mainModal').modal('show');
+            });
+        }
+
+        function deleteItemClickHandler(event, element, elementId) {
+            $.ajaxSetup({ cache: false });
+            event.preventDefault();
+            $.get(element.href, { id: elementId }, function (data) {
+                if (data.success) {
+                    $.get('/Product/SubGroupProducts/', { id: data.groupId }, function (result) {
+                        $('#products').html(result);
+                    });
+                }
+            });
+        }
+
+        function getMethodClickHandler(event, element, elementToUpdate) {
+            $.ajaxSetup({ cache: false });
+            event.preventDefault();
+            $.get(element.href, function (data) {
+                $(elementToUpdate).html(data);
+            });
+        }
+
+        function unloadModal(data) {
+            if (data.success) {
+                $('#loginModal').modal('hide');
+                window.location.reload(true);
+            }
+        };
+
+        function adminTabClickHandler(event, element) {
+            var $this = $(this);
+            $this.addClass('active');
+            event.preventDefault();
+            $.get(element.href, function (partialView) {
+                $('#adminContent').html(partialView);
+            });
+        };
+
+        $('.nav-tabs').on('click', 'li', function () {
+            $('.nav-tabs li.active').removeClass('active');
+            $(this).addClass('active');
+        });
+
+        $('.list-group-item').on('click', function (e) {
+            $('.list-group').find('.active').removeClass('active');
+            $(this).addClass('active');
+        });
+
+
+    </script>
+</body>
+</html>

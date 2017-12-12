@@ -4,39 +4,64 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @Styles.Render("~/bundles/styles")
+    @Scripts.Render("~/bundles/jquery-head")
 </head>
 <body>
-    <div class="container-fluid">
-            <div class="navbar navbar-inverse navbar-static-top header-strip" role="navigation">
-                <div class="container">
-                    <div class="navbar-collapse collapse">
-                        <div class="navbar-brand" style="padding-bottom: 10px; padding-top: 10px">
-                            <a href="@Url.Action("Index", "Home")">
-                                <img height="30" src="~/Content/Images/LogoWhite.png" />
-                            </a>
+    <div class="container-fluid" style="font-family: 'Open Sans', 'sans-serif';">
+        <div class="navbar-inverse" style="padding-top: 7px; background-color: #1a1a1a">
+            <div class="container">
+                <div class="nav navbar-left">
+                    <a class="navbar-link" style="padding-right: 7px;"><span><img height="15" src="~/Content/Images/velcom.png" /></span> +375 29 127 52 24</a>
+                    <a class="navbar-link" style="padding-right: 7px;"><span><img height="15" src="~/Content/Images/MTS.png" /></span> +375 29 127 52 24</a>
+                </div>
+                @Html.Partial("~/Views/Account/_LoginPartial.cshtml")
+            </div>
+        </div>
+
+        <div class="navbar navbar-inverse navbar-static-top header-strip" style="z-index: 999; background-color: #1a1a1a" role="navigation">
+            <div class="container">
+                <div class="navbar-brand" style="padding-bottom: 10px; padding-top: 10px">
+                    <a href="@Url.Action("Index", "Home")">
+                        <img height="30" src="~/Content/Images/LogoWhite.png" />
+                    </a>
+                </div>
+                @Html.Action("MegaMenu", "ProductGroup"); 
+
+                <form class="navbar-form navbar-left">
+                    <div class="input-group input-group-sm" style="max-width: 650px; width: auto;">
+                        <input type="text" class="form-control" placeholder="Поиск...">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
                         </div>
-                        @Html.Partial("Navigation")
-                        @Html.Partial("UserInfo")
+                    </div>
+                </form>
+                @Html.Action("Index", "Cart")
+            </div>
+        </div>
+
+        <div class="body-content">
+            @RenderBody()
+        </div>
+
+        <div id="mainModal" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div id="mainDialogContent">
                     </div>
                 </div>
             </div>
-
-        <div class="container-fluid body-content">
-            @RenderBody()
         </div>
+
 
         <footer class="footer">
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 
-
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
 
     <script>
         function loginClickHandler(event, element) {
@@ -48,6 +73,61 @@
             });
         }
 
+        function mainModalClickCartHandler(element, event) {
+            $.ajaxSetup({ cache: false });
+            event.preventDefault();
+            $.get(element.href, function (data) {
+                $('#mainDialogContent').html(data);
+                $('#mainModal').modal('show');
+            });
+        }
+
+        function mainModalClickButtonHandler(event) {
+            $.ajaxSetup({ cache: false });
+            event.preventDefault();
+            $.get('/Product/Create', function (data) {
+                $('#mainDialogContent').html(data);
+                $('#mainModal').modal('show');
+            });
+        }
+
+        function mainModalClickHandler(event, element, elementId) {
+            $.ajaxSetup({ cache: false });
+            event.preventDefault();
+            $.get(element.href, { id: elementId }, function (data) {
+                $('#mainDialogContent').html(data);
+                $('#mainModal').modal('show');
+            });
+        }
+
+        function deleteItemClickHandler(event, element, elementId) {
+            $.ajaxSetup({ cache: false });
+            event.preventDefault();
+            $.get(element.href, { id: elementId }, function (data) {
+                if (data.success) {
+                    $.get('/Product/SubGroupProducts/', { id: data.groupId }, function (result) {
+                        $('#products').html(result);
+                    });
+                }
+            });
+        }
+
+        function getMethodClickHandler(event, element, elementToUpdate) {
+            $.ajaxSetup({ cache: false });
+            event.preventDefault();
+            $.get(element.href, function (data) {
+                $(elementToUpdate).html(data);
+            });
+        }
+
+        function SuccessShoppingCartHandler(data) {
+            if (data.success) {
+                $.get('/Cart/Index/', function (partialView) {
+                    $('#shopping-cart').html(partialView);
+                });
+            }
+        };
+
         function unloadModal(data) {
             if (data.success) {
                 $('#loginModal').modal('hide');
@@ -55,18 +135,12 @@
             }
         };
 
-          //$('.list-group').on('click', '> a', function (e) {
-        //    var $this = $(this);
-        //    $('.list-group').find('.active').removeClass('active');
-        //    $this.addClass('active');
-        //});
-
         function adminTabClickHandler(event, element) {
             var $this = $(this);
             $this.addClass('active');
             event.preventDefault();
             $.get(element.href, function (partialView) {
-                $('#adminContent').html(partialView);          
+                $('#adminContent').html(partialView);
             });
         };
 
@@ -74,6 +148,12 @@
             $('.nav-tabs li.active').removeClass('active');
             $(this).addClass('active');
         });
+
+        $('.list-group-item').on('click', function (e) {
+            $('.list-group').find('.active').removeClass('active');
+            $(this).addClass('active');
+        });
+
 
     </script>
 </body>

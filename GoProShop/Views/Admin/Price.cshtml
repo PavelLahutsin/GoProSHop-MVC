@@ -1,0 +1,13 @@
+﻿<div class="col-md-3" style="padding-left: 0;">
+    @Html.Action("SideMenu", "ProductGroup");
+</div>
+<div class="col-md-9" style="padding-right: 0;">
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Товары</strong></div>
+        <div class="panel-body" style="padding: 0 14px; font-size: 13px">
+            <div id="products">
+                @Html.Action("SubGroupProducts", "Product");
+            </div>
+        </div>
+    </div>
+</div>

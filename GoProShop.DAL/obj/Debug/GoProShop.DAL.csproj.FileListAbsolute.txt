@@ -109,9 +109,6 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MV
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\bin\Debug\Newtonsoft.Json.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.InitialCreate.resources
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.DeleteUserEntity.resources
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csproj.GenerateResource.Cache
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csproj.CoreCompileInputs.cache
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.pdb
@@ -147,3 +144,5 @@ E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.
 E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.dll
 E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.pdb
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csprojResolveAssemblyReference.cache
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.initialcreate.resources
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csproj.GenerateResource.Cache

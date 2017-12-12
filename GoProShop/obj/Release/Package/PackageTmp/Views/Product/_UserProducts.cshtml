@@ -1,0 +1,31 @@
+﻿@model IEnumerable<GoProShop.ViewModels.ProductVM>
+@using System.Text;
+
+@{
+    StringBuilder result = new StringBuilder();
+    var i = 0;
+    TagBuilder row = null;
+    foreach (var item in Model)
+    {
+        i++;
+        if (i == 1)
+        {
+            row = new TagBuilder("div");
+            row.AddCssClass("row");
+        }
+        row.InnerHtml += Html.Partial("_Product", item);
+
+        if (i == 3)
+        {
+            result.Append(row.ToString());
+            i = 0;
+        }
+    }
+    if(i != 3 && i != 0)
+    {
+        result.Append(row.ToString());
+    }
+}
+
+@MvcHtmlString.Create(result.ToString())
+

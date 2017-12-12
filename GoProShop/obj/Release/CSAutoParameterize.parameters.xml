@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="GoProShopDb-Web.config Connection String" description="GoProShopDb Connection String used in web.config by the application to access the database." defaultValue="Data Source=.;Initial Catalog=GoProShopDb;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Programming\ stuff\\Projects\\GoProShop\\GoProShop-MVC\\GoProShop-MVC\\GoProShop-MVC\\GoProShop\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='GoProShopDb']/@connectionString" />
+  </parameter>
+</parameters>

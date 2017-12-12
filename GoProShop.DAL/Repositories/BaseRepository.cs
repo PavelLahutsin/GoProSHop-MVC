@@ -2,6 +2,7 @@
 using GoProShop.DAL.Interfaces;
 using System.Linq;
 using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace GoProShop.DAL.Repositories
 {
@@ -23,32 +24,23 @@ namespace GoProShop.DAL.Repositories
             return entity;
         }
 
-        public virtual void Delete(T entity)
+        public async virtual Task DeleteAsync(T entity)
         {
-            var storedEntity = Entities.FirstOrDefault(x => x.Id == entity.Id);
-
-            if (storedEntity != null)
-                Entities.Remove(storedEntity);
+            var storedEntity = await Entities.FirstOrDefaultAsync(x => x.Id == entity.Id);
+            Entities.Remove(storedEntity);
         }
 
         public virtual IQueryable<T> GetAll()
             => _context.Set<T>();
 
-        public virtual T GetById(int id)
-            => Entities.FirstOrDefault(x => x.Id == id);
-        
+        public async virtual Task<T> GetAsync(int id)
+            => await Entities.FirstOrDefaultAsync(x => x.Id == id);
 
-        public virtual T Update(T entity)
+
+        public async virtual Task<T> UpdateAsync(T entity)
         {
-            var storedEntity = Entities.FirstOrDefault(x => x.Id == entity.Id);
-
-            if (storedEntity == null)
-            {
-                entity.Id = 0;
-                return Create(entity);
-            }
+            var storedEntity = await Entities.FirstOrDefaultAsync(x => x.Id == entity.Id);
             _context.Entry(storedEntity).CurrentValues.SetValues(entity);
-       
             return entity;
         }
     }

@@ -17,19 +17,19 @@ namespace GoProShop.DAL.EF
         private IBaseRepository<Customer> _customerRepository;
         private IBaseRepository<Order> _orderRepository;
         private IBaseRepository<Product> _productRepository;
-        private IBaseRepository<ProductGroup> _productGroupRepository;
+        private IBaseRepository<ProductSubGroup> _productSubGroupRepository;
         private IBaseRepository<OrderedProduct> _productOrderedRepository;
         private IBaseRepository<StoredProduct> _productStoredRepository;
-        private IBaseRepository<Store> _storeRepository;                                                                                                                                                                                                                                              
+        private IBaseRepository<Store> _storeRepository;
+        private IBaseRepository<ProductGroup> _productGroupRepository;
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
         private bool disposed = false;
         private readonly GoProShopContext _context;
-        private readonly IAuthenticationManager _authenticationManager;
 
         public UnitOfWork(IAuthenticationManager authenticationManager)
         {
-            _authenticationManager = authenticationManager ?? throw new ArgumentNullException(nameof(authenticationManager));
+            AuthenticationManager = authenticationManager ?? throw new ArgumentNullException(nameof(authenticationManager));
             _context = new GoProShopContext();          
         }
 
@@ -42,8 +42,8 @@ namespace GoProShop.DAL.EF
         public IBaseRepository<Product> Products => _productRepository ?? 
             (_productRepository = new BaseRepository<Product>(_context));
 
-        public IBaseRepository<ProductGroup> ProductGroups => _productGroupRepository ?? 
-            (_productGroupRepository = new BaseRepository<ProductGroup>(_context));
+        public IBaseRepository<ProductSubGroup> ProductSubGroups => _productSubGroupRepository ?? 
+            (_productSubGroupRepository = new BaseRepository<ProductSubGroup>(_context));
 
         public IBaseRepository<OrderedProduct> ProductsOrdered => _productOrderedRepository ??
             (_productOrderedRepository = new BaseRepository<OrderedProduct>(_context));
@@ -54,14 +54,16 @@ namespace GoProShop.DAL.EF
         public IBaseRepository<Store> Stores => _storeRepository ??
             (_storeRepository = new BaseRepository<Store>(_context));
 
+        public IBaseRepository<ProductGroup> ProductGroups => _productGroupRepository ??
+           (_productGroupRepository = new BaseRepository<ProductGroup>(_context));
+
         public ApplicationUserManager UserManager => _userManager ??
             (_userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_context)));
 
         public ApplicationRoleManager RoleManager => _roleManager ?? 
             (_roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(_context)));
 
-        public IAuthenticationManager AuthenticationManager =>
-            _authenticationManager;
+        public IAuthenticationManager AuthenticationManager { get; set; }
 
         public async Task Commit()
             => await _context.SaveChangesAsync();

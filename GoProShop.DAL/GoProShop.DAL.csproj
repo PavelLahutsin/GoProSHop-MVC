@@ -75,19 +75,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\ApplicationRole.cs" />
+    <Compile Include="Entities\ProductGroup.cs" />
+    <Compile Include="Enums\ProductStatus.cs" />
     <Compile Include="Identity\ApplicationRoleManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="EF\GoProShopContext.cs" />
     <Compile Include="EF\UnitOfWork.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Migrations\201710261329136_InitialCreate.cs" />
-    <Compile Include="Migrations\201710261329136_InitialCreate.Designer.cs">
-      <DependentUpon>201710261329136_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711061327557_DeleteUserEntity.cs" />
-    <Compile Include="Migrations\201711061327557_DeleteUserEntity.Designer.cs">
-      <DependentUpon>201711061327557_DeleteUserEntity.cs</DependentUpon>
+    <Compile Include="Migrations\201712020806497_initialcreate.cs" />
+    <Compile Include="Migrations\201712020806497_initialcreate.Designer.cs">
+      <DependentUpon>201712020806497_initialcreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
@@ -95,7 +93,7 @@
     <Compile Include="Entities\IdProvider.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Product.cs" />
-    <Compile Include="Entities\ProductGroup.cs" />
+    <Compile Include="Entities\ProductSubGroup.cs" />
     <Compile Include="Entities\OrderedProduct.cs" />
     <Compile Include="Entities\StoredProduct.cs" />
     <Compile Include="Entities\Store.cs" />
@@ -109,11 +107,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710261329136_InitialCreate.resx">
-      <DependentUpon>201710261329136_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711061327557_DeleteUserEntity.resx">
-      <DependentUpon>201711061327557_DeleteUserEntity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712020806497_initialcreate.resx">
+      <DependentUpon>201712020806497_initialcreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

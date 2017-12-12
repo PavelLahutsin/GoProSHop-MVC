@@ -1,6 +1,7 @@
 ﻿using GoProShop.DAL.Entities;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GoProShop.DAL.Interfaces
 {
@@ -11,11 +12,11 @@ namespace GoProShop.DAL.Interfaces
 
         T Create(T entity);
 
-        T Update(T entity);
+        Task<T> UpdateAsync(T entity);
 
-        void Delete(T entity);
+        Task DeleteAsync(T entity);
 
-        T GetById(int id);
+        Task<T> GetAsync(int id);
 
         IQueryable<T> GetAll();
     }

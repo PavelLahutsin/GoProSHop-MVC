@@ -24,7 +24,9 @@ namespace GoProShop.DAL.Interfaces
 
         DbSet<StoredProduct> StoredProducts { get; set; }
 
-        DbSet<ProductGroup> ProductGroups { get; set; }
+        DbSet<ProductSubGroup> ProductSubGroups { get; set; }
+
+        DbSet<ProductGroup> ProductGroups{ get; set; }
 
         DbChangeTracker ChangeTracker { get; }
 

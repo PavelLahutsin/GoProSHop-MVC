@@ -14,13 +14,15 @@ namespace GoProShop.DAL.Interfaces
 
         IBaseRepository<Product> Products { get; }
 
-        IBaseRepository<ProductGroup> ProductGroups { get; }
+        IBaseRepository<ProductSubGroup> ProductSubGroups { get; }
 
         IBaseRepository<OrderedProduct> ProductsOrdered { get; }
 
         IBaseRepository<StoredProduct> ProductsStored { get; }
 
         IBaseRepository<Store> Stores { get; }
+
+        IBaseRepository<ProductGroup> ProductGroups { get; }
 
         ApplicationUserManager UserManager { get; }
 

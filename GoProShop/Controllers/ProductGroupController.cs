@@ -2,6 +2,7 @@
 using GoProShop.BLL.DTO;
 using GoProShop.BLL.Services.Interfaces;
 using GoProShop.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -9,24 +10,29 @@ namespace GoProShop.Controllers
 {
     public class ProductGroupController : Controller
     {
-        private readonly IProductGroupService _productGroupService;
+        private readonly IProductGroupService _mainProductGroupService;
 
-        public ProductGroupController(IProductGroupService productGroupService)
+        public ProductGroupController(IProductGroupService mainProductGroupService)
         {
-            _productGroupService = productGroupService;
+            _mainProductGroupService = mainProductGroupService ?? throw new ArgumentNullException(nameof(mainProductGroupService));
         }
 
-        // GET: ProductGroup
-        public ActionResult Index()
+        public ActionResult MegaMenu()
         {
-            return View();
+            var productGroupsDTO = _mainProductGroupService.GetProductGroups();
+            var productGroupsVM =
+                Mapper.Map<IEnumerable<ProductGroupDTO>, IEnumerable<ProductGroupVM>>(productGroupsDTO);
+
+            return PartialView("_MegaMenu", productGroupsVM);
         }
 
-        public ActionResult ProductGroups()
+        public ActionResult SideMenu()
         {
-            var productGroups =
-                Mapper.Map<IEnumerable<ProductGroupDTO>, IEnumerable<ProductGroupVM>>(_productGroupService.GetGroups());
-            return PartialView(productGroups);
+            var productGroupsDTO = _mainProductGroupService.GetProductGroups();
+            var productGroupsVM =
+                Mapper.Map<IEnumerable<ProductGroupDTO>, IEnumerable<ProductGroupVM>>(productGroupsDTO);
+
+            return PartialView("_SideMenu", productGroupsVM);
         }
     }
 }

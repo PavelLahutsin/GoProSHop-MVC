@@ -1,0 +1,35 @@
+﻿@model  IEnumerable<GoProShop.ViewModels.ProductGroupVM>
+@{
+    var counter = 1;
+    var options = new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "products"
+    };
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading"><strong>Каталог товаров</strong></div>
+
+    <div class="panel-body">
+        <div class="list-group" style="border: 0">
+            @foreach (var productGroup in Model)
+            {
+                <a href="#category_@counter" class="list-group-item" style="border: none" data-toggle="collapse">
+                    @productGroup.Name
+                    <span class="fa fa-chevron-right pull-right"></span>
+                </a>
+
+                <div class="collapse" id="category_@counter">
+                    @foreach (var productSubGroup in productGroup.ProductSubGroups)
+                    {
+                        @Ajax.ActionLink(@productSubGroup.Name, "SubGroupProducts", "Product",  new {id = productSubGroup.Id }, options, new {@class = "list-group-item list-group-sub-item", style = "border: none" })
+                    }
+                </div>
+
+                counter++;
+            }
+        </div>
+    </div>
+</div>

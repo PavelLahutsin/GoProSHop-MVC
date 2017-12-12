@@ -1,0 +1,26 @@
+﻿@model IEnumerable<GoProShop.ViewModels.ProductGroupVM>
+
+<ul class="nav navbar-nav navbar-left">
+    <li class="dropdown mega-dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Каталог <span class="fa fa-caret-down"></span></a>
+        <ul class="dropdown-menu mega-dropdown-menu row">
+            @foreach (var item in Model)
+            {
+                <li class="col-md-3">
+                    <ul>
+                        <li class="dropdown-header">@item.Name </li>
+                        @foreach (var group in item.ProductSubGroups)
+                        {
+                            <li><a href="#">@group.Name</a></li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+    </li>
+    <li>@Html.ActionLink("О нас", "Contact", "Home")</li>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+    {
+        <li>@Html.ActionLink("Админ", "Index", "Admin")</li>
+    }
+</ul>

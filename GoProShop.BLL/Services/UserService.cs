@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -61,7 +60,6 @@ namespace GoProShop.BLL.Services
         public void SignOut()
         {
             _uow.AuthenticationManager.SignOut();
-        }
-        
+        }   
     }
 }

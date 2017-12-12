@@ -1,0 +1,42 @@
+﻿@model GoProShop.ViewModels.ProductVM
+@{
+    var options = new AjaxOptions
+    {
+        OnSuccess = "SuccessShoppingCartHandler",
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "shopping-cart"
+    };
+}
+
+<div class='col-md-3'>
+    <div class="catalog-item-box">
+        <div class="catalog-item-box-header">
+            @if (Model.MimeType == null)
+            {
+                <img height="140" width="150" src="~/Content/Images/No_Image_Available.png" />
+            }
+            else
+            {
+                <img height="130" width="175" src="@Url.Action("GetImage", "Product", new { productId = Model.Id })">
+            }
+        </div>
+        <div class="catalog-item-box-body">
+            <p><a href="#" style="font-size: 13px;">@Model.Name</a></p>
+            @if (Model.Status == GoProShop.Enums.ProductStatus.Available)
+            {
+                <p class="text-success">В наличии</p>
+            }
+            else
+            {
+                <p class="text-danger">Под заказ</p>
+            }
+            <p><span class="badge">@Model.Price руб.</span></p>
+        </div>
+        <div class="catalog-item-box-footer">
+            @Ajax.ActionLink("Купить", "AddToCart", "Cart", new { id = Model.Id }, options, new { @class = "btn btn-success btn-block catalog-item-box-btn" })
+        </div>
+    </div>
+</div>
+
+

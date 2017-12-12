@@ -19,7 +19,7 @@ namespace GoProShop.ViewModels
         public string Password { get; set; }
 
         [Required]
-        [Compare("Password", ErrorMessage = "Passwords are not matched")]
+        [Compare("Password", ErrorMessage = "Введенные пароли не совпадают")]
         [DataType(DataType.Password)]
         public string PasswordConfirm { get; set; }
     }

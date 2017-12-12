@@ -1,13 +1,19 @@
 ﻿/* Set padding to keep content from hitting the edges */
 .body-content {
-    min-height: calc(100vh - 140px);
+    min-height: calc(100vh - 50px);
+    font-size: 13px;
+}
+
+.container{
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .footer {
     position: relative;
     bottom: 0;
     width: 100%;
-    height: 60px;
+    height: 150px;
     background-color: #000000;
 }
 
@@ -21,7 +27,7 @@
 /* Set width on the form input elements since they're 100% wide by default */
 
 .header-strip {
-    border-bottom: 3px solid #428bca;
+    border-bottom: thin solid black;
 }
 
 .logo-user-img {
@@ -29,10 +35,17 @@
     width: 30px;
 }
 
+
+.list-group-users{
+    border-right: thin solid #ccc;
+    padding-right: 14px;
+}
+
 .product-group {
     height: auto;
-    max-height: 360px;
+    max-height: 380px;
     overflow-x: hidden;
+    font-size: 13px;
 }
 
 .p-0 {
@@ -58,74 +71,8 @@
     width: 100%;
 }
 
-/* Dropdown button */
-.dropbtn {
-    font-size: 14px;
-    border: none;
-    outline: none;
-    color: white;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    background-color: inherit;
-}
-
-    .dropbtn .caret {
-        color: #cccccc;
-    }
-
-    /* Add a red background color to navbar links on hover */
-    .dropbtn:hover {
-        background-color: black;
-    }
-
-/* Dropdown content (hidden by default) */
-.megamenu-content {
-    margin-top: 3px;
-    display: none;
-    position: absolute;
-    background-color: white;
-    width: 100%;
-    left: 0;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-/* Create three equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 33.33%;
-    padding: 10px;
-    background-color: white;
-    height: 250px;
-}
-
-    /* Style links inside the columns */
-    .column a {
-        float: none;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-    }
-
-        /* Add a background color on hover */
-        .column a:hover {
-            color: white;
-        }
-
-.show {
-    display: block;
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
 .close-thik:after {
+    font-weight: 500;
     cursor: pointer;
     content: '✖'; /* UTF-8 symbol */
 }
@@ -142,7 +89,7 @@
         float: left;
     }
 
-        .registration-nav li a {
+        .registration-nav li a, .registration-nav li text{
             display: block;
             color: white;
             text-align: center;
@@ -150,10 +97,56 @@
             text-decoration: none;
         }
 
-            /* Change the link color to #111 (black) on hover */
+        .registration-nav li text{
+            font-size: 14px;
+        }
+
             .registration-nav li a:hover {
                 background-color: #111;
             }
+
+.mega-dropdown {
+    position: static !important;
+}
+
+.mega-dropdown-menu {
+    left: 8%;
+    padding: 20px;
+    width: 84%;
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+    .mega-dropdown-menu > li > ul {
+        padding: 0;
+        margin: 0;
+    }
+
+        .mega-dropdown-menu > li > ul > li {
+            list-style: none;
+        }
+
+            .mega-dropdown-menu > li > ul > li > a {
+                display: block;
+                padding: 3px 20px;
+                clear: both;
+                font-weight: normal;
+                line-height: 1.428571429;
+                color: #999;
+                white-space: normal;
+            }
+
+    .mega-dropdown-menu > li ul > li > a:hover,
+    .mega-dropdown-menu > li ul > li > a:focus {
+        text-decoration: none;
+        color: #444;
+        background-color: #f5f5f5;
+    }
+
+    .mega-dropdown-menu .dropdown-header {
+        color: #428bca;
+        font-size: 18px;
+        font-weight: bold;
+    }
 
 .check-box-container {
     display: block;
@@ -167,7 +160,6 @@
     user-select: none;
 }
 
-    /* Hide the browser's default checkbox */
     .check-box-container input {
         position: relative;
         opacity: 0;
@@ -241,17 +233,108 @@
 
 .admin-tab-icon {
     color: #0079ff;
+    font-size: 16px;
+    padding-right: 7px;
 }
 
 .nav-tabs li > a {
-    color: #737373;
+    color: #586069;
+    font-weight: 300;
 }
 
 .nav-tabs > li > a:hover {
     background-color: #f5f5f5;
     border-color: #f5f5f5;
 }
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus {
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     border-top: 3px solid #428bca;
-    background-color: white;  
+    background-color: white;
+    color: black;
+    
+}
+
+.nav-tabs > li > a {
+    padding: 8px 15px;
+}
+
+.btn-default-width {
+    width: 90px;
+}
+
+modal-footer a {
+    color: #b7b8bb;
+}
+
+.btn-sm {
+    font-size: 13px;
+}
+
+.table-fixed thead {
+    width: 97%;
+}
+
+.table-fixed tbody {
+    height: 380px;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+    display: block;
+}
+
+    .table-fixed tbody td, .table-fixed thead > tr > th {
+        float: left;
+        border-bottom-width: 0;
+    }
+
+.catalog-item-box {
+    min-height: 350px;
+    min-width: 190px;
+    border-radius: 4px;
+    transition: box-shadow .3s;
+    float: left;
+    background-color: #fff;
+    margin-bottom: 14px;
+}
+
+    .catalog-item-box-btn {
+        visibility: hidden;
+        transition: visibility .2s;
+    }
+
+
+.catalog-item-box-header{
+    padding-top: 14px;
+    height: 180px;
+    text-align: center;
+    padding-bottom: 7px;
+}
+
+.catalog-item-box-body {
+    padding: 14px 14px 7px 14px;
+    height: 130px;
+    text-align: left;
+    bottom: 0;
+}
+
+.catalog-item-box-footer {
+    height: 60px;
+    padding: 14px;
+}
+
+    .catalog-item-box:hover {
+        box-shadow: 0 0 11px rgba(33,33,33,.2);
+    }
+
+.catalog-item-box:hover .catalog-item-box-btn {
+    visibility: visible;
+}
+
+.cart-badge {
+    padding: 5px 8px;
+    font-weight: 100;
+    color: black;
+    background-color: #ffcc00;
 }

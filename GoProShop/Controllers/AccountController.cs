@@ -18,10 +18,7 @@ namespace GoProShop.Controllers
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
         }
 
-        public ActionResult Login()
-        {
-            return PartialView();
-        }
+        public ActionResult Login() => PartialView();
 
         public async Task<ActionResult> Edit()
         {
@@ -51,16 +48,13 @@ namespace GoProShop.Controllers
             return PartialView("Login", model);
         }
 
-        public ActionResult Register()
-        {
-            return PartialView();
-        }
+        public ActionResult Register() => PartialView();
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(UserRegisterVM user)
-        {
-         
+        {  
             if(user == null)
                 throw new ArgumentNullException(nameof(user));
 

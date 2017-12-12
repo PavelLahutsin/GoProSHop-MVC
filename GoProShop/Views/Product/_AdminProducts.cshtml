@@ -1,0 +1,83 @@
+﻿@model IEnumerable<GoProShop.ViewModels.ProductVM>
+@{
+    var counter = 1;
+}
+<div>
+    <div class="form-inline" style="padding-bottom: 15px; padding-top: 15px">
+        <button class="btn btn-success btn-sm" onclick="mainModalClickButtonHandler(event)" style="font-size: 13px !important"><i class="fa fa-plus" style="padding-right: 7px;"></i>Добавить</button>
+        <div class="input-group pull-right fo" style="max-width: 230px">
+            <input id="email" type="text" class="form-control" name="email" placeholder="Поиск...">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        </div>
+    </div>
+
+    <table class="table table-fixed">
+        <thead style="font-size: 13px">
+            <tr>
+                <th width="5%" class="text-left">#</th>
+
+                <th width="10%" class="text-left">
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+
+                <th width="45%" class="text-left">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+
+                <th width="15%" class="text-left">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+
+                <th width="10%" class="text-left">
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+
+                <th width="15%" class="text-left">Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td width="5%" class="text-left">@counter</td>
+                    <td width="10%">
+                        @if (item.MimeType == null)
+                        {
+                            <img height="30" src="~/Content/Images/No_Image_Available.png" />
+                        }
+                        else
+                        {
+                            <img height="30" src="@Url.Action("GetImage", "Product", new { productId = item.Id })">
+                        }
+                    </td>
+
+                    <td width="45%">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+                    <td width="15%">
+                        @if (item.Status == GoProShop.Enums.ProductStatus.Available)
+                        {
+                            <span class="label label-success">В наличии</span>
+                        }
+                        else
+                        {
+                            <span class="label label-danger">Нет в наличии</span>
+                        }
+
+                    </td>
+
+                    <td width="10%">
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+
+                    <td width="15%">
+                        <a class="btn btn-default btn-sm" onclick="mainModalClickHandler(event, this,@item.Id)" href="@Url.Action("Edit", "Product")"><span class="fa fa-pencil-square-o"></span> </a>
+                        <a class="btn btn-default btn-sm" onclick="deleteItemClickHandler(event, this,@item.Id)" href="@Url.Action("Delete", "Product")"><span class="fa fa-trash-o text-danger"></span> </a>
+                    </td>
+                </tr>
+                counter++;
+            }
+        </tbody>
+    </table>
+</div>

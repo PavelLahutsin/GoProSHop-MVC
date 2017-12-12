@@ -1,0 +1,27 @@
+﻿<div class="col-md-3" style="padding-left: 0;">
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Группа товаров</strong></div>
+        <div class="panel-body">
+            @{ Html.RenderAction("ProductSubGroups", "ProductSubGroup"); }
+        </div>
+    </div>
+</div>
+<div class="col-md-9" style="padding-right: 0;">
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Товары</strong></div>
+        <div class="panel-body" style="padding: 0 14px; font-size: 13px">
+            <div id="products">
+                @{ Html.RenderAction("SubGroupProducts", "Product"); }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="mainModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="mainDialogContent">
+            </div>
+        </div>
+    </div>
+</div>
