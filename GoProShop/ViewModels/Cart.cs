@@ -9,15 +9,15 @@ namespace GoProShop.ViewModels
 {
     public class Cart : ICart
     {
-        private readonly IList<CartItem> cartItems = new List<CartItem>();
+        private readonly IList<CartItem> _cartItems = new List<CartItem>();
 
         public void Add(ProductVM product)
         {
-            var cartItem = cartItems.FirstOrDefault(x => x.Product.Id == product.Id);
+            var cartItem = _cartItems.FirstOrDefault(x => x.Product.Id == product.Id);
 
             if(cartItem == null)
             {
-                cartItems.Add(new CartItem
+                _cartItems.Add(new CartItem
                 {
                     Product = product,
                     Quantity = 1
@@ -31,30 +31,28 @@ namespace GoProShop.ViewModels
 
         public void Clear()
         {
-            cartItems.Clear();
+            _cartItems.Clear();
         }
 
         public void Remove(ProductVM product)
         {
-            var cartItem = cartItems.FirstOrDefault(x => x.Product.Id == product.Id);
+            var cartItem = _cartItems.FirstOrDefault(x => x.Product.Id == product.Id);
 
-            if(cartItem.Quantity == 1)
+            if(cartItem?.Quantity == 1)
             {
-                cartItems.Remove(cartItem);
+                _cartItems.Remove(cartItem);
             }
             else
             {
                 cartItem.Quantity--;
-            }
-
-          
+            }    
         }
 
         [Display(Name = "Итого:")]
-        public decimal? TotalSum => cartItems?.Sum(x => x.Product.Price * x.Quantity);
+        public decimal? TotalSum => _cartItems?.Sum(x => x.Product.Price * x.Quantity);
 
-        public int Count => cartItems.Select(x => x.Quantity).Count();
+        public int Count => _cartItems.Count;
 
-        public IEnumerable<CartItem> CartItems => cartItems;
+        public IEnumerable<CartItem> CartItems => _cartItems;
     }
 }

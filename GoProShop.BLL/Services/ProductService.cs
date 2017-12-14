@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GoProShop.DAL.Entities;
 using GoProShop.DAL.Interfaces;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace GoProShop.BLL.Services
 
         public ProductService(IUnitOfWork uow)
         {
-            _uow = uow;
+            _uow = uow ?? throw new ArgumentNullException(nameof(uow));
         }
 
         public async Task CreateAsync(ProductDTO product)
@@ -28,9 +29,9 @@ namespace GoProShop.BLL.Services
         public IEnumerable<ProductDTO> GetGroupProducts(int id)
         {
             var products = _uow.Products.Entities.Where(x => x.ProductSubGroupId == id);
-            var productsDTO =
+            var productsDto =
                  Mapper.Map<IQueryable<Product>, IEnumerable<ProductDTO>>(products);
-            return productsDTO;
+            return productsDto;
         }
 
         public async Task<ProductDTO> GetAsync(int id)
@@ -43,6 +44,15 @@ namespace GoProShop.BLL.Services
         {
             var updatedProduct = await _uow.Products.UpdateAsync(Mapper.Map<Product>(product));
             await _uow.Commit();
+        }
+
+        public IEnumerable<ProductDTO> GetProductsOfDay()
+        {
+            var products = _uow.Products.Entities.Where(x => x.ProductSubGroup.Name.Contains("Экшн-камеры")).Take(4).ToList();
+            products.AddRange(_uow.Products.Entities.Where(x => x.ProductSubGroup.Name.Contains("Готовые комплекты")).Take(4).ToList());
+
+            var productsDto = Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products);
+            return productsDto;
         }
 
         public ProductDTO MapImage(ProductDTO product, HttpPostedFileBase uploadedFile)

@@ -20,10 +20,10 @@ namespace GoProShop.BLL.Services
         public IEnumerable<ProductSubGroupDTO> GetProductSubGroups()
         {
            var productSubGroups = _uow.ProductSubGroups.Entities.ToList();
-           var productSubGroupsDTO =  
+           var productSubGroupsDto =  
                 Mapper.Map<List<ProductSubGroup>, IEnumerable<ProductSubGroupDTO>>(productSubGroups);
 
-           return productSubGroupsDTO;
+           return productSubGroupsDto;
         }
     }
 }

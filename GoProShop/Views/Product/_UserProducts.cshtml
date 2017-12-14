@@ -20,13 +20,13 @@
 
         if (i == 4)
         {
-            result.Append(row.ToString());
+            result.Append(row?.ToString());
             i = 0;
         }
     }
     if(i != 4 && i != 0)
     {
-        result.Append(row.ToString());
+        result.Append(row?.ToString());
     }
 }
 

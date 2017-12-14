@@ -68,7 +68,6 @@
 .login-btn {
     border-radius: 20px;
     height: 40px;
-    width: 100%;
 }
 
 .close-thik:after {
@@ -293,12 +292,11 @@ modal-footer a {
     }
 
 .catalog-item-box {
-    min-height: 350px;
-    min-width: 190px;
+    min-height: 300px;
+    width: 190px;
     border-radius: 4px;
     transition: box-shadow .3s;
     float: left;
-    border: 0.5px solid #dddddd;
     background-color: #fff;
     margin-bottom: 14px;
 }
@@ -311,14 +309,14 @@ modal-footer a {
 
 .catalog-item-box-header{
     padding-top: 14px;
-    height: 180px;
+    height: 160px;
     text-align: center;
     padding-bottom: 7px;
 }
 
 .catalog-item-box-body {
     padding: 14px 14px 7px 14px;
-    height: 130px;
+    height: 100px;
     text-align: left;
     bottom: 0;
 }
