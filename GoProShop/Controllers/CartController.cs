@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using GoProShop.BLL.Services.Interfaces;
 using GoProShop.ViewModels;
-using GoProShop.ViewModels.Interfaces;
 using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -10,12 +9,10 @@ namespace GoProShop.Controllers
 {
     public class CartController : Controller
     {
-        private readonly ICart _cart;
         private readonly IProductService _productService;
 
-        public CartController(ICart cart, IProductService productService)
+        public CartController(IProductService productService)
         {
-            _cart = cart ?? throw new ArgumentNullException(nameof(cart));
             _productService = productService ?? throw new ArgumentNullException(nameof(productService));
         }
 
@@ -39,7 +36,7 @@ namespace GoProShop.Controllers
 
         public ActionResult CartView()
         {
-            return PartialView("_CartView", GetCart.CartItems);
+            return PartialView("_CartView", GetCart);
         }
 
         public ActionResult Index()

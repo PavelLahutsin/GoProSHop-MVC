@@ -12,6 +12,7 @@ namespace GoProShop.BLL.Services.Interfaces
         Task UpdateAsync(ProductDTO product);
         Task CreateAsync(ProductDTO product);
         Task DeleteAsync(ProductDTO product);
+        IEnumerable<ProductDTO> GetProductsOfDay();
         ProductDTO MapImage(ProductDTO product, HttpPostedFileBase uploadedFile);
     }
 }

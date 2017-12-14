@@ -68,7 +68,6 @@
 .login-btn {
     border-radius: 20px;
     height: 40px;
-    width: 100%;
 }
 
 .close-thik:after {
@@ -110,9 +109,8 @@
 }
 
 .mega-dropdown-menu {
-    left: 8%;
     padding: 20px;
-    width: 84%;
+    width: 100%;
     box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
 
@@ -237,6 +235,10 @@
     padding-right: 7px;
 }
 
+.nav-tabs{
+    text-align: center;
+}
+
 .nav-tabs li > a {
     color: #586069;
     font-weight: 300;
@@ -290,8 +292,8 @@ modal-footer a {
     }
 
 .catalog-item-box {
-    min-height: 350px;
-    min-width: 190px;
+    min-height: 300px;
+    width: 190px;
     border-radius: 4px;
     transition: box-shadow .3s;
     float: left;
@@ -307,14 +309,14 @@ modal-footer a {
 
 .catalog-item-box-header{
     padding-top: 14px;
-    height: 180px;
+    height: 160px;
     text-align: center;
     padding-bottom: 7px;
 }
 
 .catalog-item-box-body {
     padding: 14px 14px 7px 14px;
-    height: 130px;
+    height: 100px;
     text-align: left;
     bottom: 0;
 }

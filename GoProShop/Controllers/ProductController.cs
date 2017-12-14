@@ -28,6 +28,14 @@ namespace GoProShop.Controllers
                 : PartialView("_UserProducts", products);
         }
 
+        public ActionResult ProductOfDay()
+        {
+            var products = _productService.GetProductsOfDay();
+            var productsVm = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(products);
+
+            return PartialView("_UserProducts", productsVm);
+        }
+
         [Authorize(Roles = "admin")]
         public ActionResult Create() => PartialView("_Create");
 

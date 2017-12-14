@@ -9,20 +9,20 @@
     };
 }
 
-<div class='col-md-3'>
+<div class="col-md-3">
     <div class="catalog-item-box">
         <div class="catalog-item-box-header">
             @if (Model.MimeType == null)
             {
-                <img height="140" width="150" src="~/Content/Images/No_Image_Available.png" />
+                <img height="140" width="150" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
             }
             else
             {
-                <img height="130" width="175" src="@Url.Action("GetImage", "Product", new { productId = Model.Id })">
+                <img height="130" width="175" src="@Url.Action("GetImage", "Product", new { productId = Model.Id })" alt="Фото">
             }
         </div>
         <div class="catalog-item-box-body">
-            <p><a href="#" style="font-size: 13px;">@Model.Name</a></p>
+            <p><a href="#" style="font-size: 13px; width: 190px;">@Model.Name</a></p>
             @if (Model.Status == GoProShop.Enums.ProductStatus.Available)
             {
                 <p class="text-success">В наличии</p>
@@ -38,5 +38,6 @@
         </div>
     </div>
 </div>
+
 
 

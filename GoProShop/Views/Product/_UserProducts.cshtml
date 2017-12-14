@@ -3,7 +3,7 @@
 @using System.Text;
 
 @{
-    StringBuilder result = new StringBuilder();
+    var result = new StringBuilder();
     var i = 0;
     TagBuilder row = null;
     foreach (var item in Model)
@@ -20,13 +20,13 @@
 
         if (i == 4)
         {
-            result.Append(row.ToString());
+            result.Append(row?.ToString());
             i = 0;
         }
     }
     if(i != 4 && i != 0)
     {
-        result.Append(row.ToString());
+        result.Append(row?.ToString());
     }
 }
 

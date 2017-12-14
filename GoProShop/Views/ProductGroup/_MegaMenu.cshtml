@@ -2,8 +2,9 @@
 
 <ul class="nav navbar-nav navbar-left">
     <li class="dropdown mega-dropdown">
+
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Каталог</strong> <span class="fa fa-caret-down"></span></a>
-        <ul class="dropdown-menu mega-dropdown-menu container">
+        <ul class="dropdown-menu mega-dropdown-menu">
             @foreach (var item in Model)
             {
                 <li class="col-md-3">
@@ -11,12 +12,13 @@
                         <li class="dropdown-header">@item.Name </li>
                         @foreach (var group in item.ProductSubGroups)
                         {
-                            <li><a href="@Url.Action("Index","Catalog", new {id = group.Id})">@group.Name</a></li>
+                            <li><a href="@Url.Action("Index", "Catalog", new {id = group.Id})">@group.Name</a></li>
                         }
                     </ul>
                 </li>
             }
         </ul>
+
     </li>
     @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
     {
