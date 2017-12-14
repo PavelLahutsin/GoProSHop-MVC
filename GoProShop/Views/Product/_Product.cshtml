@@ -14,11 +14,11 @@
         <div class="catalog-item-box-header">
             @if (Model.MimeType == null)
             {
-                <img height="140" width="150" src="~/Content/Images/No_Image_Available.png" />
+                <img height="140" width="150" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
             }
             else
             {
-                <img height="130" width="175" src="@Url.Action("GetImage", "Product", new { productId = Model.Id })">
+                <img height="130" width="175" src="@Url.Action("GetImage", "Product", new { productId = Model.Id })" alt="Фото">
             }
         </div>
         <div class="catalog-item-box-body">

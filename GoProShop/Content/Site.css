@@ -110,9 +110,8 @@
 }
 
 .mega-dropdown-menu {
-    left: 8%;
     padding: 20px;
-    width: 84%;
+    width: 100%;
     box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
 
@@ -237,6 +236,10 @@
     padding-right: 7px;
 }
 
+.nav-tabs{
+    text-align: center;
+}
+
 .nav-tabs li > a {
     color: #586069;
     font-weight: 300;
@@ -295,6 +298,7 @@ modal-footer a {
     border-radius: 4px;
     transition: box-shadow .3s;
     float: left;
+    border: 0.5px solid #dddddd;
     background-color: #fff;
     margin-bottom: 14px;
 }

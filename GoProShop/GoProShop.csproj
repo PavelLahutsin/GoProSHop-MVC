@@ -226,10 +226,9 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Home\Index.css" />
-    <Content Include="Content\Images\carousel-item-3.jpg" />
-    <Content Include="Content\Images\carousel-item-4.jpg" />
-    <Content Include="Content\Images\carousel-item-1.jpg" />
-    <Content Include="Content\Images\carousel-item-2.jpg" />
+    <Content Include="Content\Images\carousel-item-1.png" />
+    <Content Include="Content\Images\carousel-item-2.png" />
+    <Content Include="Content\Images\carousel-item-3.png" />
     <Content Include="Content\Images\GoProLogoBlack.png" />
     <Content Include="Content\Images\LogoWhite.png" />
     <Content Include="Content\Images\MTS.png" />

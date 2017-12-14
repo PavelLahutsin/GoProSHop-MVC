@@ -1,6 +1,7 @@
 ﻿using GoProShop.ViewModels.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -45,8 +46,11 @@ namespace GoProShop.ViewModels
             {
                 cartItem.Quantity--;
             }
+
+          
         }
 
+        [Display(Name = "Итого:")]
         public decimal? TotalSum => cartItems?.Sum(x => x.Product.Price * x.Quantity);
 
         public int Count => cartItems.Select(x => x.Quantity).Count();
