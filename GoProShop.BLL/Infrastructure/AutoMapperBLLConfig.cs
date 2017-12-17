@@ -13,6 +13,7 @@ namespace GoProShop.BLL.Infrastructure
             cfg.CreateMap<ProductSubGroup, ProductSubGroupDTO>().ReverseMap();
             cfg.CreateMap<Product, ProductDTO>().ReverseMap();
             cfg.CreateMap<ProductGroup, ProductGroupDTO>().ReverseMap();
+            cfg.CreateMap<Feedback, FeedbackDTO>().ReverseMap();
         };
     }
 }

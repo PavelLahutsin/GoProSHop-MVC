@@ -99,7 +99,7 @@
             success: function (result) {               
                 if (result.success) {
                     $("#mainModal").modal('hide');
-                    $.get('/Product/SubGroupProducts/', { id: result.groupId }, function (data) {
+                    $.get('/Product/SubGroupAdminProducts/', { id: result.groupId }, function (data) {
                         $('#products').html(data);
                     });
                 }

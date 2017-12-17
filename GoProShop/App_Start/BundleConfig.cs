@@ -27,7 +27,9 @@ namespace GoProShop
                       "~/Content/font-awesome.css",
                       "~/Content/Colors.css",
                       "~/Content/Home/header-carousel.css",
-                      "~/Content/ProductGroup/side-menu.css"));
+                      "~/Content/Home/index.css",
+                      "~/Content/ProductGroup/side-menu.css",
+                      "~/Content/ProductGroup/footer-catalog.css"));
         }
     }
 }

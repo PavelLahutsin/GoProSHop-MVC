@@ -1,0 +1,9 @@
+﻿@model GoProShop.ViewModels.ResponseVM
+    
+@if (Model.IsSuccess)
+{
+    <div class="alert alert-success" style="text-align: center; line-height: 14px;">
+        <span class="fa fa-check-circle fa-2x"></span>  @Model.Message
+    </div>
+}
+

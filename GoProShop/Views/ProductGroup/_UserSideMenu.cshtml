@@ -24,7 +24,7 @@
                 <div class="collapse" id="category_@counter">
                     @foreach (var productSubGroup in productGroup.ProductSubGroups)
                     {
-                        @Ajax.ActionLink(@productSubGroup.Name, "SubGroupProducts", "Product",  new {id = productSubGroup.Id }, options, new {@class = "list-group-item list-group-sub-item", style = "border: none" })
+                        @Ajax.ActionLink(@productSubGroup.Name, "SubGroupUserProducts", "Product",  new {id = productSubGroup.Id }, options, new {@class = "list-group-item list-group-sub-item", style = "border: none" })
                     }
                 </div>
 

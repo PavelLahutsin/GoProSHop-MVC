@@ -1,0 +1,18 @@
+﻿@model IEnumerable<GoProShop.ViewModels.ProductGroupVM>
+
+<div>
+    <ul class="footer-catalog">
+        @foreach (var item in Model)
+            {
+            <li class="col-md-3">
+                <ul>
+                    <li class="group-name">@item.Name </li>
+                    @foreach (var group in item.ProductSubGroups)
+                    {
+                        <li><a href="@Url.Action("Index", "Catalog", new {id = group.Id})">@group.Name</a></li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+</div>

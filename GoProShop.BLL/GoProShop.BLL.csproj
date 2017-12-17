@@ -80,19 +80,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\FeedbackDTO.cs" />
     <Compile Include="DTO\IdProvider.cs" />
     <Compile Include="DTO\ProductGroupDTO.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="DTO\ProductSubGroupDTO.cs" />
+    <Compile Include="DTO\ResponseDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="DTO\UserLoginDTO.cs" />
     <Compile Include="Enums\ProductStatus.cs" />
     <Compile Include="Infrastructure\AutoMapperBLLConfig.cs" />
     <Compile Include="DTO\CustomerDTO.cs" />
+    <Compile Include="Services\FeedbackService.cs" />
+    <Compile Include="Services\Interfaces\IFeedbackService.cs" />
     <Compile Include="Services\Interfaces\IProductGroupService.cs" />
     <Compile Include="Services\Interfaces\IProductSubGroupService.cs" />
     <Compile Include="Services\Interfaces\IProductService.cs" />
+    <Compile Include="Services\Interfaces\IResponseService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
+    <Compile Include="Services\Interfaces\ResponseService.cs" />
     <Compile Include="Services\ProductGroupService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\OrderService.cs" />

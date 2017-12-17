@@ -26,13 +26,31 @@ namespace GoProShop.Controllers
             return PartialView("_MegaMenu", productGroupsVM);
         }
 
-        public ActionResult SideMenu()
+        public ActionResult UserSideMenu()
         {
             var productGroupsDTO = _mainProductGroupService.GetProductGroups();
             var productGroupsVM =
                 Mapper.Map<IEnumerable<ProductGroupDTO>, IEnumerable<ProductGroupVM>>(productGroupsDTO);
 
-            return PartialView("_SideMenu", productGroupsVM);
+            return PartialView("_UserSideMenu", productGroupsVM);
+        }
+
+        public ActionResult AdminSideMenu()
+        {
+            var productGroupsDTO = _mainProductGroupService.GetProductGroups();
+            var productGroupsVM =
+                Mapper.Map<IEnumerable<ProductGroupDTO>, IEnumerable<ProductGroupVM>>(productGroupsDTO);
+
+            return PartialView("_AdminSideMenu", productGroupsVM);
+        }
+
+        public ActionResult FooterCatalog()
+        {
+            var productGroupsDTO = _mainProductGroupService.GetProductGroups();
+            var productGroupsVM =
+                Mapper.Map<IEnumerable<ProductGroupDTO>, IEnumerable<ProductGroupVM>>(productGroupsDTO);
+
+            return PartialView("_FooterCatalog", productGroupsVM);
         }
     }
 }

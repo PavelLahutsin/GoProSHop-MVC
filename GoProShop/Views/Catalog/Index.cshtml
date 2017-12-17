@@ -5,7 +5,7 @@
     <div class="container" style="padding-top: 25px">
         <div class="row">
             <div class="col-md-3">
-                @Html.Action("SideMenu", "ProductGroup")
+                @Html.Action("UserSideMenu", "ProductGroup")
             </div>
             <div class="col-md-9">
                 <div class="row">
@@ -18,7 +18,7 @@
                             </div>
                         </div>
                         <div id="products">
-                            @Html.Action("SubGroupProducts", "Product", new { id = currentId })
+                            @Html.Action("SubGroupUserProducts", "Product", new { id = currentId })
                         </div>
                     </div>
                 </div>    
