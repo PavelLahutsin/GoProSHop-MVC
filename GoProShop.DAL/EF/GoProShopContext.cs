@@ -28,5 +28,7 @@ namespace GoProShop.DAL.EF
         public DbSet<ProductSubGroup> ProductSubGroups { get; set; }
 
         public DbSet<ProductGroup> ProductGroups { get; set; }
+
+        public DbSet<Feedback> Feedbacks { get; set; }
     }
 }

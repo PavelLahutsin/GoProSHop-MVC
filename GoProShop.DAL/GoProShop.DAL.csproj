@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\ApplicationRole.cs" />
+    <Compile Include="Entities\Feedback.cs" />
     <Compile Include="Entities\ProductGroup.cs" />
     <Compile Include="Enums\ProductStatus.cs" />
     <Compile Include="Identity\ApplicationRoleManager.cs" />
@@ -86,6 +87,10 @@
     <Compile Include="Migrations\201712020806497_initialcreate.cs" />
     <Compile Include="Migrations\201712020806497_initialcreate.Designer.cs">
       <DependentUpon>201712020806497_initialcreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712170725589_AddFeedbackEntity.cs" />
+    <Compile Include="Migrations\201712170725589_AddFeedbackEntity.Designer.cs">
+      <DependentUpon>201712170725589_AddFeedbackEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
@@ -109,6 +114,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712020806497_initialcreate.resx">
       <DependentUpon>201712020806497_initialcreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712170725589_AddFeedbackEntity.resx">
+      <DependentUpon>201712170725589_AddFeedbackEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

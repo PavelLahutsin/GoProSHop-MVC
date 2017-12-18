@@ -24,6 +24,8 @@ namespace GoProShop.DAL.Interfaces
 
         IBaseRepository<ProductGroup> ProductGroups { get; }
 
+        IBaseRepository<Feedback> Feedbacks { get; }
+
         ApplicationUserManager UserManager { get; }
 
         ApplicationRoleManager RoleManager { get; }

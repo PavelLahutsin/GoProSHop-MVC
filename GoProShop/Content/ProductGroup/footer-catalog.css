@@ -1,0 +1,38 @@
+﻿.footer-catalog {
+    padding: 20px;
+    width: 100%;
+    list-style: none;
+}
+
+    .footer-catalog > li > ul {
+        padding: 0;
+        margin: 0;
+    }
+
+        .footer-catalog li > ul > li {
+            list-style: none;
+        }
+
+    .footer-catalog > li > ul > li > a {
+        display: block;
+        padding: 3px 0;
+        clear: both;
+        font-size: 13px;
+        font-weight: normal;
+        line-height: 1.428571429;
+        color: #757575;
+        white-space: normal;
+    }
+
+    .footer-catalog > li ul > li > a:hover,
+    .footer-catalog > li ul > li > a:focus {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    li.group-name{
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        padding-bottom: 3px;
+    }

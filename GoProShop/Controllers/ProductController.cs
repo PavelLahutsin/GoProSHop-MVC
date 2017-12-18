@@ -18,14 +18,21 @@ namespace GoProShop.Controllers
             _productService = productService;
         }
 
-        public ActionResult SubGroupProducts(int id = 1)
+        public ActionResult SubGroupUserProducts(int id = 1)
         {
             var products
                 = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(_productService.GetGroupProducts(id));
 
-            return User.IsInRole("admin")
-                ? PartialView("_AdminProducts", products)
-                : PartialView("_UserProducts", products);
+            return PartialView("_UserProducts", products);
+        }
+
+        [Authorize(Roles = "admin")]
+        public ActionResult SubGroupAdminProducts(int id = 1)
+        {
+            var products
+                = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(_productService.GetGroupProducts(id));
+
+            return PartialView("_AdminProducts", products);
         }
 
         public ActionResult ProductOfDay()

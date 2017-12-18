@@ -18,14 +18,16 @@ namespace GoProShop
         public static void RegisterComponents()
         {
             var container = new UnityContainer()
-                .RegisterType<IGoProShopContext, GoProShopContext>()
-                .RegisterType<IUnitOfWork, UnitOfWork>()
                 .RegisterType(typeof(IBaseRepository<>), typeof(BaseRepository<>))
+                .RegisterType<IGoProShopContext, GoProShopContext>()
+                .RegisterType<IUnitOfWork, UnitOfWork>()          
                 .RegisterType<IUserService, UserService>()
                 .RegisterType<IProductSubGroupService, ProductSubGroupService>()
                 .RegisterType<IProductService, ProductService>()
                 .RegisterType<IProductGroupService, ProductGroupService>()
                 .RegisterType<ICart, Cart>()
+                .RegisterType<IFeedbackService, FeedbackService>()
+                .RegisterType<IResponseService, ResponseService>()
                 .RegisterType<IAuthenticationManager>(new InjectionFactory(x => HttpContext.Current.GetOwinContext().Authentication));
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

@@ -16,6 +16,8 @@ namespace GoProShop.App_Start
             cfg.CreateMap<ProductSubGroupVM, ProductSubGroupDTO>().ReverseMap();
             cfg.CreateMap<ProductVM, ProductDTO>().ReverseMap();
             cfg.CreateMap<ProductGroupVM, ProductGroupDTO>().ReverseMap();
+            cfg.CreateMap<FeedbackVM, FeedbackDTO>().ReverseMap();
+            cfg.CreateMap<ResponseVM, ResponseDTO>().ReverseMap();
         };
     }
 }

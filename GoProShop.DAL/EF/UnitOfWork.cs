@@ -22,6 +22,7 @@ namespace GoProShop.DAL.EF
         private IBaseRepository<StoredProduct> _productStoredRepository;
         private IBaseRepository<Store> _storeRepository;
         private IBaseRepository<ProductGroup> _productGroupRepository;
+        private IBaseRepository<Feedback> _feedbackRepository;
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
         private bool disposed = false;
@@ -57,11 +58,15 @@ namespace GoProShop.DAL.EF
         public IBaseRepository<ProductGroup> ProductGroups => _productGroupRepository ??
            (_productGroupRepository = new BaseRepository<ProductGroup>(_context));
 
+        public IBaseRepository<Feedback> Feedbacks => _feedbackRepository ??
+           (_feedbackRepository = new BaseRepository<Feedback>(_context));
+
         public ApplicationUserManager UserManager => _userManager ??
             (_userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_context)));
 
         public ApplicationRoleManager RoleManager => _roleManager ?? 
             (_roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(_context)));
+
 
         public IAuthenticationManager AuthenticationManager { get; set; }
 

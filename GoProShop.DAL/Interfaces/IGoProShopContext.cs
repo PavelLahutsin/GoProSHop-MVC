@@ -1,17 +1,11 @@
 ﻿using GoProShop.DAL.Entities;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GoProShop.DAL.Interfaces
 {
     public interface IGoProShopContext
     {
-
         DbSet<Customer> Customers { get; set; }
 
         DbSet<Product> Products { get; set; }
@@ -27,6 +21,8 @@ namespace GoProShop.DAL.Interfaces
         DbSet<ProductSubGroup> ProductSubGroups { get; set; }
 
         DbSet<ProductGroup> ProductGroups{ get; set; }
+
+        DbSet<Feedback> Feedbacks { get; set; }
 
         DbChangeTracker ChangeTracker { get; }
 

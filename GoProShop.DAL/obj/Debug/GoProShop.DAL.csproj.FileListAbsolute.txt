@@ -176,3 +176,4 @@ E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csp
 E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csproj.CoreCompileInputs.cache
 E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.dll
 E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.pdb
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.AddFeedbackEntity.resources
