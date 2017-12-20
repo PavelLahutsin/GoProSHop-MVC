@@ -10,8 +10,10 @@ namespace GoProShop.DAL.Entities
 
         public DateTime Date { get; set; }
 
-        public bool? IsApproved { get; set; }
+        public bool IsApproved { get; set; }
         
+        public bool IsViewed { get; set; }
+
         public string Message { get; set; }
     }
 }

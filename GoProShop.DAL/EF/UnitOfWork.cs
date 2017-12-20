@@ -58,7 +58,7 @@ namespace GoProShop.DAL.EF
         public IBaseRepository<ProductGroup> ProductGroups => _productGroupRepository ??
            (_productGroupRepository = new BaseRepository<ProductGroup>(_context));
 
-        public IBaseRepository<Feedback> Feedbacks => _feedbackRepository ??
+       public IBaseRepository<Feedback> Feedbacks => _feedbackRepository ??
            (_feedbackRepository = new BaseRepository<Feedback>(_context));
 
         public ApplicationUserManager UserManager => _userManager ??

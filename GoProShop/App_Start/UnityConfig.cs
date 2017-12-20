@@ -1,26 +1,59 @@
-using System.Web.Mvc;
-using Microsoft.Practices.Unity;
-using Unity.Mvc5;
-using GoProShop.BLL.Services.Interfaces;
 using GoProShop.BLL.Services;
-using GoProShop.DAL.Interfaces;
+using GoProShop.BLL.Services.Interfaces;
 using GoProShop.DAL.EF;
+using GoProShop.DAL.Interfaces;
 using GoProShop.DAL.Repositories;
-using System.Web;
-using Microsoft.Owin.Security;
-using GoProShop.ViewModels.Interfaces;
 using GoProShop.ViewModels;
+using GoProShop.ViewModels.Interfaces;
+using Microsoft.Owin.Security;
+using System;
+using System.Web.Mvc;
+using System.Web;
+using Unity;
+using Unity.Injection;
 
 namespace GoProShop
 {
+    /// <summary>
+    /// Specifies the Unity configuration for the main container.
+    /// </summary>
     public static class UnityConfig
     {
-        public static void RegisterComponents()
+        #region Unity Container
+        private static Lazy<IUnityContainer> container =
+          new Lazy<IUnityContainer>(() =>
+          {
+              var container = new UnityContainer();
+              RegisterTypes(container);
+              return container;
+          });
+
+        /// <summary>
+        /// Configured Unity Container.
+        /// </summary>
+        public static IUnityContainer Container => container.Value;
+        #endregion
+
+        /// <summary>
+        /// Registers the type mappings with the Unity container.
+        /// </summary>
+        /// <param name="container">The unity container to configure.</param>
+        /// <remarks>
+        /// There is no need to register concrete types such as controllers or
+        /// API controllers (unless you want to change the defaults), as Unity
+        /// allows resolving a concrete type even if it was not previously
+        /// registered.
+        /// </remarks>
+        public static void RegisterTypes(IUnityContainer container)
         {
-            var container = new UnityContainer()
+            // NOTE: To load from web.config uncomment the line below.
+            // Make sure to add a Unity.Configuration to the using statements.
+            // container.LoadConfiguration();
+
+            container
                 .RegisterType(typeof(IBaseRepository<>), typeof(BaseRepository<>))
                 .RegisterType<IGoProShopContext, GoProShopContext>()
-                .RegisterType<IUnitOfWork, UnitOfWork>()          
+                .RegisterType<IUnitOfWork, UnitOfWork>()
                 .RegisterType<IUserService, UserService>()
                 .RegisterType<IProductSubGroupService, ProductSubGroupService>()
                 .RegisterType<IProductService, ProductService>()
@@ -28,9 +61,8 @@ namespace GoProShop
                 .RegisterType<ICart, Cart>()
                 .RegisterType<IFeedbackService, FeedbackService>()
                 .RegisterType<IResponseService, ResponseService>()
+                .RegisterType<IAdminService, AdminService>()
                 .RegisterType<IAuthenticationManager>(new InjectionFactory(x => HttpContext.Current.GetOwinContext().Authentication));
-
-            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
 }

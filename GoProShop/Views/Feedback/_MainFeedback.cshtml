@@ -13,23 +13,27 @@
     @using (Ajax.BeginForm("Create", "Feedback", options))
     {
         @Html.AntiForgeryToken()
-
-        <div class="alert-danger" style="border-radius: 5px">
-            @Html.ValidationSummary(false, null, new { @class = "text-danger" })
-        </div>
-        <div class="col-md-6">
-            <div class="form-horizontal">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control form-control-feedback", placeholder = "Имя" } })
-                @Html.EditorFor(model => model.SurName, new { htmlAttributes = new { @class = "form-control form-control-feedback", placeholder = "Фамилия" } })
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control form-control-feedback", placeholder = "Email" } })
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert-danger" style="border-radius: 5px">
+                    @Html.ValidationSummary(false, null, new { @class = "text-danger" })
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="form-horizontal">
-                @Html.TextAreaFor(model => model.Message, new { @class = "form-control form-control-feedback", rows = 4, placeholder = "Сообщение" })
-                <input type="submit" class="btn btn-primary btn-block" value="Отправить" />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-horizontal">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control form-control-feedback", placeholder = "Имя" } })
+                    @Html.EditorFor(model => model.SurName, new { htmlAttributes = new { @class = "form-control form-control-feedback", placeholder = "Фамилия" } })
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control form-control-feedback", placeholder = "Email" } })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-horizontal">
+                    @Html.TextAreaFor(model => model.Message, new { @class = "form-control form-control-feedback", rows = 4, placeholder = "Сообщение" })
+                    <input type="submit" class="btn btn-primary btn-block" value="Отправить" />
+                </div>
             </div>
         </div>
-
     }
 </div>

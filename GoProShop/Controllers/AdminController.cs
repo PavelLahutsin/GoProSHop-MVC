@@ -1,15 +1,36 @@
-﻿using System.Web.Mvc;
+﻿using AutoMapper;
+using GoProShop.BLL.Services.Interfaces;
+using GoProShop.ViewModels;
+using System;
+using System.Web.Mvc;
 
 namespace GoProShop.Controllers
 {
     public class AdminController : Controller
     {
-        public ActionResult Index() => View();
+        private readonly IAdminService _adminService;
+
+        public AdminController(IAdminService adminService)
+        {
+            _adminService = adminService ?? throw new ArgumentNullException(nameof(adminService));
+        }
+
+        public ActionResult Index()
+        {
+            var adminPageDTO = _adminService.Build();
+            var adminPageVM = Mapper.Map<AdminPageVM>(adminPageDTO);
+
+
+            return View(adminPageVM);
+        }
+
 
         public ActionResult Orders() => View();
 
         public ActionResult Price() => PartialView();
 
         public ActionResult Stores() => View();
+
+        public ActionResult Feedbacks() => PartialView();
     }
 }

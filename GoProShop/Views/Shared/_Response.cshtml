@@ -1,12 +1,19 @@
 ﻿@model GoProShop.ViewModels.ResponseVM
-    
+
 @if (Model.IsSuccess)
 {
     <div class="col-md-12">
-        <div class="alert alert-success">
+        <div class="alert alert-success fade in">
             <span class="fa fa-check-circle"></span>  @Model.Message
         </div>
     </div>
-   
+}
+else
+{
+    <div class="col-md-12">
+        <div class="alert alert-danger fade in">
+            <span class="fa fa-exclamation-circle"></span>  @Model.Message
+        </div>
+    </div>
 }
 
