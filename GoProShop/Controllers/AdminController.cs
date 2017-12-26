@@ -20,7 +20,6 @@ namespace GoProShop.Controllers
             var adminPageDTO = _adminService.Build();
             var adminPageVM = Mapper.Map<AdminPageVM>(adminPageDTO);
 
-
             return View(adminPageVM);
         }
 

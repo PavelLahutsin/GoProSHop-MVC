@@ -1,8 +1,17 @@
-﻿@model IEnumerable<GoProShop.ViewModels.ProductVM>
+﻿@model PagedList.IPagedList<GoProShop.ViewModels.ProductVM>
+
+@using PagedList.Mvc;
 
 @using System.Text;
 
 @{
+    var options = new AjaxOptions()
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "products"
+    };
+    var productSubGroupId = Model.FirstOrDefault().ProductSubGroupId;
     var result = new StringBuilder();
     var i = 0;
     TagBuilder row = null;
@@ -24,11 +33,27 @@
             i = 0;
         }
     }
-    if(i != 4 && i != 0)
+    if (i != 4 && i != 0)
     {
         result.Append(row?.ToString());
     }
 }
 
-@MvcHtmlString.Create(result.ToString())
+<div class="row">
+    @MvcHtmlString.Create(result.ToString())
+</div>
+
+
+@if (Model?.TotalItemCount > 8)
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.PagedListPager(Model, page => Url.Action("SubGroupUserProducts", "Product", new { productSubGroupId, page }),
+PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(options))
+        </div>
+    </div>
+}
+
+
+
 

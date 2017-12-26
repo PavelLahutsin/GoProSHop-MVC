@@ -19,12 +19,12 @@ namespace GoProShop.Controllers
             _productService = productService;
         }
 
-        public ActionResult SubGroupUserProducts(int id = 1)
+        public ActionResult SubGroupUserProducts(int id = 1, int page = 1, int pageSize = 8)
         {
             var products
                 = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(_productService.GetGroupProducts(id));
 
-            return PartialView("_UserProducts", products);
+            return PartialView("_UserProducts", products?.ToPagedList(page,pageSize));
         }
 
         [Authorize(Roles = "admin")]
@@ -41,7 +41,7 @@ namespace GoProShop.Controllers
             var products = _productService.GetProductsOfDay();
             var productsVm = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(products);
 
-            return PartialView("_UserProducts", productsVm);
+            return PartialView("_UserProducts", productsVm.ToPagedList(1,8));
         }
 
         [Authorize(Roles = "admin")]

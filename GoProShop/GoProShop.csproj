@@ -227,7 +227,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductGroupController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ProductSubGroupController.cs" />
     <Compile Include="Controllers\ResponseController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Enums\FeedbackStatus.cs" />
@@ -364,7 +363,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Catalog\" />
     <Folder Include="Properties\PublishProfiles\" />
-    <Folder Include="Views\ProductSubGroup\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoProShop.BLL\GoProShop.BLL.csproj">

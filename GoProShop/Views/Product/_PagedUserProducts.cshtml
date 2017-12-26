@@ -50,7 +50,7 @@
     <br />
     @MvcHtmlString.Create(result.ToString())
 
-    @if (Model.Response.IsSuccess && Model.Count >= 9)
+    @if (Model.Response.IsSuccess && Model.Count > 8)
     {      
         @Html.PagedListPager(Model.PagedItems, page => Url.Action("SearchProducts", "Search", new { Model.SearchString, page }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(options))
