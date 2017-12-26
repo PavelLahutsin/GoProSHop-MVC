@@ -77,6 +77,7 @@
     <Compile Include="Entities\ApplicationRole.cs" />
     <Compile Include="Entities\Feedback.cs" />
     <Compile Include="Entities\ProductGroup.cs" />
+    <Compile Include="Enums\FeedbackStatus.cs" />
     <Compile Include="Enums\ProductStatus.cs" />
     <Compile Include="Identity\ApplicationRoleManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
@@ -91,6 +92,10 @@
     <Compile Include="Migrations\201712181952281_UpdatedFeedbackEntity.cs" />
     <Compile Include="Migrations\201712181952281_UpdatedFeedbackEntity.Designer.cs">
       <DependentUpon>201712181952281_UpdatedFeedbackEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712222101249_UpdateFeedbackEntity.cs" />
+    <Compile Include="Migrations\201712222101249_UpdateFeedbackEntity.Designer.cs">
+      <DependentUpon>201712222101249_UpdateFeedbackEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
@@ -117,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712181952281_UpdatedFeedbackEntity.resx">
       <DependentUpon>201712181952281_UpdatedFeedbackEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712222101249_UpdateFeedbackEntity.resx">
+      <DependentUpon>201712222101249_UpdateFeedbackEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

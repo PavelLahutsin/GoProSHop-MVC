@@ -1,0 +1,16 @@
+﻿@model GoProShop.ViewModels.ResponseVM
+
+@if (!Model.IsSuccess)
+{
+    <div class="alert alert-danger alert-dismissable">
+        <div class="row">
+            <div class="col-md-1 text-right">
+                <i class="fa fa fa-warning fa-2x"></i>
+            </div>
+            <div class="col-md-11 text-left" style="padding-top: 3px;">
+                @Model.Message
+            </div>
+        </div>
+    </div>
+}
+

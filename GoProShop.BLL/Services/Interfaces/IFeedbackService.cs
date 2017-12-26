@@ -14,8 +14,14 @@ namespace GoProShop.BLL.Services.Interfaces
 
         //Task<bool> IsFeedbackViewed(int id);
 
+        Task<ResponseDTO> UpdateAsync(FeedbackDTO feedbackDTO);
+
+        FeedbackDTO GetLastFeedback();
+
+        Task<ResponseDTO> DeleteAsync(int id);
+
         Task<FeedbackDTO> GetAsync(int id);
 
-        Task<int> ProcessFeedback(int id);
+        Task<int> ViewFeedback(int id);
     }
 }

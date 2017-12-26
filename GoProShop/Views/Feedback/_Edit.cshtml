@@ -1,0 +1,66 @@
+﻿@model GoProShop.ViewModels.BaseFeedbackVM
+@{
+    var options = new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "POST",
+        UpdateTargetId = "modalBody",
+        OnSuccess= "updateFeedbacks"
+    };
+}
+
+<div id="modalBody">
+    <div class="modal-header">
+        <ul class="registration-nav">
+            <li><text><strong>Информация о отзыве</strong></text></li>
+            <li class="pull-right"><a class="close-thik" data-dismiss="modal"></a></li>
+        </ul>
+    </div>
+    @using (Ajax.BeginForm("Edit", "Feedback", options))
+    {
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            <div class="alert-danger" style="border-radius: 5px">
+                @Html.ValidationSummary(false, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-horizontal">
+                @Html.HiddenFor(x => x.Id)
+                @Html.HiddenFor(x => x.Date)
+                @Html.HiddenFor(x => x.IsViewed)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2", style = "padding-bottom: 7px" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EnumDropDownListFor(model => model.Status, "Выбрать статус", new { @class = "form-control", placeholder = "Выбрать статус" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.TextAreaFor(model => model.Message, new { @class = "form-control", rows = 9 })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <input class="btn btn-link pull-right" style="width: 80px" value="Отмена" data-dismiss="modal" />
+            <input type="submit" value="Сохранить" class="btn btn-primary btn-sm pull-right" />
+        </div>
+    }
+</div>

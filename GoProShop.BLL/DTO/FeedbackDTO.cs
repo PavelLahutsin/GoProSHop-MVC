@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoProShop.BLL.Enums;
+using System;
 
 namespace GoProShop.BLL.DTO
 {
@@ -12,7 +13,7 @@ namespace GoProShop.BLL.DTO
 
         public DateTime Date { get; set; }
 
-        public bool IsApproved { get; set; }
+        public FeedbackStatus Status { get; set; }
 
         public bool IsViewed { get; set; }
 

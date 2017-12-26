@@ -11,6 +11,8 @@ using System.Web.Mvc;
 using System.Web;
 using Unity;
 using Unity.Injection;
+using GoProShop.Helpers.Interfaces;
+using GoProShop.BLL.Helpers;
 
 namespace GoProShop
 {
@@ -61,6 +63,8 @@ namespace GoProShop
                 .RegisterType<ICart, Cart>()
                 .RegisterType<IFeedbackService, FeedbackService>()
                 .RegisterType<IResponseService, ResponseService>()
+                .RegisterType<IPagedListHelper, PagedListHelper>()
+                .RegisterType<ISearchService, SearchService>()
                 .RegisterType<IAdminService, AdminService>()
                 .RegisterType<IAuthenticationManager>(new InjectionFactory(x => HttpContext.Current.GetOwinContext().Authentication));
         }

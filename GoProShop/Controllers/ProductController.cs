@@ -2,6 +2,7 @@
 using GoProShop.BLL.DTO;
 using GoProShop.BLL.Services.Interfaces;
 using GoProShop.ViewModels;
+using PagedList;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
@@ -84,12 +85,7 @@ namespace GoProShop.Controllers
             }
 
             await _productService.DeleteAsync(Mapper.Map<ProductDTO>(productToRemove));
-            return Json(new
-            {
-                success = true,
-                groupId = productToRemove.ProductSubGroupId
-            },
-            JsonRequestBehavior.AllowGet);
+            return RedirectToAction("SubGroupAdminProducts", new { id = productToRemove.ProductSubGroupId });
         }
 
         [Authorize(Roles = "admin")]

@@ -1,0 +1,10 @@
+﻿@model IEnumerable<GoProShop.ViewModels.FeedbackVM>
+
+@foreach (var feedback in Model)
+{
+    <div class="col-md-3 text-left">
+        <h5 style="font-weight: 600">@feedback.Name</h5>
+        <h6 style="font-style: italic; color:#b3b3b3">@feedback.Date.ToShortDateString()</h6>
+        <p>@feedback.Message</p>
+    </div>
+}

@@ -122,6 +122,12 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -222,20 +228,27 @@
     <Compile Include="Controllers\ProductGroupController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductSubGroupController.cs" />
+    <Compile Include="Controllers\ResponseController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Enums\FeedbackStatus.cs" />
     <Compile Include="Enums\ProductStatus.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Interfaces\IPagedListHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helpers\PagedListHelper.cs" />
     <Compile Include="ViewModels\AdminPageVM.cs" />
+    <Compile Include="ViewModels\Feedback\BaseFeedbackVM.cs" />
     <Compile Include="ViewModels\Cart.cs" />
-    <Compile Include="ViewModels\FeedbackVM.cs" />
+    <Compile Include="ViewModels\Feedback\FeedbackVM.cs" />
     <Compile Include="ViewModels\IdProvider.cs" />
     <Compile Include="ViewModels\Interfaces\ICart.cs" />
     <Compile Include="ViewModels\CartItem.cs" />
     <Compile Include="ViewModels\ProductGroupVM.cs" />
     <Compile Include="ViewModels\ProductSubGroupVM.cs" />
     <Compile Include="ViewModels\ProductVM.cs" />
+    <Compile Include="ViewModels\SearchResultVM.cs" />
     <Compile Include="ViewModels\UserEditVM.cs" />
     <Compile Include="ViewModels\UserLoginVM.cs" />
     <Compile Include="ViewModels\UserRegisterVM.cs" />
@@ -267,8 +280,10 @@
     <Content Include="Content\Images\MTS.png" />
     <Content Include="Content\Images\No_Image_Available.png" />
     <Content Include="Content\Images\velcom.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\ProductGroup\footer-catalog.css" />
     <Content Include="Content\ProductGroup\side-menu.css" />
+    <Content Include="Content\Search\Index.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -287,7 +302,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
-    <None Include="Properties\PublishProfiles\GoProShopHaletski - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -336,15 +350,20 @@
     <Content Include="Views\ProductGroup\_AdminSideMenu.cshtml" />
     <Content Include="Views\ProductGroup\_FooterCatalog.cshtml" />
     <Content Include="Views\ProductGroup\_UserSideMenu.cshtml" />
-    <Content Include="Views\Feedback\_MainFeedback.cshtml" />
+    <Content Include="Views\Feedback\_Create.cshtml" />
     <Content Include="Views\Shared\_Response.cshtml" />
-    <Content Include="Views\Admin\Feedbacks.cshtml" />
     <Content Include="Views\Feedback\_AdminFeedbacks.cshtml" />
-    <Content Include="Views\Feedback\_ViewFeedback.cshtml" />
+    <Content Include="Views\Feedback\_Edit.cshtml" />
+    <Content Include="Views\Feedback\_HomeFeedbacks.cshtml" />
+    <Content Include="Views\Feedback\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Response\_Response.cshtml" />
+    <Content Include="Views\Product\_PagedUserProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Catalog\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\ProductSubGroup\" />
   </ItemGroup>
   <ItemGroup>

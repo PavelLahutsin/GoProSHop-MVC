@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoProShop.DAL.Enums;
+using System;
 
 namespace GoProShop.DAL.Entities
 {
@@ -10,7 +11,7 @@ namespace GoProShop.DAL.Entities
 
         public DateTime Date { get; set; }
 
-        public bool IsApproved { get; set; }
+        public FeedbackStatus Status { get; set; }
         
         public bool IsViewed { get; set; }
 

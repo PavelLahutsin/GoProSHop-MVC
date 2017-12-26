@@ -1,0 +1,8 @@
+﻿.alert .row{
+    display: flex;
+    align-items: center;
+}
+
+.alert .row .col-md-11{
+    margin-top: 10px
+}

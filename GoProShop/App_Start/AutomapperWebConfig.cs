@@ -2,7 +2,6 @@
 using AutoMapper;
 using GoProShop.ViewModels;
 using GoProShop.BLL.DTO;
-using System.Collections.Generic;
 
 namespace GoProShop.App_Start
 {
@@ -17,8 +16,10 @@ namespace GoProShop.App_Start
             cfg.CreateMap<ProductVM, ProductDTO>().ReverseMap();
             cfg.CreateMap<ProductGroupVM, ProductGroupDTO>().ReverseMap();
             cfg.CreateMap<FeedbackVM, FeedbackDTO>().ReverseMap();
+            cfg.CreateMap<BaseFeedbackVM, FeedbackDTO>().ReverseMap();
             cfg.CreateMap<ResponseVM, ResponseDTO>().ReverseMap();
             cfg.CreateMap<AdminPageVM, AdminPageDTO>().ReverseMap();
+            cfg.CreateMap(typeof(SearchResultDTO<>), typeof(SearchResultVM<>)).ReverseMap();
         };
     }
 }

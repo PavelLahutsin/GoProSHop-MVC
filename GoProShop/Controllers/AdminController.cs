@@ -31,6 +31,6 @@ namespace GoProShop.Controllers
 
         public ActionResult Stores() => View();
 
-        public ActionResult Feedbacks() => PartialView();
+        public ActionResult Feedbacks() => RedirectToAction("Index", "Feedback");
     }
 }

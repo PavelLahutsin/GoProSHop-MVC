@@ -21,6 +21,14 @@ namespace GoProShop.Controllers
             _responseService = responseService ?? throw new ArgumentNullException(nameof(responseService));
         }
 
+        public ActionResult Index()
+        {
+            var feedbackDTO = _feedbackService.GetLastFeedback();
+            var feedbackVM = Mapper.Map<FeedbackVM>(feedbackDTO);
+
+            return PartialView(feedbackVM);
+        }
+
         [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<ActionResult> Create(FeedbackVM feedbackVM)
@@ -38,6 +46,14 @@ namespace GoProShop.Controllers
             return PartialView("~/Views/Shared/_Response.cshtml", response);
         }
 
+        public ActionResult GetHomeFeedbacks()
+        {
+            var feedbacksDTO = _feedbackService.GetHomeFeedbacks();
+            var feedbacksVM = Mapper.Map<IEnumerable<FeedbackDTO>, IEnumerable<FeedbackVM>>(feedbacksDTO);
+
+            return PartialView("_HomeFeedbacks", feedbacksVM);
+        }
+
         [Authorize(Roles = "admin")]
         public ActionResult GetAdminFeedbacks()
         {
@@ -50,7 +66,7 @@ namespace GoProShop.Controllers
         [Authorize(Roles = "admin")]
         public async Task<ActionResult> View(int id)
         {
-            var pendingFeedbackCount = await _feedbackService.ProcessFeedback(id);
+            var pendingFeedbackCount = await _feedbackService.ViewFeedback(id);
 
             return Json(new { Count = pendingFeedbackCount }, JsonRequestBehavior.AllowGet);
         }
@@ -63,8 +79,28 @@ namespace GoProShop.Controllers
             if (feedbackDTO == null)
                 return Json(_responseService.Create(false, "Отзыва по вашему запросу не существует"));
 
-            var feedbackVM = Mapper.Map<FeedbackVM>(feedbackDTO);
-            return PartialView("_ViewFeedback", feedbackVM);        
+            var feedbackVM = Mapper.Map<BaseFeedbackVM>(feedbackDTO);
+            return PartialView("_Edit", feedbackVM);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public async Task<ActionResult> Edit(BaseFeedbackVM feedback)
+        {
+            if (!ModelState.IsValid)
+                return PartialView("_Edit", feedback);
+
+            var response = await _feedbackService.UpdateAsync(Mapper.Map<FeedbackDTO>(feedback));
+
+            return Json(Mapper.Map<ResponseVM>(response));
+        }
+
+        [Authorize(Roles = "admin")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var response = Mapper.Map<ResponseVM>(await _feedbackService.DeleteAsync(id));
+
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
     }
 }

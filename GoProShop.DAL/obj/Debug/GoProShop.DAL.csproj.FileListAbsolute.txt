@@ -83,8 +83,6 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DA
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csproj.CoreCompileInputs.cache
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.pdb
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csprojResolveAssemblyReference.cache
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.DeleteUserEntity.resources
 E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\bin\Debug\GoProShop.DAL.dll.config
 E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\bin\Debug\GoProShop.DAL.dll
 E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\bin\Debug\GoProShop.DAL.pdb
@@ -176,3 +174,6 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MV
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csproj.CoreCompileInputs.cache
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.pdb
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.UpdatedFeedbackEntity.resources
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csprojResolveAssemblyReference.cache
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.UpdateFeedbackEntity.resources

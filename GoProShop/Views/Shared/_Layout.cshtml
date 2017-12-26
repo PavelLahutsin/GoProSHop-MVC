@@ -26,18 +26,20 @@
                         <img height="30" src="~/Content/Images/LogoWhite.png" />
                     </a>
                 </div>
-                @Html.Action("MegaMenu", "ProductGroup");
+                @Html.Action("MegaMenu", "ProductGroup")
 
-                <form class="navbar-form navbar-left">
-                    <div class="input-group input-group-sm" style="max-width: 650px; width: auto; padding-top: 2px;">
-                        <input type="text" class="form-control" style="font-size: 14px;" placeholder="Поиск...">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit">
-                                <i class="fa fa-search"></i>
-                            </button>
+                <div class="navbar-form navbar-left">
+                    @using (Html.BeginForm("Index", "Search", FormMethod.Get))
+                    {
+                        <div class="input-group" style="max-width: 650px; width: auto;">
+                            <input type="text" name="searchString" class="form-control" style="font-size: 14px;" placeholder="Поиск...">
+
+                            <div class="input-group-btn">
+                                <input class="btn btn-primary" style="font-size: 14px;" type="submit" value="Поиск">
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    }
+                </div>
                 @Html.Action("Index", "Cart")
             </div>
         </div>
@@ -54,8 +56,6 @@
                 </div>
             </div>
         </div>
-
-
         <footer class="footer">
             <div class="footer-inner-main">
                 <div class="container">
@@ -70,7 +70,7 @@
                             </p>
                             <p style="font-size: 16px; font-weight: bold; color: #fff">Подписаться на новости</p>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Пример" ">
+                                <input type="text" class="form-control" placeholder="Пример">
                                 <span class="input-group-btn">
                                     <button class="btn btn-success" type="button">Подписаться</button>
                                 </span>
@@ -149,17 +149,36 @@
                 $('#mainModal').modal('show');
             });
         }
-
         function deleteItemClickHandler(event, element, elementId) {
             $.ajaxSetup({ cache: false });
             event.preventDefault();
             $.get(element.href, { id: elementId }, function (data) {
-                if (data.success) {
-                    $.get('/Product/SubGroupAdminProducts/', { id: data.groupId }, function (result) {
-                        $('#products').html(result);
+                var alertElement;
+                if (data.IsSuccess) {
+                    $.get('/Feedback/View/', { id: elementId }, function (dataResult) {
+                        $('#pending-feedback-count').html(dataResult.Count);
+                    });
+                    updateAlertMessage(data.Message);
+                    $.get('Feedback/GetAdminFeedbacks', function (dataResult) {
+                        $('#admin-feedbacks').html(dataResult);
                     });
                 }
             });
+        };
+
+        function updateFeedbacks(data) {
+            if (data.IsSuccess) {
+                updateAlertMessage(data.Message);
+                $.get('Feedback/GetAdminFeedbacks', function (feedbackData) {
+                    $('#admin-feedbacks').html(feedbackData);
+                });
+                $("#mainModal").modal('hide');
+            }
+        }
+
+        function updateAlertMessage(message) {
+            var result = '<div class="alert alert-success alert-dismissable fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>' + message + '</strong></div>';
+            $('#alert-message').html(result);
         }
 
         function getMethodClickHandler(event, element, elementToUpdate) {

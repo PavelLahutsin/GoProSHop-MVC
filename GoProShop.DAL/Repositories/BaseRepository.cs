@@ -41,7 +41,7 @@ namespace GoProShop.DAL.Repositories
         {
             var storedEntity = await Entities.FirstOrDefaultAsync(x => x.Id == entity.Id);
             _context.Entry(storedEntity).CurrentValues.SetValues(entity);
-            return entity;
+            return storedEntity;
         }
     }
 }

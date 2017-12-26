@@ -37,6 +37,7 @@ namespace GoProShop.BLL.Services
         public async Task<ProductDTO> GetAsync(int id)
         {
             var product = Mapper.Map<ProductDTO>(await _uow.Products.GetAsync(id));
+
             return product;
         }
 

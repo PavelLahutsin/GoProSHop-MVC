@@ -1,74 +1,69 @@
 ﻿@model IEnumerable<GoProShop.ViewModels.FeedbackVM>
 @{
     var lastFeedback = Model.FirstOrDefault();
+    var response = ViewBag.Response as GoProShop.ViewModels.ResponseVM;
 }
-<div id="admin-feedbacks">
-    <div class="alert alert-info">
-        <div class="row">
-            <div class="col-md-8 text-left">
-                Последний отзыв оставил(а) @lastFeedback.Name
-            </div>
-            <div class="col-md-4 text-right">
-                от @lastFeedback.Date.ToShortDateString()
-            </div>
-        </div>
-    </div>
-    <table class="table table-bordered table-hover">
-        <thead class="table-inverse">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Date)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsApproved)
-                </th>
-                <th class="text-center">Действия</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
+
+<table class="table table-bordered table-hover">
+    <thead class="table-inverse">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th class="text-center">Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        <a class="text-left" href="@Url.Action("Edit","Feedback")" onclick="viewFeedbackClickHandler(event, this,@item.Id)">
-                            @item.Name
-                        </a>
-                        @if (!item.IsViewed)
-                        {
-                            <span class="label label-info pull-right">new</span>
-                        }
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
+            <tr>
+                <td>
+                    <a class="text-left" href="@Url.Action("Edit","Feedback")" onclick="viewFeedbackClickHandler(event, this,@item.Id)">
+                        @item.Name
+                    </a>
+                    @if (!item.IsViewed)
+                    {
+                        <span class="label label-info pull-right">new</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
 
-                    </td>
-                    <td>
-                        @item.Date.ToShortDateString()
-                    </td>
-                    <td>
-                        @if (item.IsApproved)
-                        {
-                            <div class="label label-success">Опубликован</div>
-                        }
-                        else
-                        {
-                            <div class="label label-warning">В ожидании</div>
-                        }
+                </td>
+                <td>
+                    @item.Date.ToShortDateString()
+                </td>
+                <td>
+                    @if (item.Status == GoProShop.Enums.FeedbackStatus.Approved)
+                    {
+                        <div class="label label-success">Опубликован</div>
+                    }
+                    else if(item.Status == GoProShop.Enums.FeedbackStatus.Pending)
+                    {
+                        <div class="label label-warning">В ожидании</div>
+                    }
+                    else
+                    {
+                        <div class="label label-danger">Отклонен</div>
+                    }
 
-                    </td>
-                    <td class="text-center">
-                        <a class="btn btn-default btn-sm" onclick="viewFeedbackClickHandler(event, this,@item.Id)" href="@Url.Action("Edit", "Feedback")"><span class="fa fa-pencil-square-o"></span> </a>
-                        <a class="btn btn-default btn-sm" onclick="deleteItemClickHandler(event, this,@item.Id)" href="@Url.Action("Delete", "Product")"><span class="fa fa-trash-o text-danger"></span> </a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-default btn-sm" onclick="viewFeedbackClickHandler(event, this,@item.Id)" href="@Url.Action("Edit", "Feedback")"><span class="fa fa-pencil-square-o"></span> </a>
+                    <a class="btn btn-default btn-sm" onclick="deleteItemClickHandler(event, this, @item.Id, '#admin-feedbacks','#alert-message')" href="@Url.Action("Delete", "Feedback")"><span class="fa fa-trash-o text-danger"></span> </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
 

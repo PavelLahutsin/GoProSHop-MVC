@@ -1,0 +1,59 @@
+﻿@model GoProShop.ViewModels.SearchResultVM<GoProShop.ViewModels.ProductVM>
+
+@using PagedList.Mvc;
+@using System.Text;
+
+@{
+    var options = new AjaxOptions()
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "searched-products"
+    };
+
+    var result = new StringBuilder();
+    var i = 0;
+    TagBuilder row = null;
+    if (Model.Response.IsSuccess)
+    {
+        foreach (var item in Model.PagedItems)
+        {
+            i++;
+
+            if (i == 1)
+            {
+                row = new TagBuilder("div");
+                row.AddCssClass("row");
+                row.AddCssClass("col-md-12");
+            }
+
+            row.InnerHtml += Html.Partial("~/Views/Product/_Product.cshtml", item);
+
+            if (i == 4)
+            {
+                result.Append(row?.ToString());
+                i = 0;
+            }
+        }
+
+        if (i != 4 && i != 0)
+        {
+            result.Append(row?.ToString());
+        }
+    }
+}
+<div id="searched-products">
+    <div id="alert-message">
+        @Html.Partial("~/Views/Response/_Response.cshtml", Model.Response)
+    </div>
+    <h5>По запросу <strong>"@Model.SearchString"</strong> найдено <strong>"@Model.Count"</strong> товаров</h5>
+    <br />
+    @MvcHtmlString.Create(result.ToString())
+
+    @if (Model.Response.IsSuccess && Model.Count >= 9)
+    {      
+        @Html.PagedListPager(Model.PagedItems, page => Url.Action("SearchProducts", "Search", new { Model.SearchString, page }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(options))
+    }
+   
+</div>
