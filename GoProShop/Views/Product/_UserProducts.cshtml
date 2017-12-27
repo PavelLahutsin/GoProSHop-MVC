@@ -11,7 +11,7 @@
         InsertionMode = InsertionMode.Replace,
         UpdateTargetId = "products"
     };
-    var productSubGroupId = Model.FirstOrDefault().ProductSubGroupId;
+    var productSubGroupId = Model.FirstOrDefault()?.ProductSubGroupId;
     var result = new StringBuilder();
     var i = 0;
     TagBuilder row = null;
