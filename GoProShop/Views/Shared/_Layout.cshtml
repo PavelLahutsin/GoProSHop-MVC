@@ -21,20 +21,23 @@
 
         <div class="navbar navbar-inverse navbar-static-top header-strip" style="z-index: 999; background-color: #1a1a1a" role="navigation">
             <div class="container">
-                <div class="navbar-brand" style="padding-bottom: 10px; padding-top: 10px">
-                    <a href="@Url.Action("Index", "Home")">
-                        <img height="30" src="~/Content/Images/LogoWhite.png" />
-                    </a>
+                <div class="navbar-header">
+                    <div class="navbar-brand" style="padding-bottom: 10px; padding-top: 10px">
+                        <a href="@Url.Action("Index", "Home")">
+                            <img height="30" src="~/Content/Images/LogoWhite.png"/>
+                        </a>
+                    </div>
                 </div>
+            
                 @Html.Action("MegaMenu", "ProductGroup")
 
                 <div class="navbar-form navbar-left">
                     @using (Html.BeginForm("Index", "Search", FormMethod.Get))
                     {
-                        <div class="input-group" style="max-width: 650px; width: auto;">
+                        <div class="input-group" style="display: table; max-width: 450px">
                             <input type="text" name="searchString" class="form-control" style="font-size: 14px;" placeholder="Поиск...">
 
-                            <div class="input-group-btn">
+                            <div class="input-group-btn" style="width:1%;">
                                 <input class="btn btn-primary" style="font-size: 14px;" type="submit" value="Поиск">
                             </div>
                         </div>
