@@ -1,17 +1,7 @@
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.pdb
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.csprojResolveAssemblyReference.cache
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.csproj.CoreCompileInputs.cache
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.pdb
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.pdb
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.dll.config
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.xml
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.dll.config
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.pdb
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\AutoMapper.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.SqlServer.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.dll
@@ -24,8 +14,11 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BL
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.OAuth.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Newtonsoft.Json.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Owin.dll
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\PagedList.dll
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\PagedList.Mvc.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.pdb
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.dll.config
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\AutoMapper.xml
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.xml
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.SqlServer.xml
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
@@ -36,149 +29,9 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BL
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Newtonsoft.Json.xml
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\PagedList.xml
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\PagedList.Mvc.xml
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.csprojResolveAssemblyReference.cache
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.csproj.CoreCompileInputs.cache
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.pdb
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\AutoMapper.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\AutoMapper.xml
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.dll.config
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.pdb
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\AutoMapper.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.SqlServer.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.Cookies.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.OAuth.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Newtonsoft.Json.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Owin.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.pdb
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.dll.config
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\AutoMapper.xml
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.xml
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.SqlServer.xml
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.xml
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.xml
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.Cookies.xml
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.OAuth.xml
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Newtonsoft.Json.xml
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.csprojResolveAssemblyReference.cache
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.csproj.CoreCompileInputs.cache
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.dll
-E:\MyProjects\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.pdb
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.dll.config
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.pdb
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\AutoMapper.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.SqlServer.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.Cookies.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.OAuth.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Newtonsoft.Json.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Owin.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.pdb
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.dll.config
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\AutoMapper.xml
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.xml
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.SqlServer.xml
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.xml
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.xml
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.Cookies.xml
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.OAuth.xml
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Newtonsoft.Json.xml
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.csprojResolveAssemblyReference.cache
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.csproj.CoreCompileInputs.cache
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.dll
-E:\MyProjects\New folder\GoProSHop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.pdb
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.dll.config
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.pdb
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\AutoMapper.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.SqlServer.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.Cookies.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.OAuth.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Newtonsoft.Json.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Owin.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.pdb
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.dll.config
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\AutoMapper.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.Cookies.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.OAuth.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\Newtonsoft.Json.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.csprojResolveAssemblyReference.cache
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.csproj.CoreCompileInputs.cache
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.pdb
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\PagedList.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\PagedList.Mvc.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\PagedList.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.BLL\bin\Debug\PagedList.Mvc.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.dll.config
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\GoProShop.BLL.pdb
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\AutoMapper.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.SqlServer.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.Cookies.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.OAuth.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Newtonsoft.Json.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Owin.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\PagedList.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\PagedList.Mvc.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.pdb
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\GoProShop.DAL.dll.config
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\AutoMapper.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\EntityFramework.SqlServer.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.Cookies.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Microsoft.Owin.Security.OAuth.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\Newtonsoft.Json.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\PagedList.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\bin\Debug\PagedList.Mvc.xml
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.csprojResolveAssemblyReference.cache
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.csproj.CoreCompileInputs.cache
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.dll
-E:\MyProjects\GoProSHop-MVC\GoProShop.BLL\obj\Debug\GoProShop.BLL.pdb

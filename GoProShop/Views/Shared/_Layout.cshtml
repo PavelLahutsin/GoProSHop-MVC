@@ -9,48 +9,50 @@
 </head>
 <body>
     <div class="container-fluid" style="font-family: 'Open Sans', 'sans-serif';">
-        <div class="navbar-inverse" style="padding-top: 7px; background-color: #1a1a1a">
-            <div class="container">
-                <div class="nav navbar-left">
-                    <a class="navbar-link" style="padding-right: 7px;"><span><img height="15" src="~/Content/Images/velcom.png" /></span> +375 29 127 52 24</a>
-                    <a class="navbar-link" style="padding-right: 7px;"><span><img height="15" src="~/Content/Images/MTS.png" /></span> +375 29 127 52 24</a>
+        <div class="container-fluid">
+            <div class="navbar-inverse" style="padding-top: 7px; background-color: #1a1a1a">
+                <div class="container">
+                    <div class="nav navbar-left">
+                        <a class="navbar-link" style="padding-right: 7px;"><span><img height="15" src="~/Content/Images/velcom.png" /></span> +375 29 127 52 24</a>
+                        <a class="navbar-link" style="padding-right: 7px;"><span><img height="15" src="~/Content/Images/MTS.png" /></span> +375 29 127 52 24</a>
+                    </div>
+                    @Html.Partial("~/Views/Account/_LoginPartial.cshtml")
                 </div>
-                @Html.Partial("~/Views/Account/_LoginPartial.cshtml")
             </div>
         </div>
 
-        <div class="navbar navbar-inverse navbar-static-top header-strip" style="z-index: 999; background-color: #1a1a1a" role="navigation">
+        <div class="navbar navbar-inverse navbar-static-top header-strip" data-spy="affix" data-offset-top="26" style="z-index: 999; background-color: #1a1a1a" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <div class="navbar-brand" style="padding-bottom: 10px; padding-top: 10px">
-                        <a href="@Url.Action("Index", "Home")">
-                            <img height="30" src="~/Content/Images/LogoWhite.png"/>
-                        </a>
-                    </div>
+                    <a class="navbar-brand" style="height: 50px; padding: 10px 15px" href="@Url.Action("Index", "Home")">
+                        <img height="30" src="~/Content/Images/LogoWhite.png" />
+                    </a>
                 </div>
-            
+
                 @Html.Action("MegaMenu", "ProductGroup")
 
                 <div class="navbar-form navbar-left">
                     @using (Html.BeginForm("Index", "Search", FormMethod.Get))
                     {
-                        <div class="input-group" style="display: table; max-width: 450px">
+                        <div class="input-group" style="max-width: 600px">
                             <input type="text" name="searchString" class="form-control" style="font-size: 14px;" placeholder="Поиск...">
 
-                            <div class="input-group-btn" style="width:1%;">
+                            <div class="input-group-btn">
                                 <input class="btn btn-primary" style="font-size: 14px;" type="submit" value="Поиск">
                             </div>
                         </div>
                     }
                 </div>
+
                 @Html.Action("Index", "Cart")
+
             </div>
         </div>
-
-        <div class="body-content">
-            @RenderBody()
+        <div class="container-fluid">
+            <div class="body-content">
+                @RenderBody()
+            </div>
         </div>
-
         <div id="mainModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
