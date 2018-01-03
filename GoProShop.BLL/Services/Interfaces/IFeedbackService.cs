@@ -12,6 +12,8 @@ namespace GoProShop.BLL.Services.Interfaces
 
         IEnumerable<FeedbackDTO> GetFeedbacks();
 
+        IEnumerable<FeedbackDTO> GetProductFeedbacks(int productId);
+
         //Task<bool> IsFeedbackViewed(int id);
 
         Task<ResponseDTO> UpdateAsync(FeedbackDTO feedbackDTO);

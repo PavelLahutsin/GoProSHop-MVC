@@ -22,13 +22,17 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-
+                @if (ViewBag.ProductId != null)
+                {
+                    @Html.Hidden("ProductId", (int)ViewBag.ProductId)
+                }
+                
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Имя" } })
                 @Html.EditorFor(model => model.SurName, new { htmlAttributes = new { @class = "form-control", placeholder = "Фамилия" } })
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
             </div>
             <div class="col-md-6">
-                @Html.TextAreaFor(model => model.Message, new { @class = "form-control",style = "overflow-x: hidden;",  rows = 4, placeholder = "Сообщение" })
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", style = "overflow-x: hidden;",  rows = 4, placeholder = "Сообщение" })
                 <input type="submit" class="btn btn-primary btn-block" value="Отправить" />
             </div>
         </div>

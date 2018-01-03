@@ -18,6 +18,8 @@ namespace GoProShop.BLL.DTO
 
         public ProductStatus? Status { get; set; }
 
+        public int? FeedbackAmount { get; set; }
+
         //public virtual ProductSubGroupDTO ProductSubGroup { get; set; }
     }
 }

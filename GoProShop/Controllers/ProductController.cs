@@ -4,6 +4,7 @@ using GoProShop.BLL.Services.Interfaces;
 using GoProShop.ViewModels;
 using PagedList;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -25,6 +26,14 @@ namespace GoProShop.Controllers
             var productVM = Mapper.Map<ProductVM>(productDTO);
 
             return View(productVM);
+        }
+
+        public async Task<ActionResult> Description(int productId)
+        {
+            var productDTO = await _productService.GetAsync(productId);
+            var productVM = Mapper.Map<ProductVM>(productDTO);
+
+            return PartialView("_Description", productVM.Description);
         }
 
         public ActionResult UserProductsContent(string sortCriteria = "asc", int id = 1, int page = 1, int pageSize = 12)

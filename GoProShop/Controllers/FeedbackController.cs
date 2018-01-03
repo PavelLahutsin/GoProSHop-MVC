@@ -29,6 +29,14 @@ namespace GoProShop.Controllers
             return PartialView(feedbackVM);
         }
 
+        public ActionResult Create(int? productId)
+        {
+            ViewBag.ProductId = productId.Value;
+
+            return PartialView("_Create");
+        }
+
+
         [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<ActionResult> Create(FeedbackVM feedbackVM)
@@ -37,13 +45,24 @@ namespace GoProShop.Controllers
                 throw new ArgumentNullException(nameof(feedbackVM));
 
             if (!ModelState.IsValid)
-                return PartialView("_MainFeedback", feedbackVM);
+                return PartialView("_Create", feedbackVM);
 
             await _feedbackService.CreateAsync(Mapper.Map<FeedbackDTO>(feedbackVM));
             var response = Mapper.Map<ResponseVM>(_responseService.Create(true,
                 "Cпасибо за ваш отзыв. Нам важно ваше мнение!"));
 
             return PartialView("~/Views/Shared/_Response.cshtml", response);
+        }
+
+        public ActionResult GetProductFeedbacks(int productId)
+        {
+
+            var feedbacksDTO = _feedbackService.GetProductFeedbacks(productId);
+
+            var feedbacksVM = Mapper.Map<IEnumerable<FeedbackDTO>, IEnumerable<BaseFeedbackVM>>(feedbacksDTO);
+
+            ViewBag.ProductId = productId;
+            return PartialView("_ProductFeedbacks", feedbacksVM);
         }
 
         public ActionResult GetHomeFeedbacks()

@@ -14,7 +14,8 @@ namespace GoProShop
                       "~/Scripts/modernizr-*",
                       "~/Scripts/jquery.validate*",
                       "~/Scripts/jquery-3.2.1.js",
-                      "~/Scripts/jquery.unobtrusive-ajax.min.js"
+                      "~/Scripts/jquery.unobtrusive-ajax.min.js",
+                      "~/Scripts/GoProShopScripts.js"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-head").Include(

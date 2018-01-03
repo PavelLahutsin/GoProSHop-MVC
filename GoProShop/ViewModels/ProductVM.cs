@@ -30,5 +30,7 @@ namespace GoProShop.ViewModels
 
         [Display(Name = "Статус")]
         public ProductStatus? Status { get; set; }
+
+        public int? FeedbackAmount { get; set; }
     }
 }

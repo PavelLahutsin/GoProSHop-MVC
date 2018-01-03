@@ -12,8 +12,7 @@ namespace GoProShop.ViewModels
         public string Name { get; set; }
 
         [Display(Name = "Email")]
-        [DataType(DataType.EmailAddress)]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Значение поля email не соответсвует формату адреса электронной почты")]
         [Required(ErrorMessage = "Поле email является обязательным")]
         public string Email { get; set; }
 
@@ -25,6 +24,9 @@ namespace GoProShop.ViewModels
 
         [ScaffoldColumn(false)]
         public bool IsViewed { get; set; }
+
+        [ScaffoldColumn(false)]
+        public int? ProductId { get; set; }
 
         [Display(Name = "Сообщение")]
         [Required(ErrorMessage = "Поле сообщение является обязательным")]

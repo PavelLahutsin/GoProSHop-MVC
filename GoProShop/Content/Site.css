@@ -243,7 +243,7 @@
 }
 
 .admin-tab-icon {
-    color: rgba(66, 139, 202, 0.6);
+    color: rgba(66, 139, 202, 0.8);
     font-size: 16px;
     padding-right: 7px;
 }
@@ -361,6 +361,7 @@ modal-footer a {
 }
 
 .badge-admin-tab {
+    margin-left: 5px;
     padding: 3px 5px;
     font-weight: 100;
     color: black;
@@ -456,3 +457,50 @@ modal-footer a {
 .modal-dialog {
     width: 420px;
 }
+
+.header-text{
+    color: #428bca;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#view-product-content {
+    min-height: 300px;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.arrow_box {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    min-height: 70px;
+    padding: 7px 15px;
+    margin-bottom: 15px;
+}
+
+    .arrow_box:after, .arrow_box:before {
+        bottom: 100%;
+        left: 30px;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .arrow_box:after {
+        border-color: rgba(255, 255, 255, 0);
+        border-bottom-color: #ffffff;
+        border-width: 15px;
+        margin-left: -15px;
+    }
+
+    .arrow_box:before {
+        border-color: rgba(221, 221, 221, 0);
+        border-bottom-color: #ddd;
+        border-width: 16px;
+        margin-left: -16px;
+    }

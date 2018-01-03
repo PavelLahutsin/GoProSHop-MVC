@@ -8,6 +8,7 @@ using AutoMapper;
 using GoProShop.BLL.Services.Interfaces;
 using System.Threading.Tasks;
 using System.Web;
+using GoProShop.BLL.Enums;
 
 namespace GoProShop.BLL.Services
 {
@@ -60,7 +61,7 @@ namespace GoProShop.BLL.Services
         public async Task<ProductDTO> GetAsync(int id)
         {
             var product = Mapper.Map<ProductDTO>(await _uow.Products.GetAsync(id));
-
+            product.FeedbackAmount = _uow.Feedbacks.Entities.Where(x => x.ProductId == id && x.Status == DAL.Enums.FeedbackStatus.Approved).Count();
             return product;
         }
 

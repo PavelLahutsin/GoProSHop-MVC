@@ -38,6 +38,14 @@ namespace GoProShop.BLL.Services
             return feedbackDTO;
         }
 
+        public IEnumerable<FeedbackDTO> GetProductFeedbacks(int productId)
+        {
+            var feedbacks = _uow.Feedbacks.Entities.Where(x => x.Status == FeedbackStatus.Approved && x.ProductId == productId);
+            var feedbacksDTO = Mapper.Map<IQueryable<Feedback>, IEnumerable<FeedbackDTO>>(feedbacks);
+
+            return feedbacksDTO.Reverse();
+        }
+
         public IEnumerable<FeedbackDTO> GetFeedbacks()
         {
             var feedbacks = _uow.Feedbacks.Entities;
