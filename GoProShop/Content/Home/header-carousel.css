@@ -4,7 +4,7 @@
 
 .carousel-inner img {
     width: 100%;
-    max-height: 800px
+    height: 80%;
 }
 
 .carousel .header-text {

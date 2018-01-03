@@ -362,3 +362,13 @@ modal-footer a {
     background-color: #e6e6e6;
 }
 
+.affix {
+    top: 0;
+    width: 100%;
+    z-index: 999 !important;
+}
+
+.affix + .container-fluid {
+    padding-top: 50px;
+}
+
