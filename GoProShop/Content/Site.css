@@ -40,7 +40,7 @@
 /* Set width on the form input elements since they're 100% wide by default */
 
 .header-strip {
-    border-bottom: thin solid black;
+    border-bottom: 1px solid black;
 }
 
 .logo-user-img {
@@ -243,7 +243,7 @@
 }
 
 .admin-tab-icon {
-    color: #0079ff;
+    color: rgba(66, 139, 202, 0.6);
     font-size: 16px;
     padding-right: 7px;
 }
@@ -252,26 +252,31 @@
     text-align: center;
 }
 
-.nav-tabs li > a {
-    color: #586069;
-    font-weight: 300;
-    border: none;
-}
+    .nav-tabs li > a {
+        color: rgba(0,0,0, 0.6);
+        font-weight: 300;
+        border: none;
+    }
 
 .nav-tabs > li > a:hover {
     background-color: #f5f5f5;
     border-color: #f5f5f5;
 }
 
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+.nav-tabs > li.active > a, 
+.nav-tabs > li.active > a:hover, 
+.nav-tabs > li.active > a:focus {
     border-top: 3px solid #428bca;
     background-color: white;
     color: black;
 }
 
-.nav-tabs > li > a {
-    padding: 8px 10px;
-}
+    .nav-tabs > li.active > a .fa,
+    .nav-tabs > li.active > a:hover .fa,
+    .nav-tabs > li.active > a:focus .fa {
+        color: #428bca;
+    }
+
 
 .btn-default-width {
     width: 90px;
@@ -347,7 +352,7 @@ modal-footer a {
     visibility: visible;
 }
 
-.cart-badge {
+.btn-primary .badge {
     padding: 5px 8px;
     font-weight: 100;
     color: black;
@@ -362,13 +367,93 @@ modal-footer a {
     background-color: #e6e6e6;
 }
 
-.affix {
+#navbar-affix.affix {
     top: 0;
     width: 100%;
     z-index: 999 !important;
 }
 
-.affix + .container-fluid {
-    padding-top: 50px;
+    #navbar-affix.affix + .container-fluid {
+        padding-top: 50px;
+    }
+
+#sidemenu-affix.affix {
+    top: 72px;
+    width: 19%;
 }
 
+.catalog-sort-nav{
+    display: inline;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.catalog-sort-nav li{
+    display: inline;
+}
+
+    .catalog-sort-nav .badge {
+        padding: 7px;
+        font-size: 13px;
+        font-weight: normal;
+        background-color: #bfbfbf;
+    }
+
+    .catalog-sort-nav li:first-child{
+        margin-right: 15px;
+    }
+
+#scrollToTop {
+    z-index: 800;
+    height: 40px;
+    padding-top: 4px;
+    width: 40px;
+    box-shadow: 0 0 1px 1px #b7b7b7;
+    border-radius: 50%;
+    background-color: #fff;
+    text-align: center;
+    color: rgba(33,33,33,.7);
+    text-decoration: none;
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    opacity: 0.8;
+    visibility: hidden;
+}
+#scrollToTop.show{
+    visibility:visible;
+}
+
+#scrollToTop:hover{
+    opacity: 1;
+}
+
+.product-view-box {
+    text-align: center;
+    padding: 10px;
+    min-height: 230px;
+    min-width: 300px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+#view-product-tab-content{
+    min-height: 250px;
+    padding: 15px 10px;
+}
+
+.container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.modal-header{
+    padding: 0;
+    border: 0;
+}
+
+.modal-dialog{
+    width: 420px;
+}

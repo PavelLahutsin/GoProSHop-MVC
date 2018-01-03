@@ -13,6 +13,8 @@ namespace GoProShop.BLL.Services
 {
     public class ProductService : IProductService
     {
+        private const string Desc = "desc";
+
         private readonly IUnitOfWork _uow;
 
         public ProductService(IUnitOfWork uow)
@@ -26,11 +28,32 @@ namespace GoProShop.BLL.Services
             await _uow.Commit();
         }
 
-        public IEnumerable<ProductDTO> GetGroupProducts(int id)
+        public IEnumerable<ProductDTO> GetGroupProducts(string sortCriteria, int id)
+        {
+            var productsDTO = GetSortedSubGroupProducts(sortCriteria, id);
+
+            return productsDTO;
+
+        }
+
+        private IEnumerable<ProductDTO> GetSortedSubGroupProducts(string sortCriteria, int id)
         {
             var products = _uow.Products.Entities.Where(x => x.ProductSubGroupId == id);
+
+            switch (sortCriteria)
+            {
+                case Desc:
+                    products = products.OrderByDescending(x => x.Price);
+                    break;
+
+                default:
+                    products = products.OrderBy(x => x.Price);
+                    break;
+            }
+
             var productsDto =
                  Mapper.Map<IQueryable<Product>, IEnumerable<ProductDTO>>(products);
+
             return productsDto;
         }
 

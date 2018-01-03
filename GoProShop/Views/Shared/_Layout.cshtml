@@ -20,8 +20,8 @@
                 </div>
             </div>
         </div>
-
-        <div class="navbar navbar-inverse navbar-static-top header-strip" data-spy="affix" data-offset-top="26" style="z-index: 999; background-color: #1a1a1a" role="navigation">
+        
+        <div id="navbar-affix" class="navbar navbar-inverse navbar-static-top header-strip" data-spy="affix" data-offset-top="26" style="z-index: 999; background-color: #1a1a1a" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" style="height: 50px; padding: 10px 15px" href="@Url.Action("Index", "Home")">
@@ -34,8 +34,8 @@
                 <div class="navbar-form navbar-left">
                     @using (Html.BeginForm("Index", "Search", FormMethod.Get))
                     {
-                        <div class="input-group" style="max-width: 600px">
-                            <input type="text" name="searchString" class="form-control" style="font-size: 14px;" placeholder="Поиск...">
+                        <div class="input-group">
+                            <input type="text" name="searchString" class="form-control" style="font-size: 14px; min-width: 400px;" placeholder="Поиск...">
 
                             <div class="input-group-btn">
                                 <input class="btn btn-primary" style="font-size: 14px;" type="submit" value="Поиск">
@@ -53,7 +53,7 @@
                 @RenderBody()
             </div>
         </div>
-        <div id="mainModal" class="modal fade">
+        <div id="mainModal" class="modal fade in">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div id="mainDialogContent">
@@ -61,6 +61,7 @@
                 </div>
             </div>
         </div>
+        
         <footer class="footer">
             <div class="footer-inner-main">
                 <div class="container">
@@ -103,6 +104,7 @@
                 </div>
             </div>
         </footer>
+        <a href="#" id="scrollToTop"><span class="fa fa-angle-up fa-2x"></span></a>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
@@ -217,6 +219,29 @@
                 $('#adminContent').html(partialView);
             });
         };
+
+
+        if ($('#scrollToTop').length) {
+            var scrollTrigger = 300, // px
+                backToTop = function () {
+                    var scrollTop = $(window).scrollTop();
+                    if (scrollTop > scrollTrigger) {
+                        $('#scrollToTop').addClass('show');
+                    } else {
+                        $('#scrollToTop').removeClass('show');
+                    }
+                };
+            backToTop();
+            $(window).on('scroll', function () {
+                backToTop();
+            });
+            $('#scrollToTop').on('click', function (e) {
+                e.preventDefault();
+                $('html,body').animate({
+                    scrollTop: 0
+                }, 700);
+            });
+        }
 
         $('.nav-tabs').on('click', 'li', function () {
             $('.nav-tabs li.active').removeClass('active');

@@ -1,0 +1,39 @@
+﻿@model GoProShop.ViewModels.UserProductsContentVM
+
+@{
+    var options = new AjaxOptions
+    {
+        UpdateTargetId = "products",
+        HttpMethod = "GET"
+    };
+}
+
+<div id="product-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <text style="padding-right: 15px; display: inline;"><strong>Cначала:</strong></text>
+                <ul class="catalog-sort-nav">
+                    <li>@Ajax.ActionLink("Дешевые", "UserProducts", "Product", new { sortCriteria = "asc", id = Model?.SubGroupId }, options, new { @class = "badge" })</li>
+                    <li>@Ajax.ActionLink("Дорогие", "UserProducts", "Product", new { sortCriteria = "desc", id = Model?.SubGroupId }, options)</li>
+                </ul>
+            </div>
+            <div id="products">
+                @Html.Partial("_UserProducts", Model.Products)
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.catalog-sort-nav').on("click", "li a", function (e) {
+            $('.catalog-sort-nav').find('.badge').removeClass('badge');
+            $(this).addClass('badge');
+        });
+    });
+</script>
+
+
+
+

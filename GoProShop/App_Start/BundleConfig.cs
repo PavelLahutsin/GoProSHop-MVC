@@ -13,12 +13,12 @@ namespace GoProShop
                       "~/Scripts/respond.js",
                       "~/Scripts/modernizr-*",
                       "~/Scripts/jquery.validate*",
-                      "~/Scripts/jquery-{version}.js",
+                      "~/Scripts/jquery-3.2.1.js",
                       "~/Scripts/jquery.unobtrusive-ajax.min.js"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-head").Include(
-                "~/Scripts/jquery-1.10.2.min.js"
+                "~/Scripts/jquery-3.2.1.min.js"
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/styles").Include(

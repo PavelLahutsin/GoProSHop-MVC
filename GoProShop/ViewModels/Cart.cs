@@ -51,7 +51,7 @@ namespace GoProShop.ViewModels
         [Display(Name = "Итого:")]
         public decimal? TotalSum => _cartItems?.Sum(x => x.Product.Price * x.Quantity);
 
-        public int Count => _cartItems.Count;
+        public int Count => _cartItems.Sum(x => x.Quantity);
 
         public IEnumerable<CartItem> CartItems => _cartItems;
     }

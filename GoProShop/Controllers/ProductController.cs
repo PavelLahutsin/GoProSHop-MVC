@@ -19,19 +19,40 @@ namespace GoProShop.Controllers
             _productService = productService;
         }
 
-        public ActionResult SubGroupUserProducts(int id = 1, int page = 1, int pageSize = 8)
+        public async Task<ActionResult> ViewProduct(int productId)
+        {
+            var productDTO = await _productService.GetAsync(productId);
+            var productVM = Mapper.Map<ProductVM>(productDTO);
+
+            return View(productVM);
+        }
+
+        public ActionResult UserProductsContent(string sortCriteria = "asc", int id = 1, int page = 1, int pageSize = 12)
         {
             var products
-                = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(_productService.GetGroupProducts(id));
+                = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(_productService.GetGroupProducts(sortCriteria,id));
 
-            return PartialView("_UserProducts", products?.ToPagedList(page,pageSize));
+            var model = new UserProductsContentVM
+            {
+                Products = products?.ToPagedList(page, pageSize)
+            };
+
+            return PartialView("_UserProductsContent", model);
+        }
+
+        public ActionResult UserProducts(string sortCriteria = "asc", int id = 1, int page = 1, int pageSize = 12)
+        {
+            var products
+                = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(_productService.GetGroupProducts(sortCriteria, id));
+
+            return PartialView("_UserProducts", products?.ToPagedList(page, pageSize));
         }
 
         [Authorize(Roles = "admin")]
-        public ActionResult SubGroupAdminProducts(int id = 1)
+        public ActionResult SubGroupAdminProducts(string sortCriteria = "asc", int id = 1)
         {
             var products
-                = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(_productService.GetGroupProducts(id));
+                = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(_productService.GetGroupProducts(sortCriteria,id));
 
             return PartialView("_AdminProducts", products);
         }
