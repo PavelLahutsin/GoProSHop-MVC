@@ -274,7 +274,7 @@
     .nav-tabs > li.active > a .fa,
     .nav-tabs > li.active > a:hover .fa,
     .nav-tabs > li.active > a:focus .fa {
-        color: #428bca;
+        color: rgba(66, 139, 202, 1);
     }
 
 
@@ -377,11 +377,6 @@ modal-footer a {
         padding-top: 50px;
     }
 
-#sidemenu-affix.affix {
-    top: 72px;
-    width: 19%;
-}
-
 .catalog-sort-nav{
     display: inline;
     margin: 0;
@@ -418,15 +413,16 @@ modal-footer a {
     position: fixed;
     bottom: 30px;
     right: 40px;
-    opacity: 0.8;
+    opacity: 1;
     visibility: hidden;
 }
+
 #scrollToTop.show{
     visibility:visible;
 }
 
 #scrollToTop:hover{
-    opacity: 1;
+    opacity: 0.85;
 }
 
 .product-view-box {
@@ -454,6 +450,9 @@ modal-footer a {
     border: 0;
 }
 
-.modal-dialog{
+.modal-footer {
+    background-color: #efefef;    
+}
+.modal-dialog {
     width: 420px;
 }

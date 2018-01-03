@@ -12,6 +12,8 @@ namespace GoProShop.ViewModels
         public string Name { get; set; }
 
         [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         [Required(ErrorMessage = "Поле email является обязательным")]
         public string Email { get; set; }
 
