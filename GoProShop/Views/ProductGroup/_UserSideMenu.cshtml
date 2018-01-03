@@ -5,11 +5,11 @@
     {
         HttpMethod = "GET",
         InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "products"
+        UpdateTargetId = "product-content"
     };
 }
 
-<div class="panel panel-default">
+<div id="sidemenu-affix" class="panel panel-default" data-spy="affix" data-offset-top="30">
     <div class="panel-heading"><strong>Каталог товаров</strong></div>
 
     <div class="panel-body">
@@ -24,7 +24,7 @@
                 <div class="collapse" id="category_@counter">
                     @foreach (var productSubGroup in productGroup.ProductSubGroups)
                     {
-                        @Ajax.ActionLink(@productSubGroup.Name, "SubGroupUserProducts", "Product",  new {id = productSubGroup.Id }, options, new {@class = "list-group-item list-group-sub-item", style = "border: none" })
+                        @Ajax.ActionLink(@productSubGroup.Name, "UserProductsContent", "Product",  new {id = productSubGroup.Id }, options, new {@class = "list-group-item list-group-sub-item", style = "border: none" })
                     }
                 </div>
 

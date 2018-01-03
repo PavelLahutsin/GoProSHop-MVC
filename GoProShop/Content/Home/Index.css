@@ -1,12 +1,7 @@
-﻿.form-control-feedback {
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-bottom: 14px;
-}
-
-.form-horizontal .btn {
-    height: 40px;
+﻿#mainFeedback .form-control, #mainFeedback .btn {
+    min-height: 40px;
+    width: 100%;
+    margin: 0 7px 14px 0;
 }
 
 .mega-dropdown-menu {

@@ -8,21 +8,9 @@
                 @Html.Action("UserSideMenu", "ProductGroup")
             </div>
             <div class="col-md-9" style="min-height: 900px">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="well well-sm">
-                            <div class="form-inline">
-                                <text style="padding-right: 15px"><strong>Сортировать по:</strong></text>
-                                <a style="padding-right: 15px" href="#"><span class="badge">Цене</span></a>
-                                <a href="#">Рейтингу</a>
-                            </div>
-                        </div>
-                        <div id="products">
-                            @Html.Action("SubGroupUserProducts", "Product", new { id = currentId })
-                        </div>
-                    </div>
-                </div>    
+                @Html.Action("UserProductsContent", "Product", new { id = currentId })
             </div>
         </div>
     </div>
 </div>
+

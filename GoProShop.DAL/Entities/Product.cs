@@ -28,6 +28,8 @@ namespace GoProShop.DAL.Entities
         [StringLength(2500)]
         public string Description { get; set; }
 
+        public virtual ICollection<Feedback> Feedbacks { get; set; } = new HashSet<Feedback>();
+
         public virtual ICollection<OrderedProduct> OrdersList { get; set; } = new HashSet<OrderedProduct>();
 
         public virtual ProductSubGroup ProductSubGroup { get; set; }

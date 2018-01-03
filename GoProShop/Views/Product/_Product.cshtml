@@ -22,7 +22,7 @@
             }
         </div>
         <div class="catalog-item-box-body">
-            <p><a href="#" style="font-size: 13px; width: 190px;">@Model.Name</a></p>
+            <p><a href="@Url.Action("ViewProduct","Product", new { productId = Model.Id })" style="font-size: 13px; width: 190px;">@Model.Name</a></p>
             @if (Model.Status == GoProShop.Enums.ProductStatus.Available)
             {
                 <p class="text-success">В наличии</p>

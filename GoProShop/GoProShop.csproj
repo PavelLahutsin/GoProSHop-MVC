@@ -250,6 +250,7 @@
     <Compile Include="ViewModels\SearchResultVM.cs" />
     <Compile Include="ViewModels\UserEditVM.cs" />
     <Compile Include="ViewModels\UserLoginVM.cs" />
+    <Compile Include="ViewModels\UserProductsContentVM.cs" />
     <Compile Include="ViewModels\UserRegisterVM.cs" />
     <Compile Include="ViewModels\ResponseVM.cs" />
   </ItemGroup>
@@ -300,12 +301,22 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.2.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -358,6 +369,8 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Response\_Response.cshtml" />
     <Content Include="Views\Product\_PagedUserProducts.cshtml" />
+    <Content Include="Views\Product\_UserProductsContent.cshtml" />
+    <Content Include="Views\Product\ViewProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

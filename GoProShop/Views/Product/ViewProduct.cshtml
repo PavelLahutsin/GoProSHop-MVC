@@ -1,0 +1,113 @@
+﻿@model GoProShop.ViewModels.ProductVM
+@{
+    var options = new AjaxOptions
+    {
+        OnSuccess = "SuccessShoppingCartHandler",
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "shopping-cart"
+    };
+}
+<div class="container-fluid">
+    <div class="container" style="padding-top: 25px">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Action("UserSideMenu", "ProductGroup")
+            </div>
+            <div class="col-md-9">
+                <div id="product-content">
+                    <div class="row">
+                        <div class="col-md-4" style="padding-left: 0">
+                            @if (Model.MimeType == null)
+                            {
+                                <img height="250" class="text-center" width="250" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
+                            }
+                            else
+                            {
+                                <img height="205" width="245" src="@Url.Action("GetImage", "Product", new { productId = Model.Id })" alt="Фото">
+                            }
+                        </div>
+
+                        <div class="col-md-8">
+                            <h4 style="color: #428bca;font-size: 18px;font-weight: bold; margin-bottom: 20px;">Информация о товаре:</h4>
+                            <table class="table table-striped">
+                                <tr>
+                                    <td width="300">Артикул</td>
+                                    <td>@Model.Id</td>
+                                </tr>
+                                <tr>
+                                    <td>Название</td>
+                                    <td>@Model.Name</td>
+                                </tr>
+                                <tr>
+                                    <td>Цена</td>
+                                    <td>@Model.Price руб.</td>
+                                </tr>
+                                <tr>
+                                    <td>Наличие</td>
+                                    <td>
+                                        @if (Model.Status == GoProShop.Enums.ProductStatus.Available)
+                                        {
+                                            <span class="text-success">В наличии</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-danger">Под заказ</span>
+                                        }
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    @Ajax.ActionLink("Купить", "AddToCart", "Cart", new { id = Model.Id }, options, new { @class = "btn btn-success btn-block btn-sm" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col-md-12" style="padding-left: 0">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                                <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+                                <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+                                <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="home" class="tab-pane fade in active">
+                                    <h3>HOME</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                </div>
+                                <div id="menu1" class="tab-pane fade">
+                                    <h3>Menu 1</h3>
+                                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                </div>
+                                <div id="menu2" class="tab-pane fade">
+                                    <h3>Menu 2</h3>
+                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                                </div>
+                                <div id="menu3" class="tab-pane fade">
+                                    <h3>Menu 3</h3>
+                                    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                </div>
+                            </div>
+                            @*<ul class="nav nav-tabs">
+                                <li><a class="active" href="#description" data-toggle="tab">Описание</a></li>
+                                <li><a  href="#feedbacks" data-toggle="tab">Отзывы</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane" id="description" role="tabpanel">@Model.Description</div>
+                                <div class="tab-pane" id="feedbacks" role="tabpanel">Отзывы</div>
+                            </div>*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
