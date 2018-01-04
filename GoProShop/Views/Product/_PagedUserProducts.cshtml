@@ -8,7 +8,8 @@
     {
         HttpMethod = "GET",
         InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "searched-products"
+        UpdateTargetId = "searched-products",
+        OnSuccess = "scrollToTop"
     };
 
     var result = new StringBuilder();

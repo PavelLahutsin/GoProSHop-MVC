@@ -8,7 +8,8 @@
     {
         HttpMethod = "GET",
         InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "products"
+        UpdateTargetId = "products",
+        OnSuccess= "scrollToTop"
     };
     var productSubGroupId = Model.FirstOrDefault()?.ProductSubGroupId;
     var result = new StringBuilder();

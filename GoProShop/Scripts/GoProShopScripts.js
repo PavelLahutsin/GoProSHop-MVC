@@ -103,10 +103,14 @@ if ($('#scrollToTop').length) {
     });
     $('#scrollToTop').on('click', function (e) {
         e.preventDefault();
-        $('html,body').animate({
-            scrollTop: 0
-        }, 700);
+        scrollToTop();
     });
+}
+
+function scrollToTop() {
+    $('html,body').animate({
+        scrollTop: 0
+    }, 700);
 }
 // ================================== EVENTS ======================================
 

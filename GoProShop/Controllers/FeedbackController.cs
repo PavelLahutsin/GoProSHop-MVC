@@ -2,6 +2,7 @@
 using GoProShop.BLL.DTO;
 using GoProShop.BLL.Services.Interfaces;
 using GoProShop.ViewModels;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -74,12 +75,12 @@ namespace GoProShop.Controllers
         }
 
         [Authorize(Roles = "admin")]
-        public ActionResult GetAdminFeedbacks()
+        public ActionResult GetAdminFeedbacks(int page = 1)
         {
             var feedbacksDTO = _feedbackService.GetFeedbacks();
             var feedbacksVM = Mapper.Map<IEnumerable<FeedbackDTO>, IEnumerable<FeedbackVM>>(feedbacksDTO);
 
-            return PartialView("_AdminFeedbacks", feedbacksVM);
+            return PartialView("_AdminFeedbacks", feedbacksVM.ToPagedList(page,7));
         }
 
         [Authorize(Roles = "admin")]
