@@ -17,6 +17,8 @@ namespace GoProShop.BLL.DTO
 
         public bool IsViewed { get; set; }
 
+        public int Rating { get; set; }
+
         public int? ProductId { get; set; }
 
         public string Message { get; set; }

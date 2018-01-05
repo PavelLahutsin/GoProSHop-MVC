@@ -31,3 +31,4 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DA
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.pdb
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.UpdatedFeedbackEntity1.resources
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.UpdateFeedback.resources

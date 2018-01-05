@@ -4,7 +4,22 @@
 {
     <div class="col-md-3 text-left">
         <h5 style="font-weight: 600">@feedback.Name</h5>
-        <h6 style="font-style: italic; color:#b3b3b3">@feedback.Date.ToShortDateString()</h6>
-        <p>@feedback.Message</p>
+        <h6 style="font-style: italic; color:#b3b3b3; padding: 0">@feedback.Date.ToShortDateString()</h6>
+
+        <div class="form-inline" style="padding: 7px 0">
+            @for (int i = 1; i < 6; i++)
+            {
+                if (i <= feedback.Rating)
+                {
+                    <span class="fa fa-star fa-star-selected"></span>
+                }
+                else
+                {
+                    <span class="fa fa-star"></span>
+                }
+            }
+        </div>
+
+        <p style="text-align: justify">@feedback.Message</p>
     </div>
 }

@@ -5,10 +5,28 @@
     {
         foreach (var feedback in Model)
         {
-            <h5 style="padding-bottom: 10px;font-weight: normal"><strong>@feedback.Name</strong> от @feedback.Date.ToShortDateString()</h5>
+            <div class="col-md-3 text-left" style="padding-top: 15px">
+                <h5 style="font-weight: normal"><strong>@feedback.Name</strong></h5>
+                <h6 style="padding: 0" class="text-muted">@feedback.Date.ToShortDateString()</h6>
+            </div>
 
-            <div class="arrow_box">
-                @feedback.Message
+            <div class="col-md-9" style="padding-right: 0;">
+                <div style="padding-bottom: 7px;padding-left: 7px">
+                    @for (int i = 1; i < 6; i++)
+                    {
+                        if (i <= feedback.Rating)
+                        {
+                            <span class="fa fa-star fa-star-selected"></span>
+                        }
+                        else
+                        {
+                            <span class="fa fa-star"></span>
+                        }
+                    }
+                </div>
+                <div class="arrow_box">
+                    @feedback.Message
+                </div>
             </div>
         }
     }
@@ -25,12 +43,11 @@
             </div>
         </div>
     }
-
 </div>
 
 <div class="col-md-12 text-center">
-    <h4 style="font-weight: 800; padding-bottom: 14px;">Написать отзыв</h4>
+    <h4 class="header-text-black">Написать отзыв</h4>
 </div>
 <div style="margin-bottom: 40px">
-    @Html.Action("Create","Feedback", new { productId = ViewBag.ProductId })
+    @Html.Action("Create", "Feedback", new { productId = ViewBag.ProductId })
 </div>

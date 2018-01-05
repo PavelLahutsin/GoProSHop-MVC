@@ -26,14 +26,23 @@
                 {
                     @Html.Hidden("ProductId", (int)ViewBag.ProductId)
                 }
-                
+
+                <input type="hidden" name="Rating" id="Rating" />
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Имя" } })
                 @Html.EditorFor(model => model.SurName, new { htmlAttributes = new { @class = "form-control", placeholder = "Фамилия" } })
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                <input type="submit" class="btn btn-primary btn-block" value="Отправить" />
             </div>
             <div class="col-md-6">
-                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", style = "overflow-x: hidden;",  rows = 4, placeholder = "Сообщение" })
-                <input type="submit" class="btn btn-primary btn-block" value="Отправить" />
+                <div class="form-inline" style="height: 40px; padding-top: 7px; margin-bottom: 7px;" onmouseout="CRateSelected()">
+                    <text style="margin-right: 7px;">Оцените нашу работу:</text>
+                    @for (int i = 1; i < 6; i++)
+                    {
+                        <span class="fa fa-star fa-lg" id="Rate@(i)" onclick="CRate(@i)" onmouseover="CRateOver(@i)" onmouseout="CRateOut(@i)"></span>
+                    }
+                </div>
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", style = "overflow-x: hidden;", rows = 7, placeholder = "Сообщение" })
+
             </div>
         </div>
     }

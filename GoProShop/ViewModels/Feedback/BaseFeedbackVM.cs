@@ -25,6 +25,11 @@ namespace GoProShop.ViewModels
         [ScaffoldColumn(false)]
         public bool IsViewed { get; set; }
 
+
+        [Required(ErrorMessage = "Оценка работы является обязательным")]
+        [Range(1,5, ErrorMessage = "Ретинг работы должен быть в диапазоне от 1 до 5")]
+        public int Rating { get; set; }
+
         [ScaffoldColumn(false)]
         public int? ProductId { get; set; }
 

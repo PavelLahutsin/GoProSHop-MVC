@@ -101,6 +101,10 @@
     <Compile Include="Migrations\201801021451301_UpdatedFeedbackEntity1.Designer.cs">
       <DependentUpon>201801021451301_UpdatedFeedbackEntity1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801041847457_UpdateFeedback.cs" />
+    <Compile Include="Migrations\201801041847457_UpdateFeedback.Designer.cs">
+      <DependentUpon>201801041847457_UpdateFeedback.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Entities\Customer.cs" />
@@ -132,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801021451301_UpdatedFeedbackEntity1.resx">
       <DependentUpon>201801021451301_UpdatedFeedbackEntity1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801041847457_UpdateFeedback.resx">
+      <DependentUpon>201801041847457_UpdateFeedback.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

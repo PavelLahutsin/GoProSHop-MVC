@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="col-md-8">
-                            <h4 style="color: #428bca;font-size: 18px;font-weight: bold; margin-bottom: 20px;">Информация о товаре:</h4>
+                            <h4 class="header-text-black">Информация о товаре:</h4>
                             <table class="table table-striped">
                                 <tr>
                                     <td width="300">Артикул</td>
@@ -58,9 +58,9 @@
                                 </tr>
                             </table>
 
-                            <div class="row">
+                            <div class="row" style="padding-right: 15px">        
                                 <div class="col-md-4">
-                                    @Ajax.ActionLink("Купить", "AddToCart", "Cart", new { id = Model.Id }, options, new { @class = "btn btn-success btn-block btn-sm" })
+                                    @Ajax.ActionLink("Купить", "AddToCart", "Cart", new { id = Model.Id }, options, new { @class = "btn btn-success btn-block btn-sm"})
                                 </div>
                             </div>
                         </div>
@@ -87,3 +87,4 @@
         </div>
     </div>
 </div>
+

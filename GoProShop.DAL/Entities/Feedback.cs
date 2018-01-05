@@ -15,6 +15,8 @@ namespace GoProShop.DAL.Entities
         
         public bool IsViewed { get; set; }
 
+        public int Rating { get; set; }
+
         public string Message { get; set; }
 
         public int? ProductId { get; set; }

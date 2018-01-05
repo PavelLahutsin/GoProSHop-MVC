@@ -5,6 +5,7 @@ using AutoMapper;
 using GoProShop.BLL.DTO;
 using GoProShop.BLL.Services.Interfaces;
 using GoProShop.ViewModels;
+using GoProShop.BLL.Enums;
 
 namespace GoProShop.Controllers
 {

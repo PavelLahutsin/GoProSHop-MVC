@@ -112,6 +112,35 @@ function scrollToTop() {
         scrollTop: 0
     }, 700);
 }
+
+function CRate(r) {
+    $("#Rating").val(r);
+    for (var i = 1; i <= r; i++) {
+        $("#Rate" + i).addClass('fa-star-selected');
+    }
+    for (var i = r + 1; i <= 5; i++) {
+        $("#Rate" + i).removeClass('fa-star-selected');
+    }
+}
+
+function CRateOver(r) {
+    for (var i = 1; i <= r; i++) {
+        $("#Rate" + i).addClass('fa-star-selected');
+    }
+}
+
+function CRateOut(r) {
+    for (var i = 1; i <= r; i++) {
+        $("#Rate" + i).removeClass('fa-star-selected');
+    }
+}
+
+function CRateSelected() {
+    var setRating = $("#Rating").val();
+    for (var i = 1; i <= setRating; i++) {
+        $("#Rate" + i).addClass('fa-star-selected');
+    }
+}
 // ================================== EVENTS ======================================
 
 function adminTabClickHandler(event, element) {
@@ -129,7 +158,7 @@ function productTabClickHandler(event, element, elementId) {
     var $this = $(this);
     var viewProductContent = $('#view-product-content');
 
-    $this.addClass('active');  
+    $this.addClass('active');
     $.get(element.href, { productId: elementId }, function (partialView) {
         viewProductContent.html(partialView);
     });

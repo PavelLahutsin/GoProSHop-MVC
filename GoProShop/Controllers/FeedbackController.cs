@@ -55,7 +55,7 @@ namespace GoProShop.Controllers
             return PartialView("~/Views/Shared/_Response.cshtml", response);
         }
 
-        public ActionResult GetProductFeedbacks(int productId)
+        public ActionResult GetProductFeedbacks(int productId, int page = 1)
         {
 
             var feedbacksDTO = _feedbackService.GetProductFeedbacks(productId);
