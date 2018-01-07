@@ -30,21 +30,21 @@
 
                         <div class="col-md-8">
                             <h4 class="header-text-black">Информация о товаре:</h4>
-                            <table class="table table-striped">
+                            <table class="table table-striped" style="margin-top: 7px">
                                 <tr>
-                                    <td width="300">Артикул</td>
+                                    <td width="300">Артикул:</td>
                                     <td>@Model.Id</td>
                                 </tr>
                                 <tr>
-                                    <td>Название</td>
+                                    <td>Название:</td>
                                     <td>@Model.Name</td>
                                 </tr>
                                 <tr>
-                                    <td>Цена</td>
+                                    <td>Цена:</td>
                                     <td>@Model.Price руб.</td>
                                 </tr>
                                 <tr>
-                                    <td>Наличие</td>
+                                    <td>Наличие:</td>
                                     <td>
                                         @if (Model.Status == GoProShop.Enums.ProductStatus.Available)
                                         {
@@ -56,11 +56,48 @@
                                         }
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Рейтинг:</td>
+                                    <td>
+                                        @if (Model.AverageRating != null)
+                                        {
+                                            var lastRatedItem = (int)Model.AverageRating;
+                                            <div class="form-inline text-left" style="padding-bottom: 8px;">
+                                                @for (int i = 1; i < 6; i++)
+                                                {
+                                                    if (i <= lastRatedItem)
+                                                    {
+                                                        <span class="fa fa-star fa-star-selected fa-lg"></span>
+                                                    }
+                                                    else if ((i - 1) == lastRatedItem
+                                                    && Model.AverageRating % 1 != 0)
+                                                    {
+                                                        <span class="fa fa-star-half-o fa-star-selected fa-lg"></span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="fa fa-star-o fa-lg"></span>
+                                                    }
+                                                }
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="form-inline">
+                                                @for (int i = 0; i < 5; i++)
+                                                {
+                                                <span class="fa fa-star-o fa-lg"></span>
+                                                }
+                                                (Нет оценок)
+                                            </div>
+                                        }
+                                    </td>
+                                </tr>
                             </table>
 
-                            <div class="row" style="padding-right: 15px">        
+                            <div class="row" style="padding-right: 15px">
                                 <div class="col-md-4">
-                                    @Ajax.ActionLink("Купить", "AddToCart", "Cart", new { id = Model.Id }, options, new { @class = "btn btn-success btn-block btn-sm"})
+                                    <a class="btn btn-success btn-block" href="@Url.Action("AddToCart", "Cart", new {id = Model.Id })" onclick="addToCart(event, this)">Купить</a>
                                 </div>
                             </div>
                         </div>
@@ -68,8 +105,9 @@
                     <div class="row" style="margin-top: 30px;">
                         <div class="col-md-12" style="padding-left: 0">
                             <ul class="nav nav-tabs">
+
                                 <li class="active"><a href="@Url.Action("Description","Product")" onclick="productTabClickHandler(event, this, @Model.Id)">Описание</a></li>
-                                <li>
+                                <li id="feedback-tab">
                                     <a href="@Url.Action("GetProductFeedbacks","Feedback")" onclick="productTabClickHandler(event, this, @Model.Id)">
                                         <i class="fa fa-envelope-square admin-tab-icon"></i>
                                         Отзывы<span class="badge badge-admin-tab" id="pending-feedback-count">@Model.FeedbackAmount</span>
@@ -78,7 +116,16 @@
                             </ul>
 
                             <div id="view-product-content">
-                                @Model.Description
+                                <p>
+                                    @if(ViewBag.Tab == "feedbacks")
+                                    {
+                                        @Html.Action("GetProductFeedbacks", "Feedback", new { @Model.Id })
+                                    }
+                                    else
+                                    {
+                                        @Model.Description
+                                    }                        
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -88,3 +135,11 @@
     </div>
 </div>
 
+<script>
+    $(function () {
+        if ('@ViewBag.Tab' == 'feedbacks') {
+            $('.nav-tabs li.active').removeClass('active');
+            $('#feedback-tab').addClass('active');
+        }   
+    });
+</script>

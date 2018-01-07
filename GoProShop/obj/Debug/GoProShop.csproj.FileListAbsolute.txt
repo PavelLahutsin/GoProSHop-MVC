@@ -143,3 +143,4 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\ob
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\obj\Debug\GoProShop.csproj.CoreCompileInputs.cache
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\obj\Debug\GoProShop.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\obj\Debug\GoProShop.pdb
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\BouncyCastle.Crypto.dll

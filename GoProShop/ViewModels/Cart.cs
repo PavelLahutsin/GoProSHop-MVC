@@ -34,9 +34,9 @@ namespace GoProShop.ViewModels
             _cartItems.Clear();
         }
 
-        public void Remove(ProductVM product)
+        public void Remove(int productId)
         {
-            var cartItem = _cartItems.FirstOrDefault(x => x.Product.Id == product.Id);
+            var cartItem = _cartItems.FirstOrDefault(x => x.Product.Id == productId);
 
             if(cartItem?.Quantity == 1)
             {

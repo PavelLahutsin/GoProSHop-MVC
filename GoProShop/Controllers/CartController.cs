@@ -28,10 +28,25 @@ namespace GoProShop.Controllers
 
             return Json(new
             {
-                success = true,
                 Quantity = GetCart.Count
             }, 
             JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult RemoveCartItem(int id)
+        {
+            GetCart.Remove(id);
+            return RedirectToAction("CartView");
+        }
+
+        public ActionResult CheckOut()
+        {
+            return View(GetCart);
+        }
+
+        public ActionResult OrderInfo()
+        {
+            return PartialView("_OrderInfo", GetCart);
         }
 
         public ActionResult CartView()

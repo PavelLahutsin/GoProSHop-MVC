@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using GoProShop.DAL.Entities;
 using GoProShop.DAL.Identity;
 using Microsoft.Owin.Security;
+using System.Data.Entity;
 
 namespace GoProShop.DAL.Interfaces
 {
@@ -31,6 +32,8 @@ namespace GoProShop.DAL.Interfaces
         ApplicationRoleManager RoleManager { get; }
 
         IAuthenticationManager AuthenticationManager { get; }
+
+        Database Database { get; }
 
         Task Commit();
 

@@ -8,13 +8,13 @@ using AutoMapper;
 using GoProShop.BLL.Services.Interfaces;
 using System.Threading.Tasks;
 using System.Web;
-using GoProShop.BLL.Enums;
 
 namespace GoProShop.BLL.Services
 {
     public class ProductService : IProductService
     {
         private const string Desc = "desc";
+        private const string Asc = "asc";
 
         private readonly IUnitOfWork _uow;
 
@@ -34,7 +34,6 @@ namespace GoProShop.BLL.Services
             var productsDTO = GetSortedSubGroupProducts(sortCriteria, id);
 
             return productsDTO;
-
         }
 
         private IEnumerable<ProductDTO> GetSortedSubGroupProducts(string sortCriteria, int id)
@@ -47,13 +46,17 @@ namespace GoProShop.BLL.Services
                     products = products.OrderByDescending(x => x.Price);
                     break;
 
-                default:
+                case Asc:
                     products = products.OrderBy(x => x.Price);
+                    break;
+
+                default:
+                    products = products.OrderByDescending(x => x.Feedbacks.Average(y => y.Rating));
                     break;
             }
 
             var productsDto =
-                 Mapper.Map<IQueryable<Product>, IEnumerable<ProductDTO>>(products);
+                 Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products.ToList());
 
             return productsDto;
         }
@@ -61,7 +64,6 @@ namespace GoProShop.BLL.Services
         public async Task<ProductDTO> GetAsync(int id)
         {
             var product = Mapper.Map<ProductDTO>(await _uow.Products.GetAsync(id));
-            product.FeedbackAmount = _uow.Feedbacks.Entities.Where(x => x.ProductId == id && x.Status == DAL.Enums.FeedbackStatus.Approved).Count();
             return product;
         }
 

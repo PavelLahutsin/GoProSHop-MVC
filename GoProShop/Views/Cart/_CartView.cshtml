@@ -1,7 +1,5 @@
 ﻿@model GoProShop.ViewModels.Cart
-@{
-    GoProShop.ViewModels.CartItem cartitem = null;
-}
+
 <div id="modalBody">
     <div class="modal-header">
         <ul class="registration-nav">
@@ -10,68 +8,58 @@
         </ul>
     </div>
     <div class="modal-body">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th class="text-center">
-                        @Html.DisplayNameFor(x => cartitem.Product.Image)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(x => cartitem.Product.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(x => cartitem.Quantity)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(x => cartitem.Product.Price)
-                    </th>
-                </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                    <td colspan="3" class="text-right">
-                        @Html.DisplayNameFor(model => model.TotalSum)
-                    </td>
-                    <td><strong>@Model.TotalSum</strong></td>
-                </tr>
+        @if (Model.CartItems.Count() == 0)
+        {
+            <div class="form-inline">
+                <h4><i class="fa fa-shopping-cart fa-2x"></i> В корзине нет товаров</h4>
+            </div>
+        }
+        else
+        {
+            <p style="font-size: 13px" class="text-right">В вашей корзине <span style="color: #428bca; font-weight: 700; font-size: 14px;">@Model.Count товара</span></p>
 
-            </tfoot>
-            <tbody>
-                @foreach (var item in Model.CartItems)
-            {
+            <table class="table table-condensed">
+                <tbody>
+                    @foreach (var item in Model.CartItems)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                @if (item.Product.MimeType == null)
+                                {
+                                    <img height="40" width="40" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
+                                }
+                                else
+                                {
+                                    <img height="40" width="50" src="@Url.Action("GetImage", "Product", new {productId = item.Product.Id})" alt="Фото">
+                                }
+                            </td>
+                            <td class="text-left" width="230" style="font-size: 13px;">
+                                <a href="@Url.Action("ViewProduct","Product", new { productId = item.Product.Id })">@item.Product.Name</a>
+                            </td>
+                            <td width="90" style="font-size: 13px;text-align: center;">
+                                @Html.DisplayFor(modelItem => item.Product.Price) р.
+                            </td>
+                            <td width="50" class="text-center">
+                                <a href="@Url.Action("RemoveCartItem","Cart", new { id = item.Product.Id })" onclick="deleteCartItemModal(event, this)"><span class="fa fa-trash-o text-danger fa-lg"></span></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
                     <tr>
-                        <td class="text-center">
-                            @if (item.Product.MimeType == null)
-                            {
-                                <img height="40" width="40" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
-                            }
-                            else
-                            {
-                                <img height="40" width="50" src="@Url.Action("GetImage", "Product", new {productId = item.Product.Id})" alt="Фото">
-                            }
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Product.Name)
-                        </td>
-                        <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.Quantity)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Product.Price)
-                        </td>
+                        <td colspan="4" class="text-right"><strong>@Model.TotalSum р.</strong></td>
                     </tr>
-                }
-            </tbody>
 
+                </tfoot>
+            </table>
 
-        </table>
+        }
+
     </div>
     <div class="modal-footer">
-        @using (Html.BeginForm("", "", FormMethod.Post))
+        @if (Model.CartItems.Count() != 0)
         {
-            <input class="btn btn-link pull-right" style="width: 80px" data-dismiss="modal" value="Отмена">
-            <input type="submit" class="btn btn-primary pull-right" value="Заказать">
-
+            <a class="btn btn-success pull-right" href="@Url.Action("CheckOut", "Cart")" style="font-size: 13px">Оформить заказ<i class="fa fa-arrow-right" style="padding-left: 7px"></i></a>
         }
     </div>
 </div>

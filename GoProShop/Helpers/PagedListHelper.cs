@@ -24,7 +24,7 @@ namespace GoProShop.BLL.Helpers
 
             var searchedItems = Mapper.Map<IEnumerable<TSource>, IEnumerable<TDestionation>>(searchResultDTO?.SearchedItems);
             searchResultVM.PageNumber = page ?? 1;
-            searchResultVM.PageSize = pageSize ?? 8;
+            searchResultVM.PageSize = pageSize ?? 16;
             searchResultVM.PagedItems = searchedItems?.ToPagedList(searchResultVM.PageNumber, searchResultVM.PageSize);
 
             return searchResultVM;

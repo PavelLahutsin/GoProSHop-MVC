@@ -20,10 +20,12 @@ namespace GoProShop.Controllers
             _productService = productService;
         }
 
-        public async Task<ActionResult> ViewProduct(int productId)
+        public async Task<ActionResult> ViewProduct(int productId, string tab = "description")
         {
             var productDTO = await _productService.GetAsync(productId);
             var productVM = Mapper.Map<ProductVM>(productDTO);
+
+            ViewBag.Tab = tab;
 
             return View(productVM);
         }
@@ -49,7 +51,7 @@ namespace GoProShop.Controllers
             return PartialView("_UserProductsContent", model);
         }
 
-        public ActionResult UserProducts(string sortCriteria = "asc", int id = 1, int page = 1, int pageSize = 12)
+        public ActionResult UserProducts(string sortCriteria = "rate", int id = 1, int page = 1, int pageSize = 12)
         {
             var products
                 = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(_productService.GetGroupProducts(sortCriteria, id));

@@ -1,6 +1,6 @@
 ﻿using GoProShop.Enums;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Web;
 
 namespace GoProShop.ViewModels
 {
@@ -31,6 +31,10 @@ namespace GoProShop.ViewModels
         [Display(Name = "Статус")]
         public ProductStatus? Status { get; set; }
 
+        [ScaffoldColumn(false)]
+        public double? AverageRating { get; set; }
+
+        [ScaffoldColumn(false)]
         public int? FeedbackAmount { get; set; }
     }
 }

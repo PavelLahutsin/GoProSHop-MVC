@@ -1,4 +1,6 @@
 ﻿using GoProShop.BLL.Enums;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GoProShop.BLL.DTO
 {
@@ -18,8 +20,11 @@ namespace GoProShop.BLL.DTO
 
         public ProductStatus? Status { get; set; }
 
-        public int? FeedbackAmount { get; set; }
+        public int? FeedbackAmount => Feedbacks.Where(y => y?.Status == FeedbackStatus.Approved).Count();
 
-        //public virtual ProductSubGroupDTO ProductSubGroup { get; set; }
+        public virtual ICollection<FeedbackDTO> Feedbacks { get; set; } = new HashSet<FeedbackDTO>();
+
+        public double? AverageRating => 
+            Feedbacks.Where(y => y?.Status == FeedbackStatus.Approved).Average(x => x?.Rating);
     }
 }

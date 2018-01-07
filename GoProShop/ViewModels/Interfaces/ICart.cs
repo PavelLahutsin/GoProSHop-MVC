@@ -6,7 +6,7 @@ namespace GoProShop.ViewModels.Interfaces
     {
         void Clear();
 
-        void Remove(ProductVM product);
+        void Remove(int productId);
 
         void Add(ProductVM product);
     

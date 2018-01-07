@@ -24,10 +24,10 @@
             <div class="col-md-6">
                 @if (ViewBag.ProductId != null)
                 {
-                    @Html.Hidden("ProductId", (int)ViewBag.ProductId)
+                    @Html.Hidden("productId", (int)ViewBag.ProductId)
                 }
 
-                <input type="hidden" name="Rating" id="Rating" />
+                <input type="hidden" name="rating" id="Rating" />
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Имя" } })
                 @Html.EditorFor(model => model.SurName, new { htmlAttributes = new { @class = "form-control", placeholder = "Фамилия" } })
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
@@ -38,10 +38,10 @@
                     <text style="margin-right: 7px;">Оцените нашу работу:</text>
                     @for (int i = 1; i < 6; i++)
                     {
-                        <span class="fa fa-star fa-lg" id="Rate@(i)" onclick="CRate(@i)" onmouseover="CRateOver(@i)" onmouseout="CRateOut(@i)"></span>
+                        <i class="fa fa-star-o fa-lg" id="Rate@(i)" onclick="CRate(@i)" onmouseover="CRateOver(@i)" onmouseout="CRateOut(@i)"></i>
                     }
                 </div>
-                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", style = "overflow-x: hidden;", rows = 7, placeholder = "Сообщение" })
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", style = "overflow-x: hidden;", rows = 3, placeholder = "Сообщение" })
 
             </div>
         </div>

@@ -1,14 +1,4 @@
 ﻿@model GoProShop.ViewModels.ProductVM
-@{
-    var options = new AjaxOptions
-    {
-        OnSuccess = "SuccessShoppingCartHandler",
-        HttpMethod = "GET",
-        InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "shopping-cart"
-    };
-}
-
 <div class="col-md-3">
     <div class="catalog-item-box">
         <div class="catalog-item-box-header">
@@ -22,22 +12,50 @@
             }
         </div>
         <div class="catalog-item-box-body">
-            <p><a href="@Url.Action("ViewProduct","Product", new { productId = Model.Id })" style="font-size: 13px; width: 190px;">@Model.Name</a></p>
+            <h5 class="text-left"><strong>@Model.Price руб.</strong></h5>
+
+            <p><a href="@Url.Action("ViewProduct","Product", new { productId = Model.Id })" style="font-size: 13px; width: 190px;"><strong>@Model.Name</strong></a></p>
+
             @if (Model.Status == GoProShop.Enums.ProductStatus.Available)
             {
-                <p class="text-success">В наличии</p>
+                <span class="text-success">В наличии</span>
             }
             else
             {
-                <p class="text-danger">Под заказ</p>
+                <span class="text-danger">Под заказ</span>
             }
-            <p><span class="badge">@Model.Price руб.</span></p>
         </div>
         <div class="catalog-item-box-footer">
-            @Ajax.ActionLink("Купить", "AddToCart", "Cart", new { id = Model.Id }, options, new { @class = "btn btn-success btn-block catalog-item-box-btn" })
+            <div style="height: 27px">
+
+
+                @if (Model.AverageRating != null)
+                {
+                    var lastRatedItem = (int)Model.AverageRating;
+                    <div class="form-inline text-left" style="padding-bottom: 8px;">
+                        @for (int i = 1; i < 6; i++)
+                        {
+                            if (i <= lastRatedItem)
+                            {
+                                <span class="fa fa-star fa-star-selected"></span>
+                            }
+                            else if ((i - 1) == lastRatedItem
+                            && Model.AverageRating % 1 != 0)
+                            {
+                                <span class="fa fa-star-half-o fa-star-selected"></span>
+                            }
+                            else
+                            {
+                                <span class="fa fa-star-o"></span>
+                            }
+                        }
+                        <a href="@Url.Action("ViewProduct","Product", new { productId = Model.Id, tab = "feedbacks" })" style="padding-left: 7px;">Отзывы(@Model.FeedbackAmount)</a>
+                    </div>
+                }
+            </div>
+            <div style="height: 60px">
+                <a class="btn btn-success btn-block" href="@Url.Action("AddToCart", "Cart", new {id = Model.Id })" onclick="addToCart(event, this)">Купить</a>
+            </div>
         </div>
     </div>
 </div>
-
-
-

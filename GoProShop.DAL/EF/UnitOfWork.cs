@@ -9,6 +9,7 @@ using GoProShop.DAL.Entities;
 using GoProShop.DAL.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
+using System.Data.Entity;
 
 namespace GoProShop.DAL.EF
 {
@@ -69,6 +70,8 @@ namespace GoProShop.DAL.EF
 
 
         public IAuthenticationManager AuthenticationManager { get; set; }
+
+        public Database Database => _context.Database;
 
         public async Task Commit()
             => await _context.SaveChangesAsync();

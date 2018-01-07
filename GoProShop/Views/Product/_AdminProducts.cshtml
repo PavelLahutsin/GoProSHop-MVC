@@ -4,7 +4,7 @@
 }
 <div>
     <div class="form-inline" style="padding-bottom: 15px; padding-top: 15px">
-        <button class="btn btn-success btn-sm" onclick="mainModalClickButtonHandler(event)" style="font-size: 13px !important"><i class="fa fa-plus" style="padding-right: 7px;"></i>Добавить</button>
+        <a href="@Url.Action("Create","Product")" onclick="openModal(event, this)" class="btn btn-success btn-sm"><i class="fa fa-plus" style="padding-right: 7px;"></i>Добавить</a>
         <div class="input-group pull-right fo" style="max-width: 230px">
             <input id="email" type="text" class="form-control" name="email" placeholder="Поиск...">
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
@@ -72,8 +72,8 @@
                     </td>
 
                     <td width="15%">
-                        <a class="btn btn-default btn-sm" onclick="mainModalClickHandler(event, this,@item.Id)" href="@Url.Action("Edit", "Product")"><span class="fa fa-pencil-square-o"></span> </a>
-                        <a class="btn btn-default btn-sm" onclick="deleteItemClickHandler(event, this,@item.Id)" href="@Url.Action("Delete", "Product")"><span class="fa fa-trash-o text-danger"></span> </a>
+                        <a class="btn btn-default btn-sm" onclick="openModal(event, this)" href="@Url.Action("Edit", "Product", new { id = item.Id })"><span class="fa fa-pencil-square-o"></span> </a>
+                        <a class="btn btn-default btn-sm" onclick="deleteProduct(event, this)" href="@Url.Action("Delete", "Product", new { id = item.Id })"><span class="fa fa-trash-o text-danger"></span> </a>
                     </td>
                 </tr>
                 counter++;

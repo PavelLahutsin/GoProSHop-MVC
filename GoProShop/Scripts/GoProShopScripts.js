@@ -1,4 +1,4 @@
-﻿function mainModalClickCartHandler(element, event) {
+﻿function openModal(event, element) {
     $.ajaxSetup({ cache: false });
     event.preventDefault();
     $.get(element.href, function (data) {
@@ -7,50 +7,59 @@
     });
 }
 
-function mainModalClickButtonHandler(event) {
+function getMethodClickHandler(event, element, elementToUpdate) {
     $.ajaxSetup({ cache: false });
     event.preventDefault();
-    $.get('/Product/Create', function (data) {
-        $('#mainDialogContent').html(data);
-        $('#mainModal').modal('show');
+    $.get(element.href, function (data) {
+        $(elementToUpdate).html(data);
     });
 }
 
-function viewFeedbackClickHandler(event, element, elementId) {
+function loginClickHandler(event, element) {
+    $.ajaxSetup({ cache: false });
+    event.preventDefault();
+    $.get(element.href, function (data) {
+        $('#dialogContent').html(data);
+        $('#loginModal').modal('show');
+    });
+}
+
+function editFeedback(event, element, elementId) {
     event.preventDefault();
     $.get('/Feedback/View/', { id: elementId }, function (result) {
-        $('#pending-feedback-count').html(result.Count);
-        $.get(element.href, { id: elementId }, function (data) {
+        $('#pending-feedback-count').text(result.Count);
+        $.get(element.href, function (data) {
             $('#mainDialogContent').html(data);
             $('#mainModal').modal('show');
         });
     });
 }
 
-function mainModalClickHandler(event, element, elementId) {
+function deleteProduct(event, element) {
     $.ajaxSetup({ cache: false });
     event.preventDefault();
-    $.get(element.href, { id: elementId }, function (data) {
-        $('#mainDialogContent').html(data);
-        $('#mainModal').modal('show');
+    $.get(element.href, function (data) {
+        $('#products').html(data);
     });
 }
-function deleteItemClickHandler(event, element, elementId) {
+
+function deleteFeedback(event, element, elementId) {
     $.ajaxSetup({ cache: false });
     event.preventDefault();
-    $.get(element.href, { id: elementId }, function (data) {
-        var alertElement;
+    $.get(element.href, function (data) {
         if (data.IsSuccess) {
             $.get('/Feedback/View/', { id: elementId }, function (dataResult) {
-                $('#pending-feedback-count').html(dataResult.Count);
+                $('#pending-feedback-count').text(dataResult.Count);
             });
-            updateAlertMessage(data.Message);
+           
             $.get('Feedback/GetAdminFeedbacks', function (dataResult) {
                 $('#admin-feedbacks').html(dataResult);
             });
+            updateAlertMessage(data.Message);
         }
     });
 };
+
 
 function updateFeedbacks(data) {
     if (data.IsSuccess) {
@@ -67,25 +76,12 @@ function updateAlertMessage(message) {
     $('#alert-message').html(result);
 }
 
-
-
-function SuccessShoppingCartHandler(data) {
-    if (data.success) {
-        $.get('/Cart/Index/', function (partialView) {
-            $('#shopping-cart').html(partialView);
-        });
-    }
-};
-
 function unloadModal(data) {
     if (data.success) {
         $('#loginModal').modal('hide');
         window.location.reload(true);
     }
 };
-
-
-
 
 if ($('#scrollToTop').length) {
     var scrollTrigger = 300, // px
@@ -116,39 +112,43 @@ function scrollToTop() {
 function CRate(r) {
     $("#Rating").val(r);
     for (var i = 1; i <= r; i++) {
-        $("#Rate" + i).addClass('fa-star-selected');
+        $("#Rate" + i).removeClass('fa-star-o');
+        $("#Rate" + i).addClass('fa-star fa-star-selected');
     }
     for (var i = r + 1; i <= 5; i++) {
-        $("#Rate" + i).removeClass('fa-star-selected');
+        $("#Rate" + i).removeClass('fa-star fa-star-selected');
+        $("#Rate" + i).addClass('fa-star-o');
     }
 }
 
 function CRateOver(r) {
     for (var i = 1; i <= r; i++) {
-        $("#Rate" + i).addClass('fa-star-selected');
+        $("#Rate" + i).removeClass('fa-star-o');
+        $("#Rate" + i).addClass('fa-star fa-star-selected');
     }
 }
 
 function CRateOut(r) {
     for (var i = 1; i <= r; i++) {
-        $("#Rate" + i).removeClass('fa-star-selected');
+        $("#Rate" + i).removeClass('fa-star fa-star-selected');
+        $("#Rate" + i).addClass('fa-star-o');
     }
 }
 
 function CRateSelected() {
     var setRating = $("#Rating").val();
     for (var i = 1; i <= setRating; i++) {
-        $("#Rate" + i).addClass('fa-star-selected');
+        $("#Rate" + i).removeClass('fa-star-o');
+        $("#Rate" + i).addClass('fa-star fa-star-selected');
     }
 }
-// ================================== EVENTS ======================================
 
 function adminTabClickHandler(event, element) {
     var $this = $(this);
     $this.addClass('active');
     event.preventDefault();
-    $.get(element.href, function (partialView) {
-        $('#adminContent').html(partialView);
+    $.get(element.href, function (data) {
+        $('#adminContent').html(data);
     });
 };
 
@@ -156,28 +156,35 @@ function productTabClickHandler(event, element, elementId) {
     event.preventDefault();
 
     var $this = $(this);
-    var viewProductContent = $('#view-product-content');
 
     $this.addClass('active');
     $.get(element.href, { productId: elementId }, function (partialView) {
-        viewProductContent.html(partialView);
+        $('#view-product-content').html(partialView);
     });
 };
 
-function loginClickHandler(event, element) {
+function addToCart(event, element) {
     $.ajaxSetup({ cache: false });
     event.preventDefault();
     $.get(element.href, function (data) {
-        $('#dialogContent').html(data);
-        $('#loginModal').modal('show');
+        $('#shopping-cart span.badge').text(data.Quantity);
     });
 }
 
-function getMethodClickHandler(event, element, elementToUpdate) {
+function deleteCartItemModal(event, element) {
+
+    var shoppingCartBadge = $('#shopping-cart span.badge');
     $.ajaxSetup({ cache: false });
     event.preventDefault();
+
     $.get(element.href, function (data) {
-        $(elementToUpdate).html(data);
+        $('#mainDialogContent').html(data);
+        var quantity = shoppingCartBadge.text();
+
+        if (quantity !== '0') {
+            quantity = quantity - 1;
+            shoppingCartBadge.text(quantity);
+        }
     });
 }
 

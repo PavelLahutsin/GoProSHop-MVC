@@ -14,12 +14,13 @@
             <div class="well well-sm">
                 <text style="padding-right: 15px; display: inline;"><strong>Cначала:</strong></text>
                 <ul class="catalog-sort-nav">
-                    <li>@Ajax.ActionLink("Дешевые", "UserProducts", "Product", new { sortCriteria = "asc", id = Model?.SubGroupId }, options, new { @class = "badge" })</li>
+                    <li>@Ajax.ActionLink("Популярные", "UserProducts", "Product", new { sortCriteria = "rate", id = Model?.SubGroupId }, options, new { @class = "badge" })</li>
+                    <li>@Ajax.ActionLink("Дешевые", "UserProducts", "Product", new { sortCriteria = "asc", id = Model?.SubGroupId }, options)</li>
                     <li>@Ajax.ActionLink("Дорогие", "UserProducts", "Product", new { sortCriteria = "desc", id = Model?.SubGroupId }, options)</li>
                 </ul>
             </div>
             <div id="products">
-                @Html.Partial("_UserProducts", Model.Products)
+                @Html.Action("UserProducts","Product", new { id = Model?.SubGroupId })
             </div>
         </div>
     </div>

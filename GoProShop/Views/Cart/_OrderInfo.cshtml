@@ -1,0 +1,58 @@
+﻿@model GoProShop.ViewModels.Cart
+
+<div class="order-box">
+    <div class="order-box-header">
+        <h5>В вашей корзине <span style="color: #428bca; font-weight: 700; font-size: 17px;">@Model.Count товара</span></h5>
+    </div>
+    <div class="order-box-body">
+        <table class="table-condensed">
+            @foreach (var cartItem in Model.CartItems)
+            {
+                <tr>
+                    <td width="80" class="text-center">
+                        @if (cartItem.Product.MimeType == null)
+                        {
+                            <img height="40" width="50" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
+                        }
+                        else
+                        {
+                            <img height="50" width="60" src="@Url.Action("GetImage", "Product", new {productId = cartItem.Product.Id})" alt="Фото">
+                        }
+                    </td>
+                    <td>
+                        <h5 style="font-weight: 800">@cartItem.Product.Name</h5>
+                        <div class="text-muted">
+                            <table>
+                                <tr>
+                                    <td>Количество: </td>
+                                    <td>@cartItem.Quantity шт.</td>
+                                </tr>
+                                <tr>
+                                    <td>Цена: </td>
+                                    <td>@cartItem.Product.Price</td>
+                                </tr>
+                                <tr>
+                                    <td>Наличие: </td>
+                                    <td>
+                                        @if (cartItem.Product.Status == GoProShop.Enums.ProductStatus.Available)
+                                        {
+                                            <span class="text-success">В наличии</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-danger">Под заказ</span>
+                                        }
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="order-box-footer">
+        <text class="text-left">ИТОГО:</text>
+        <text class="pull-right" style="font-size: 30px; font-weight: 800">@Model.TotalSum руб.</text>
+    </div>
+</div>

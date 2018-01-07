@@ -1,0 +1,36 @@
+﻿@model GoProShop.ViewModels.OrderVM
+@{
+    var options = new AjaxOptions
+    {
+        UpdateTargetId = "order-content",
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace
+    };
+}
+<div id="order-content">
+    @using (Ajax.BeginForm("Create", "Order", null, options))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert-danger" style="border-radius: 5px">
+                    @Html.ValidationSummary(false, null, new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Label("Основная информация", new { @class = "col-md-12"})
+                @Html.EditorFor(model => model.Customer.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Имя" } })
+                @Html.EditorFor(model => model.Customer.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Емейл" } })
+                @Html.EditorFor(model => model.Customer.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Телефон" } })
+                @Html.EditorFor(model => model.Customer.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Адрес доставки" } })
+                @Html.EditorFor(model => model.OrderDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Дата" } })
+                @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", style = "overflow-x: hidden;", rows = 7, placeholder = "Комментарий" })
+            </div>
+        </div>
+    }
+</div>
+
+
+

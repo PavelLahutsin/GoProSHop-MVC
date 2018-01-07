@@ -33,7 +33,7 @@
             {
                 <tr>
                     <td>
-                        <a class="text-left" href="@Url.Action("Edit","Feedback")" onclick="viewFeedbackClickHandler(event, this,@item.Id)">
+                        <a class="text-left" href="@Url.Action("Edit","Feedback", new { id = @item.Id })" onclick="editFeedback(event, this,@item.Id)">
                             @item.Name
                         </a>
                         @if (!item.IsViewed)
@@ -64,8 +64,8 @@
 
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-default btn-sm" onclick="viewFeedbackClickHandler(event, this,@item.Id)" href="@Url.Action("Edit", "Feedback")"><span class="fa fa-pencil-square-o"></span> </a>
-                        <a class="btn btn-default btn-sm" onclick="deleteItemClickHandler(event, this, @item.Id, '#admin-feedbacks','#alert-message')" href="@Url.Action("Delete", "Feedback")"><span class="fa fa-trash-o text-danger"></span> </a>
+                        <a class="btn btn-default btn-sm" onclick="editFeedback(event, this,@item.Id)" href="@Url.Action("Edit", "Feedback", new { id = @item.Id })"><span class="fa fa-pencil-square-o"></span> </a>
+                        <a class="btn btn-default btn-sm" onclick="deleteFeedback(event, this, @item.Id)" href="@Url.Action("Delete", "Feedback", new { id = @item.Id })"><span class="fa fa-trash-o text-danger"></span> </a>
                     </td>
                 </tr>
             }

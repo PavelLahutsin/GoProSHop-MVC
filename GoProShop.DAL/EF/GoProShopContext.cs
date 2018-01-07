@@ -1,6 +1,5 @@
 ﻿using GoProShop.DAL.Interfaces;
 using System.Data.Entity;
-using System.Security.Principal;
 using GoProShop.DAL.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 
