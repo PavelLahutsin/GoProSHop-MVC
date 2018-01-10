@@ -10,6 +10,10 @@ namespace GoProShop.BLL.DTO
 
         public Condition Condition { get; set; }
 
+        public DeliveryType DeliveryType { get; set; }
+
+        public PaymentMethod PaymentMethod { get; set; }
+
         public int CustomerId { get; set; }
 
         public decimal TotalPrice { get; set; }

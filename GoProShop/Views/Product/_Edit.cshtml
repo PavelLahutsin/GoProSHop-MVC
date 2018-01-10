@@ -96,17 +96,14 @@
             data: formdata,
             processData: false,
             contentType: false,
-            success: function (result) {               
-                if (result.success) {
-                    $("#mainModal").modal('hide');
-                    $.get('/Product/SubGroupAdminProducts/', { id: result.groupId }, function (data) {
-                        $('#products').html(data);
-                    });
-                }
-                else {
-                    $('#modalBody').html(result);
-                }
+            success: function (result) {     
+                $('#products').html(result);
+                $("#mainModal").modal('hide');
+            },
+            error: function (error) {
+                $('#modalBody').html(error.responseText);
             }
+
         });
     });
 

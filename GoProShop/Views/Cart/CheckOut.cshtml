@@ -8,13 +8,22 @@
     };
 }
 
-<div class="container" style="padding-top: 25px;">
-    <div class="row">
-        <div class="col-md-12">
-            <h3 style="margin-top: 0; font-weight: 400; padding-bottom: 7px;">Оформление заказа</h3>
+<div class="container" style="padding-top: 50px; padding-bottom: 50px;">
+    @*<div class="row">
+        <div class="col-md-8 col-md-offset-5">
+            <h3 style="margin-top: 0; font-weight: 300; padding-bottom: 7px;">Оформление заказа</h3>
         </div>
-    </div>
+    </div>*@
     <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="order-box-content">
+                        @Html.Action("OrderInfo", "Cart")
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-12">
@@ -67,17 +76,8 @@
                             </tbody>
                         </table>
                         <div class="col-md-12">
-                            @Ajax.ActionLink("Продолжить", "Create", "Order", null, options, new { @class = "btn btn-success btn-sm pull-right" })
+                            @Ajax.ActionLink("Продолжить", "Create", "Order", null, options, new { @class = "btn btn-success btn-sm pull-right", style = "height: 40px; padding-top: 8px;" })
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="order-box-content">
-                        @Html.Action("OrderInfo", "Cart")
                     </div>
                 </div>
             </div>

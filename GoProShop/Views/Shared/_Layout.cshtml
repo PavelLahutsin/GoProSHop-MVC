@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/bundles/styles")
-    @Scripts.Render("~/bundles/jquery-head")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
     <div class="container-fluid" style="font-family: 'Open Sans', 'sans-serif';">
@@ -107,8 +108,11 @@
         <a href="#" id="scrollToTop"><span class="fa fa-angle-up fa-2x"></span></a>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz7SKCEEmzuiQnfkQGqhixSYyqiUi23xY&callback=myMap"></script>
-    @Scripts.Render("~/bundles/jquery")
 
-    
+    @Scripts.Render("~/bundles/jquery-val")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/GoProShop")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

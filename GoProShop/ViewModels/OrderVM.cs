@@ -7,6 +7,10 @@ namespace GoProShop.ViewModels
     public class OrderVM : IdProvider
     {
         public DateTime OrderDate { get; set; }
+        
+        public DeliveryType DeliveryType { get; set; }
+
+        public PaymentMethod PaymentMethod { get; set; }
 
         public Condition Condition { get; set; }
 

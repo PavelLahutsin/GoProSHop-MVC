@@ -145,12 +145,8 @@ namespace GoProShop.Controllers
             }
 
             await _productService.UpdateAsync(Mapper.Map<ProductDTO>(model));
-            return Json(new
-            {
-                success = true,
-                groupId = model.ProductSubGroupId
-            },
-            JsonRequestBehavior.AllowGet);
+
+            return RedirectToAction("SubGroupAdminProducts", new { model.ProductSubGroupId });
         }
 
         public async Task<FileContentResult> GetImage(int productId)

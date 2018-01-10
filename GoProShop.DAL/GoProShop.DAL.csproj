@@ -77,7 +77,9 @@
     <Compile Include="Entities\ApplicationRole.cs" />
     <Compile Include="Entities\Feedback.cs" />
     <Compile Include="Entities\ProductGroup.cs" />
+    <Compile Include="Enums\DeliveryType.cs" />
     <Compile Include="Enums\FeedbackStatus.cs" />
+    <Compile Include="Enums\PaymentMethod.cs" />
     <Compile Include="Enums\ProductStatus.cs" />
     <Compile Include="Identity\ApplicationRoleManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
@@ -108,6 +110,10 @@
     <Compile Include="Migrations\201801071837446_UpdateOrderedProduct.cs" />
     <Compile Include="Migrations\201801071837446_UpdateOrderedProduct.Designer.cs">
       <DependentUpon>201801071837446_UpdateOrderedProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801091952596_updateOrderEntity.cs" />
+    <Compile Include="Migrations\201801091952596_updateOrderEntity.Designer.cs">
+      <DependentUpon>201801091952596_updateOrderEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801071837446_UpdateOrderedProduct.resx">
       <DependentUpon>201801071837446_UpdateOrderedProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801091952596_updateOrderEntity.resx">
+      <DependentUpon>201801091952596_updateOrderEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,9 +1,15 @@
 ﻿/* Set padding to keep content from hitting the edges */
+@import url("Home/header-carousel.css");
+@import url("Home/index.css");
+@import url("ProductGroup/side-menu.css");
+@import url("ProductGroup/footer-catalog.css");
+@import url("font-awesome.css");
+@import url("Home/header-carousel.css");
+
 .body-content {
     min-height: calc(100vh - 50px);
     font-size: 13px;
     padding-bottom: 50px;
-    background-color: rgba(236,243,249, 0.3)
 }
 
 .container {
@@ -582,6 +588,7 @@ modal-footer a {
     background-color: #fff;
 }
 
+
 .order-box-header {
     height: 50px;
     padding: 20px
@@ -620,15 +627,56 @@ modal-footer a {
 #order-content {
     width: 100%;
     min-height: 700px;
-    background-color: #fff;
+    padding-bottom: 50px;
 }
 
-    #order-content input.form-control {
+    #order-content input.form-control,
+    #order-content input.btn,
+    #order-content select.form-control {
         margin: 0 7px 14px 0;
         height: 40px;
-        min-width: 400px;
+        min-width: 500px;
+    }
+    #order-content .input-group input.form-control
+     {
+        border-right-width: 0;
+        min-width: 343px;
+        margin: 0 7px 14px 0;
+        height: 40px;
+    }
+    #order-content button.btn {
+        border-left-width: 0;
+        margin: 0 7px 14px 0;
+        height: 40px;
+        width: 50px;
     }
 
-    #order-content textarea.form-control {
-        min-width: 400px;
+        #order-content .btn .btn-default :hover{
+            background-color: transparent;
+        } 
+
+        #order-content textarea.form-control {
+            min-width: 500px;
+            margin-bottom: 14px;
+        }
+
+    #order-content label{
+        font-size: 14px;
+        padding-left: 0;
+        padding-bottom: 7px;
+    }
+    
+    
+    .left-inner-addon {
+        position: relative;
+    }
+
+    .left-inner-addon input {
+        padding-left: 40px;
+    }
+
+    .left-inner-addon i {
+        position: absolute;
+        padding: 13px 12px;
+        pointer-events: none;
     }

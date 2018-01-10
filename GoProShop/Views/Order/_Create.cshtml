@@ -8,7 +8,7 @@
     };
 }
 <div id="order-content">
-    @using (Ajax.BeginForm("Create", "Order", null, options))
+    @using (Ajax.BeginForm("Create", "Order",null, options))
     {
         @Html.AntiForgeryToken()
         <div class="row">
@@ -19,18 +19,38 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                @Html.Label("Основная информация", new { @class = "col-md-12"})
+            <div class="col-md-6 col-md-offset-1">
+                @Html.Label("Cпособ оплаты", new { @class = "col-md-12" })
+                @Html.EnumDropDownListFor(model => model.PaymentMethod, "Выберите способ оплаты", new { @class = "form-control" })
+                @Html.Label("Основная информация", new { @class = "col-md-12" })
                 @Html.EditorFor(model => model.Customer.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Имя" } })
                 @Html.EditorFor(model => model.Customer.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Емейл" } })
                 @Html.EditorFor(model => model.Customer.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Телефон" } })
+                @Html.Label("Cпособ доставки", new { @class = "col-md-12" })
+                @Html.EnumDropDownListFor(model => model.DeliveryType, "Выберите способ доставки", new { @class = "form-control" })
                 @Html.EditorFor(model => model.Customer.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Адрес доставки" } })
-                @Html.EditorFor(model => model.OrderDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Дата" } })
+                <div class="left-inner-addon ">
+                    <i class="fa fa-calendar fa-lg"></i>
+                    @Html.EditorFor(model => model.OrderDate, new { htmlAttributes = new { @class = "form-control date datepicker", placeholder = "Дата доставки" } })
+                </div>
+                @Html.Label("Комментарий", new { @class = "col-md-12" })
                 @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", style = "overflow-x: hidden;", rows = 7, placeholder = "Комментарий" })
+
+
+                <input type="submit" class="btn btn-primary" value="Оформить" />
             </div>
         </div>
     }
 </div>
+
+<script>
+    $(function () {
+        $(".datepicker").datetimepicker({
+            locale: 'ru'
+        });
+    });
+
+</script>
 
 
 

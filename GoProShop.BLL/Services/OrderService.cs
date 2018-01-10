@@ -8,7 +8,6 @@ using System.Linq;
 using AutoMapper;
 using GoProShop.DAL.Entities;
 using System.Data.Entity;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace GoProShop.BLL.Services
@@ -22,7 +21,7 @@ namespace GoProShop.BLL.Services
             _uof = uof ?? throw new ArgumentNullException(nameof(uof));
         }
 
-        public async Task<OrderDTO> Create(OrderDTO orderDTO)
+        public async Task<OrderDTO> CreateAsync(OrderDTO orderDTO, IEnumerable<CartItemDTO> cartItems)
         {
             using (var transaction = _uof.Database.BeginTransaction())
             {
@@ -38,10 +37,18 @@ namespace GoProShop.BLL.Services
                     }
 
                     var order = Mapper.Map<Order>(orderDTO);
+                    order.TotalPrice = cartItems.Sum(x => x.Product.Price);
                     _uof.Orders.Create(order);
                     await _uof.Commit();
 
-                    var productsOrdered = Mapper.Map<IEnumerable<OrderedProductDTO>, IEnumerable<OrderedProduct>>(orderDTO.OrdersList);
+                    var productsOrdered = cartItems.Select(x => new OrderedProduct
+                    {
+                        OrderId = order.Id,
+                        ProductId = x.Product.Id,
+                        Price = x.Product.Price,
+                        Quantity = x.Quantity
+                    });
+
                     _uof.ProductsOrdered.Entities.AddRange(productsOrdered);
                     await _uof.Commit();
 

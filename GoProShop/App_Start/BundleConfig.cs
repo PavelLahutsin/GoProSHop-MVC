@@ -7,30 +7,37 @@ namespace GoProShop
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                        "~/Scripts/jquery-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+                        "~/Scripts/modernizr-*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js",
-                      "~/Scripts/modernizr-*",
+                      "~/Scripts/moment.js",
+                       "~/Scripts/moment-with-locales.js",
+                      "~/Scripts/bootstrap-datetimepicker.js",
+                      "~/Scripts/respond.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery-val").Include(
                       "~/Scripts/jquery.validate*",
-                      "~/Scripts/jquery-3.2.1.js",
-                      "~/Scripts/jquery.unobtrusive-ajax.min.js",
+                      "~/Scripts/jquery.unobtrusive-ajax.min.js"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                   "~/Scripts/jquery-ui-{version}.js"
+                   ));
+
+            bundles.Add(new ScriptBundle("~/bundles/GoProShop").Include(
                       "~/Scripts/GoProShopScripts.js"
                       ));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery-head").Include(
-                "~/Scripts/jquery-3.2.1.min.js"
-                ));
-
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/font-awesome.css",
-                      "~/Content/Colors.css",
-                      "~/Content/Home/header-carousel.css",
-                      "~/Content/Home/index.css",
-                      "~/Content/ProductGroup/side-menu.css",
-                      "~/Content/ProductGroup/footer-catalog.css"));
+                        "~/Content/bootstrap-datetimepicker.css",
+                      "~/Content/themes/base/jquery-ui.css",
+                      "~/Content/site.css"));
         }
     }
 }
