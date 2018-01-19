@@ -29,7 +29,7 @@ namespace GoProShop.BLL.Services
                 {
                     var user = await _uof.Customers.Entities.FirstOrDefaultAsync(x => x.Email == orderDTO.Customer.Email);
 
-                    if(user == null)
+                    if (user == null)
                     {
                         var mappedUser = Mapper.Map<Customer>(orderDTO.Customer);
                         user = _uof.Customers.Create(mappedUser);
@@ -46,7 +46,8 @@ namespace GoProShop.BLL.Services
                         OrderId = order.Id,
                         ProductId = x.Product.Id,
                         Price = x.Product.Price,
-                        Quantity = x.Quantity
+                        Quantity = x.Quantity,
+                        Product = Mapper.Map<Product>(x.Product)
                     });
 
                     _uof.ProductsOrdered.Entities.AddRange(productsOrdered);
@@ -56,12 +57,20 @@ namespace GoProShop.BLL.Services
 
                     return Mapper.Map<OrderDTO>(order);
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     transaction.Rollback();
                     return null;
                 }
-            }   
+            }
+        }
+
+        public async Task<OrderDTO> GetAsync(int id)
+        {
+            var order = await _uof.Orders.GetAsync(id);
+            var orderDTO = Mapper.Map<OrderDTO>(order);
+
+            return orderDTO;
         }
     }
 }

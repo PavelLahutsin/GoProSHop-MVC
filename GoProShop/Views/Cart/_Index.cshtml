@@ -3,7 +3,7 @@
 <div class="nav navbar-nav navbar-right">
     <div id="shopping-cart">
         <a class="btn btn-primary btn-sm navbar-btn" href="@Url.Action("CartView","Cart")" onclick="openModal(event,this)">
-            <span class="fa fa-shopping-cart fa-lg" style="padding-right:7px"></span>Корзина
+            <span class="fa fa-shopping-basket fa-lg" style="padding-right:7px"></span>Корзина
             @if (Model != null)
             {
                 <span class="badge"> @Model.Count </span>

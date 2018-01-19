@@ -1,56 +1,97 @@
 ﻿@model GoProShop.ViewModels.OrderVM
-@{
-    var options = new AjaxOptions
-    {
-        UpdateTargetId = "order-content",
-        HttpMethod = "POST",
-        InsertionMode = InsertionMode.Replace
-    };
-}
 <div id="order-content">
-    @using (Ajax.BeginForm("Create", "Order",null, options))
+    @using (Html.BeginForm("Create", "Order", FormMethod.Post, new { id = "create-order-form" }))
     {
         @Html.AntiForgeryToken()
-        <div class="row">
-            <div class="col-md-12">
-                <div class="alert-danger" style="border-radius: 5px">
-                    @Html.ValidationSummary(false, null, new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
+
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
-                @Html.Label("Cпособ оплаты", new { @class = "col-md-12" })
-                @Html.EnumDropDownListFor(model => model.PaymentMethod, "Выберите способ оплаты", new { @class = "form-control" })
+                <div class="form-group">
+                    @Html.Label("Cпособ оплаты", new { @class = "col-md-12" })
+                    @Html.EnumDropDownListFor(model => model.PaymentMethod, "Выберите способ оплаты", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PaymentMethod, null, new { @class = "text-danger" })
+                </div>
+
                 @Html.Label("Основная информация", new { @class = "col-md-12" })
                 @Html.EditorFor(model => model.Customer.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Имя" } })
-                @Html.EditorFor(model => model.Customer.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Емейл" } })
-                @Html.EditorFor(model => model.Customer.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Телефон" } })
+
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Customer.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Емейл" } })
+                    @Html.ValidationMessageFor(model => model.Customer.Email, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Customer.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Телефон" } })
+                    @Html.ValidationMessageFor(model => model.Customer.Phone, null, new { @class = "text-danger" })
+                </div>
+
                 @Html.Label("Cпособ доставки", new { @class = "col-md-12" })
                 @Html.EnumDropDownListFor(model => model.DeliveryType, "Выберите способ доставки", new { @class = "form-control" })
                 @Html.EditorFor(model => model.Customer.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Адрес доставки" } })
-                <div class="left-inner-addon ">
-                    <i class="fa fa-calendar fa-lg"></i>
-                    @Html.EditorFor(model => model.OrderDate, new { htmlAttributes = new { @class = "form-control date datepicker", placeholder = "Дата доставки" } })
+                <div class="form-group">
+                    <div class="left-inner-addon ">
+                        <i class="fa fa-calendar fa-lg"></i>
+                        @Html.EditorFor(model => model.OrderDate, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "Дата доставки" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.OrderDate, null, new { @class = "text-danger" })
                 </div>
+
+
                 @Html.Label("Комментарий", new { @class = "col-md-12" })
                 @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", style = "overflow-x: hidden;", rows = 7, placeholder = "Комментарий" })
 
 
-                <input type="submit" class="btn btn-primary" value="Оформить" />
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-spinner fa-lg fa-pulse fa-fw"></i>
+                    Оформить
+                </button>
             </div>
         </div>
     }
 </div>
-
+@Scripts.Render("~/bundles/jquery-val")
 <script>
-    $(function () {
-        $(".datepicker").datetimepicker({
-            locale: 'ru'
-        });
+    $('#create-order-form').submit(function (event) {
+        event.preventDefault();
+
+        $.validator.unobtrusive.parse($(this));
+        var validator = $(this).validate();
+        var form = $(this);
+        var formdata = $(form).serialize();
+
+        validator.settings.submitHandler = function (form) {
+            var spinner = $("#order-content .fa-spinner");
+            var button = $("#order-content button");
+            spinner.css("display", "inline-block");
+            button.addClass("disabled")
+           
+
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: formdata,
+
+                success: function (result) {
+                    if (result.IsSuccess) {
+                        spinner.hide();
+                        button.removeClass("disabled");
+                        window.location = result.Url;
+                    }
+                    else {
+                        spinner.hide();
+                        button.removeClass("disabled");
+                        $('#order-content').html(result);
+                    }
+                }
+            });
+        }
     });
 
+
+    $(function () {
+        $(".datepicker").datetimepicker({
+            locale: 'ru',
+            format: 'MM/DD/YYYY'
+        });
+    });
 </script>
-
-
-

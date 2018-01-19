@@ -32,5 +32,5 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DA
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.UpdatedFeedbackEntity1.resources
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.UpdateFeedback.resources
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.UpdateOrderedProduct.resources
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csprojResolveAssemblyReference.cache
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.updateOrderEntity.resources
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csprojResolveAssemblyReference.cache

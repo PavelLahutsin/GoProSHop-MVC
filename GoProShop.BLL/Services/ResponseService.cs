@@ -4,6 +4,16 @@ namespace GoProShop.BLL.Services.Interfaces
 {
     public class ResponseService : IResponseService
     {
+        public ResponseDTO Create(bool isSuccess, string message, string url)
+        {
+            return new ResponseDTO
+            {
+                IsSuccess = isSuccess,
+                Message = message,
+                Url = url
+            };
+        }
+
         public ResponseDTO Create(bool isSuccess, string message)
         {
             return new ResponseDTO

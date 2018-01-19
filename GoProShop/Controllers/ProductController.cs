@@ -136,6 +136,7 @@ namespace GoProShop.Controllers
             {
                 return PartialView("_Edit", model);
             }
+        
 
             if (uploadedFile != null)
             {

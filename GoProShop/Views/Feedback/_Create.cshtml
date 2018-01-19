@@ -14,13 +14,6 @@
     {
         @Html.AntiForgeryToken()
         <div class="row">
-            <div class="col-md-12">
-                <div class="alert-danger" style="border-radius: 5px">
-                    @Html.ValidationSummary(false, null, new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-6">
                 @if (ViewBag.ProductId != null)
                 {
@@ -29,20 +22,23 @@
 
                 <input type="hidden" name="rating" id="Rating" />
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Имя" } })
+                @Html.ValidationMessageFor(model => model.Name, null, new { @class = "text-danger"})
                 @Html.EditorFor(model => model.SurName, new { htmlAttributes = new { @class = "form-control", placeholder = "Фамилия" } })
+                @Html.ValidationMessageFor(model => model.SurName, null, new { @class = "text-danger" })
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
                 <input type="submit" class="btn btn-primary btn-block" value="Отправить" />
             </div>
             <div class="col-md-6">
-                <div class="form-inline" style="height: 40px; padding-top: 7px; margin-bottom: 7px;" onmouseout="CRateSelected()">
+                <div class="form-inline" style="height: 40px; margin-top: 8px; margin-bottom: 8px;" onmouseout="CRateSelected()">
                     <text style="margin-right: 7px;">Оцените нашу работу:</text>
                     @for (int i = 1; i < 6; i++)
                     {
                         <i class="fa fa-star-o fa-lg" id="Rate@(i)" onclick="CRate(@i)" onmouseover="CRateOver(@i)" onmouseout="CRateOut(@i)"></i>
                     }
                 </div>
-                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", style = "overflow-x: hidden;", rows = 3, placeholder = "Сообщение" })
-
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", style = "overflow-x: hidden;", rows = 7, placeholder = "Сообщение" })
+                @Html.ValidationMessageFor(model => model.Message, null, new { @class = "text-danger" })
             </div>
         </div>
     }

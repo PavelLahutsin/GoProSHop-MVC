@@ -10,10 +10,13 @@ namespace GoProShop.Controllers
     public class CartController : Controller
     {
         private readonly IProductService _productService;
+        private readonly IResponseService _responseService;
 
-        public CartController(IProductService productService)
+        public CartController(IProductService productService,
+            IResponseService responseService)
         {
             _productService = productService ?? throw new ArgumentNullException(nameof(productService));
+            _responseService = responseService ?? throw new ArgumentNullException(nameof(responseService));
         }
 
         public async Task<ActionResult> AddToCart(int id)
@@ -28,15 +31,23 @@ namespace GoProShop.Controllers
 
             return Json(new
             {
+                IsSuccess = true,
                 Quantity = GetCart.Count
-            }, 
+            },
             JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ReduceCartItem(int id)
+        {
+            GetCart.Reduce(id);
+            var responseDTO = _responseService.Create(true, "");
+            return Json(Mapper.Map<ResponseVM>(responseDTO), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult RemoveCartItem(int id)
         {
             GetCart.Remove(id);
-            return RedirectToAction("CartView");
+            return Json(new { Quantity = GetCart.Count}, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult CheckOut()

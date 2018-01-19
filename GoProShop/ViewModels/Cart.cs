@@ -15,7 +15,7 @@ namespace GoProShop.ViewModels
         {
             var cartItem = _cartItems.FirstOrDefault(x => x.Product.Id == product.Id);
 
-            if(cartItem == null)
+            if (cartItem == null)
             {
                 _cartItems.Add(new CartItem
                 {
@@ -34,18 +34,24 @@ namespace GoProShop.ViewModels
             _cartItems.Clear();
         }
 
-        public void Remove(int productId)
+        public void Reduce(int productId)
         {
             var cartItem = _cartItems.FirstOrDefault(x => x.Product.Id == productId);
 
-            if(cartItem?.Quantity == 1)
+            if (cartItem?.Quantity == 1)
             {
                 _cartItems.Remove(cartItem);
             }
             else
             {
                 cartItem.Quantity--;
-            }    
+            }
+        }
+
+        public void Remove(int productId)
+        {
+            var cartItem = _cartItems.FirstOrDefault(x => x.Product.Id == productId);
+            _cartItems.Remove(cartItem);
         }
 
         [Display(Name = "Итого:")]

@@ -67,6 +67,7 @@ namespace GoProShop
                 .RegisterType<ISearchService, SearchService>()
                 .RegisterType<IAdminService, AdminService>()
                 .RegisterType<IOrderService, OrderService>()
+                .RegisterType<IEmailService, EmailService>()
                 .RegisterType<IAuthenticationManager>(new InjectionFactory(x => HttpContext.Current.GetOwinContext().Authentication));
         }
     }

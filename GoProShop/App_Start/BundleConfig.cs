@@ -16,28 +16,32 @@ namespace GoProShop
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/moment.js",
-                       "~/Scripts/moment-with-locales.js",
+                      "~/Scripts/moment-with-locales.js",
                       "~/Scripts/bootstrap-datetimepicker.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/bootstrap-datetimepicker.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-val").Include(
                       "~/Scripts/jquery.validate*",
-                      "~/Scripts/jquery.unobtrusive-ajax.min.js"
+                        "~/Scripts/jquery.unobtrusive-ajax*"
+
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                    "~/Scripts/jquery-ui-{version}.js"
                    ));
 
-            bundles.Add(new ScriptBundle("~/bundles/GoProShop").Include(
-                      "~/Scripts/GoProShopScripts.js"
+            bundles.Add(new ScriptBundle("~/bundles/goproshop").Include(
+                      "~/Scripts/goproshop.js"
                       ));
 
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
                       "~/Content/bootstrap.css",
-                        "~/Content/bootstrap-datetimepicker.css",
-                      "~/Content/themes/base/jquery-ui.css",
+                      "~/Content/bootstrap-datetimepicker.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/dataTables").Include(
+                "~/Scripts/DataTables/jquery.dataTables.min.js",
+                "~/Scripts/DataTables/dataTables.bootstrap.min.js"));
         }
     }
 }

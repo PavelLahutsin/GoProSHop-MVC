@@ -1,0 +1,62 @@
+﻿@model GoProShop.ViewModels.OrderVM
+
+<div class="container container-success-order">
+    <div class="container-success-order-header">
+        <h3 class="header-text" style="font-size: 35px"> Спасибо за ваш заказ!</h3>
+        <p>Продавец скоро свяжется с вами</p>
+        <p>Номер заказа <strong>№@Model.Id</strong></p>
+    </div>
+    <div class="container-success-order-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 style="font-weight: 800; border-bottom: 1px solid #ddd; padding-bottom: 10px;">Контактные данные покупателя</h5>
+                <p>@Model.Customer.Address</p>
+                <p>@Model.Customer.Name</p>
+                <p>@Model.Customer.Email</p>
+                <p>@Model.Customer.Phone</p>
+            </div>
+            <div class="col-md-6" style="border-left: 1px solid #ddd;min-height: 350px;">
+                <h5 style="font-weight: 800">Состав заказа</h5>
+                <table class="table table-striped" style="height: 300px;">
+                    @foreach (var orderedProduct in Model.OrdersList)
+                    {
+                        <tr>
+                            <td width="80" class="text-center">
+                                @if (orderedProduct.Product.MimeType == null)
+                                {
+                                    <img height="40" width="50" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
+                                }
+                                else
+                                {
+                                    <img height="50" width="60" src="@Url.Action("GetImage", "Product", new { productId = orderedProduct.Product.Id})" alt="Фото">
+                                }
+                            </td>
+                            <td style="width: 100%">
+                                <p style="margin-bottom: 3px;">@orderedProduct.Product.Name</p>
+                                <div class="text-muted">
+                                    <table>
+                                        <tr>
+                                            <td>Количество: </td>
+                                            <td>@orderedProduct.Quantity шт.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Цена: </td>
+                                            <td>@orderedProduct.Product.Price</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <div class="order-box-footer">
+                    <text class="text-left">ИТОГО:</text>
+                    <text class="pull-right" style="font-size: 30px; font-weight: 800">@Model.TotalPrice руб.</text>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-success-order-footer">
+        <a href="@Url.Action("Index","Catalog")" class="btn btn-primary btn-lg">Продолжить покупки</a>
+    </div>
+</div>

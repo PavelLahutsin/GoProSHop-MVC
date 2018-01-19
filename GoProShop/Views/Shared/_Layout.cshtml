@@ -7,6 +7,8 @@
     @Styles.Render("~/bundles/styles")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+
 </head>
 <body>
     <div class="container-fluid" style="font-family: 'Open Sans', 'sans-serif';">
@@ -21,7 +23,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="navbar-affix" class="navbar navbar-inverse navbar-static-top header-strip" data-spy="affix" data-offset-top="26" style="z-index: 999; background-color: #1a1a1a" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -62,7 +64,7 @@
                 </div>
             </div>
         </div>
-        
+
         <footer class="footer">
             <div class="footer-inner-main">
                 <div class="container">
@@ -108,11 +110,11 @@
         <a href="#" id="scrollToTop"><span class="fa fa-angle-up fa-2x"></span></a>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz7SKCEEmzuiQnfkQGqhixSYyqiUi23xY&callback=myMap"></script>
-
     @Scripts.Render("~/bundles/jquery-val")
+
+    @Scripts.Render("~/bundles/dataTables")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/bundles/GoProShop")
+    @Scripts.Render("~/bundles/goproshop")
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -15,5 +15,7 @@ namespace GoProShop.BLL.DTO
         public decimal? Discount { get; set; }
 
         public decimal Price { get; set; }
+
+        public virtual ProductDTO Product { get; set; }
     }
 }

@@ -4,21 +4,17 @@
     var options = new AjaxOptions
     {
         HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
         UpdateTargetId = "checkout-content"
     };
 }
 
 <div class="container" style="padding-top: 50px; padding-bottom: 50px;">
-    @*<div class="row">
-        <div class="col-md-8 col-md-offset-5">
-            <h3 style="margin-top: 0; font-weight: 300; padding-bottom: 7px;">Оформление заказа</h3>
-        </div>
-    </div>*@
     <div class="row">
         <div class="col-md-4">
             <div class="row">
                 <div class="col-md-12">
-                    <div id="order-box-content">
+                    <div id="order-info">
                         @Html.Action("OrderInfo", "Cart")
                     </div>
                 </div>
@@ -59,16 +55,16 @@
                                         </td>
                                         <td width="150" class="text-center">
                                             <div class="form-inline">
-                                                <a class="btn btn-default btn-sm"><i class="fa fa-minus"></i></a>
-                                                <input class="form-control form-control-sm" value="@cartItem.Quantity" />
-                                                <a class="btn btn-default btn-sm"><i class="fa fa-plus"></i></a>
+                                                <a href="@Url.Action("ReduceCartItem","Cart", new { id = cartItem.Product.Id })" class="btn btn-default btn-sm btn-number" data-field="quantity__@(count)" data-type="minus"><i class="fa fa-minus"></i></a>
+                                                <input name="quantity__@(count)" class="form-control form-control-sm" value="@cartItem.Quantity" min="1" max="10" readonly/>
+                                                <a href="@Url.Action("AddToCart","Cart", new { id = cartItem.Product.Id })" class="btn btn-default btn-sm  btn-number" data-field="quantity__@(count)" data-type="plus" ><i class="fa fa-plus"></i></a>
                                             </div>
                                         </td>
                                         <td width="90" style="font-size: 13px;text-align: left;">
                                             @Html.DisplayFor(modelItem => cartItem.Product.Price) р.
                                         </td>
                                         <td width="100" class="text-center">
-                                            <a href="@Url.Action("RemoveCartItem","Cart", new { id = cartItem.Product.Id })" onclick="deleteCartItemModal(event, this)"><span class="fa fa-trash-o text-danger fa-lg"></span></a>
+                                            <a href="@Url.Action("RemoveCartItem","Cart", new { id = cartItem.Product.Id })" onclick="deleteCartItem(event, this)"><span class="fa fa-trash-o text-danger fa-lg"></span></a>
                                         </td>
                                     </tr>
                                     count++;
@@ -76,7 +72,7 @@
                             </tbody>
                         </table>
                         <div class="col-md-12">
-                            @Ajax.ActionLink("Продолжить", "Create", "Order", null, options, new { @class = "btn btn-success btn-sm pull-right", style = "height: 40px; padding-top: 8px;" })
+                            @Ajax.ActionLink("Продолжить", "Create", "Order", null, options, new { @class = "btn btn-success btn-sm pull-right" })
                         </div>
                     </div>
                 </div>
@@ -84,3 +80,4 @@
         </div>
     </div>
 </div>
+

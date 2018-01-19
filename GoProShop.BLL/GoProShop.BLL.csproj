@@ -110,6 +110,8 @@
     <Compile Include="DTO\CustomerDTO.cs" />
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\FeedbackService.cs" />
+    <Compile Include="Services\Interfaces\EmailService.cs" />
+    <Compile Include="Services\Interfaces\IEmailService.cs" />
     <Compile Include="Services\Interfaces\IOrderService.cs" />
     <Compile Include="Services\Interfaces\ISearchService.cs" />
     <Compile Include="Services\Interfaces\IAdminService.cs" />

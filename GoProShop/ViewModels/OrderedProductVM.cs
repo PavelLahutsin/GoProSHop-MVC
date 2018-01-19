@@ -13,5 +13,7 @@
         public decimal? Discount { get; set; }
 
         public decimal Price { get; set; }
+
+        public virtual ProductVM Product { get; set; }
     }
 }
