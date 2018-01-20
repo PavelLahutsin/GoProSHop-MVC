@@ -7,6 +7,20 @@
     });
 }
 
+function updateResponseMessage(element, response) {
+
+    if (response.IsSuccess) {
+        $(element).html('<div class="alert alert-success"><i class="fa fa-check-circle fa-lg"></i>  <span>' +
+            response.Message +
+            '</span></div>');
+
+    } else {
+        $(element).html('<div class="alert alert-danger"><i class="fa fa-exclamation-circle fa-lg"></i>  <span>' +
+            response.Message +
+            '</span></div>');
+    }
+}
+
 function getMethodClickHandler(event, element, elementToUpdate) {
     $.ajaxSetup({ cache: false });
     event.preventDefault();
@@ -51,11 +65,9 @@ function deleteFeedback(event, element, elementId) {
             $.get('/Feedback/View/', { id: elementId }, function (dataResult) {
                 $('#pending-feedback-count').text(dataResult.Count);
             });
+            $('#admin-feedbacks').load("Feedback/GetAdminFeedbacks");
 
-            $.get('Feedback/GetAdminFeedbacks', function (dataResult) {
-                $('#admin-feedbacks').html(dataResult);
-            });
-            updateAlertMessage(data.Message);
+            updateResponseMessage("#admin-feedbacks-message", data);
         }
     });
 };
@@ -69,11 +81,6 @@ function updateFeedbacks(data) {
         });
         $("#mainModal").modal('hide');
     }
-}
-
-function updateAlertMessage(message) {
-    var result = '<div class="alert alert-success alert-dismissable fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>' + message + '</strong></div>';
-    $('#alert-message').html(result);
 }
 
 function unloadModal(data) {
@@ -143,9 +150,6 @@ function CRateSelected() {
     }
 }
 
-function handleSuccessOrder(data){
-    window.location.href = data.Redirect;
-}
 
 function adminTabClickHandler(event, element) {
     var $this = $(this);
@@ -168,9 +172,13 @@ function productTabClickHandler(event, element, elementId) {
 };
 
 function addToCart(event, element) {
-    $.ajaxSetup({ cache: false });
     event.preventDefault();
+
+    var spinner = $(element).find(".fa-spinner");
+    spinner.css("display", "inline-block");
+
     $.get(element.href, function (data) {
+        spinner.hide();
         $('#shopping-cart span.badge').text(data.Quantity);
     });
 }

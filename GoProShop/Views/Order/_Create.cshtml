@@ -1,4 +1,5 @@
 ﻿@model GoProShop.ViewModels.OrderVM
+
 <div id="order-content">
     @using (Html.BeginForm("Create", "Order", FormMethod.Post, new { id = "create-order-form" }))
     {
@@ -38,60 +39,53 @@
 
 
                 @Html.Label("Комментарий", new { @class = "col-md-12" })
-                @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", style = "overflow-x: hidden;", rows = 7, placeholder = "Комментарий" })
+                @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", style = "overflow-x: hidden;", rows = 8, placeholder = "Комментарий" })
 
 
                 <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-spinner fa-lg fa-pulse fa-fw"></i>
-                    Оформить
+                    <i class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> Оформить
                 </button>
+
             </div>
         </div>
     }
 </div>
-@Scripts.Render("~/bundles/jquery-val")
 <script>
     $('#create-order-form').submit(function (event) {
         event.preventDefault();
 
-        $.validator.unobtrusive.parse($(this));
-        var validator = $(this).validate();
-        var form = $(this);
-        var formdata = $(form).serialize();
+        var formdata = new FormData($(this).get(0));
+        var spinner = $("#order-content .fa-spinner");
+        var button = $("#order-content button");
 
-        validator.settings.submitHandler = function (form) {
-            var spinner = $("#order-content .fa-spinner");
-            var button = $("#order-content button");
-            spinner.css("display", "inline-block");
-            button.addClass("disabled")
-           
+        spinner.css("display", "inline-block");
+        button.addClass("disabled");
 
-            $.ajax({
-                url: this.action,
-                type: this.method,
-                data: formdata,
-
-                success: function (result) {
-                    if (result.IsSuccess) {
-                        spinner.hide();
-                        button.removeClass("disabled");
-                        window.location = result.Url;
-                    }
-                    else {
-                        spinner.hide();
-                        button.removeClass("disabled");
-                        $('#order-content').html(result);
-                    }
+        $.ajax({
+            url: this.action,
+            type: this.method,
+            data: formdata,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                if (result.IsSuccess) {
+                    window.location.href = result.Url;
                 }
-            });
-        }
+                else {
+                    spinner.hide();
+                    button.removeClass("disabled");
+                    $('#order-content').html(result);
+                }
+            }
+        });
     });
-
 
     $(function () {
         $(".datepicker").datetimepicker({
             locale: 'ru',
-            format: 'MM/DD/YYYY'
+            format: 'DD/MM/YYYY'
         });
     });
 </script>
+
+

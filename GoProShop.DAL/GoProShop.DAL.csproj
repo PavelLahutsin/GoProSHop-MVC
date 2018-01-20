@@ -115,6 +115,10 @@
     <Compile Include="Migrations\201801091952596_updateOrderEntity.Designer.cs">
       <DependentUpon>201801091952596_updateOrderEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801190719069_dasda.cs" />
+    <Compile Include="Migrations\201801190719069_dasda.Designer.cs">
+      <DependentUpon>201801190719069_dasda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Entities\Customer.cs" />
@@ -155,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801091952596_updateOrderEntity.resx">
       <DependentUpon>201801091952596_updateOrderEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801190719069_dasda.resx">
+      <DependentUpon>201801190719069_dasda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,6 +4,7 @@ using GoProShop.BLL.Services.Interfaces;
 using GoProShop.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -35,7 +36,7 @@ namespace GoProShop.Controllers
             var orderDTO = await _orderService.GetAsync(id);
             var orderVM = Mapper.Map<OrderVM>(orderDTO);
 
-            return View(orderVM);
+            return View("~/Views/Order/SuccessOrder.cshtml", orderVM);
         }
 
         [ValidateAntiForgeryToken]
@@ -44,6 +45,7 @@ namespace GoProShop.Controllers
         {
             if (!ModelState.IsValid)
             {
+                Thread.Sleep(400);
                 return PartialView("_Create", model);
             }
 
@@ -52,7 +54,7 @@ namespace GoProShop.Controllers
                 Mapper.Map<IEnumerable<CartItem>, IEnumerable<CartItemDTO>>(session.CartItems));
             session.Clear();
 
-            await _emailService.SendSuccessOrderEmail(orderDTO);
+            await _emailService.SendSuccessOrderEmail(orderDTO.Id);
 
             return Json(_responseService.Create(true, string.Empty, Url.Action("SuccessOrder", "Order", new { id = orderDTO.Id })));
         }

@@ -2,6 +2,8 @@
 using GoProShop.BLL.Services.Interfaces;
 using GoProShop.ViewModels;
 using System;
+using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -29,6 +31,7 @@ namespace GoProShop.Controllers
             var productVM = Mapper.Map<ProductVM>(productDTO);
             GetCart.Add(productVM);
 
+            Thread.Sleep(400);
             return Json(new
             {
                 IsSuccess = true,

@@ -218,8 +218,6 @@
     <Compile Include="App_Start\StartUp.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
-    <Compile Include="Attributes\UserExistsAttribute.cs" />
-    <Compile Include="Attributes\ValidateModelAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -679,11 +677,11 @@
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -733,7 +731,6 @@
     <Content Include="Views\ProductGroup\_FooterCatalog.cshtml" />
     <Content Include="Views\ProductGroup\_UserSideMenu.cshtml" />
     <Content Include="Views\Feedback\_Create.cshtml" />
-    <Content Include="Views\Shared\_Response.cshtml" />
     <Content Include="Views\Feedback\_AdminFeedbacks.cshtml" />
     <Content Include="Views\Feedback\_Edit.cshtml" />
     <Content Include="Views\Feedback\_HomeFeedbacks.cshtml" />

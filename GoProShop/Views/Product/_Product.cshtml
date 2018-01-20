@@ -54,7 +54,9 @@
                 }
             </div>
             <div style="height: 60px">
-                <a class="btn btn-success btn-block" href="@Url.Action("AddToCart", "Cart", new {id = Model.Id })" onclick="addToCart(event, this)">Купить</a>
+                <a class="btn btn-success btn-block" href="@Url.Action("AddToCart", "Cart", new {id = Model.Id})" onclick="addToCart(event, this)">
+                    <i class="fa fa-spinner fa-pulse fa-fw"></i> Купить
+                </a>
             </div>
         </div>
     </div>

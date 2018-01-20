@@ -32,13 +32,13 @@
     }
     else
     {
-        <div class="alert alert-info">
-            <div class="row">
-                <div class="col-md-1 text-right">
-                    <i class="fa fa fa-warning fa-2x"></i>
-                </div>
-                <div class="col-md-11 text-left" style="padding-top: 3px;">
-                    На текущий момент данный товар не имеет отзывов
+        <div class="row">
+            <div class="col-md-12">
+                <div id="feedback-message">
+                    <div class="alert alert-info">
+                        <i class="fa fa-warning fa-lg"></i>
+                        <span>На текущий момент данный товар не имеет отзывов</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -49,5 +49,7 @@
     <h4 class="header-text-black">Написать отзыв</h4>
 </div>
 <div style="margin-bottom: 40px">
-    @Html.Action("Create", "Feedback", new { productId = ViewBag.ProductId })
+    <div id="create-feedback-content">
+        @Html.Action("Create", "Feedback", new { productId = ViewBag.ProductId })
+    </div>
 </div>

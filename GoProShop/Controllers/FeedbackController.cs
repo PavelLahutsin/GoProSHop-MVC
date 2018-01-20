@@ -5,6 +5,7 @@ using GoProShop.ViewModels;
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -32,7 +33,10 @@ namespace GoProShop.Controllers
 
         public ActionResult Create(int? productId)
         {
-            ViewBag.ProductId = productId.Value;
+            if (productId.HasValue)
+            {
+                ViewBag.ProductId = productId.Value;
+            }
 
             return PartialView("_Create");
         }
@@ -42,24 +46,24 @@ namespace GoProShop.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(FeedbackVM feedbackVM)
         {
-            if (feedbackVM == null)
-                throw new ArgumentNullException(nameof(feedbackVM));
-
             if (!ModelState.IsValid)
+            {
+                Thread.Sleep(300);
                 return PartialView("_Create", feedbackVM);
+            }
+               
 
             await _feedbackService.CreateAsync(Mapper.Map<FeedbackDTO>(feedbackVM));
             var response = Mapper.Map<ResponseVM>(_responseService.Create(true,
                 "Cпасибо за ваш отзыв. Нам важно ваше мнение!"));
 
-            return PartialView("~/Views/Shared/_Response.cshtml", response);
+            return Json(response);
         }
 
         public ActionResult GetProductFeedbacks(int productId, int page = 1)
         {
 
             var feedbacksDTO = _feedbackService.GetProductFeedbacks(productId);
-
             var feedbacksVM = Mapper.Map<IEnumerable<FeedbackDTO>, IEnumerable<BaseFeedbackVM>>(feedbacksDTO);
 
             ViewBag.ProductId = productId;
@@ -119,7 +123,6 @@ namespace GoProShop.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             var response = Mapper.Map<ResponseVM>(await _feedbackService.DeleteAsync(id));
-
             return Json(response, JsonRequestBehavior.AllowGet);
         }
     }

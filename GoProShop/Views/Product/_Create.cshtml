@@ -3,7 +3,7 @@
 <div id="modalBody">
     <div class="modal-header">
         <ul class="registration-nav">
-            <li><text><strong>Добавление нового товара</strong></text></li>
+            <li><strong>Добавление нового товара</strong></li>
             <li class="pull-right"><a class="close-thik" data-dismiss="modal"></a></li>
         </ul>
     </div>
@@ -67,6 +67,7 @@
 </div>
 <script>
     $('#product-create-form').submit(function (event) {
+
         event.preventDefault();
         var formdata = new FormData($(this).get(0));
         $.ajax({
@@ -78,16 +79,11 @@
             success: function (result) {
                 if (result.success) {
                     $("#mainModal").modal('hide');
-                    $.get('/Product/SubGroupAdminProducts/', { id: result.groupId }, function (data) {
-                        $('#products').html(data);
-                    });
+                    $('#products').load('/Product/SubGroupAdminProducts/', { id: result.groupId });
                 }
                 else {
                     $('#modalBody').html(result);
                 }
-            },
-            error: function (data) {
-
             }
 
         });

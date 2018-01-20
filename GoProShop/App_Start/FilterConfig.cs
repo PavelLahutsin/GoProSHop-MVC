@@ -1,5 +1,4 @@
-﻿using GoProShop.Attributes;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace GoProShop
 {
@@ -8,7 +7,6 @@ namespace GoProShop
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new ValidateModelAttribute());
         }
     }
 }

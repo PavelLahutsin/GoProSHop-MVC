@@ -1,16 +1,6 @@
 ﻿@model GoProShop.ViewModels.FeedbackVM
 
-@{
-    var options = new AjaxOptions
-    {
-        InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "mainFeedback",
-        HttpMethod = "POST"
-    };
-}
-
-<div id="mainFeedback">
-    @using (Ajax.BeginForm("Create", "Feedback", options))
+    @using (Html.BeginForm("Create", "Feedback", FormMethod.Post, new {id = "create-feedback-form"}))
     {
         @Html.AntiForgeryToken()
         <div class="row">
@@ -27,19 +17,54 @@
                 @Html.ValidationMessageFor(model => model.SurName, null, new { @class = "text-danger" })
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
                 @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
-                <input type="submit" class="btn btn-primary btn-block" value="Отправить" />
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> Отправить
+                </button>
             </div>
             <div class="col-md-6">
-                <div class="form-inline" style="height: 40px; margin-top: 8px; margin-bottom: 8px;" onmouseout="CRateSelected()">
+                <div class="form-inline" style="height: 20px; margin-top: 8px; margin-bottom: 8px;" onmouseout="CRateSelected()">
                     <text style="margin-right: 7px;">Оцените нашу работу:</text>
                     @for (int i = 1; i < 6; i++)
                     {
                         <i class="fa fa-star-o fa-lg" id="Rate@(i)" onclick="CRate(@i)" onmouseover="CRateOver(@i)" onmouseout="CRateOut(@i)"></i>
-                    }
+                     }
                 </div>
-                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", style = "overflow-x: hidden;", rows = 7, placeholder = "Сообщение" })
+                @Html.ValidationMessageFor(model => model.Rating, null, new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", style = "overflow-x: hidden;", rows = 8, placeholder = "Сообщение" })
                 @Html.ValidationMessageFor(model => model.Message, null, new { @class = "text-danger" })
             </div>
         </div>
     }
-</div>
+<script>
+    $('#create-feedback-form').submit(function (event) {
+        event.preventDefault();
+
+        var formdata = new FormData($(this).get(0));
+        var spinner = $("#create-feedback-content .fa-spinner");
+        var button = $("#create-feedback-content button");
+
+        spinner.css("display", "inline-block");
+        button.addClass("disabled");
+
+        $.ajax({
+            url: this.action,
+            type: this.method,
+            data: formdata,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                if (result.IsSuccess) {
+                    updateResponseMessage("#feedback-message", result);
+                    spinner.hide();
+                    button.removeClass("disabled");
+                    $('#create-feedback-content').load("/Feedback/Create");
+                }
+                else {
+                    spinner.hide();
+                    button.removeClass("disabled");
+                    $('#create-feedback-content').html(result);
+                }
+            }
+        });
+    });
+</script>
