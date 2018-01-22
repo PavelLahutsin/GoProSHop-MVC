@@ -44,5 +44,6 @@
 }
 
 #admin-orders thead tr{
+    border-top: 3px solid #ddd;
     height: 50px;
 }

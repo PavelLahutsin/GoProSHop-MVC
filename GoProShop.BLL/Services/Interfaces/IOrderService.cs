@@ -11,5 +11,7 @@ namespace GoProShop.BLL.Services.Interfaces
         Task<OrderDTO> GetAsync(int id);
 
         IEnumerable<OrderDTO> GetOrders();
+
+        Task<ResponseDTO> DeleteAsync(int id);
     }
 }

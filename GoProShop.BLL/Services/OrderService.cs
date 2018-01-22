@@ -63,6 +63,19 @@ namespace GoProShop.BLL.Services
             }
         }
 
+        public async Task<ResponseDTO> DeleteAsync(int id)
+        {
+            var order = await _uof.Orders.GetAsync(id);
+
+            if (order == null)
+                return new ResponseDTO(false, "Данного отзыва не существует в базе данных");
+
+            await _uof.Orders.DeleteAsync(order);
+            await _uof.Commit();
+
+            return new ResponseDTO(true, "Отзыв успешно удален из базы данных");
+        }
+
         public async Task<OrderDTO> GetAsync(int id)
         {
             var order = await _uof.Orders.GetAsync(id);

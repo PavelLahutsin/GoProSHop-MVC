@@ -11,7 +11,7 @@
         UpdateTargetId = "admin-orders"
     };
 }
-<table class="table table-bordered">
+<table class="table table-responsive">
     <thead>
         <tr>
             <th>
@@ -64,8 +64,8 @@
                     @Html.DisplayFor(modelItem => item.Customer.Phone)
                 </td>
                 <td width="150" class="text-center">
-                    <a class="btn btn-default btn-sm" onclick="editOrder(event, this,@item.Id)" href="@Url.Action("Edit", "Feedback", new { id = @item.Id })"><span class="fa fa-pencil-square-o"></span> </a>
-                    <a class="btn btn-default btn-sm" onclick="deleteOrder(event, this, @item.Id)" href="@Url.Action("Delete", "Feedback", new { id = @item.Id })"><span class="fa fa-trash-o text-danger"></span> </a>
+                    <a class="btn btn-default btn-sm" onclick="editOrder(event, this,@item.Id)" href="@Url.Action("Edit", "Order", new { id = item.Id })"><span class="fa fa-pencil-square-o"></span> </a>
+                    <a class="btn btn-default btn-sm" onclick="deleteOrder(event, this, @item.Id)" href="@Url.Action("Delete", "Order", new { id = item.Id })"><span class="fa fa-trash-o text-danger"></span> </a>
                 </td>
             </tr>
         }
@@ -81,3 +81,17 @@ PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(options))
         </div>
     </div>
 }
+
+<script>
+    $('.condition-dropdown').change(function (e) {
+        var dropdown = $(this);
+        var parentRow = dropdown.closest("tr");
+
+        if (dropdown.val() === "1") {
+            parentRow.switchClass("table-row-success", "table-row-warning", 300);
+        }
+        else if (dropdown.val() === "2") {
+            parentRow.switchClass("table-row-warning", "table-row-success", 300);
+        }
+    });
+</script>

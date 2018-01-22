@@ -12,15 +12,16 @@ function updateNotificationMessage(element, response) {
     if (response.IsSuccess) {
         $(element).html('<div class="alert alert-success"><i class="fa fa-check-circle fa-lg" style="padding-right: 10px"></i>  <span>' +
             response.Message +
-            '</span></div>').delay(2000).slideUp(300);
+            '</span></div>');
         $(element).show();
 
     } else {
         $(element).html('<div class="alert alert-danger"><i class="fa fa-exclamation-circle fa-lg" style="padding-right: 10px"></i>  <span>' +
             response.Message +
-            '</span></div>').delay(2000).hide(100);
+            '</span></div>').delay(2500).slideUp(300);
         $(element).show();
     }
+
 }
 
 function getMethodClickHandler(event, element, elementToUpdate) {
@@ -44,10 +45,8 @@ function editFeedback(event, element, elementId) {
     event.preventDefault();
     $.get('/Feedback/View/', { id: elementId }, function (result) {
         $('#new-feedbacks-count').text(result.Count);
-        $.get(element.href, function (data) {
-            $('#mainDialogContent').html(data);
-            $('#mainModal').modal('show');
-        });
+        $('#mainDialogContent').load(element.href);
+        $('#mainModal').modal('show');
     });
 }
 
@@ -73,6 +72,20 @@ function deleteFeedback(event, element, elementId) {
         }
     });
 };
+
+function deleteOrder(event, element, elementId) {
+    event.preventDefault();
+    $.get(element.href, function (response) {
+        if (response.IsSuccess) {
+            //$.get('/Feedback/View/', { id: elementId }, function (dataResult) {
+            //    $('#new-feedbacks-count').text(dataResult.Count);
+            //});
+            $('#admin-orders').load("/Order/GetAdminOrders");
+
+            updateNotificationMessage("#admin-orders-message", response);
+        }
+    });
+}
 
 
 function updateFeedbacks(data) {

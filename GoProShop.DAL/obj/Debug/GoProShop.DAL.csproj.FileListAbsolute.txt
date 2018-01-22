@@ -63,4 +63,3 @@ E:\MyProjects\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.dll
 E:\MyProjects\GoProShop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.pdb
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.Migrations.InitialCreate.resources
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csproj.GenerateResource.Cache
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csprojResolveAssemblyReference.cache

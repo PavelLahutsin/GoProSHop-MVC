@@ -752,13 +752,15 @@ modal-footer a {
         color: #a94442;
     }
 
-
-}
-
 .form-control.input-validation-error:focus {
     box-shadow: 0 0 3px 0 #a94442 !important;
 }
 
-.form-control:focus {
-    box-shadow: 0 0 2px 1px #66afe9;
+.btn i.fa{
+    padding-right: 7px;
+}
+
+.alert{
+    margin-bottom: 0;
+    margin-top: 20px;
 }

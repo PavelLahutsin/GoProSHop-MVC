@@ -69,5 +69,12 @@ namespace GoProShop.Controllers
 
             return Json(_responseService.Create(true, string.Empty, Url.Action("SuccessOrder", "Order", new { id = orderId })));
         }
+
+        [Authorize(Roles = "admin")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var response = Mapper.Map<ResponseVM>(await _orderService.DeleteAsync(id));
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
     }
 }
