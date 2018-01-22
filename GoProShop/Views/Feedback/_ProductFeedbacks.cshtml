@@ -1,55 +1,67 @@
 ﻿@model IEnumerable<GoProShop.ViewModels.BaseFeedbackVM>
 
 <div style="min-height: 50px">
-    @if (Model.Count() > 0)
+    @if (Model.Any())
     {
         foreach (var feedback in Model)
         {
-            <div class="col-md-3 text-left" style="padding-top: 15px">
-                <h5 style="font-weight: normal"><strong>@feedback.Name</strong></h5>
-                <h6 style="padding: 0" class="text-muted">@feedback.Date.ToString("MM/dd/yyyy")  <span class="fa fa-clock-o fa-lg" aria-hidden="true"></span></h6>
-            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3 text-left" style="padding-top: 15px">
+                        <h5 style="font-weight: normal"><strong>@feedback.Name</strong></h5>
+                        <h6 style="padding: 0" class="text-muted">@feedback.Date.ToString("MM/dd/yyyy")  <span class="fa fa-clock-o fa-lg" aria-hidden="true"></span></h6>
+                    </div>
 
-            <div class="col-md-9" style="padding-right: 0;">
-                <div style="padding-bottom: 7px;padding-left: 7px">
-                    @for (int i = 1; i < 6; i++)
-                    {
-                        if (i <= feedback.Rating)
-                        {
-                            <span class="fa fa-star fa-star-selected"></span>
-                        }
-                        else
-                        {
-                            <span class="fa fa-star-o"></span>
-                        }
-                    }
-                </div>
-                <div class="arrow_box">
-                    @feedback.Message
-                </div>
-            </div>
-        }
-    }
-    else
-    {
-        <div class="row">
-            <div class="col-md-12">
-                <div id="feedback-message">
-                    <div class="alert alert-info">
-                        <i class="fa fa-warning fa-lg"></i>
-                        <span>На текущий момент данный товар не имеет отзывов</span>
+                    <div class="col-md-9" style="padding-right: 0;">
+                        <div style="padding-bottom: 7px;padding-left: 7px">
+                            @for (int i = 1; i < 6; i++)
+                            {
+                                if (i <= feedback.Rating)
+                                {
+                                    <span class="fa fa-star fa-star-selected"></span>
+                                }
+                                else
+                                {
+                                    <span class="fa fa-star-o"></span>
+                                }
+                            }
+                        </div>
+                        <div class="arrow_box">
+                            @feedback.Message
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    }
-</div>
 
-<div class="col-md-12 text-center">
-    <h4 class="header-text-black">Написать отзыв</h4>
-</div>
-<div style="margin-bottom: 40px">
-    <div id="create-feedback-content">
-        @Html.Action("Create", "Feedback", new { productId = ViewBag.ProductId })
+        }
+    }
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="feedback-message" style="@(Model.Any() ? "display: none" : string.Empty)">
+                <div class="alert alert-info">
+                    <i class="fa fa-warning fa-lg"></i>
+                    <span>На текущий момент данный товар не имеет отзывов</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h4 class="header-text-black">Написать отзыв</h4>
+            </div>
+        </div>
+
+
+        <div class="col-md-12">
+            <div style="margin-bottom: 40px">
+                <div id="create-feedback-content">
+                    @Html.Action("Create", "Feedback", new { productId = ViewBag.ProductId })
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

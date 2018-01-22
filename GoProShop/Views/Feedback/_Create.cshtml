@@ -24,10 +24,10 @@
             <div class="col-md-6">
                 <div class="form-inline" style="height: 20px; margin-top: 8px; margin-bottom: 8px;" onmouseout="CRateSelected()">
                     <text style="margin-right: 7px;">Оцените нашу работу:</text>
-                    @for (int i = 1; i < 6; i++)
+                    @for (var i = 1; i < 6; i++)
                     {
                         <i class="fa fa-star-o fa-lg" id="Rate@(i)" onclick="CRate(@i)" onmouseover="CRateOver(@i)" onmouseout="CRateOut(@i)"></i>
-                     }
+                    }
                 </div>
                 @Html.ValidationMessageFor(model => model.Rating, null, new { @class = "text-danger" })
                 @Html.TextAreaFor(model => model.Message, new { @class = "form-control", style = "overflow-x: hidden;", rows = 8, placeholder = "Сообщение" })
