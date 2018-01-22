@@ -86,7 +86,7 @@
                                             <div class="form-inline">
                                                 @for (int i = 0; i < 5; i++)
                                                 {
-                                                <span class="fa fa-star-o fa-lg"></span>
+                                                    <span class="fa fa-star-o fa-lg"></span>
                                                 }
                                                 (Нет оценок)
                                             </div>
@@ -97,7 +97,9 @@
 
                             <div class="row" style="padding-right: 15px">
                                 <div class="col-md-4">
-                                    <a class="btn btn-success btn-block" href="@Url.Action("AddToCart", "Cart", new {id = Model.Id })" onclick="addToCart(event, this)">Купить</a>
+                                    <a class="btn btn-success btn-block" href="@Url.Action("AddToCart", "Cart", new {id = Model.Id })" onclick="addToCart(event, this)">
+                                        <i class="fa fa-spinner fa-pulse fa-fw"></i> Купить
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -117,14 +119,14 @@
 
                             <div id="view-product-content">
                                 <p>
-                                    @if(ViewBag.Tab == "feedbacks")
+                                    @if (ViewBag.Tab == "feedbacks")
                                     {
                                         @Html.Action("GetProductFeedbacks", "Feedback", new { Model.Id })
                                     }
                                     else
                                     {
                                         @Model.Description
-                                    }                        
+                                    }
                                 </p>
                             </div>
                         </div>
@@ -140,6 +142,6 @@
         if ('@ViewBag.Tab' === 'feedbacks') {
             $('.nav-tabs li.active').removeClass('active');
             $('#feedback-tab').addClass('active');
-        }   
+        }
     });
 </script>

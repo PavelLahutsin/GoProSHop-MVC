@@ -1,0 +1,83 @@
+﻿@model  PagedList.IPagedList<GoProShop.ViewModels.OrderVM>
+
+@using PagedList.Mvc;
+@using GoProShop.Helpers;
+
+@{
+    var options = new AjaxOptions()
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "admin-orders"
+    };
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Condition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].DeliveryType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Customer.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Customer.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Customer.Phone)
+            </th>
+            <th class="text-center">Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+            <tr class="@(item.Condition == GoProShop.Enums.Condition.Awaiting ?  "table-row-warning" : "table-row-success")">
+                <td width="150">
+                    <a class="pull-left" href="@Url.Action("Edit","Feedback", new { id = @item.Id })" onclick="editOrder(event, this,@item.Id)">
+                        @item.OrderDate.ToString("dd/MM/yyyy")
+                    </a>
+                    @if (!item.IsViewed)
+                    {
+                        <span class="label label-info pull-right">new</span>
+                    }
+                </td>
+                <td width="150">
+                    @Html.EnumDropDownListFor(modelItem => item.Condition,"Выберите состояние", new { @class = "form-control condition-dropdown" })
+                </td>
+                <td>
+                    @Html.EnumDisplayNameFor(item.DeliveryType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Phone)
+                </td>
+                <td width="150" class="text-center">
+                    <a class="btn btn-default btn-sm" onclick="editOrder(event, this,@item.Id)" href="@Url.Action("Edit", "Feedback", new { id = @item.Id })"><span class="fa fa-pencil-square-o"></span> </a>
+                    <a class="btn btn-default btn-sm" onclick="deleteOrder(event, this, @item.Id)" href="@Url.Action("Delete", "Feedback", new { id = @item.Id })"><span class="fa fa-trash-o text-danger"></span> </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model?.TotalItemCount > 9)
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.PagedListPager(Model, page => Url.Action("GetAdminOrders", "Order", new { page }),
+PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(options))
+        </div>
+    </div>
+}

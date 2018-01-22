@@ -1,9 +1,12 @@
-﻿namespace GoProShop.Enums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GoProShop.Enums
 {
     public enum Condition
     {
-        Undefined = 0,
-        Awaiting,
+        [Display(Name = "В ожидании")]
+        Awaiting = 1,
+        [Display(Name = "Выполнен")]
         Done
     }
 }

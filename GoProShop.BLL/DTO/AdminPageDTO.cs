@@ -2,8 +2,8 @@
 {
     public class AdminPageDTO
     {
-        public int PendingFeedbackCount { get; set; }
+        public int NewFeedbacksCount { get; set; }
 
-        public int PendingOrderCount { get; set; }
+        public int NewOrdersCount { get; set; }
     }
 }

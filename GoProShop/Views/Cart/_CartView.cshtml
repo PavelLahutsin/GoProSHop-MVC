@@ -50,7 +50,7 @@
                                 @Html.DisplayFor(modelItem => item.Product.Price) р.
                             </td>
                             <td width="50" class="text-center">
-                                <a href="@Url.Action("RemoveCartItem","Cart", new { id = item.Product.Id })" onclick="deleteCartItemModal(event, this)"><span class="fa fa-trash-o text-danger fa-lg"></span></a>
+                                <a class="cart-delete-link" href="@Url.Action("RemoveCartItem","Cart", new { id = item.Product.Id })" onclick="deleteCartItemModal(event, this)"><span class="fa fa-times fa-lg"></span></a>
                             </td>
                         </tr>
                     }
@@ -69,7 +69,7 @@
     @if (Model.CartItems.Count() != 0)
     {
         <div class="modal-footer">
-            <a class="btn btn-success pull-right" href="@Url.Action("CheckOut", "Cart")" style="font-size: 13px">Оформить заказ<i class="fa fa-arrow-right" style="padding-left: 7px"></i></a>
+            <a class="btn btn-success pull-right" href="@Url.Action("CheckOut", "Cart")" style="font-size: 14px">Оформить заказ<i class="fa fa-arrow-right" style="padding-left: 7px"></i></a>
         </div>
     }
 </div>

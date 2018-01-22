@@ -1,0 +1,13 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading text-left">Отзывы</div>
+
+    <div class="panel-body" style="padding: 20px;">
+        <div id="admin-feedbacks-message">
+        </div>
+
+        <div id="admin-feedbacks">
+            @Html.Action("GetAdminFeedbacks", "Feedback")
+        </div>
+    </div>
+</div>
+

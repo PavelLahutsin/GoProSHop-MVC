@@ -5,6 +5,7 @@
 @import url("ProductGroup/footer-catalog.css");
 @import url("font-awesome.css");
 @import url("Home/header-carousel.css");
+@import url("Order/admin-orders.css");
 
 .body-content {
     min-height: calc(100vh - 50px);
@@ -549,19 +550,19 @@ modal-footer a {
         margin-top: -11px;
     }
 
-.fa {
-    cursor: pointer;
-}
 
 .fa-star-o {
+    cursor: pointer;
     color: #ddd;
 }
 
 .fa-star-half-o {
+    cursor: pointer;
     color: #428bca;
 }
 
 .fa-star-selected {
+    cursor: pointer;
     color: #428bca;
 }
 
@@ -742,3 +743,12 @@ modal-footer a {
 .fa.fa-spinner {
     display: none;
 }
+
+.cart-delete-link {
+    color: lightgray;
+}
+    .cart-delete-link:hover {
+        color: #a94442;
+    }
+
+

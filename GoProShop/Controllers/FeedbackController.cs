@@ -23,14 +23,6 @@ namespace GoProShop.Controllers
             _responseService = responseService ?? throw new ArgumentNullException(nameof(responseService));
         }
 
-        public ActionResult Index()
-        {
-            var feedbackDTO = _feedbackService.GetLastFeedback();
-            var feedbackVM = Mapper.Map<FeedbackVM>(feedbackDTO);
-
-            return PartialView(feedbackVM);
-        }
-
         public ActionResult Create(int? productId)
         {
             if (productId.HasValue)
@@ -116,7 +108,7 @@ namespace GoProShop.Controllers
 
             var response = await _feedbackService.UpdateAsync(Mapper.Map<FeedbackDTO>(feedback));
 
-            return Json(Mapper.Map<ResponseVM>(response));
+            return Json(response);
         }
 
         [Authorize(Roles = "admin")]

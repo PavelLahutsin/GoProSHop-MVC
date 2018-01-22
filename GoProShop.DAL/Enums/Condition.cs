@@ -2,8 +2,7 @@
 {
     public enum Condition
     {
-        Undefined = 0,
-        Awaiting,
+        Awaiting = 1,
         Done
     }
 }

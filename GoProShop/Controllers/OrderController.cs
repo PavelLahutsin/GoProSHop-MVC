@@ -2,6 +2,7 @@
 using GoProShop.BLL.DTO;
 using GoProShop.BLL.Services.Interfaces;
 using GoProShop.ViewModels;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -25,6 +26,16 @@ namespace GoProShop.Controllers
             _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
             _responseService = responseService ?? throw new ArgumentNullException(nameof(responseService));
         }
+
+        [Authorize(Roles = "admin")]
+        public ActionResult GetAdminOrders(int page = 1)
+        {
+            var ordersDTO = _orderService.GetOrders();
+            var ordersVM = Mapper.Map<IEnumerable<OrderDTO>, IEnumerable<OrderVM>>(ordersDTO);
+
+            return PartialView("_AdminOrders", ordersVM.ToPagedList(page, 10));
+        }
+
 
         public ActionResult Create()
         {
@@ -50,13 +61,13 @@ namespace GoProShop.Controllers
             }
 
             var session = Session["Cart"] as Cart;
-            var orderDTO = await _orderService.CreateAsync(Mapper.Map<OrderDTO>(model),
+            var orderId = await _orderService.CreateAsync(Mapper.Map<OrderDTO>(model),
                 Mapper.Map<IEnumerable<CartItem>, IEnumerable<CartItemDTO>>(session.CartItems));
             session.Clear();
 
-            await _emailService.SendSuccessOrderEmail(orderDTO.Id);
+            await _emailService.SendSuccessOrderEmail(orderId);
 
-            return Json(_responseService.Create(true, string.Empty, Url.Action("SuccessOrder", "Order", new { id = orderDTO.Id })));
+            return Json(_responseService.Create(true, string.Empty, Url.Action("SuccessOrder", "Order", new { id = orderId })));
         }
     }
 }

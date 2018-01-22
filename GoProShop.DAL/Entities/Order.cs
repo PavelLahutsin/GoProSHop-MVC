@@ -20,6 +20,8 @@ namespace GoProShop.DAL.Entities
 
         public int CustomerId { get; set; }
 
+        public bool IsViewed { get; set; }
+
         public decimal TotalPrice { get; set; }
 
         [StringLength(50)]

@@ -16,6 +16,8 @@ namespace GoProShop.BLL.DTO
 
         public int CustomerId { get; set; }
 
+        public bool IsViewed { get; set; }
+
         public decimal TotalPrice { get; set; }
 
         public string Comment { get; set; }

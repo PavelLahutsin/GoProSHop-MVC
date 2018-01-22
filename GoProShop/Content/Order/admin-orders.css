@@ -1,0 +1,48 @@
+﻿.table-row-success {
+    background-color: #dff0d8;
+}
+
+.table-row-danger {
+    background-color: #f2dede;
+}
+
+.table-row-warning {
+    background-color: #fcf8e3;
+}
+
+.admin-content-box {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    box-shadow: 0 0 10px 2px #efefef;
+    border-top: 3px solid lightgray;
+}
+
+.admin-content-box__heading {
+    background-color: #f5f5f5;
+    height: 50px;
+    border-bottom: 1px solid #ddd;
+}
+
+.heading-wrapper {
+    line-height: 50px;
+    padding-left: 20px;
+    vertical-align: middle;
+}
+
+    .heading-wrapper p {
+        margin: 0;
+        font-weight: bold;
+    }
+
+.admin-content-box__body {
+    min-height: 200px;
+    padding: 0 20px;
+}
+
+.admin-content-box__body .row + .row{
+    margin-top: 20px;
+}
+
+#admin-orders thead tr{
+    height: 50px;
+}

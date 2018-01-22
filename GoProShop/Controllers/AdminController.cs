@@ -23,13 +23,12 @@ namespace GoProShop.Controllers
             return View(adminPageVM);
         }
 
-
-        public ActionResult Orders() => View();
+        public ActionResult Orders() => PartialView();
 
         public ActionResult Price() => PartialView();
 
         public ActionResult Stores() => View();
 
-        public ActionResult Feedbacks() => RedirectToAction("Index", "Feedback");
+        public ActionResult Feedbacks() => PartialView("_Feedbacks");
     }
 }

@@ -87,37 +87,9 @@
     <Compile Include="EF\UnitOfWork.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Migrations\201712020806497_initialcreate.cs" />
-    <Compile Include="Migrations\201712020806497_initialcreate.Designer.cs">
-      <DependentUpon>201712020806497_initialcreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712181952281_UpdatedFeedbackEntity.cs" />
-    <Compile Include="Migrations\201712181952281_UpdatedFeedbackEntity.Designer.cs">
-      <DependentUpon>201712181952281_UpdatedFeedbackEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712222101249_UpdateFeedbackEntity.cs" />
-    <Compile Include="Migrations\201712222101249_UpdateFeedbackEntity.Designer.cs">
-      <DependentUpon>201712222101249_UpdateFeedbackEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801021451301_UpdatedFeedbackEntity1.cs" />
-    <Compile Include="Migrations\201801021451301_UpdatedFeedbackEntity1.Designer.cs">
-      <DependentUpon>201801021451301_UpdatedFeedbackEntity1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801041847457_UpdateFeedback.cs" />
-    <Compile Include="Migrations\201801041847457_UpdateFeedback.Designer.cs">
-      <DependentUpon>201801041847457_UpdateFeedback.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801071837446_UpdateOrderedProduct.cs" />
-    <Compile Include="Migrations\201801071837446_UpdateOrderedProduct.Designer.cs">
-      <DependentUpon>201801071837446_UpdateOrderedProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801091952596_updateOrderEntity.cs" />
-    <Compile Include="Migrations\201801091952596_updateOrderEntity.Designer.cs">
-      <DependentUpon>201801091952596_updateOrderEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801190719069_dasda.cs" />
-    <Compile Include="Migrations\201801190719069_dasda.Designer.cs">
-      <DependentUpon>201801190719069_dasda.cs</DependentUpon>
+    <Compile Include="Migrations\201801202103106_InitialCreate.cs" />
+    <Compile Include="Migrations\201801202103106_InitialCreate.Designer.cs">
+      <DependentUpon>201801202103106_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
@@ -139,29 +111,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712020806497_initialcreate.resx">
-      <DependentUpon>201712020806497_initialcreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712181952281_UpdatedFeedbackEntity.resx">
-      <DependentUpon>201712181952281_UpdatedFeedbackEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712222101249_UpdateFeedbackEntity.resx">
-      <DependentUpon>201712222101249_UpdateFeedbackEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801021451301_UpdatedFeedbackEntity1.resx">
-      <DependentUpon>201801021451301_UpdatedFeedbackEntity1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801041847457_UpdateFeedback.resx">
-      <DependentUpon>201801041847457_UpdateFeedback.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801071837446_UpdateOrderedProduct.resx">
-      <DependentUpon>201801071837446_UpdateOrderedProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801091952596_updateOrderEntity.resx">
-      <DependentUpon>201801091952596_updateOrderEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801190719069_dasda.resx">
-      <DependentUpon>201801190719069_dasda.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801202103106_InitialCreate.resx">
+      <DependentUpon>201801202103106_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

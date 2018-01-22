@@ -7,17 +7,17 @@
     });
 }
 
-function updateResponseMessage(element, response) {
+function updateNotificationMessage(element, response) {
 
     if (response.IsSuccess) {
-        $(element).html('<div class="alert alert-success"><i class="fa fa-check-circle fa-lg"></i>  <span>' +
+        $(element).html('<div class="alert alert-success"><i class="fa fa-check-circle fa-lg" style="padding-right: 10px"></i>  <span>' +
             response.Message +
-            '</span></div>');
+            '</span></div>').delay(1500).hide(300);
 
     } else {
-        $(element).html('<div class="alert alert-danger"><i class="fa fa-exclamation-circle fa-lg"></i>  <span>' +
+        $(element).html('<div class="alert alert-danger"><i class="fa fa-exclamation-circle fa-lg" style="padding-right: 10px"></i>  <span>' +
             response.Message +
-            '</span></div>');
+            '</span></div>').delay(1500).hide(300);
     }
 }
 
@@ -41,7 +41,7 @@ function loginClickHandler(event, element) {
 function editFeedback(event, element, elementId) {
     event.preventDefault();
     $.get('/Feedback/View/', { id: elementId }, function (result) {
-        $('#pending-feedback-count').text(result.Count);
+        $('#new-feedbacks-count').text(result.Count);
         $.get(element.href, function (data) {
             $('#mainDialogContent').html(data);
             $('#mainModal').modal('show');
@@ -63,11 +63,11 @@ function deleteFeedback(event, element, elementId) {
     $.get(element.href, function (data) {
         if (data.IsSuccess) {
             $.get('/Feedback/View/', { id: elementId }, function (dataResult) {
-                $('#pending-feedback-count').text(dataResult.Count);
+                $('#new-feedbacks-count').text(dataResult.Count);
             });
             $('#admin-feedbacks').load("Feedback/GetAdminFeedbacks");
 
-            updateResponseMessage("#admin-feedbacks-message", data);
+            updateNotificationMessage("#admin-feedbacks-message", data);
         }
     });
 };
@@ -204,7 +204,6 @@ function deleteCartItem(event, element) {
         updateOrderInfo();
         shoppingCartBadge.text(data.Quantity);
         parentRow.remove();
-
     });
 }
 
@@ -251,7 +250,6 @@ $('.btn-number').click(function (e) {
             if (parseInt(input.val()) == input.attr('max')) {
                 $(this).attr('disabled', true);
             }
-
         }
     } else {
         input.val(0);
@@ -262,6 +260,18 @@ $('.btn-number').click(function (e) {
 function updateOrderInfo() {
     $("#order-info").load("/Cart/OrderInfo/");
 }
+
+$('.condition-dropdown').change(function (e) {
+    var dropdown = $(this);
+    var parentRow = dropdown.closest("tr");
+
+    if (dropdown.val() === "1") {
+        parentRow.switchClass("table-row-success", "table-row-warning", 300);
+    }
+    else if (dropdown.val() === "2") {
+        parentRow.switchClass("table-row-warning", "table-row-success", 300);
+    }
+});
 
 $('.nav-tabs').on('click', 'li', function () {
     $('.nav-tabs li.active').removeClass('active');

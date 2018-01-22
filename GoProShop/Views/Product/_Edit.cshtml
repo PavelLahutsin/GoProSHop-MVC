@@ -13,7 +13,7 @@
         <div class="modal-body">
 
             <div class="alert-danger" style="border-radius: 5px">
-                
+
                 @Html.ValidationSummary(false, null, new { @class = "text-danger" })
             </div>
             <div class="form-horizontal">
@@ -96,14 +96,15 @@
             data: formdata,
             processData: false,
             contentType: false,
-            success: function (result) {     
-                $('#products').html(result);
-                $("#mainModal").modal('hide');
-            },
-            error: function (error) {
-                $('#modalBody').html(error.responseText);
+            success: function (result) {
+                if (result.success) {
+                    $("#mainModal").modal('hide');
+                    $('#products').load('/Product/SubGroupAdminProducts/', { id: result.groupId });
+                }
+                else {
+                    $('#modalBody').html(result);
+                }
             }
-
         });
     });
 

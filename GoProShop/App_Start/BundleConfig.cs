@@ -9,6 +9,7 @@ namespace GoProShop
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-ui-{version}.js",
                         "~/Scripts/jquery.unobtrusive-ajax.js"
                        ));
 
@@ -33,8 +34,9 @@ namespace GoProShop
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/dataTables").Include(
+                "~/Scripts/jquery-{version}.min.js",
                 "~/Scripts/DataTables/jquery.dataTables.min.js",
-                "~/Scripts/DataTables/dataTables.bootstrap.min.js"));
+                "~/Scripts/DataTables/dataTables.bootstrap4.min.js"));
         }
     }
 }

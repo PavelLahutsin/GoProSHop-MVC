@@ -21,7 +21,7 @@ namespace GoProShop.BLL.Services
             _uof = uof ?? throw new ArgumentNullException(nameof(uof));
         }
 
-        public async Task<OrderDTO> CreateAsync(OrderDTO orderDTO, IEnumerable<CartItemDTO> cartItems)
+        public async Task<int> CreateAsync(OrderDTO orderDTO, IEnumerable<CartItemDTO> cartItems)
         {
             using (var transaction = _uof.Database.BeginTransaction())
             {
@@ -53,12 +53,12 @@ namespace GoProShop.BLL.Services
 
                     transaction.Commit();
 
-                    return Mapper.Map<OrderDTO>(await _uof.Orders.GetAsync(order.Id));
+                    return order.Id;
                 }
                 catch (Exception)
                 {
                     transaction.Rollback();
-                    return null;
+                    return default(int);
                 }
             }
         }
@@ -69,6 +69,14 @@ namespace GoProShop.BLL.Services
             var orderDTO = Mapper.Map<OrderDTO>(order);
 
             return orderDTO;
+        }
+
+        public IEnumerable<OrderDTO> GetOrders()
+        {
+            var orders = _uof.Orders.Entities.ToList();
+            var ordersDTO = Mapper.Map<List<Order>, IEnumerable<OrderDTO>>(orders);
+
+            return ordersDTO.Reverse();
         }
     }
 }

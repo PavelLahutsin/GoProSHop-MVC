@@ -1,13 +1,4 @@
 ﻿@model GoProShop.ViewModels.BaseFeedbackVM
-@{
-    var options = new AjaxOptions
-    {
-        InsertionMode = InsertionMode.Replace,
-        HttpMethod = "POST",
-        UpdateTargetId = "modalBody",
-        OnSuccess= "updateFeedbacks"
-    };
-}
 
 <div id="modalBody">
     <div class="modal-header">
@@ -16,7 +7,7 @@
             <li class="pull-right"><a class="close-thik" data-dismiss="modal"></a></li>
         </ul>
     </div>
-    @using (Ajax.BeginForm("Edit", "Feedback", options))
+    @using (Html.BeginForm("Edit", "Feedback", FormMethod.Post, new { id = "edit-feedback-form", @сlass="ajax-form-with-spinner" }))
     {
         @Html.AntiForgeryToken()
         <div class="modal-body">
@@ -66,3 +57,28 @@
         </div>
     }
 </div>
+<script>
+    $('#edit-feedback-form').submit(function (event) {
+        event.preventDefault();
+
+        var formdata = new FormData($(this).get(0));
+
+        $.ajax({
+            url: this.action,
+            type: this.method,
+            data: formdata,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                if (result.IsSuccess) {
+                    $("#mainModal").modal('hide');
+                    $("#admin-feedbacks").load("Feedback/GetAdminFeedbacks/");
+                    updateNotificationMessage("#admin-feedbacks-message", result);
+                }
+                else {
+                    $('#modalBody').html(result);
+                }
+            }
+        });
+    });
+</script>

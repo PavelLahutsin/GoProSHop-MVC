@@ -17,11 +17,13 @@ namespace GoProShop.BLL.Services
 
         public AdminPageDTO Build()
         {
-            var pendingFeebackCount = _uow.Feedbacks.Entities.Where(x => !x.IsViewed)?.Count();
+            var newFeedbacksCount = _uow.Feedbacks.Entities.Where(x => !x.IsViewed).Count();
+            var newOrdersCount = _uow.Orders.Entities.Where(x => !x.IsViewed).Count();
 
             return new AdminPageDTO
             {
-                PendingFeedbackCount = pendingFeebackCount ?? 0
+                NewFeedbacksCount = newFeedbacksCount,
+                NewOrdersCount = newOrdersCount
             };
         }
     }

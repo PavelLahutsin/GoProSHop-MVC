@@ -20,53 +20,57 @@
                     <div id="checkout-content">
                         <table class="table table-condensed">
                             <thead>
-                            <tr style="height: 50px; line-height: 50px; vertical-align: middle;background: #eee">
-                                <th class="text-center">№</th>
-                                <th>Изображение</th>
-                                <th>Название</th>
-                                <th class="text-center">Количество</th>
-                                <th>Цена</th>
-                                <th>Действия</th>
-                            </tr>
+                                <tr style="height: 50px; line-height: 50px; vertical-align: middle;background: #eee">
+                                    <th class="text-center">№</th>
+                                    <th>Изображение</th>
+                                    <th>Название</th>
+                                    <th class="text-center">Количество</th>
+                                    <th>Цена</th>
+                                    <th>Действия</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            @foreach (var cartItem in Model.CartItems)
-                            {
-                                <tr>
-                                    <td width="50" class="text-center">@count</td>
-                                    <td width="100" class="text-center">
-                                        @if (cartItem.Product.MimeType == null)
-                                        {
-                                            <img height="50" width="50" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
-                                        }
-                                        else
-                                        {
-                                            <img height="50" width="60" src="@Url.Action("GetImage", "Product", new {productId = cartItem.Product.Id})" alt="Фото">
-                                        }
-                                    </td>
-                                    <td class="text-left" style="font-size: 13px;">
-                                        <a href="@Url.Action("ViewProduct","Product", new { productId = cartItem.Product.Id })">@cartItem.Product.Name</a>
-                                    </td>
-                                    <td width="150" class="text-center">
-                                        <div class="form-inline">
-                                            <a href="@Url.Action("ReduceCartItem","Cart", new { id = cartItem.Product.Id })" class="btn btn-default btn-sm btn-number" data-field="quantity__@(count)" data-type="minus"><i class="fa fa-minus"></i></a>
-                                            <input name="quantity__@(count)" class="form-control form-control-sm" value="@cartItem.Quantity" min="1" max="10" readonly/>
-                                            <a href="@Url.Action("AddToCart","Cart", new { id = cartItem.Product.Id })" class="btn btn-default btn-sm  btn-number" data-field="quantity__@(count)" data-type="plus" ><i class="fa fa-plus"></i></a>
-                                        </div>
-                                    </td>
-                                    <td width="90" style="font-size: 13px;text-align: left;">
-                                        @Html.DisplayFor(modelItem => cartItem.Product.Price) р.
-                                    </td>
-                                    <td width="100" class="text-center">
-                                        <a href="@Url.Action("RemoveCartItem","Cart", new { id = cartItem.Product.Id })" onclick="deleteCartItem(event, this)"><span class="fa fa-trash-o text-danger fa-lg"></span></a>
-                                    </td>
-                                </tr>
-                                count++;
-                            }
+                                @foreach (var cartItem in Model.CartItems)
+                                {
+                                    <tr>
+                                        <td width="50" class="text-center">@count</td>
+                                        <td width="100" class="text-center">
+                                            @if (cartItem.Product.MimeType == null)
+                                            {
+                                                <img height="50" width="50" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
+                                            }
+                                            else
+                                            {
+                                                <img height="50" width="60" src="@Url.Action("GetImage", "Product", new {productId = cartItem.Product.Id})" alt="Фото">
+                                            }
+                                        </td>
+                                        <td class="text-left" style="font-size: 13px;">
+                                            <a href="@Url.Action("ViewProduct","Product", new { productId = cartItem.Product.Id })">@cartItem.Product.Name</a>
+                                        </td>
+                                        <td width="150" class="text-center">
+                                            <div class="form-inline">
+                                                <a href="@Url.Action("ReduceCartItem","Cart", new { id = cartItem.Product.Id })" class="btn btn-default btn-sm btn-number" data-field="quantity__@(count)" data-type="minus"><i class="fa fa-minus"></i></a>
+                                                <input name="quantity__@(count)" class="form-control form-control-sm" value="@cartItem.Quantity" min="1" max="10" readonly />
+                                                <a href="@Url.Action("AddToCart","Cart", new { id = cartItem.Product.Id })" class="btn btn-default btn-sm  btn-number" data-field="quantity__@(count)" data-type="plus"><i class="fa fa-plus"></i></a>
+                                            </div>
+                                        </td>
+                                        <td width="90" style="font-size: 13px;text-align: left;">
+                                            @Html.DisplayFor(modelItem => cartItem.Product.Price) р.
+                                        </td>
+                                        <td width="100" class="text-center">
+                                            <a class="cart-delete-link" href="@Url.Action("RemoveCartItem","Cart", new { id = cartItem.Product.Id })" onclick="deleteCartItem(event, this)">
+                                            <i class="fa fa-times fa-lg"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    count++;
+                                }
                             </tbody>
                         </table>
                         <div class="col-md-12">
-                            <a href="@Url.Action("Create", "Order")" onclick="getMethodClickHandler(event,this,'#checkout-content')" class ="btn btn-success btn-sm pull-right">Продолжить</a>
+                            <a href="@Url.Action("Create", "Order")" onclick="getMethodClickHandler(event,this,'#checkout-content')" class="btn btn-success pull-right">
+                                Продолжить
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -74,5 +78,3 @@
         </div>
     </div>
 </div>
-
-
