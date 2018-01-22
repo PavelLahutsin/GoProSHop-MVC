@@ -49,8 +49,6 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-
 .header-strip {
     border-bottom: 1px solid black;
 }
@@ -206,7 +204,6 @@
         opacity: 0;
     }
 
-/* Create a custom checkbox */
 .checkmark {
     position: absolute;
     top: 0;
@@ -216,17 +213,17 @@
     background-color: #eee;
 }
 
-/* On mouse-over, add a grey background color */
+
 .check-box-container:hover input ~ .checkmark {
     background-color: #ccc;
 }
 
-/* When the checkbox is checked, add a blue background */
+
 .check-box-container input:checked ~ .checkmark {
     background-color: #428bca;
 }
 
-/* Create the checkmark/indicator (hidden when not checked) */
+
 .checkmark:after {
     content: "";
     position: absolute;
@@ -236,12 +233,12 @@
 .table {
     background-color: #fff;
 }
-/* Show the checkmark when checked */
+
 .check-box-container input:checked ~ .checkmark:after {
     display: block;
 }
 
-/* Style the checkmark/indicator */
+
 .check-box-container .checkmark:after {
     left: 9px;
     top: 5px;
@@ -333,7 +330,11 @@ modal-footer a {
     width: 100%;
 }
 
-.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+.table-fixed thead, 
+.table-fixed tbody, 
+.table-fixed tr, 
+.table-fixed td, 
+.table-fixed th {
     display: block;
 }
 
@@ -741,4 +742,12 @@ modal-footer a {
 
 .fa.fa-spinner {
     display: none;
+}
+
+.form-control.input-validation-error:focus {
+    box-shadow: 0 0 3px 0 #a94442 !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 2px 1px #66afe9;
 }

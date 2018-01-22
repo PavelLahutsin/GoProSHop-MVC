@@ -12,12 +12,14 @@ function updateResponseMessage(element, response) {
     if (response.IsSuccess) {
         $(element).html('<div class="alert alert-success"><i class="fa fa-check-circle fa-lg"></i>  <span>' +
             response.Message +
-            '</span></div>');
+            '</span></div>').delay(2000).slideUp(300);
+        $(element).show();
 
     } else {
         $(element).html('<div class="alert alert-danger"><i class="fa fa-exclamation-circle fa-lg"></i>  <span>' +
             response.Message +
-            '</span></div>');
+            '</span></div>').delay(2000).hide(100);
+        $(element).show();
     }
 }
 
@@ -191,7 +193,6 @@ function deleteCartItemModal(event, element) {
     $.get(element.href, function (data) {
         $('#mainDialogContent').load("/Cart/CartView");
         shoppingCartBadge.text(data.Quantity);
-
     });
 }
 
@@ -211,8 +212,8 @@ function deleteCartItem(event, element) {
 $('.btn-number').click(function (e) {
     e.preventDefault();
 
-    var fieldName = $(this).attr('data-field');
-    var type = $(this).attr('data-type');
+    var fieldName = $(this).data('field');
+    var type = $(this).data('type');
     var input = $("input[name='" + fieldName + "']");
     var currentVal = parseInt(input.val());
     var cart = $('#shopping-cart span.badge');
@@ -223,7 +224,7 @@ $('.btn-number').click(function (e) {
         if (type == 'minus') {
 
             if (currentVal > input.attr('min')) {
-                $(".btn-number[data-type='plus'][data-field='" + fieldName + "']").removeAttr('disabled')
+                $(".btn-number[data-type='plus'][data-field='" + fieldName + "']").removeAttr('disabled');
                 input.val(currentVal - 1).change();
                 $.get(href, function (data) {
                     if (data.IsSuccess) {
@@ -239,7 +240,7 @@ $('.btn-number').click(function (e) {
         } else if (type == 'plus') {
 
             if (currentVal < input.attr('max')) {
-                $(".btn-number[data-type='minus'][data-field='" + fieldName + "']").removeAttr('disabled')
+                $(".btn-number[data-type='minus'][data-field='" + fieldName + "']").removeAttr('disabled');
                 input.val(currentVal + 1).change();
                 $.get(href, function (data) {
                     if (data.IsSuccess) {

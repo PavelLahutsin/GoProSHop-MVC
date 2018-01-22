@@ -26,7 +26,7 @@ namespace GoProShop.DAL.EF
         private IBaseRepository<Feedback> _feedbackRepository;
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
-        private bool disposed = false;
+        private bool disposed;
         private readonly GoProShopContext _context;
 
         public UnitOfWork(IAuthenticationManager authenticationManager)
