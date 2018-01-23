@@ -30,25 +30,23 @@ namespace GoProShop.BLL.Services
                     var order = Mapper.Map<Order>(orderDTO);
                     var user = await _uof.Customers.Entities.FirstOrDefaultAsync(x => x.Email == orderDTO.Customer.Email);
 
-                    if (user == null)
+                    if (user != null)
                     {
-                        _uof.Customers.Create(order.Customer);
-                        await _uof.Commit();
+                        order.Customer = user;
+                        order.CustomerId = user.Id;
                     }
 
                     order.TotalPrice = cartItems.Sum(x => x.Product.Price);
-                    _uof.Orders.Create(order);
-                    await _uof.Commit();
-
-                    var productsOrdered = cartItems.Select(x => new OrderedProduct
+                    order.Condition = DAL.Enums.Condition.Awaiting;
+                    order.OrdersList = cartItems.Select(x => new OrderedProduct
                     {
                         OrderId = order.Id,
                         ProductId = x.Product.Id,
                         Price = x.Product.Price,
                         Quantity = x.Quantity
-                    });
+                    }).ToList();
+                    _uof.Orders.Create(order);
 
-                    _uof.ProductsOrdered.Entities.AddRange(productsOrdered);
                     await _uof.Commit();
 
                     transaction.Commit();
@@ -90,6 +88,20 @@ namespace GoProShop.BLL.Services
             var ordersDTO = Mapper.Map<List<Order>, IEnumerable<OrderDTO>>(orders);
 
             return ordersDTO.Reverse();
+        }
+
+        public async Task<int> ViewOrder(int id)
+        {
+            var order = await _uof.Orders.GetAsync(id);
+
+            if (order?.IsViewed == false)
+            {
+                order.IsViewed = true;
+                await _uof.Orders.UpdateAsync(order);
+                await _uof.Commit();
+            }
+
+            return _uof.Orders.Entities.Where(x => !x.IsViewed)?.Count() ?? 0;
         }
     }
 }

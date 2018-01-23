@@ -1,28 +1,27 @@
-﻿<div class="container">
-    <div class="admin-content-box">
-        <div class="admin-content-box__heading">
-            <div class="heading-wrapper">
-                <p>Заказы</p>
+﻿
+<div class="admin-content-box">
+    <div class="admin-content-box__heading">
+        <div class="heading-wrapper">
+            <p>Заказы</p>
+        </div>
+    </div>
+    <div class="admin-content-box__body">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="admin-orders-message">
+                </div>
             </div>
         </div>
-        <div class="admin-content-box__body">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="admin-orders-message">
-                    </div>
-                </div>
+       <
+        <div class="row">
+            <div class="col-md-12">
+                <a href="#" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>  Добавить</a>
             </div>
-            
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="#" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>Добавить</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="admin-orders">
-                        @Html.Action("GetAdminOrders", "Order")
-                    </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="admin-orders">
+                    @Html.Action("GetAdminOrders", "Order")
                 </div>
             </div>
         </div>

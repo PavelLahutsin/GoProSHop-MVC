@@ -50,6 +50,14 @@ namespace GoProShop.Controllers
             return View("~/Views/Order/SuccessOrder.cshtml", orderVM);
         }
 
+        [Authorize(Roles = "admin")]
+        public async Task<ActionResult> View(int id)
+        {
+            var pendingFeedbackCount = await _orderService.ViewOrder(id);
+
+            return Json(new { Count = pendingFeedbackCount }, JsonRequestBehavior.AllowGet);
+        }
+
         [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<ActionResult> Create(OrderVM model)

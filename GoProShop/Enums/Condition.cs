@@ -7,6 +7,6 @@ namespace GoProShop.Enums
         [Display(Name = "В ожидании")]
         Awaiting = 1,
         [Display(Name = "Выполнен")]
-        Done
+        Done = 2
     }
 }

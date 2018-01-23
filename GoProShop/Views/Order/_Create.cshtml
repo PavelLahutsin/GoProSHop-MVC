@@ -59,7 +59,7 @@
         var button = $("#order-content button");
 
         spinner.css("display", "inline-block");
-        button.addClass("disabled");
+        button.toggleClass("disabled");
 
         $.ajax({
             url: this.action,
@@ -73,7 +73,7 @@
                 }
                 else {
                     spinner.hide();
-                    button.removeClass("disabled");
+                    button.toggleClass("disabled");
                     $('#order-content').html(result);
                 }
             }
@@ -81,7 +81,10 @@
     });
 
     $(function () {
-        $(".datepicker").datetimepicker();
+        $(".datepicker").datetimepicker({
+            locale: 'ru',
+            format: "MM/DD/YYYY"
+        });
     });
 </script>
 

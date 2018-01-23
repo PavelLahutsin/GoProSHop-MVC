@@ -10,15 +10,15 @@
 function updateNotificationMessage(element, response) {
 
     if (response.IsSuccess) {
-        $(element).html('<div class="alert alert-success"><i class="fa fa-check-circle fa-lg" style="padding-right: 10px"></i>  <span>' +
+        $(element).html('<div class="alert alert-success"><i class="fa fa-check-circle fa-lg"></i>  <span>' +
             response.Message +
-            '</span></div>');
+            '</span></div>').delay(2500).hide(300);
         $(element).show();
 
     } else {
-        $(element).html('<div class="alert alert-danger"><i class="fa fa-exclamation-circle fa-lg" style="padding-right: 10px"></i>  <span>' +
+        $(element).html('<div class="alert alert-danger"><i class="fa fa-exclamation-circle fa-lg"></i>  <span>' +
             response.Message +
-            '</span></div>').delay(2500).slideUp(300);
+            '</span></div>').delay(2500).hide(300);
         $(element).show();
     }
 
@@ -45,8 +45,10 @@ function editFeedback(event, element, elementId) {
     event.preventDefault();
     $.get('/Feedback/View/', { id: elementId }, function (result) {
         $('#new-feedbacks-count').text(result.Count);
-        $('#mainDialogContent').load(element.href);
-        $('#mainModal').modal('show');
+        $.get(element.href, function (data) {
+            $('#mainDialogContent').html(data);
+            $('#mainModal').modal('show');
+        });
     });
 }
 
@@ -77,12 +79,11 @@ function deleteOrder(event, element, elementId) {
     event.preventDefault();
     $.get(element.href, function (response) {
         if (response.IsSuccess) {
-            //$.get('/Feedback/View/', { id: elementId }, function (dataResult) {
-            //    $('#new-feedbacks-count').text(dataResult.Count);
-            //});
-            $('#admin-orders').load("/Order/GetAdminOrders");
-
-            updateNotificationMessage("#admin-orders-message", response);
+            $.get('/Order/View/', { id: elementId }, function (dataResult) {
+                $('#new-orders-count').text(dataResult.Count);
+                $(element).closest("tr").remove();
+                updateNotificationMessage("#admin-orders-message", response);
+            });
         }
     });
 }

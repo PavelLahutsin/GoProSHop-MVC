@@ -14,12 +14,10 @@ namespace GoProShop.BLL.Services
     public class FeedbackService : IFeedbackService
     {
         private readonly IUnitOfWork _uow;
-        private readonly IResponseService _responseService;
 
         public FeedbackService(IUnitOfWork uow, IResponseService responseService)
         {
             _uow = uow ?? throw new ArgumentNullException(nameof(uow));
-            _responseService = responseService ?? throw new ArgumentNullException(nameof(responseService));
         }
 
         public async Task CreateAsync(FeedbackDTO feedbackDTO)
@@ -67,12 +65,12 @@ namespace GoProShop.BLL.Services
             var feedback = await _uow.Feedbacks.GetAsync(id);
 
             if (feedback == null)
-                return _responseService.Create(false, "Данного отзыва не существует в базе данных");
+                return new ResponseDTO(false, "Данного отзыва не существует в базе данных");
 
             await _uow.Feedbacks.DeleteAsync(feedback);
             await _uow.Commit();
 
-            return _responseService.Create(true, "Отзыв успешно удален из базы данных");
+            return new ResponseDTO(true, "Отзыв успешно удален из базы данных");
         }
 
         public async Task<int> ViewFeedback(int id)
@@ -102,11 +100,11 @@ namespace GoProShop.BLL.Services
             var feedback = await _uow.Feedbacks.UpdateAsync(Mapper.Map<Feedback>(feedbackDTO));
 
             if (feedback == null)
-                return _responseService.Create(false, "Данного отзыва не существует в базе данных");
+                return new ResponseDTO(false, "Данного отзыва не существует в базе данных");
 
             await _uow.Commit();
 
-            return _responseService.Create(true, "Отзыв успешно обновлен в базе данных");
+            return new ResponseDTO(true, "Отзыв успешно обновлен в базе данных");
         }
     }
 }

@@ -48,20 +48,13 @@
     </div>
 
     <div class="row">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h4 class="header-text-black">Написать отзыв</h4>
-            </div>
-        </div>
-
-
         <div class="col-md-12">
+            <h4 class="header-text-black text-center">Написать отзыв</h4>
             <div style="margin-bottom: 40px">
                 <div id="create-feedback-content">
                     @Html.Action("Create", "Feedback", new { productId = ViewBag.ProductId })
                 </div>
             </div>
         </div>
-
     </div>
 </div>
