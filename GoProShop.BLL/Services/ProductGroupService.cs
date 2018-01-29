@@ -11,13 +11,11 @@ using GoProShop.DAL.Entities;
 
 namespace GoProShop.BLL.Services
 {
-    public class ProductGroupService : IProductGroupService
+    public class ProductGroupService : BaseService, IProductGroupService
     {
-        private readonly IUnitOfWork _uow;
-
         public ProductGroupService(IUnitOfWork uow)
+            : base(uow)
         {
-            _uow = uow ?? throw new ArgumentNullException(nameof(uow));
         }
 
         public IEnumerable<ProductGroupDTO> GetProductGroups()

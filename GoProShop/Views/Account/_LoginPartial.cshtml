@@ -1,13 +1,6 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
     <div class="nav navbar-right">
-        @*<li class="dropdown">
-            <a href="#" style="padding-bottom: 12.5px; padding-top: 12.5px" data-toggle="dropdown" class="dropdown-toggle">
-                <img height="15" src="~/Content/Images/DefaultUserLogo.png" />
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-            <li><a href="@Url.Action("Edit","Account")">Настройки</a></li>*@
         <a class="navbar-link" href="@Url.Action("Edit","Account")" style="padding-right: 7px;">Здравствуйте, @User.Identity.Name!</a>
         <a class="navbar-link" href="@Url.Action("Logout","Account")">Выйти</a>
     </div>
@@ -15,23 +8,7 @@
 else
 {
     <div class="nav navbar-right">
-        <a class="navbar-link" style="padding-right: 7px;" onclick="loginClickHandler(event, this)" href="@Url.Action("Login", "Account")">Войти</a>
-        <a class="navbar-link" href="@Url.Action("Register", "Account")" onclick="loginClickHandler(event, this)">Регистрация</a>
+        <a class="navbar-link" style="padding-right: 7px;" onclick="openModal(event, this)" href="@Url.Action("Login", "Account")">Войти</a>
+        <a class="navbar-link" href="@Url.Action("Register", "Account")" onclick="openModal(event, this)">Регистрация</a>
     </div>
 }
-
-<div id="loginModal" class="modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <ul class="registration-nav">
-                    <li><a onclick="getMethodClickHandler(event, this,'#modalContent')" href="@Url.Action("Login", "Account")"><strong>Логин</strong></a></li>
-                    <li><a onclick="getMethodClickHandler(event, this,'#modalContent')" href="@Url.Action("Register", "Account")"><strong>Регистрация</strong></a></li>
-                    <li class="pull-right"><a class="close-thik" data-dismiss="modal"></a></li>
-                </ul>
-            </div>
-            <div id="dialogContent">
-            </div>
-        </div>
-    </div>
-</div>

@@ -108,9 +108,9 @@
                         <div class="col-md-12" style="padding-left: 0">
                             <ul class="nav nav-tabs">
 
-                                <li class="active"><a href="@Url.Action("Description","Product")" onclick="productTabClickHandler(event, this, @Model.Id)">Описание</a></li>
+                                <li class="active"><a class="ajax-get-link" href="@Url.Action("Description","Product", new { productId = Model.Id })" data-element-to-update="#view-product-content">Описание</a></li>
                                 <li id="feedback-tab">
-                                    <a href="@Url.Action("GetProductFeedbacks","Feedback")" onclick="productTabClickHandler(event, this, @Model.Id)">
+                                    <a class="ajax-get-link" href="@Url.Action("GetProductFeedbacks","Feedback",  new { productId = Model.Id })" data-element-to-update="#view-product-content">
                                         <i class="fa fa-envelope-square admin-tab-icon"></i>
                                         Отзывы<span class="badge badge-admin-tab" id="pending-feedback-count">@Model.FeedbackAmount</span>
                                     </a>

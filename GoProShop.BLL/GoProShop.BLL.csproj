@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="DTO\AdminPageDTO.cs" />
     <Compile Include="DTO\CartItemDTO.cs" />
+    <Compile Include="DTO\ChosenItemDto.cs" />
     <Compile Include="DTO\FeedbackDTO.cs" />
     <Compile Include="DTO\IdProvider.cs" />
     <Compile Include="DTO\OrderDTO.cs" />
@@ -109,9 +110,13 @@
     <Compile Include="Infrastructure\AutoMapperBLLConfig.cs" />
     <Compile Include="DTO\CustomerDTO.cs" />
     <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\ChosenService.cs" />
     <Compile Include="Services\FeedbackService.cs" />
     <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\Interfaces\IChosenService.cs" />
     <Compile Include="Services\Interfaces\IEmailService.cs" />
+    <Compile Include="Services\Interfaces\IOrderedProductService.cs" />
     <Compile Include="Services\Interfaces\IOrderService.cs" />
     <Compile Include="Services\Interfaces\ISearchService.cs" />
     <Compile Include="Services\Interfaces\IAdminService.cs" />
@@ -121,6 +126,7 @@
     <Compile Include="Services\Interfaces\IProductService.cs" />
     <Compile Include="Services\Interfaces\IResponseService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
+    <Compile Include="Services\OrderedProductService.cs" />
     <Compile Include="Services\ResponseService.cs" />
     <Compile Include="Services\ProductGroupService.cs" />
     <Compile Include="Services\ProductService.cs" />

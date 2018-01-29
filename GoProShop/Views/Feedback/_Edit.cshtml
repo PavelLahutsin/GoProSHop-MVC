@@ -53,7 +53,9 @@
 
         <div class="modal-footer">
             <input class="btn btn-link pull-right" style="width: 80px" value="Отмена" data-dismiss="modal" />
-            <input type="submit" value="Сохранить" class="btn btn-primary btn-sm pull-right" />
+            <button type="submit" class="btn btn-primary btn-sm pull-right">
+                <i class="fa fa-spinner fa-pulse fa-lg fa-fw"></i>Сохранить
+            </button>
         </div>
     }
 </div>
@@ -73,7 +75,7 @@
                 if (result.IsSuccess) {
                     $("#mainModal").modal('hide');
                     $("#admin-feedbacks").load("Feedback/GetAdminFeedbacks/");
-                    updateNotificationMessage("#admin-feedbacks-message", result);
+                    updateNotificationMessage(".table-notification-message", result);
                 }
                 else {
                     $('#modalBody').html(result);

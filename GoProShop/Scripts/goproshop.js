@@ -1,7 +1,6 @@
 ﻿function openModal(event, element) {
-    $.ajaxSetup({ cache: false });
     event.preventDefault();
-    $.get(element.href, function (data) {
+    return $.get(element.href, function (data) {
         $('#mainDialogContent').html(data);
         $('#mainModal').modal('show');
     });
@@ -24,32 +23,93 @@ function updateNotificationMessage(element, response) {
 
 }
 
-function getMethodClickHandler(event, element, elementToUpdate) {
-    $.ajaxSetup({ cache: false });
+function retriveChosenValues(event, id) {
     event.preventDefault();
-    $.get(element.href, function (data) {
-        $(elementToUpdate).html(data);
+
+    var element = $(this);
+    var values = $('#product-select').val();
+
+    var data = {
+        productsId: values,
+        orderId: id
+    }
+
+    $.ajaxSettings.traditional = true;
+    $.get("/OrderedProduct/UpdateOrderedProducts", data, function (result) {
+        if (result.IsSuccess) {
+            $('#ordered-products').load(result.Url);
+        }     
     });
+
+    $('#product-select').val("");
+
 }
 
-function loginClickHandler(event, element) {
-    $.ajaxSetup({ cache: false });
+$('body').on('click', 'a.ajax-get-link', function (e) {
+    e.preventDefault();
+
+    var elementToUpdate = $(this).data('elementToUpdate');
+    var elementHref = $(this).attr('href');
+
+    $(elementToUpdate).load(elementHref);
+
+});
+
+function editOrder(event, element, elementId) {
     event.preventDefault();
-    $.get(element.href, function (data) {
-        $('#dialogContent').html(data);
-        $('#loginModal').modal('show');
+
+    var spinner = $(element).find('i.fa.fa-spinner');
+    var buttonIcon = $(element).find('span.icon-button');
+
+    buttonIcon.hide();
+    $(spinner).css("display", "inline-block");
+
+    viewEntity(element, '#new-orders-count', '/Order/View/', elementId);
+
+    $.when(openModal(event, element)).done(function () {
+        spinner.hide();
+        buttonIcon.show();
+    });
+};
+
+
+function viewEntity(element, newEntityCountId, url, elementId) {
+
+    var isViewied = $(element).data("isViewed");
+    if (isViewied === "False") {
+        $.get(url, { id: elementId }, function (result) {
+            $(newEntityCountId).text(result.Count);
+        });
+
+        deleteNewEntityLabel(element);
+        $(element).data("isViewed", "True");
+    }
+}
+
+
+function deleteEntityFromTable(event, element) {
+    event.preventDefault();
+
+    return $.get(element.href, function (data) {
+        if (data.IsSuccess) {
+            element.closest("tr").remove();
+        }
     });
 }
 
 function editFeedback(event, element, elementId) {
     event.preventDefault();
-    $.get('/Feedback/View/', { id: elementId }, function (result) {
-        $('#new-feedbacks-count').text(result.Count);
-        $.get(element.href, function (data) {
-            $('#mainDialogContent').html(data);
-            $('#mainModal').modal('show');
-        });
-    });
+
+    viewEntity(element, '#new-feedbacks-count', '/Feedback/View/', elementId);
+
+    openModal(event, element);
+};
+
+function deleteNewEntityLabel(element) {
+    var parentRow = element.closest("tr");
+    var newEntityLabel = $(parentRow).find('td span.label-new-entity');
+
+    newEntityLabel.remove();
 }
 
 function deleteProduct(event, element) {
@@ -61,16 +121,15 @@ function deleteProduct(event, element) {
 }
 
 function deleteFeedback(event, element, elementId) {
-    $.ajaxSetup({ cache: false });
+
     event.preventDefault();
     $.get(element.href, function (data) {
         if (data.IsSuccess) {
-            $.get('/Feedback/View/', { id: elementId }, function (dataResult) {
-                $('#new-feedbacks-count').text(dataResult.Count);
-            });
-            $('#admin-feedbacks').load("Feedback/GetAdminFeedbacks");
+            var messageId = $('.table-notification-message');
+            viewEntity(element, '#new-feedbacks-count', '/Feedback/View/', elementId);
 
-            updateNotificationMessage("#admin-feedbacks-message", data);
+            $(element).closest("tr").remove();
+            updateNotificationMessage(messageId, data);
         }
     });
 };
@@ -79,24 +138,14 @@ function deleteOrder(event, element, elementId) {
     event.preventDefault();
     $.get(element.href, function (response) {
         if (response.IsSuccess) {
-            $.get('/Order/View/', { id: elementId }, function (dataResult) {
-                $('#new-orders-count').text(dataResult.Count);
-                $(element).closest("tr").remove();
-                updateNotificationMessage("#admin-orders-message", response);
-            });
+
+            viewEntity(element, '#new-orders-count', '/Order/View/', elementId);
+            var messageId = $('.table-notification-message');
+
+            $(element).closest("tr").remove();
+            updateNotificationMessage(messageId, response);
         }
     });
-}
-
-
-function updateFeedbacks(data) {
-    if (data.IsSuccess) {
-        updateAlertMessage(data.Message);
-        $.get('Feedback/GetAdminFeedbacks', function (feedbackData) {
-            $('#admin-feedbacks').html(feedbackData);
-        });
-        $("#mainModal").modal('hide');
-    }
 }
 
 function unloadModal(data) {
@@ -166,27 +215,6 @@ function CRateSelected() {
     }
 }
 
-
-function adminTabClickHandler(event, element) {
-    var $this = $(this);
-    $this.addClass('active');
-    event.preventDefault();
-    $.get(element.href, function (data) {
-        $('#adminContent').html(data);
-    });
-};
-
-function productTabClickHandler(event, element, elementId) {
-    event.preventDefault();
-
-    var $this = $(this);
-
-    $this.addClass('active');
-    $.get(element.href, { productId: elementId }, function (partialView) {
-        $('#view-product-content').html(partialView);
-    });
-};
-
 function addToCart(event, element) {
     event.preventDefault();
 
@@ -214,11 +242,10 @@ function deleteCartItem(event, element) {
     event.preventDefault();
 
     var shoppingCartBadge = $('#shopping-cart span.badge');
-    var parentRow = $(element).closest("tr");
     $.get(element.href, function (data) {
         updateOrderInfo();
         shoppingCartBadge.text(data.Quantity);
-        parentRow.remove();
+        $(element).closest("tr").remove();
     });
 }
 

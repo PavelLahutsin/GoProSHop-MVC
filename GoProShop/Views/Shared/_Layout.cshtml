@@ -7,16 +7,19 @@
     @Styles.Render("~/bundles/styles")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/chosen")
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.3/chosen.css"/>*@
+    @*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.3/chosen.jquery.js"></script>*@
 </head>
 <body>
     <div class="container-fluid" style="font-family: 'Open Sans', 'sans-serif';">
         <div class="container-fluid">
             <div class="navbar-inverse" style="padding-top: 7px; background-color: #1a1a1a">
                 <div class="container">
-                    <div class="nav navbar-left">
+                    @*<div class="nav navbar-left">
                         <a class="navbar-link" style="padding-right: 7px;"><span><img height="15" src="~/Content/Images/velcom.png" /></span> +375 29 127 52 24</a>
                         <a class="navbar-link" style="padding-right: 7px;"><span><img height="15" src="~/Content/Images/MTS.png" /></span> +375 29 127 52 24</a>
-                    </div>
+                    </div>*@
                     @Html.Partial("~/Views/Account/_LoginPartial.cshtml")
                 </div>
             </div>
@@ -54,6 +57,7 @@
                 @RenderBody()
             </div>
         </div>
+
         <div id="mainModal" class="modal fade in">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -108,9 +112,9 @@
         <a href="#" id="scrollToTop"><span class="fa fa-angle-up fa-2x"></span></a>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz7SKCEEmzuiQnfkQGqhixSYyqiUi23xY&callback=myMap"></script>
-    @Scripts.Render("~/bundles/dataTables")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/goproshop")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -4,7 +4,6 @@ using GoProShop.DAL.EF;
 using GoProShop.DAL.Interfaces;
 using GoProShop.DAL.Repositories;
 using GoProShop.ViewModels;
-using GoProShop.ViewModels.Interfaces;
 using Microsoft.Owin.Security;
 using System;
 using System.Web.Mvc;
@@ -60,7 +59,6 @@ namespace GoProShop
                 .RegisterType<IProductSubGroupService, ProductSubGroupService>()
                 .RegisterType<IProductService, ProductService>()
                 .RegisterType<IProductGroupService, ProductGroupService>()
-                .RegisterType<ICart, Cart>()
                 .RegisterType<IFeedbackService, FeedbackService>()
                 .RegisterType<IResponseService, ResponseService>()
                 .RegisterType<IPagedListHelper, PagedListHelper>()
@@ -68,6 +66,8 @@ namespace GoProShop
                 .RegisterType<IAdminService, AdminService>()
                 .RegisterType<IOrderService, OrderService>()
                 .RegisterType<IEmailService, EmailService>()
+                .RegisterType<IChosenService, ChosenService>()
+                .RegisterType<IOrderedProductService, OrderedProductService>()
                 .RegisterType<IAuthenticationManager>(new InjectionFactory(x => HttpContext.Current.GetOwinContext().Authentication));
         }
     }

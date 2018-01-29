@@ -6,13 +6,11 @@ using System.Linq;
 
 namespace GoProShop.BLL.Services
 {
-    public class AdminService : IAdminService
+    public class AdminService : BaseService, IAdminService
     {
-        private readonly IUnitOfWork _uow;
-
         public AdminService(IUnitOfWork uow)
+            : base(uow)
         {
-            _uow = uow ?? throw new ArgumentNullException(nameof(uow));
         }
 
         public AdminPageDTO Build()

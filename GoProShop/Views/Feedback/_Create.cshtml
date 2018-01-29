@@ -54,7 +54,7 @@
             contentType: false,
             success: function (result) {
                 if (result.IsSuccess) {
-                    updateNotificationMessage("#feedback-message", result);
+                    updateNotificationMessage(".table-notification-message", result);
                     spinner.hide();
                     button.removeClass("disabled");
                     $('#create-feedback-content').load("/Feedback/Create");

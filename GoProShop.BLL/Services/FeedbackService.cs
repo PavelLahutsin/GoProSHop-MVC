@@ -11,13 +11,11 @@ using System.Threading.Tasks;
 
 namespace GoProShop.BLL.Services
 {
-    public class FeedbackService : IFeedbackService
+    public class FeedbackService : BaseService, IFeedbackService
     {
-        private readonly IUnitOfWork _uow;
-
-        public FeedbackService(IUnitOfWork uow, IResponseService responseService)
+         public FeedbackService(IUnitOfWork uow)
+            : base(uow)
         {
-            _uow = uow ?? throw new ArgumentNullException(nameof(uow));
         }
 
         public async Task CreateAsync(FeedbackDTO feedbackDTO)

@@ -8,6 +8,7 @@ namespace GoProShop.BLL.Services.Interfaces
     public interface IProductService
     {
         IEnumerable<ProductDTO> GetGroupProducts(string sortCriteria, int id);
+        IEnumerable<ProductDTO> GetAll();
         Task<ProductDTO> GetAsync(int id);
         Task UpdateAsync(ProductDTO product);
         Task CreateAsync(ProductDTO product);

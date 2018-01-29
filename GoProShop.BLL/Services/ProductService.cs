@@ -8,19 +8,18 @@ using AutoMapper;
 using GoProShop.BLL.Services.Interfaces;
 using System.Threading.Tasks;
 using System.Web;
+using System.Data.Entity;
 
 namespace GoProShop.BLL.Services
 {
-    public class ProductService : IProductService
+    public class ProductService : BaseService, IProductService
     {
         private const string Desc = "desc";
         private const string Asc = "asc";
 
-        private readonly IUnitOfWork _uow;
-
         public ProductService(IUnitOfWork uow)
+            : base(uow)
         {
-            _uow = uow ?? throw new ArgumentNullException(nameof(uow));
         }
 
         public async Task CreateAsync(ProductDTO product)
@@ -95,6 +94,14 @@ namespace GoProShop.BLL.Services
         {
             await _uow.Products.DeleteAsync(Mapper.Map<Product>(product));
             await _uow.Commit();
+        }
+
+        public IEnumerable<ProductDTO> GetAll()
+        {
+            var products = _uow.Products.Entities.ToList();
+
+            return Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products);
+
         }
     }
 }

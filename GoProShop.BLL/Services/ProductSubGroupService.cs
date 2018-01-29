@@ -8,13 +8,11 @@ using GoProShop.DAL.Entities;
 
 namespace GoProShop.BLL.Services
 {
-    public class ProductSubGroupService : IProductSubGroupService
+    public class ProductSubGroupService : BaseService, IProductSubGroupService
     {
-        private readonly IUnitOfWork _uow;
-
         public ProductSubGroupService(IUnitOfWork uow)
+            : base(uow)
         {
-            _uow = uow;
         }
 
         public IEnumerable<ProductSubGroupDTO> GetProductSubGroups()

@@ -17,7 +17,7 @@ namespace GoProShop.DAL.Interfaces
 
         IBaseRepository<ProductSubGroup> ProductSubGroups { get; }
 
-        IBaseRepository<OrderedProduct> ProductsOrdered { get; }
+        IBaseRepository<OrderedProduct> OrderedProducts { get; }
 
         IBaseRepository<StoredProduct> ProductsStored { get; }
 

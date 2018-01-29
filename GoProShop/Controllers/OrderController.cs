@@ -16,7 +16,7 @@ namespace GoProShop.Controllers
         private readonly IOrderService _orderService;
         private readonly IEmailService _emailService;
         private readonly IResponseService _responseService;
-
+       
         public OrderController(
             IOrderService orderService,
             IEmailService emailService,
@@ -35,7 +35,6 @@ namespace GoProShop.Controllers
 
             return PartialView("_AdminOrders", ordersVM.ToPagedList(page, 10));
         }
-
 
         public ActionResult Create()
         {
@@ -76,6 +75,13 @@ namespace GoProShop.Controllers
             await _emailService.SendSuccessOrderEmail(orderId);
 
             return Json(_responseService.Create(true, string.Empty, Url.Action("SuccessOrder", "Order", new { id = orderId })));
+        }
+
+        [Authorize(Roles = "admin")]
+        public async Task<ActionResult> Edit(int id)
+        {
+            var orderDto = await _orderService.GetAsync(id);
+            return PartialView("_Edit", Mapper.Map<OrderVM>(orderDto));
         }
 
         [Authorize(Roles = "admin")]

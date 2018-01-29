@@ -9,13 +9,11 @@ using GoProShop.DAL.Interfaces;
 
 namespace GoProShop.BLL.Services
 {
-    public class EmailService : IEmailService
+    public class EmailService : BaseService, IEmailService
     {
-        private readonly IUnitOfWork _uow;
-
-        public EmailService(IUnitOfWork uow)
+             public EmailService(IUnitOfWork uow)
+            : base(uow)
         {
-            _uow = uow ?? throw new ArgumentNullException(nameof(uow));
         }
 
         public async Task SendSuccessOrderEmail(int orderId)

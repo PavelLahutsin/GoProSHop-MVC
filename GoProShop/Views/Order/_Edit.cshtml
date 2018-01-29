@@ -1,0 +1,121 @@
+﻿@model GoProShop.ViewModels.OrderVM
+
+<div style="width: 900px;">
+    <div class="modal-header">
+        <ul class="registration-nav">
+            <li><text><strong>Информация о заказе</strong></text></li>
+            <li class="pull-right"><a class="close-thik" data-dismiss="modal"></a></li>
+        </ul>
+    </div>
+    @using (Html.BeginForm("Edit", "Order", FormMethod.Post, new { id = "edit-feedback-form", @сlass = "ajax-form-with-spinner" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <p>Заказ №<strong>@Model.Id</strong></p>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Дата заказа")
+                        <div class="left-inner-addon ">
+                            <i class="fa fa-calendar fa-lg"></i>
+                            @Html.EditorFor(model => model.OrderDate, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "Дата доставки" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.OrderDate, null, new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Cтатус заказа")
+                        @Html.EnumDropDownListFor(model => model.Condition, "Выберите статус заказа", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Основная информация")
+                        @Html.EditorFor(model => model.Customer.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Имя" } })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.Customer.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Емейл" } })
+                        @Html.ValidationMessageFor(model => model.Customer.Email, null, new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.Customer.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Телефон" } })
+                        @Html.ValidationMessageFor(model => model.Customer.Phone, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+
+                    <div class="form-group">
+                        @Html.Label("Cпособ доставки")
+                        @Html.EnumDropDownListFor(model => model.DeliveryType, "Выберите способ доставки", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.Customer.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Адрес доставки" } })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Cпособ оплаты")
+                        @Html.EnumDropDownListFor(model => model.PaymentMethod, "Выберите способ оплаты", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PaymentMethod, null, new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Комментарий")
+                        @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", style = "overflow-x: hidden;overflow-y: hidden;", rows = 6, placeholder = "Комментарий" })
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                        <div class="admin-content-box" style="margin: 2px;">
+                            <div class="admin-content-box__heading">
+                                <div class="heading-wrapper">
+                                    <p>Состав заказа</p>
+                                </div>
+                            </div>
+                            <div class="admin-content-box__body">
+                                <div class="row" style="margin-top: 20px;">
+                                    <div class="col-md-12">
+                                        <div class="form-inline">
+                                            <select id="product-select" multiple data-placeholder="Выберите товар.." class="chosen-select" tabindex="4"></select>
+
+                                            <button class="btn btn-success btn-sm pull-right" onclick="retriveChosenValues(event, @Model.Id)" style="height: 34px; width: 15%"><i class="fa fa-spinner fa-pulse fa-fw"></i>Добавить</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="ordered-products">
+                                    @Html.Action("GetOrderedProducts","OrderedProduct", new { id = Model.Id })
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input class="btn btn-link pull-right" style="width: 80px" value="Отмена" data-dismiss="modal" />
+            <button type="submit" class="btn btn-primary btn-sm pull-right">
+                <i class="fa fa-spinner fa-pulse fa-lg fa-fw"></i>Сохранить
+            </button>
+        </div>
+
+    }
+</div>
+<script>
+    $(function () {
+        $(".datepicker").datetimepicker({
+            locale: 'ru',
+            format: "MM/DD/YYYY"
+        });
+    });
+</script>

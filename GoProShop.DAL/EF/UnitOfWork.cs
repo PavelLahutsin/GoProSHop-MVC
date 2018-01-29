@@ -47,7 +47,7 @@ namespace GoProShop.DAL.EF
         public IBaseRepository<ProductSubGroup> ProductSubGroups => _productSubGroupRepository ?? 
             (_productSubGroupRepository = new BaseRepository<ProductSubGroup>(_context));
 
-        public IBaseRepository<OrderedProduct> ProductsOrdered => _productOrderedRepository ??
+        public IBaseRepository<OrderedProduct> OrderedProducts => _productOrderedRepository ??
             (_productOrderedRepository = new BaseRepository<OrderedProduct>(_context));
 
         public IBaseRepository<StoredProduct> ProductsStored => _productStoredRepository ?? 

@@ -13,18 +13,13 @@ using PagedList;
 
 namespace GoProShop.BLL.Services
 {
-    public class SearchService : ISearchService
+    public class SearchService : BaseService, ISearchService
     {
         private const string Pattern = @"^[\p{L}a-zA-Z0-9\s?]*$";
 
-        private readonly IUnitOfWork _uow;
-        private readonly IResponseService _responseService;
-
-        public SearchService(IUnitOfWork uow,
-            IResponseService responseService)
+        public SearchService(IUnitOfWork uow)
+         : base(uow)
         {
-            _uow = uow ?? throw new ArgumentNullException(nameof(uow));
-            _responseService = responseService ?? throw new ArgumentNullException(nameof(responseService));
         }
 
         public SearchResultDTO<ProductDTO> SearchProducts(string searchString)
@@ -48,11 +43,11 @@ namespace GoProShop.BLL.Services
         {
             var regex = new Regex(Pattern);
 
-            if (!regex.IsMatch(searchString) 
+            if (!regex.IsMatch(searchString)
                 || string.IsNullOrEmpty(searchString))
-                return _responseService.Create(false, "Последовательность содержит недопустимые символы");
+                return new ResponseDTO(false, "Последовательность содержит недопустимые символы");
 
-            return _responseService.Create(true, string.Empty);
+            return new ResponseDTO(true, string.Empty);
         }
     }
 }

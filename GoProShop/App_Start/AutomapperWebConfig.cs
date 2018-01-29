@@ -24,6 +24,7 @@ namespace GoProShop.App_Start
             cfg.CreateMap<CustomerVM, CustomerDTO>().ReverseMap();
             cfg.CreateMap<OrderVM, OrderDTO>().ReverseMap();
             cfg.CreateMap<CartItem, CartItemDTO>().ReverseMap();
+            cfg.CreateMap<ChosenItemVm, ChosenItemDto>().ReverseMap();
             cfg.CreateMap(typeof(SearchResultDTO<>), typeof(SearchResultVM<>)).ReverseMap();       
         };
     }

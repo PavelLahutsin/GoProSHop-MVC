@@ -1,13 +1,10 @@
-﻿using GoProShop.ViewModels.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 
 namespace GoProShop.ViewModels
 {
-    public class Cart : ICart
+    public class Cart
     {
         private readonly IList<CartItem> _cartItems = new List<CartItem>();
 

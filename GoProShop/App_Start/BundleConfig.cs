@@ -13,6 +13,10 @@ namespace GoProShop
                         "~/Scripts/jquery.unobtrusive-ajax.js"
                        ));
 
+            bundles.Add(new ScriptBundle("~/bundles/chosen").Include(
+                "~/Scripts/chosen.jquery.js"
+                     ));
+
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
@@ -31,7 +35,8 @@ namespace GoProShop
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-datetimepicker.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/chosen.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/dataTables").Include(
                 "~/Scripts/jquery-{version}.min.js",

@@ -5,19 +5,17 @@ using AutoMapper;
 using GoProShop.BLL.DTO;
 using GoProShop.BLL.Services.Interfaces;
 using GoProShop.DAL.Entities;
-using GoProShop.DAL.Interfaces;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using GoProShop.DAL.Interfaces;
 
 namespace GoProShop.BLL.Services
 {
-    public class UserService : IUserService
+    public class UserService : BaseService, IUserService
     {
-        private readonly IUnitOfWork _uow;
-
         public UserService(IUnitOfWork uow)
+            : base(uow)
         {
-            _uow = uow ?? throw new ArgumentNullException(nameof(uow));
         }
 
         public async Task<bool> IsUserExist(string userName)
@@ -32,16 +30,16 @@ namespace GoProShop.BLL.Services
             await _uow.UserManager.CreateAsync(userToAdd, user.Password);
             await _uow.Commit();
         }
-        
+
         public async Task<ClaimsIdentity> Authenticate(UserLoginDTO userDto)
         {
             ClaimsIdentity claim = null;
             var user = await _uow.UserManager.FindAsync(userDto.Name, userDto.Password);
 
             if (user != null)
-                claim = 
+                claim =
                     await _uow.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-            
+
             return claim;
         }
 
@@ -60,6 +58,6 @@ namespace GoProShop.BLL.Services
         public void SignOut()
         {
             _uow.AuthenticationManager.SignOut();
-        }   
+        }
     }
 }
