@@ -20,13 +20,11 @@ function updateNotificationMessage(element, response) {
             '</span></div>').delay(2500).hide(300);
         $(element).show();
     }
-
 }
 
 function retriveChosenValues(event, id) {
     event.preventDefault();
 
-    var element = $(this);
     var values = $('#product-select').val();
 
     var data = {
@@ -56,15 +54,23 @@ function submitModalForm(event) {
         data: formdata,
         success: function (result) {
             if (result.IsSuccess) {
-                $("#mainModal").modal('hide');
-                $("#admin-orders").load("Order/GetAdminOrders");
-                updateNotificationMessage(".table-notification-message", result);
+
+                var onSuccess = $(form).data("onSuccess");
+                var callback = eval(onSuccess);
+                if (typeof callback === 'function') {
+                    callback(result);
+                }
             }
             else {
                 $('#modalBody').html(result);
             }
         }
     });
+}
+
+function editOrderOnSuccessHandler(data) {
+    $('#mainModal').modal('hide');
+    updateNotificationMessage(".table-notification-message", data);
 }
 
 

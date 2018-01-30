@@ -13,8 +13,8 @@
 .admin-content-box {
     border: 1px solid lightgray;
     border-radius: 4px;
-    box-shadow: 0 0 10px 2px #efefef;
-    border-top: 3px solid lightgray;
+    box-shadow: 0 0 3px 0 lightgrey;
+    border-top: 1px solid lightgrey;
 }
 
 .admin-content-box__heading {

@@ -788,3 +788,8 @@ body .row + .row{
     width: auto;
     min-width: 420px;
 }
+
+input.form-control,
+select.form-control {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #eee), color-stop(15%, #fff));
+}

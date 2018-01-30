@@ -7,9 +7,11 @@
             <li class="pull-right"><a class="close-thik" data-dismiss="modal"></a></li>
         </ul>
     </div>
-    @using (Html.BeginForm("Edit", "Order", FormMethod.Post, new { onsubmit = "submitModalForm(event,this)"}))
+    @using (Html.BeginForm("Edit", "Order", FormMethod.Post, new { onsubmit = "submitModalForm(event,this)", data_on_success = "editOrderOnSuccessHandler" }))
     {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => Model.CustomerId)
+        @Html.HiddenFor(model => Model.IsViewed)
         <div class="modal-body">
             <div class="row">
                 <div class="col-md-6">

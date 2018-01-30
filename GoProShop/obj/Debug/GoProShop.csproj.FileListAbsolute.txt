@@ -148,11 +148,6 @@ E:\MyProjects\GoProSHop-MVC\GoProShop\bin\roslyn\Microsoft.CodeAnalysis.VisualBa
 E:\MyProjects\GoProSHop-MVC\GoProShop\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 E:\MyProjects\GoProSHop-MVC\GoProShop\bin\roslyn\System.IO.Compression.dll
 E:\MyProjects\GoProSHop-MVC\GoProShop\bin\roslyn\VBCSCompiler.exe
-E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.Collections.Immutable.dll
-E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.dll
-E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
-E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.Reflection.Metadata.dll
-E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.Security.Cryptography.Algorithms.dll
 E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.Security.Cryptography.Primitives.dll
 E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.ValueTuple.dll
 E:\MyProjects\GoProShop-MVC\GoProShop\bin\ApplicationInsights.config
@@ -432,3 +427,8 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProSHop-MV
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProSHop-MVC\GoProShop\obj\Debug\GoProShop.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProSHop-MVC\GoProShop\obj\Debug\GoProShop.pdb
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.dll
+E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.dll
+E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.Reflection.Metadata.dll
+E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.Collections.Immutable.dll
