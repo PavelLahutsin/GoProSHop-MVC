@@ -45,6 +45,29 @@ function retriveChosenValues(event, id) {
 
 }
 
+function submitModalForm(event) {
+    event.preventDefault();
+    var form = event.target;
+    var formdata = $(form).serializeArray();
+
+    $.ajax({
+        url: $(form).attr('action'),
+        type: $(form).attr('method'),
+        data: formdata,
+        success: function (result) {
+            if (result.IsSuccess) {
+                $("#mainModal").modal('hide');
+                $("#admin-orders").load("Order/GetAdminOrders");
+                updateNotificationMessage(".table-notification-message", result);
+            }
+            else {
+                $('#modalBody').html(result);
+            }
+        }
+    });
+}
+
+
 $('body').on('click', 'a.ajax-get-link', function (e) {
     e.preventDefault();
 

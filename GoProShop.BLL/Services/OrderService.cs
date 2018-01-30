@@ -100,5 +100,17 @@ namespace GoProShop.BLL.Services
 
             return _uow.Orders.Entities.Where(x => !x.IsViewed)?.Count() ?? 0;
         }
+
+        public async Task<ResponseDTO> UpdateAsync(OrderDTO orderDto)
+        {
+            var order = await _uow.Orders.UpdateAsync(Mapper.Map<Order>(orderDto));
+
+            if (order == null)
+                return new ResponseDTO(false, "Данного заказа не существует в базе данных");
+
+            await _uow.Commit();
+
+            return new ResponseDTO(true, "Заказ успешно обновлен в базе данных");
+        }
     }
 }

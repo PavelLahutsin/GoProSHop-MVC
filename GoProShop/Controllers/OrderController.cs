@@ -85,6 +85,20 @@ namespace GoProShop.Controllers
         }
 
         [Authorize(Roles = "admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(OrderVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                return PartialView("_Edit", model);
+            }
+
+            var response = _orderService.UpdateAsync(Mapper.Map<OrderDTO>(model));
+            return Json(response);
+        }
+
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Delete(int id)
         {
             var response = Mapper.Map<ResponseVM>(await _orderService.DeleteAsync(id));

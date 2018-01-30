@@ -7,7 +7,7 @@
             <li class="pull-right"><a class="close-thik" data-dismiss="modal"></a></li>
         </ul>
     </div>
-    @using (Html.BeginForm("Edit", "Order", FormMethod.Post, new { id = "edit-feedback-form", @сlass = "ajax-form-with-spinner" }))
+    @using (Html.BeginForm("Edit", "Order", FormMethod.Post, new { onsubmit = "submitModalForm(event,this)"}))
     {
         @Html.AntiForgeryToken()
         <div class="modal-body">
@@ -97,14 +97,12 @@
                                 </div>
                             </div>
                         </div>
-
                 </div>
-
             </div>
         </div>
         <div class="modal-footer">
             <input class="btn btn-link pull-right" style="width: 80px" value="Отмена" data-dismiss="modal" />
-            <button type="submit" class="btn btn-primary btn-sm pull-right">
+            <button formnovalidate type="submit" class="btn btn-primary btn-sm pull-right">
                 <i class="fa fa-spinner fa-pulse fa-lg fa-fw"></i>Сохранить
             </button>
         </div>

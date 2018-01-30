@@ -432,4 +432,3 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProSHop-MV
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProSHop-MVC\GoProShop\obj\Debug\GoProShop.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProSHop-MVC\GoProShop\obj\Debug\GoProShop.pdb
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.Collections.Immutable.dll

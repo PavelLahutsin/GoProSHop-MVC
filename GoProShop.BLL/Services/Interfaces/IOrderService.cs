@@ -15,5 +15,7 @@ namespace GoProShop.BLL.Services.Interfaces
         Task<ResponseDTO> DeleteAsync(int id);
 
         Task<int> ViewOrder(int id);
+
+        Task<ResponseDTO> UpdateAsync(OrderDTO order);
     }
 }
