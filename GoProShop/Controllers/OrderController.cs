@@ -87,15 +87,9 @@ namespace GoProShop.Controllers
         [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(OrderVM model)
+        public ActionResult Edit(OrderVM model)
         {
-            if (ModelState.IsValid)
-            {
-                return PartialView("_Edit", model);
-            }
-
-            var response = _orderService.UpdateAsync(Mapper.Map<OrderDTO>(model));
-            return Json(response);
+            return Json(_responseService.Create(true, "Заказ был успешно обновлен в базе данных"));
         }
 
         [Authorize(Roles = "admin")]

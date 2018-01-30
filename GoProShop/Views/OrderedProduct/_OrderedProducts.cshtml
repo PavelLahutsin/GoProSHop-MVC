@@ -13,26 +13,32 @@
 
             </thead>
             <tbody>
-                @foreach (var orderedProduct in Model)
-                {
-                    <tr>
-                        <td class="text-center">
-                            @if (orderedProduct.Product.MimeType == null)
-                            {
-                                <img height="30" width="35" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
-                            }
-                            else
-                            {
-                                <img height="30" width="35" src="@Url.Action("GetImage", "Product", new { productId = orderedProduct.Product.Id })" alt="Фото">
-                            }
-                        </td>
-                        <td>@orderedProduct.Product.Name</td>
-                        <td>@orderedProduct.Quantity шт.</td>
-                        <td>@orderedProduct.Product.Price руб.</td>
-                        <td class="text-center"><a class="btn btn-default btn-sm" href="@Url.Action("Delete", "OrderedProduct", new { orderedProductId = orderedProduct.Id })" onclick="deleteEntityFromTable(event,this)"><i class="fa fa-trash-o text-danger"></i></a></td>
-                    </tr>
-                }
+            @foreach (var orderedProduct in Model)
+            {
+                @Html.HiddenFor(model => orderedProduct)
+                <tr>
+                    <td class="text-center">
+                        @if (orderedProduct.Product.MimeType == null)
+                        {
+                            <img height="30" width="35" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
+                        }
+                        else
+                        {
+                            <img height="30" width="35" src="@Url.Action("GetImage", "Product", new { productId = orderedProduct.Product.Id })" alt="Фото">
+                        }
+                    </td>
+                    <td>@orderedProduct.Product.Name</td>
+                    <td>@orderedProduct.Quantity шт.</td>
+                    <td>@orderedProduct.Product.Price руб.</td>
+                    <td class="text-center"><a class="btn btn-default btn-sm" href="@Url.Action("Delete", "OrderedProduct", new { orderedProductId = orderedProduct.Id })" onclick="deleteEntityFromTable(event,this)"><i class="fa fa-trash-o text-danger"></i></a></td>
+                </tr>
+            }
             </tbody>
+            <tfoot>
+            <tr style="border-top: 1px solid #ccc">
+                <th>@Model.Sum(x => x.Price)</th>
+            </tr>
+            </tfoot>
         </table>
     </div>
 </div>
@@ -61,6 +67,6 @@
                         .text(item.Name));
                 });
             });
-        }
+        }M
     });
 </script>
