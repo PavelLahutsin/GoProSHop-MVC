@@ -7,7 +7,7 @@
             <li class="pull-right"><a class="close-thik" data-dismiss="modal"></a></li>
         </ul>
     </div>
-    @using (Html.BeginForm("Edit", "Feedback", FormMethod.Post, new { id = "edit-feedback-form", @сlass="ajax-form-with-spinner" }))
+    @using (Html.BeginForm("Edit", "Feedback", FormMethod.Post, new { onsubmit= "submitModalForm(event)", data_on_success="editFeedbackOnSuccessHandler" }))
     {
         @Html.AntiForgeryToken()
         <div class="modal-body">
@@ -59,28 +59,3 @@
         </div>
     }
 </div>
-<script>
-    $('#edit-feedback-form').submit(function (event) {
-        event.preventDefault();
-
-        var formdata = new FormData($(this).get(0));
-
-        $.ajax({
-            url: this.action,
-            type: this.method,
-            data: formdata,
-            processData: false,
-            contentType: false,
-            success: function (result) {
-                if (result.IsSuccess) {
-                    $("#mainModal").modal('hide');
-                    $("#admin-feedbacks").load("Feedback/GetAdminFeedbacks/");
-                    updateNotificationMessage(".table-notification-message", result);
-                }
-                else {
-                    $('#modalBody').html(result);
-                }
-            }
-        });
-    });
-</script>

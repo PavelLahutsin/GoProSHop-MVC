@@ -1,6 +1,6 @@
 ﻿@model GoProShop.ViewModels.FeedbackVM
 
-    @using (Html.BeginForm("Create", "Feedback", FormMethod.Post, new {id = "create-feedback-form"}))
+    @using (Html.BeginForm("Create", "Feedback", FormMethod.Post, new { onsubmit = "su" }))
     {
         @Html.AntiForgeryToken()
         <div class="row">
@@ -40,8 +40,9 @@
         event.preventDefault();
 
         var formdata = new FormData($(this).get(0));
-        var spinner = $("#create-feedback-content .fa-spinner");
-        var button = $("#create-feedback-content button");
+        var button = $(this).find('button[type="submit"]');
+
+        var spinner = button.find('.fa-spinner');
 
         spinner.css("display", "inline-block");
         button.addClass("disabled");

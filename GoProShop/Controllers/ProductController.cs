@@ -3,6 +3,7 @@ using GoProShop.BLL.DTO;
 using GoProShop.BLL.Services.Interfaces;
 using GoProShop.ViewModels;
 using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,11 +15,16 @@ namespace GoProShop.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
+        private readonly IResponseService _responseService;
 
-        public ProductController(IProductService productService)
+        public ProductController(
+           IProductService productService,
+           IResponseService responseService)
         {
-            _productService = productService;
+            _productService = productService ?? throw new ArgumentNullException(nameof(productService));
+            _responseService = responseService ?? throw new ArgumentNullException(nameof(responseService));
         }
+
 
         public async Task<ActionResult> ViewProduct(int productId, string tab = "description")
         {
@@ -65,6 +71,15 @@ namespace GoProShop.Controllers
             var products
                 = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(_productService.GetGroupProducts(sortCriteria,id));
 
+            return PartialView("_AdminProductsContent", products);
+        }
+
+        [Authorize(Roles = "admin")]
+        public async Task<ActionResult> GetAdminProducts(int id)
+        {
+            var products
+                = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(await _productService.GetAdminProductsAsync(id));
+
             return PartialView("_AdminProducts", products);
         }
 
@@ -89,20 +104,8 @@ namespace GoProShop.Controllers
                 return PartialView("_Create", model);
             }
 
-            if (uploadedFile != null)
-            {
-                model = Mapper.Map<ProductVM>(
-                    _productService.MapImage(
-                        Mapper.Map<ProductDTO>(model), uploadedFile));
-            }
-
-            await _productService.CreateAsync(Mapper.Map<ProductDTO>(model));
-            return Json(new
-            {
-                success = true,
-                groupId = model.ProductSubGroupId
-            }, 
-            
+            await _productService.CreateAsync(Mapper.Map<ProductDTO>(model), uploadedFile);
+            return Json(_responseService.Create(true, "Товар успешно добавлен в базу данных", Url.Action("GetAdminProducts", new { id = model.ProductSubGroupId })),         
             JsonRequestBehavior.AllowGet);
         }
 
@@ -110,11 +113,6 @@ namespace GoProShop.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             var productToRemove = Mapper.Map<ProductVM>(await _productService.GetAsync(id));
-
-            if (productToRemove == null)
-            {
-                return HttpNotFound();
-            }
 
             await _productService.DeleteAsync(Mapper.Map<ProductDTO>(productToRemove));
             return RedirectToAction("SubGroupAdminProducts", new { id = productToRemove.ProductSubGroupId });
@@ -136,18 +134,10 @@ namespace GoProShop.Controllers
             {
                 return PartialView("_Edit", model);
             }
-        
 
-            if (uploadedFile != null)
-            {
-                model = Mapper.Map<ProductVM>(
-                    _productService.MapImage(
-                        Mapper.Map<ProductDTO>(model), uploadedFile));
-            }
+            await _productService.UpdateAsync(Mapper.Map<ProductDTO>(model), uploadedFile);
 
-            await _productService.UpdateAsync(Mapper.Map<ProductDTO>(model));
-
-            return RedirectToAction("SubGroupAdminProducts", new { model.ProductSubGroupId });
+            return Json(_responseService.Create(true, "Товар успешно обновлен в базе данных", Url.Action("GetAdminProducts", "Product", new { id = model.ProductSubGroupId })), JsonRequestBehavior.AllowGet);
         }
 
         public async Task<FileContentResult> GetImage(int productId)

@@ -22,8 +22,13 @@ namespace GoProShop.BLL.Services
         {
         }
 
-        public async Task CreateAsync(ProductDTO product)
+        public async Task CreateAsync(ProductDTO product, HttpPostedFileBase uploadedFile)
         {
+            if (uploadedFile != null)
+            {
+                MapProductImage(product, uploadedFile);
+            }
+
             _uow.Products.Create(Mapper.Map<Product>(product));
             await _uow.Commit();
         }
@@ -66,9 +71,14 @@ namespace GoProShop.BLL.Services
             return product;
         }
 
-        public async Task UpdateAsync(ProductDTO product)
+        public async Task UpdateAsync(ProductDTO product, HttpPostedFileBase uploadedFile)
         {
-            var updatedProduct = await _uow.Products.UpdateAsync(Mapper.Map<Product>(product));
+            if(uploadedFile != null)
+            {
+                MapProductImage(product, uploadedFile);
+            }
+
+            await _uow.Products.UpdateAsync(Mapper.Map<Product>(product));
             await _uow.Commit();
         }
 
@@ -79,15 +89,6 @@ namespace GoProShop.BLL.Services
 
             var productsDto = Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products);
             return productsDto;
-        }
-
-        public ProductDTO MapImage(ProductDTO product, HttpPostedFileBase uploadedFile)
-        {
-            var count = uploadedFile.ContentLength;
-            product.Image = new byte[count];
-            uploadedFile.InputStream.Read(product.Image, 0, count);
-            product.MimeType = uploadedFile.ContentType;
-            return product;
         }
 
         public async Task DeleteAsync(ProductDTO product)
@@ -102,6 +103,21 @@ namespace GoProShop.BLL.Services
 
             return Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products);
 
+        }
+
+        public async Task<IEnumerable<ProductDTO>> GetAdminProductsAsync(int id)
+        {
+            var products = await _uow.Products.Entities.Where(x => x.ProductSubGroupId == id).ToListAsync();
+
+            return Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products);
+        }
+
+        private void MapProductImage(ProductDTO product, HttpPostedFileBase uploadedFile)
+        {
+            var count = uploadedFile.ContentLength;
+            product.Image = new byte[count];
+            uploadedFile.InputStream.Read(product.Image, 0, count);
+            product.MimeType = uploadedFile.ContentType;
         }
     }
 }

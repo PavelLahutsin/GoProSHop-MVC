@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<GoProShop.ViewModels.OrderedProductVM>
 <div class="row" style="margin-top: 20px;">
     <div class="col-md-12">
-        <table  class="table table-responsive table-striped">
+        <table class="table table-responsive table-striped">
             <thead>
                 <tr>
                     <td class="text-center">Фото</td>
@@ -13,31 +13,40 @@
 
             </thead>
             <tbody>
-            @foreach (var orderedProduct in Model)
+                @foreach (var orderedProduct in Model)
             {
-                @Html.HiddenFor(model => orderedProduct)
-                <tr>
-                    <td class="text-center">
-                        @if (orderedProduct.Product.MimeType == null)
-                        {
-                            <img height="30" width="35" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
-                        }
-                        else
-                        {
-                            <img height="30" width="35" src="@Url.Action("GetImage", "Product", new { productId = orderedProduct.Product.Id })" alt="Фото">
-                        }
-                    </td>
-                    <td>@orderedProduct.Product.Name</td>
-                    <td>@orderedProduct.Quantity шт.</td>
-                    <td>@orderedProduct.Product.Price руб.</td>
-                    <td class="text-center"><a class="btn btn-default btn-sm" href="@Url.Action("Delete", "OrderedProduct", new { orderedProductId = orderedProduct.Id })" onclick="deleteEntityFromTable(event,this)"><i class="fa fa-trash-o text-danger"></i></a></td>
-                </tr>
-            }
+                    @Html.HiddenFor(model => orderedProduct)
+                    <tr>
+                        <td class="text-center">
+                            @if (orderedProduct.Product.MimeType == null)
+                            {
+                                <img height="30" width="35" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
+                            }
+                            else
+                            {
+                                <img height="30" width="35" src="@Url.Action("GetImage", "Product", new { productId = orderedProduct.Product.Id })" alt="Фото">
+                            }
+                        </td>
+                        <td>@orderedProduct.Product.Name</td>
+                        <td>@orderedProduct.Quantity шт.</td>
+                        <td>@orderedProduct.Product.Price руб.</td>
+                        <td class="text-center"><a class="btn btn-default btn-sm" href="@Url.Action("Delete", "OrderedProduct", new { orderedProductId = orderedProduct.Id })" onclick="deleteEntityFromTable(event,this)"><i class="fa fa-trash-o text-danger"></i></a></td>
+                    </tr>
+                }
             </tbody>
             <tfoot>
-            <tr style="border-top: 1px solid #ccc">
-                <th>@Model.Sum(x => x.Price)</th>
-            </tr>
+                <tr style="border-top: 1px solid #ddd">
+                    <td style="border: none" colspan="4" class="text-right">Итого:</td>
+                    <th style="border: none" class="text-center">@Model.Sum(x => x.Price)</th>
+                </tr>
+                <tr>
+                    <td style="border: none" colspan="4" class="text-right">Cумма скидки:</td>
+                    <th style="border: none"  class="text-center">0</th>
+                </tr>
+                <tr>
+                    <td style="border: none" colspan="4" class="text-right">Cумма с учетом скидки:</td>
+                    <th style="border: none" class="text-center">@Model.Sum(x => x.Price)</th>
+                </tr>
             </tfoot>
         </table>
     </div>
@@ -67,6 +76,6 @@
                         .text(item.Name));
                 });
             });
-        }M
+        } M
     });
 </script>

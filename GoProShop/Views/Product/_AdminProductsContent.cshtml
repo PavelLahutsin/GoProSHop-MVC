@@ -1,0 +1,26 @@
+﻿@model IEnumerable<GoProShop.ViewModels.ProductVM>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-notification-message">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <a href="@Url.Action("Create","Product")" onclick="openModal(event, this)" class="btn btn-success btn-sm pull-left"><i class="fa fa-plus" style="padding-right: 7px;"></i>Добавить</a>
+        <span class="input-group pull-right" style="max-width: 230px">
+            <input id="email" type="text" class="form-control" name="email" placeholder="Поиск...">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        </span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="price-products">
+            @Html.Partial("_AdminProducts", Model)
+        </div>
+    </div>
+</div>

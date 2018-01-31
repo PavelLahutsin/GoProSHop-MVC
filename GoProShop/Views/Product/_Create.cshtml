@@ -7,7 +7,7 @@
             <li class="pull-right"><a class="close-thik" data-dismiss="modal"></a></li>
         </ul>
     </div>
-    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data", id = "product-create-form" }))
+    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "submitModalForm(event)", data_on_success = "productOnSuccessHandler" }))
     {
         @Html.AntiForgeryToken()
         <div class="modal-body">
@@ -65,27 +65,3 @@
         </div>
     }
 </div>
-<script>
-    $('#product-create-form').submit(function (event) {
-
-        event.preventDefault();
-        var formdata = new FormData($(this).get(0));
-        $.ajax({
-            url: this.action,
-            type: this.method,
-            data: formdata,
-            processData: false,
-            contentType: false,
-            success: function (result) {
-                if (result.success) {
-                    $("#mainModal").modal('hide');
-                    $('#products').load('/Product/SubGroupAdminProducts/', { id: result.groupId });
-                }
-                else {
-                    $('#modalBody').html(result);
-                }
-            }
-
-        });
-    });
-</script>

@@ -7,7 +7,7 @@
             <li class="pull-right"><a class="close-thik" data-dismiss="modal"></a></li>
         </ul>
     </div>
-    @using (Html.BeginForm("Edit", "Order", FormMethod.Post, new { onsubmit = "submitModalForm(event,this)", data_on_success = "editOrderOnSuccessHandler" }))
+    @using (Html.BeginForm("Edit", "Order", FormMethod.Post, new { onsubmit = "submitModalForm(event)", data_on_success = "editOrderOnSuccessHandler" }))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(model => Model.CustomerId)
@@ -17,7 +17,7 @@
                 <div class="col-md-6">
 
                     <div class="form-group">
-                        <p>Заказ №<strong>@Model.Id</strong></p>
+                        <p style="font-size: 16px">Заказ №<strong>@Model.Id</strong></p>
                     </div>
 
                     <div class="form-group">

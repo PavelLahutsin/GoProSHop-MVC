@@ -36,7 +36,7 @@ function retriveChosenValues(event, id) {
     $.get("/OrderedProduct/UpdateOrderedProducts", data, function (result) {
         if (result.IsSuccess) {
             $('#ordered-products').load(result.Url);
-        }     
+        }
     });
 
     $('#product-select').val("");
@@ -45,18 +45,22 @@ function retriveChosenValues(event, id) {
 
 function submitModalForm(event) {
     event.preventDefault();
+
     var form = event.target;
-    var formdata = $(form).serializeArray();
+    var formdata = new FormData($(form).get(0));
 
     $.ajax({
         url: $(form).attr('action'),
         type: $(form).attr('method'),
         data: formdata,
+        processData: false,
+        contentType: false,
         success: function (result) {
             if (result.IsSuccess) {
 
                 var onSuccess = $(form).data("onSuccess");
                 var callback = eval(onSuccess);
+
                 if (typeof callback === 'function') {
                     callback(result);
                 }
@@ -68,11 +72,22 @@ function submitModalForm(event) {
     });
 }
 
+function editFeedbackOnSuccessHandler(data) {
+    $("#mainModal").modal('hide');
+    $("#admin-feedbacks").load("Feedback/GetAdminFeedbacks/");
+    updateNotificationMessage(".table-notification-message", data);
+}
+
 function editOrderOnSuccessHandler(data) {
     $('#mainModal').modal('hide');
     updateNotificationMessage(".table-notification-message", data);
 }
 
+function productOnSuccessHandler(data) {
+    $('#mainModal').modal('hide');
+    $("#price-products").load(data.Url);
+    updateNotificationMessage(".table-notification-message", data);
+};
 
 $('body').on('click', 'a.ajax-get-link', function (e) {
     e.preventDefault();
@@ -143,10 +158,7 @@ function deleteNewEntityLabel(element) {
 
 function deleteProduct(event, element) {
     $.ajaxSetup({ cache: false });
-    event.preventDefault();
-    $.get(element.href, function (data) {
-        $('#products').html(data);
-    });
+    deleteEntityFromTable(event, element);
 }
 
 function deleteFeedback(event, element, elementId) {

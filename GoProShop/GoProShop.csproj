@@ -760,6 +760,7 @@
     <Content Include="Views\Account\_ModalHeader.cshtml" />
     <Content Include="Views\Order\_Edit.cshtml" />
     <Content Include="Views\OrderedProduct\_OrderedProducts.cshtml" />
+    <Content Include="Views\Product\_AdminProductsContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
