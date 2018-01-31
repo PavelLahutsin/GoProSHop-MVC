@@ -16,7 +16,7 @@ namespace GoProShop.Controllers
         private readonly IOrderService _orderService;
         private readonly IEmailService _emailService;
         private readonly IResponseService _responseService;
-       
+
         public OrderController(
             IOrderService orderService,
             IEmailService emailService,
@@ -77,6 +77,22 @@ namespace GoProShop.Controllers
             return Json(_responseService.Create(true, string.Empty, Url.Action("SuccessOrder", "Order", new { id = orderId })));
         }
 
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public async Task<ActionResult> CreateAdmin(OrderVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                Thread.Sleep(400);
+                return PartialView("_Create", model);
+            }
+
+            var response = await _orderService.CreateAsync(Mapper.Map<OrderDTO>(model));
+
+            return Json(response);
+        }
+
         [Authorize(Roles = "admin")]
         public async Task<ActionResult> Edit(int id)
         {
@@ -87,9 +103,16 @@ namespace GoProShop.Controllers
         [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(OrderVM model)
+        public async Task<ActionResult> Edit(OrderVM model)
         {
-            return Json(_responseService.Create(true, "Заказ был успешно обновлен в базе данных"));
+            if (!ModelState.IsValid)
+            {
+                return PartialView("_Edit", model);
+            }
+
+            var result = await _orderService.UpdateAsync(Mapper.Map<OrderDTO>(model));
+
+            return Json(result);
         }
 
         [Authorize(Roles = "admin")]

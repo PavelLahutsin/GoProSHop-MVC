@@ -8,24 +8,10 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/chosen")
-    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.3/chosen.css"/>*@
-    @*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.3/chosen.jquery.js"></script>*@
 </head>
 <body>
     <div class="container-fluid" style="font-family: 'Open Sans', 'sans-serif';">
-        <div class="container-fluid">
-            <div class="navbar-inverse" style="padding-top: 7px; background-color: #1a1a1a">
-                <div class="container">
-                    @*<div class="nav navbar-left">
-                        <a class="navbar-link" style="padding-right: 7px;"><span><img height="15" src="~/Content/Images/velcom.png" /></span> +375 29 127 52 24</a>
-                        <a class="navbar-link" style="padding-right: 7px;"><span><img height="15" src="~/Content/Images/MTS.png" /></span> +375 29 127 52 24</a>
-                    </div>*@
-                    @Html.Partial("~/Views/Account/_LoginPartial.cshtml")
-                </div>
-            </div>
-        </div>
-
-        <div id="navbar-affix" class="navbar navbar-inverse navbar-static-top header-strip" data-spy="affix" data-offset-top="26" style="z-index: 999; background-color: #1a1a1a" role="navigation">
+        <div class="navbar navbar-inverse navbar-static-top header-strip navbar-fixed-top" style="z-index: 999; background-color: #1a1a1a" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" style="height: 50px; padding: 10px 15px" href="@Url.Action("Index", "Home")">
@@ -49,10 +35,9 @@
                 </div>
 
                 @Html.Action("Index", "Cart")
-
             </div>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid" style="margin-top: 54px">
             <div class="body-content">
                 @RenderBody()
             </div>

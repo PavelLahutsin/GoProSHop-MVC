@@ -79,6 +79,7 @@ function editFeedbackOnSuccessHandler(data) {
 }
 
 function editOrderOnSuccessHandler(data) {
+    $('#admin-orders').load("/Order/GetAdminOrders/");
     $('#mainModal').modal('hide');
     updateNotificationMessage(".table-notification-message", data);
 }

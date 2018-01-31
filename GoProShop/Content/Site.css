@@ -392,11 +392,15 @@ modal-footer a {
         visibility: visible;
     }
 
-.btn-primary .badge {
-    padding: 5px 8px;
+.badge-shopping-cart{
+    position: absolute;
+    right: 7px;
+    top: 8px;
+    padding: 3px 6px;
     font-weight: 100;
     color: black;
     font-style: normal;
+    font-size: 10px;
     background-color: #ffcc00;
 }
 

@@ -58,6 +58,35 @@ namespace GoProShop.BLL.Services
             }
         }
 
+        public async Task<ResponseDTO> CreateAsync(OrderDTO orderDto)
+        {
+            using (var transaction = _uow.Database.BeginTransaction())
+            {
+                try
+                {
+                    var order = Mapper.Map<Order>(orderDto);
+                    var user = await _uow.Customers.Entities.FirstOrDefaultAsync(x => x.Email == orderDto.Customer.Email);
+
+                    if (user != null)
+                    {
+                        order.Customer = user;
+                        order.CustomerId = user.Id;
+                    }
+                    order.TotalPrice = orderDto.OrdersList.Sum(x => x.Product.Price);
+
+                    _uow.Orders.Create(order);
+                    await _uow.Commit();
+                    transaction.Commit();
+                    return new ResponseDTO(true, "Заказ был успешно создан");
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    return new ResponseDTO(true, "При создании заказа возникла ошибка");
+                }
+            }
+        }
+
         public async Task<ResponseDTO> DeleteAsync(int id)
         {
             var order = await _uow.Orders.GetAsync(id);
@@ -74,17 +103,17 @@ namespace GoProShop.BLL.Services
         public async Task<OrderDTO> GetAsync(int id)
         {
             var order = await _uow.Orders.GetAsync(id);
-            var orderDTO = Mapper.Map<OrderDTO>(order);
+            var orderDto= Mapper.Map<OrderDTO>(order);
 
-            return orderDTO;
+            return orderDto;
         }
 
         public IEnumerable<OrderDTO> GetOrders()
         {
             var orders = _uow.Orders.Entities.ToList();
-            var ordersDTO = Mapper.Map<List<Order>, IEnumerable<OrderDTO>>(orders);
+            var ordersDto = Mapper.Map<List<Order>, IEnumerable<OrderDTO>>(orders);
 
-            return ordersDTO.Reverse();
+            return ordersDto.Reverse();
         }
 
         public async Task<int> ViewOrder(int id)
@@ -98,14 +127,18 @@ namespace GoProShop.BLL.Services
                 await _uow.Commit();
             }
 
-            return _uow.Orders.Entities.Where(x => !x.IsViewed)?.Count() ?? 0;
+            return _uow.Orders.Entities.Count(x => !x.IsViewed);
         }
 
         public async Task<ResponseDTO> UpdateAsync(OrderDTO orderDto)
         {
-            var order = await _uow.Orders.UpdateAsync(Mapper.Map<Order>(orderDto));
+            var orderedProducts = await _uow.OrderedProducts.Entities.Where(x => x.OrderId == orderDto.Id).ToListAsync();
+            var order = Mapper.Map<Order>(orderDto);
+            order.OrdersList = orderedProducts;
 
-            if (order == null)
+            var result  = await _uow.Orders.UpdateAsync(order);
+
+            if (result == null)
                 return new ResponseDTO(false, "Данного заказа не существует в базе данных");
 
             await _uow.Commit();

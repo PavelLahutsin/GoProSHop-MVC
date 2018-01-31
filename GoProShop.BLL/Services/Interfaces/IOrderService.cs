@@ -8,6 +8,8 @@ namespace GoProShop.BLL.Services.Interfaces
     {
         Task<int> CreateAsync(OrderDTO order, IEnumerable<CartItemDTO> cartItems);
 
+        Task<ResponseDTO> CreateAsync(OrderDTO orderDto);
+
         Task<OrderDTO> GetAsync(int id);
 
         IEnumerable<OrderDTO> GetOrders();
