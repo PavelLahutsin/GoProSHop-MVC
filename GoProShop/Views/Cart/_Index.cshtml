@@ -1,13 +1,39 @@
 ﻿@model GoProShop.ViewModels.Cart
 
-<div class="nav navbar-nav navbar-right">
-    <div id="shopping-cart">
-        <a class="btn btn-primary btn-sm navbar-btn" href="@Url.Action("CartView","Cart")" onclick="openModal(event,this)">
-            <span class="fa fa-shopping-basket fa-lg" style="padding-right:7px"></span>Корзина
+
+<ul class="nav navbar-nav navbar-right">
+ 
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-user-circle fa-lg" style="margin-right: 10px"></i>@User.Identity.Name
+            </a>
+            <ul class="dropdown-menu" style="right: 0; left: auto; top: 54px; border-radius: 4px ">
+                <li><a href="#">Личный кабинет</a></li>
+                <li><a href="@Url.Action("Logout", "Account")"><i class="fa fa-sign-out" style="margin-right: 10px"></i>Выйти</a></li>
+            </ul>
+
+        </li>
+    }
+    else
+    {
+        <li>
+            <a style="padding-right: 7px;" onclick="openModal(event, this)" href="@Url.Action("Login", "Account")">Войти</a>
+        </li>
+        <li>
+            <a style="padding-right: 7px;" onclick="openModal(event, this)" href="@Url.Action("Register", "Account")">Регистрация</a>
+        </li>
+    }
+    <li>
+        <a id="shopping-cart" href="@Url.Action("CartView", "Cart")" onclick="openModal(event, this)">
+            <span class="fa fa-shopping-cart fa-lg" style="padding-right: 7px"></span>
             @if (Model != null)
             {
-                <span class="badge"> @Model.Count </span>
+                <span class="badge badge-shopping-cart"> @Model.Count </span>
             }
         </a>
-    </div>
-</div>
+    </li>
+</ul>
+
+

@@ -10,7 +10,6 @@
                     <td>Цена</td>
                     <td class="text-center">Удалить</td>
                 </tr>
-
             </thead>
             <tbody>
                 @foreach (var orderedProduct in Model)
@@ -64,11 +63,11 @@
             no_results_text: "Oops, nothing found!"
         });
 
-        $.when(GetChosenOptions()).done(function () {
+        $.when(getChosenOptions()).done(function () {
             $(".chosen-select").trigger("chosen:updated");
         });
 
-        function GetChosenOptions() {
+        function getChosenOptions() {
             return $.get('/Chosen/GetChosenProducts/', function (data) {
                 $.each(data, function (index, item) {
                     element.append($('<option></option>')

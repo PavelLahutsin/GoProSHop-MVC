@@ -727,7 +727,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Product\_AdminProducts.cshtml" />
     <Content Include="Views\Admin\Price.cshtml" />
-    <Content Include="Views\Account\_LoginPartial.cshtml" />
     <Content Include="Views\Product\_Edit.cshtml" />
     <Content Include="Views\Product\_Create.cshtml" />
     <Content Include="Views\ProductGroup\_MegaMenu.cshtml" />
@@ -753,7 +752,6 @@
     <Content Include="Views\Feedback\_ProductFeedbacks.cshtml" />
     <Content Include="Views\Cart\CheckOut.cshtml" />
     <Content Include="Views\Cart\_OrderInfo.cshtml" />
-    <Content Include="Views\Order\_Create.cshtml" />
     <Content Include="Views\Order\SuccessOrder.cshtml" />
     <Content Include="Views\Admin\_Feedbacks.cshtml" />
     <Content Include="Views\Order\_AdminOrders.cshtml" />
@@ -761,11 +759,12 @@
     <Content Include="Views\Order\_Edit.cshtml" />
     <Content Include="Views\OrderedProduct\_OrderedProducts.cshtml" />
     <Content Include="Views\Product\_AdminProductsContent.cshtml" />
+    <Content Include="Views\Order\_CreateAdmin.cshtml" />
+    <Content Include="Views\Order\_Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Catalog\" />
-    <Folder Include="Content\Images\Catalog\" />
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\Chosen\" />
   </ItemGroup>

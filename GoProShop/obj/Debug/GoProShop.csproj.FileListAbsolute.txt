@@ -426,10 +426,10 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProSHop-MV
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProSHop-MVC\GoProShop\obj\Debug\GoProShop.csproj.CoreCompileInputs.cache
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProSHop-MVC\GoProShop\obj\Debug\GoProShop.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProSHop-MVC\GoProShop\obj\Debug\GoProShop.pdb
-E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.dll
 E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
 E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.Reflection.Metadata.dll
 E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.Collections.Immutable.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.Collections.Immutable.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.dll
+E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.dll
+E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.Collections.Immutable.dll

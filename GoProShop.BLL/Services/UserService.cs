@@ -51,6 +51,7 @@ namespace GoProShop.BLL.Services
         public void SignIn(ClaimsIdentity claim)
         {
             var properties = new AuthenticationProperties { IsPersistent = true };
+
             _uow.AuthenticationManager.SignOut();
             _uow.AuthenticationManager.SignIn(properties, claim);
         }

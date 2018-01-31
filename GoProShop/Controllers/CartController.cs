@@ -77,13 +77,11 @@ namespace GoProShop.Controllers
         {
             get
             {
-                Cart cart = Session["Cart"] as Cart;
+                if (Session["Cart"] is Cart cart)
+                    return cart;
 
-                if (cart == null)
-                {
-                    cart = new Cart();
-                    Session["Cart"] = cart;
-                }
+                cart = new Cart();
+                Session["Cart"] = cart;
 
                 return cart;
             }
