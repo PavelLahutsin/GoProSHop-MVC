@@ -1,6 +1,7 @@
 ﻿using GoProShop.BLL.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,14 @@ namespace GoProShop.BLL.Services
             searchResult.SearchedItems = Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products.ToList());
 
             return searchResult;
+        }
+
+        public IEnumerable<ProductDTO> GetProducts(string searchString)
+        {
+            var products = _uow.Products.Entities.Where(x => x.Name.Contains(searchString)).Take(5).ToList();
+            var productsDto = Mapper.Map<List<Product>, List<ProductDTO>>(products);
+
+            return productsDto;
         }
 
         private ResponseDTO ValidateSearchString(string searchString)

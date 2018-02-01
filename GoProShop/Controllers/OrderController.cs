@@ -77,6 +77,12 @@ namespace GoProShop.Controllers
             return Json(_responseService.Create(true, string.Empty, Url.Action("SuccessOrder", "Order", new { id = orderId })));
         }
 
+        [Authorize(Roles = "admin")]
+        public ActionResult CreateAdmin()
+        {
+            return PartialView("_CreateAdmin");
+        }
+
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Authorize(Roles = "admin")]

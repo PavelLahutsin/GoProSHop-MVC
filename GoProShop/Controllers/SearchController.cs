@@ -35,5 +35,13 @@ namespace GoProShop.Controllers
             return PartialView("~/Views/Product/_PagedUserProducts.cshtml",
                 _pagedListHelper.MapSearchResult<ProductDTO,ProductVM>(searchResult, page,pageSize));
         }
+
+        public ActionResult GetProducts(string searchString)
+        {
+            var productsDto =  _searchService.GetProducts(searchString);
+            var productsVm = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(productsDto);
+
+            return Json(productsVm, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -22,6 +22,39 @@ function updateNotificationMessage(element, response) {
     }
 }
 
+function searchProduct(event, element) {
+    event.preventDefault();
+    var value = $(element).val();
+    var list = $('.search-product-list').empty();
+
+    if (value !== "") {
+
+        $.get("/Search/GetProducts",
+            { searchString: value },
+            function (data) {
+                $.each(data,
+                    function (index, item) {
+                        var li = $('<li/>').appendTo(list);
+                        var price = $('<span class="pull-right">' + item.Price + ' р. </span>');
+
+                        $('<a/>')
+                            .attr("href", '/Product/ViewProduct?productId=' + item.Id)
+                            .text(item.Name)
+                            .prepend(price)
+                            .appendTo(li);
+                    });
+            });
+
+        if ( $('.search-product-box').css('display').toLowerCase() !== 'block')
+        {
+            $('.search-product-box').show();
+        }
+       
+    } else {
+        $('.search-product-box').hide();
+    }
+}
+
 function retriveChosenValues(event, id) {
     event.preventDefault();
 

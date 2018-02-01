@@ -3,7 +3,7 @@
 <div style="width: 900px;">
     <div class="modal-header">
         <ul class="registration-nav">
-            <li><text><strong>Информация о заказе</strong></text></li>
+            <li><strong>Информация о заказе</strong></li>
             <li class="pull-right"><a class="close-thik" data-dismiss="modal"></a></li>
         </ul>
     </div>
@@ -12,6 +12,7 @@
         @Html.AntiForgeryToken()
         @Html.HiddenFor(model => Model.CustomerId)
         @Html.HiddenFor(model => Model.IsViewed)
+        @Html.HiddenFor(model => model.TotalPrice)
         <div class="modal-body">
             <div class="row">
                 <div class="col-md-6">
@@ -78,27 +79,27 @@
             <div class="row">
                 <div class="col-md-12">
 
-                        <div class="admin-content-box" style="margin: 2px;">
-                            <div class="admin-content-box__heading">
-                                <div class="heading-wrapper">
-                                    <p>Состав заказа</p>
-                                </div>
-                            </div>
-                            <div class="admin-content-box__body">
-                                <div class="row" style="margin-top: 20px;">
-                                    <div class="col-md-12">
-                                        <div class="form-inline">
-                                            <select id="product-select" multiple data-placeholder="Выберите товар.." class="chosen-select" tabindex="4"></select>
-
-                                            <button class="btn btn-success btn-sm pull-right" onclick="retriveChosenValues(event, @Model.Id)" style="height: 34px; width: 15%"><i class="fa fa-spinner fa-pulse fa-fw"></i>Добавить</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="ordered-products">
-                                    @Html.Action("GetOrderedProducts","OrderedProduct", new { id = Model.Id })
-                                </div>
+                    <div class="admin-content-box" style="margin: 2px;">
+                        <div class="admin-content-box__heading">
+                            <div class="heading-wrapper">
+                                <p>Состав заказа</p>
                             </div>
                         </div>
+                        <div class="admin-content-box__body">
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-md-12">
+                                    <div class="form-inline">
+                                        <select id="product-select" multiple data-placeholder="Выберите товар.." class="chosen-select" tabindex="4"></select>
+
+                                        <button class="btn btn-success btn-sm pull-right" onclick="retriveChosenValues(event, @Model.Id)" style="height: 34px; width: 15%"><i class="fa fa-spinner fa-pulse fa-fw"></i>Добавить</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="ordered-products">
+                                @Html.Action("GetOrderedProducts", "OrderedProduct", new { id = Model.Id })
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
