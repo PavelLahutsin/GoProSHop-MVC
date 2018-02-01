@@ -45,16 +45,18 @@
 }
 <div id="searched-products">
     <div id="alert-message">
-        @Html.Partial("~/Views/Response/_Response.cshtml", Model.Response)
+        <div class="alert alert-danger">
+            <i class="fa fa-exclamation-circle fa-lg"></i><span> @Model.Response.Message</span>
+        </div>
     </div>
     <h5>По запросу <strong>"@Model.SearchString"</strong> найдено <strong>"@Model.Count"</strong> товаров</h5>
     <br />
     @MvcHtmlString.Create(result.ToString())
 
     @if (Model.Response.IsSuccess && Model.Count > 8)
-    {      
+    {
         @Html.PagedListPager(Model.PagedItems, page => Url.Action("SearchProducts", "Search", new { Model.SearchString, page }),
-    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(options))
+         PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(options))
     }
-   
+
 </div>

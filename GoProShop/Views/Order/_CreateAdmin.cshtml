@@ -3,27 +3,23 @@
 <div style="width: 900px;">
     <div class="modal-header">
         <ul class="registration-nav">
-            <li><text><strong>Информация о заказе</strong></text></li>
+            <li><strong>Информация о заказе</strong></li>
             <li class="pull-right"><a class="close-thik" data-dismiss="modal"></a></li>
         </ul>
     </div>
-    @using (Html.BeginForm("Edit", "Order", FormMethod.Post, new { onsubmit = "submitModalForm(event)", data_on_success = "editOrderOnSuccessHandler" }))
+
+    @using (Html.BeginForm("Create", "Order", FormMethod.Post, new { onsubmit = "submitModalForm(event)", data_on_success = "editOrderOnSuccessHandler" }))
     {
         @Html.AntiForgeryToken()
-        @Html.HiddenFor(model => Model.CustomerId)
-        @Html.HiddenFor(model => Model.IsViewed)
+
         <div class="modal-body">
             <div class="row">
                 <div class="col-md-6">
 
                     <div class="form-group">
-                        <p style="font-size: 16px">Заказ №<strong>@Model.Id</strong></p>
-                    </div>
-
-                    <div class="form-group">
                         @Html.Label("Дата заказа")
                         <div class="left-inner-addon ">
-                            <i class="fa fa-calendar fa-lg"></i>
+                            <i class="fa fa-calendar"></i>
                             @Html.EditorFor(model => model.OrderDate, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "Дата доставки" } })
                         </div>
                         @Html.ValidationMessageFor(model => model.OrderDate, null, new { @class = "text-danger" })
@@ -50,8 +46,6 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-
-
                     <div class="form-group">
                         @Html.Label("Cпособ доставки")
                         @Html.EnumDropDownListFor(model => model.DeliveryType, "Выберите способ доставки", new { @class = "form-control" })
@@ -73,30 +67,27 @@
                     </div>
                 </div>
 
-
             </div>
             <div class="row">
                 <div class="col-md-12">
-
                     <div class="admin-content-box" style="margin: 2px;">
                         <div class="admin-content-box__heading">
                             <div class="heading-wrapper">
                                 <p>Состав заказа</p>
                             </div>
                         </div>
-
                         <div class="admin-content-box__body">
                             <div class="row" style="margin-top: 20px;">
                                 <div class="col-md-12">
                                     <div class="form-inline">
-                                        <select id="product-select" multiple data-placeholder="Выберите товар.." class="chosen-select" tabindex="4"></select>
+                                        <select id="product-select" multiple data-placeholder="Выберите товар.." tabindex="4" class="chosen-select"></select>
 
-                                        <button class="btn btn-success btn-sm pull-right" onclick="retriveChosenValues(event, @Model.Id)" style="height: 34px; width: 15%"><i class="fa fa-spinner fa-pulse fa-fw"></i>Добавить</button>
+                                        <button class="btn btn-success btn-sm pull-right" onclick="retriveChosenValues(event, @Model)" style="height: 34px; width: 15%"><i class="fa fa-spinner fa-pulse fa-fw"></i>Добавить</button>
                                     </div>
                                 </div>
                             </div>
                             <div id="ordered-products">
-                                @Html.Action("GetOrderedProducts", "OrderedProduct", new { id = Model.Id })
+                              
                             </div>
                         </div>
                     </div>
@@ -109,11 +100,38 @@
                 <i class="fa fa-spinner fa-pulse fa-lg fa-fw"></i>Сохранить
             </button>
         </div>
-
     }
 </div>
 <script>
+    
     $(function () {
+
+            $(function () {
+                var element = $('#product-select');
+
+                $(".chosen-select").chosen({
+                    search_contains: true, // kwd can be anywhere
+                    max_selected_options: 10,
+                    max_shown_results: 300, // show only 5 suggestions at a time
+                    width: 400,
+                    no_results_text: "Oops, nothing found!"
+                });
+
+                $.when(getChosenOptions()).done(function () {
+                    $(".chosen-select").trigger("chosen:updated");
+                });
+
+                function getChosenOptions() {
+                    return $.get('/Chosen/GetChosenProducts/', function (data) {
+                        $.each(data, function (index, item) {
+                            element.append($('<option></option>')
+                                .val(item.Id)
+                                .text(item.Name));
+                        });
+                    });
+                }
+            });
+
         $(".datepicker").datetimepicker({
             locale: 'ru',
             format: "MM/DD/YYYY"
