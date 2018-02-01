@@ -9,8 +9,10 @@
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-user-circle fa-lg" style="margin-right: 10px"></i>@User.Identity.Name
             </a>
-            <ul class="dropdown-menu" style="right: 0; left: auto; top: 54px; border-radius: 4px ">
-                <li><a href="#">Личный кабинет</a></li>
+            <ul class="dropdown-menu dropdown-login" style="right: 0; left: auto; top: 62px; border-radius: 4px; width: 180px">
+                <li><p style="padding: 3px 20px;">Зравствуйте, @User.Identity.Name!</p></li>
+                <li><a href="#"><i class="fa fa-user-circle" style="margin-right: 10px"></i>Личный кабинет</a></li>
+                <li><a href="#"><i class="fa fa-cog" style="margin-right: 10px"></i>Настройки</a></li>
                 <li><a href="@Url.Action("Logout", "Account")"><i class="fa fa-sign-out" style="margin-right: 10px"></i>Выйти</a></li>
             </ul>
 
