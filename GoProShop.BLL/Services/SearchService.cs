@@ -41,7 +41,7 @@ namespace GoProShop.BLL.Services
         }
 
         public IEnumerable<ProductDTO> GetProducts(string searchString)
-        {
+       {
             var products = _uow.Products.Entities.Where(x => x.Name.Contains(searchString)).Take(5).ToList();
             var productsDto = Mapper.Map<List<Product>, List<ProductDTO>>(products);
 

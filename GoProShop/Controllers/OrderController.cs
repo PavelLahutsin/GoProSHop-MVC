@@ -78,28 +78,6 @@ namespace GoProShop.Controllers
         }
 
         [Authorize(Roles = "admin")]
-        public ActionResult CreateAdmin()
-        {
-            return PartialView("_CreateAdmin");
-        }
-
-        [ValidateAntiForgeryToken]
-        [HttpPost]
-        [Authorize(Roles = "admin")]
-        public async Task<ActionResult> CreateAdmin(OrderVM model)
-        {
-            if (!ModelState.IsValid)
-            {
-                Thread.Sleep(400);
-                return PartialView("_Create", model);
-            }
-
-            var response = await _orderService.CreateAsync(Mapper.Map<OrderDTO>(model));
-
-            return Json(response);
-        }
-
-        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Edit(int id)
         {
             var orderDto = await _orderService.GetAsync(id);

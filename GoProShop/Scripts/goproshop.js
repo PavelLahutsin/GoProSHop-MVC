@@ -25,33 +25,50 @@ function updateNotificationMessage(element, response) {
 function searchProduct(event, element) {
     event.preventDefault();
     var value = $(element).val();
-    var list = $('.search-product-list').empty();
+    var searchResult = $('.search-product-box');
 
     if (value !== "") {
-
         $.get("/Search/GetProducts",
             { searchString: value },
             function (data) {
-                $.each(data,
-                    function (index, item) {
-                        var li = $('<li/>').appendTo(list);
-                        var price = $('<span class="pull-right">' + item.Price + ' р. </span>');
 
-                        $('<a/>')
-                            .attr("href", '/Product/ViewProduct?productId=' + item.Id)
-                            .text(item.Name)
-                            .prepend(price)
-                            .appendTo(li);
-                    });
+                if (data.length) {
+                    var list = $('<ul/>')
+                        .addClass('search-product-list');
+
+                    $.each(data,
+                        function(index, item) {
+
+                            var li = $('<li/>')
+                                .appendTo(list);
+
+                            var price = $('<span/>')
+                                .addClass('pull-right')
+                                .text(item.Price + ' р.');
+
+                            $('<a/>')
+                                .attr("href", '/Product/ViewProduct?productId=' + item.Id)
+                                .text(item.Name)
+                                .prepend(price)
+                                .appendTo(li);
+                        });
+
+                    $(searchResult).html(list);
+
+                } else {
+                    $(searchResult).hide();
+                }
             });
 
-        if ( $('.search-product-box').css('display').toLowerCase() !== 'block')
+        if ($(searchResult)
+            .css('display')
+            .toLowerCase() !== 'block')
         {
-            $('.search-product-box').show();
+            $(searchResult).show();
         }
        
     } else {
-        $('.search-product-box').hide();
+        $(searchResult).hide();
     }
 }
 

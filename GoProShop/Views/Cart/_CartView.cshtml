@@ -8,7 +8,7 @@
         </ul>
     </div>
     <div class="modal-body">
-        @if (Model.CartItems.Count() == 0)
+        @if (!Model.CartItems.Any())
         {
             <div class="row empty-cart">
                 <div class="col-md-4">

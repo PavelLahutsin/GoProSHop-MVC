@@ -874,9 +874,10 @@ select.form-control {
     top: 50px;
     left: 16px;
     position: absolute;
-    min-height: 100px;
+    min-height: 45px;
     width: 400px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    border: 1px solid rgba(0, 0, 0, .2);
+    box-shadow: 0  2px 12px rgba(0, 0, 0, .3);
     background-color: #fff;
 }
 
@@ -895,7 +896,6 @@ select.form-control {
         margin-bottom: 5px;
     }
 
-
     .search-product-list > li a {
         text-decoration: none;
         display: block;
@@ -903,8 +903,6 @@ select.form-control {
         transition: all 0.3s;
         color: black;
     }
-
-
 
 .search-product-list a:hover {
     background: #428bca;
