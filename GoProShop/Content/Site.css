@@ -286,7 +286,7 @@ modal-footer a {
     min-height: 301px;
     width: 190px;
     border-radius: 4px;
-    transition: box-shadow .3s;
+    transition: all .3s;
     float: left;
     background-color: #fff;
     margin-bottom: 14px;
@@ -294,7 +294,6 @@ modal-footer a {
 
     .catalog-item-box a.btn {
         visibility: hidden;
-        transition: visibility .2s;
     }
 
 .catalog-item-box-header {

@@ -37,7 +37,7 @@ function searchProduct(event, element) {
                         .addClass('search-product-list');
 
                     $.each(data,
-                        function(index, item) {
+                        function (index, item) {
 
                             var li = $('<li/>')
                                 .appendTo(list);
@@ -54,19 +54,13 @@ function searchProduct(event, element) {
                         });
 
                     $(searchResult).html(list);
+                    $(searchResult).show();
 
                 } else {
                     $(searchResult).hide();
                 }
             });
 
-        if ($(searchResult)
-            .css('display')
-            .toLowerCase() !== 'block')
-        {
-            $(searchResult).show();
-        }
-       
     } else {
         $(searchResult).hide();
     }
