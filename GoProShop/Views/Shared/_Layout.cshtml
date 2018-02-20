@@ -10,37 +10,45 @@
     @Scripts.Render("~/bundles/chosen")
 </head>
 <body>
-    <div class="container-fluid" style="font-family: 'Open Sans', 'sans-serif';">
+    <div class="container-fluid">
         <div class="navbar navbar-inverse navbar-static-top header-strip navbar-fixed-top" style="z-index: 999; background-color: #1a1a1a" role="navigation">
             <div class="container">
                 <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <a class="navbar-brand" style="height: 50px; padding: 10px 15px" href="@Url.Action("Index", "Home")">
                         <img height="30" src="~/Content/Images/LogoWhite.png" />
                     </a>
                 </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
 
-                @Html.Action("MegaMenu", "ProductGroup")
 
-                <div class="navbar-form navbar-left" style="position: relative">
-                    @using (Html.BeginForm("Index", "Search", FormMethod.Get))
-                    {
+                    @Html.Action("MegaMenu", "ProductGroup")
 
-                        <div class="input-group" style="padding-top: 3px;">
-                            <input type="text" name="searchString" autocomplete="off" class="form-control" onkeyup="searchProduct(event,this)" style="font-size: 14px; min-width: 500px;" placeholder="Поиск...">
-                            <div class="input-group-btn">
-                                <input class="btn btn-primary" style="font-size: 14px;" type="submit" value="Поиск">
+                    <div class="navbar-form navbar-left" style="position: relative">
+                        @using (Html.BeginForm("Index", "Search", FormMethod.Get))
+                        {
+
+                            <div class="input-group" style="padding-top: 3px;">
+                                <input type="text" name="searchString" autocomplete="off" class="form-control" onkeyup="searchProduct(event,this)" style="font-size: 14px; min-width: 437px;" placeholder="Поиск...">
+                                <div class="input-group-btn">
+                                    <input class="btn btn-primary" style="font-size: 14px;" type="submit" value="Поиск">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="search-product-box">
-                        </div>
-                    }
+                            <div class="search-product-box">
+                            </div>
+                        }
+                    </div>
+
+                    @Html.Action("Index", "Cart")
                 </div>
-
-                @Html.Action("Index", "Cart")
             </div>
         </div>
-        <div class="container-fluid" style="margin-top: 54px">
+        <div class="container-fluid" style="margin-top: 50px">
             <div class="body-content">
                 @RenderBody()
             </div>
