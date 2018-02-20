@@ -4,15 +4,15 @@ using GoProShop.DAL.Entities;
 using GoProShop.DAL.Interfaces;
 using GoProShop.DAL.Repositories;
 using InMemoryDbSet;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace GoProShopTests
 {
-    [TestClass]
+    [TestFixture]
     public class TestClass
     {
         private IBaseRepository<Customer> _baseRepository;
@@ -20,7 +20,7 @@ namespace GoProShopTests
         private InMemoryDbSet<Customer> _customersDbSet;
         private Mock<IGoProShopContext> _contextMock;
 
-        [TestInitialize]
+        [SetUp]
         public void SetUp()
         {
             _contextMock = new Mock<IGoProShopContext>();
@@ -31,7 +31,7 @@ namespace GoProShopTests
             _baseRepository = new BaseRepository<Customer>(_contextMock.Object);
         }
 
-        [TestMethod]
+        [Test]
         public void Create_When_Customer_Is_Not_Null_Returns_Entity()
         {
             // Arrange
@@ -44,7 +44,7 @@ namespace GoProShopTests
             Assert.IsNotNull(result);
         }
 
-        [TestMethod]
+        [Test]
         public void Create_When_Customer_Is_Not_Null_Returns_Null()
         {
             // Act
@@ -54,7 +54,7 @@ namespace GoProShopTests
             Assert.IsNull(result);
         }
 
-        [TestMethod]
+        [Test]
         public async Task Get_When_Customer_Is_Not_Null_Returns_Null()
         {
             // Arrange
@@ -68,7 +68,7 @@ namespace GoProShopTests
             Assert.IsNotNull(result);
         }
 
-        [TestMethod]
+        [Test]
         public void GetAll_When_Context_Contains_Customers_Returns_Customer_List()
         {
             // Arrange
@@ -82,7 +82,7 @@ namespace GoProShopTests
         }
 
 
-        [TestMethod]
+        [Test]
         public async Task Delete_When_Customer_Is_Not_Exists_Removes_Customer()
         {
             // Arrange
