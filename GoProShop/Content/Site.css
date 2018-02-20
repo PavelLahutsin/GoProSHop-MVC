@@ -14,6 +14,10 @@
     font-family: "Open Sans", sans-serif;
 }
 
+.table-notification-message{
+    display: none;
+}
+
 .container {
     padding-left: 30px;
     padding-right: 30px;
