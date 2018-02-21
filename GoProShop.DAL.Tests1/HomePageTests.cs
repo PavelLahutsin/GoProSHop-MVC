@@ -6,13 +6,12 @@ using System.Threading;
 
 namespace GoProShop.DAL.Tests1
 {
-    public class FunctionalTests
+    public class HomePageTests
     {
         private const string BaseUrl = "http://localhost:8888";
         private HomePage _homePage;
         private IWebDriver _driver;
         
-
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {

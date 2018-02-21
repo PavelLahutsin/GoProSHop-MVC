@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.PageObjects;
 
 namespace GoProShop.DAL.Tests1
 {
@@ -13,37 +12,21 @@ namespace GoProShop.DAL.Tests1
         {
             _webDriver = webDriver;
             _action = new Actions(webDriver);
-            
-            PageFactory.InitElements(webDriver, this);
         }
 
-        [FindsBy(How = How.Id, Using = "Name")]
-        private IWebElement _feedbackUserName;
+        private IWebElement _feedbackUserName => _webDriver.FindElement(By.Id("Name"));
 
-        [FindsBy(How = How.Id, Using = "SurName")]
-        private IWebElement _feedbackSurName;
+        private IWebElement _feedbackSurName => _webDriver.FindElement(By.Id("SurName"));
 
-        [FindsBy(How = How.Id, Using = "Email")]
-        private IWebElement _feedbackEmail;
+        private IWebElement _feedbackEmail => _webDriver.FindElement(By.Id("Email"));
 
-        [FindsBy(How = How.Id, Using = "Rate5")]
-        private IWebElement _feedbackRate5;
+        private IWebElement _feedbackRate5 => _webDriver.FindElement(By.Id("Rate5"));
 
-        [FindsBy(How = How.Id, Using = "Message")]
-        private IWebElement _message;
+        private IWebElement _message => _webDriver.FindElement(By.Id("Message"));
 
-        [FindsBy(How = How.Id, Using = "submit-feedback")]
-        private IWebElement _submitFeedback;
+        private IWebElement _submitFeedback => _webDriver.FindElement(By.Id("submit-feedback"));
 
-        [FindsBy(How = How.ClassName, Using = "table-notification-message")]
-        private IWebElement _notificationMessage;
-
-        
-        public void MoveToFeedbackUserName()
-        {
-            _action.MoveToElement(_feedbackUserName);
-            _action.Perform();
-        }
+        private IWebElement _notificationMessage => _webDriver.FindElement(By.ClassName("table-notification-message"));
 
         public void InputUserName(string value)
         {

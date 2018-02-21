@@ -11,9 +11,8 @@ using System.Threading.Tasks;
 namespace GoProShop.DAL.Tests1
 {
     [TestFixture]
-    public class Class1
+    public class RepositoriesTests
     {
-
         private IBaseRepository<Customer> _baseRepository;
 
         private InMemoryDbSet<Customer> _customersDbSet;
