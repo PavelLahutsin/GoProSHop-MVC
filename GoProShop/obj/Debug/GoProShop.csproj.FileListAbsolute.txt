@@ -140,7 +140,6 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\ob
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\obj\Debug\GoProShop.csproj.CoreCompileInputs.cache
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\obj\Debug\GoProShop.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\obj\Debug\GoProShop.pdb
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
 E:\MyProjects\GoProSHop-MVC\GoProShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 E:\MyProjects\GoProSHop-MVC\GoProShop\bin\roslyn\Microsoft.CodeAnalysis.dll
 E:\MyProjects\GoProSHop-MVC\GoProShop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
@@ -433,3 +432,4 @@ E:\MyProjects\GoProSHop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.dll
 E:\MyProjects\GoProShop-MVC\GoProShop\bin\roslyn\System.Collections.Immutable.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.Collections.Immutable.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.dll
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.Primitives.dll

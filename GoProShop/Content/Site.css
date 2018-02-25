@@ -798,6 +798,9 @@ modal-footer a {
         font-size: 13px;
     }
 
+field-validation-error {
+font-size: 12px !important;
+}
 
 .input-validation-error {
     border: 1px solid #a94442 !important;

@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<GoProShop.ViewModels.ProductGroupVM>
+
 <ul class="nav navbar-nav navbar-left">
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-bars fa-lg" style="padding-right: 10px"></span>Каталог</a>
+        <a href="#" class="dropdown-toggle" id="catalog-menu" data-toggle="dropdown"><span class="fa fa-bars fa-lg" style="padding-right: 10px"></span>Каталог</a>
         <ul class="dropdown-menu catalog-main-menu" style="margin-top: 13px; border-radius: 0;">
             @foreach (var item in Model)
             {
@@ -10,7 +11,7 @@
                         <li> </li>
                         @foreach (var group in item.ProductSubGroups)
                         {
-                            <li><a href="@Url.Action("Index", "Catalog", new {id = group.Id})">@group.Name</a></li>
+                            <li><a  href="@Url.Action("Index", "Catalog", new {id = group.Id})">@group.Name</a></li>
                         }
                     </ul>
                 </li>

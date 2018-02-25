@@ -45,7 +45,7 @@ namespace GoProShop.Controllers
                 var result = new { success = true };
                 return Json(result);
             }
-            ModelState.AddModelError("", "Wrong login or password");
+            ModelState.AddModelError("Password", "* Неправильный логин или пароль");
             return PartialView("Login", model);
         }
 
