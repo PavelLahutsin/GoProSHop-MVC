@@ -68,7 +68,6 @@ namespace GoProShop.DAL.EF
         public ApplicationRoleManager RoleManager => _roleManager ?? 
             (_roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(_context)));
 
-
         public IAuthenticationManager AuthenticationManager { get; set; }
 
         public Database Database => _context.Database;

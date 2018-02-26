@@ -17,7 +17,7 @@
                 @Html.ValidationMessageFor(model => model.SurName, null, new { @class = "text-danger" })
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
                 @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" id="submit-feedback" class="btn btn-primary">
                     <i class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> Отправить
                 </button>
             </div>

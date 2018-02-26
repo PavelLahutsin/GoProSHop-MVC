@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GoProShop.DAL.Entities.ApplicationRole">
+    <Position X="9.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\ApplicationRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoProShop.DAL.Entities.ApplicationUser">
+    <Position X="9.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\ApplicationUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoProShop.DAL.Entities.Customer">
+    <Position X="7.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAACAAAAAAAAAAAAQAAAAAAAACAAAAIAAAAAA=</HashCode>
+      <FileName>Entities\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoProShop.DAL.Entities.Feedback">
+    <Position X="5.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAEACAAAAAAAAAIAAQAAAAAAAEBAAAAIAAAAAA=</HashCode>
+      <FileName>Entities\Feedback.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoProShop.DAL.Entities.IdProvider" Collapsed="true">
+    <Position X="5.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IdProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoProShop.DAL.Entities.Order">
+    <Position X="2.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEBAAQEAACAAAAAAAAIAAAAAAAAQBAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoProShop.DAL.Entities.OrderedProduct">
+    <Position X="9.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAECAAAAAQAAAAAAAAAAEAAAAAAAAAAAAgAAgQAAAAA=</HashCode>
+      <FileName>Entities\OrderedProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoProShop.DAL.Entities.Product">
+    <Position X="0.75" Y="8" Width="1.5" />
+    <InheritanceLine Type="GoProShop.DAL.Entities.IdProvider" ManuallyRouted="true">
+      <Path>
+        <Point X="6" Y="5.562" />
+        <Point X="6" Y="5.875" />
+        <Point X="2.567" Y="5.875" />
+        <Point X="2.567" Y="7.808" />
+        <Point X="1.5" Y="7.808" />
+        <Point X="1.5" Y="8" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAGCQAgAAQQAAAKAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoProShop.DAL.Entities.ProductGroup">
+    <Position X="0.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\ProductGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoProShop.DAL.Entities.ProductSubGroup">
+    <Position X="5.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\ProductSubGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoProShop.DAL.Entities.Store">
+    <Position X="2.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAIAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Store.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoProShop.DAL.Entities.StoredProduct">
+    <Position X="7.25" Y="9.25" Width="1.5" />
+    <InheritanceLine Type="GoProShop.DAL.Entities.IdProvider" ManuallyRouted="true">
+      <Path>
+        <Point X="6" Y="5.562" />
+        <Point X="6" Y="5.875" />
+        <Point X="7" Y="5.875" />
+        <Point X="7" Y="8.502" />
+        <Point X="8.11" Y="8.502" />
+        <Point X="8.11" Y="9.25" />
+        <Point X="8" Y="9.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAgQAAAAA=</HashCode>
+      <FileName>Entities\StoredProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

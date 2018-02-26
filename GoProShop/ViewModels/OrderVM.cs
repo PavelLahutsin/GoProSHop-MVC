@@ -8,15 +8,15 @@ namespace GoProShop.ViewModels
     public class OrderVM : IdProvider
     {
         [Display(Name = "Дата")]
-        [Required(ErrorMessage = "Поле дата доставки является обязательным")]
+        [Required(ErrorMessage = "* Поле дата доставки является обязательным")]
         public DateTime OrderDate { get; set; }
 
         [Display(Name = "Способ доставки")]
-        [Range(1, 2, ErrorMessage = "Поле способ доставки является обязательным")]
+        [Range(1, 2, ErrorMessage = "* Поле способ доставки является обязательным")]
         public DeliveryType DeliveryType { get; set; }
 
         [Display(Name = "Метод оплаты")]
-        [Range(1,2, ErrorMessage = "Поле способ оплаты является обязательным")]
+        [Range(1,2, ErrorMessage = "* Поле способ оплаты является обязательным")]
         public PaymentMethod PaymentMethod { get; set; }
 
         [Display(Name = "Cтатус")]

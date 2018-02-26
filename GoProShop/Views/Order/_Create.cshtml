@@ -9,32 +9,33 @@
             <div class="col-md-6 col-md-offset-1">
                 <div class="form-group">
                     @Html.Label("Cпособ оплаты", new { @class = "col-md-12" })
-                    @Html.EnumDropDownListFor(model => model.PaymentMethod, "Выберите способ оплаты", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.PaymentMethod, null, new { @class = "text-danger" })
+                    @Html.EnumDropDownListFor(model => model.PaymentMethod, "Выберите способ оплаты", new { @class = "form-control", data_test_id = "payment-type-select" })
+                    @Html.ValidationMessageFor(model => model.PaymentMethod, null, new { @class = "text-danger", data_test_id = "payment-type-error-message" })
                 </div>
 
                 @Html.Label("Основная информация", new { @class = "col-md-12" })
-                @Html.EditorFor(model => model.Customer.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Имя" } })
+                @Html.EditorFor(model => model.Customer.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Имя", data_test_id = "customer-name-input" } })
 
                 <div class="form-group">
-                    @Html.EditorFor(model => model.Customer.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Емейл" } })
-                    @Html.ValidationMessageFor(model => model.Customer.Email, null, new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Customer.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Емейл", data_test_id = "email-input" } })
+                    @Html.ValidationMessageFor(model => model.Customer.Email, null, new { @class = "text-danger", data_test_id = "email-error-message" })
                 </div>
 
                 <div class="form-group">
-                    @Html.EditorFor(model => model.Customer.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Телефон" } })
-                    @Html.ValidationMessageFor(model => model.Customer.Phone, null, new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Customer.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Телефон", data_test_id = "phone-input" } })
+                    @Html.ValidationMessageFor(model => model.Customer.Phone, null, new { @class = "text-danger", data_test_id = "phone-error-message" })
                 </div>
 
                 @Html.Label("Cпособ доставки", new { @class = "col-md-12" })
-                @Html.EnumDropDownListFor(model => model.DeliveryType, "Выберите способ доставки", new { @class = "form-control" })
-                @Html.EditorFor(model => model.Customer.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Адрес доставки" } })
+                @Html.EnumDropDownListFor(model => model.DeliveryType, "Выберите способ доставки", new { @class = "form-control", data_test_id = "delivery-type-select" })
+                @Html.ValidationMessageFor(model => model.DeliveryType, null, new { @class = "text-danger", data_test_id = "delivery-type-error-message" })
+                @Html.EditorFor(model => model.Customer.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Адрес доставки", data_test_id = "address-input" } })
                 <div class="form-group">
                     <div class="left-inner-addon ">
                         <i class="fa fa-calendar fa-lg"></i>
-                        @Html.EditorFor(model => model.OrderDate, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "Дата доставки" } })
+                        @Html.EditorFor(model => model.OrderDate, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "Дата доставки", data_test_id = "order-date-input" } })
                     </div>
-                    @Html.ValidationMessageFor(model => model.OrderDate, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.OrderDate, null, new { @class = "text-danger", data_test_id = "order-date-error-message" })
                 </div>
 
 
@@ -42,7 +43,7 @@
                 @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", style = "overflow-x: hidden;", rows = 8, placeholder = "Комментарий" })
 
 
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" data-test-id="checkout-button">
                     <i class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> Оформить
                 </button>
 
@@ -82,8 +83,8 @@
 
     $(function () {
         $(".datepicker").datetimepicker({
+            format: 'YYYY/MM/DD',
             locale: 'ru',
-            format: "MM/DD/YYYY"
         });
     });
 </script>
