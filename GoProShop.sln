@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoProShop.DAL", "GoProShop.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoProShop.BLL", "GoProShop.BLL\GoProShop.BLL.csproj", "{3D205AD1-0633-4A41-ACD7-E09885F0EBBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoProShop.DAL.Tests", "GoProShop.DAL.Tests1\GoProShop.DAL.Tests.csproj", "{9F2FEE78-1437-44D3-83FC-13E79AAEA4E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoProShop.DAL.Tests", "GoProShop.DAL.Tests\GoProShop.DAL.Tests.csproj", "{9F2FEE78-1437-44D3-83FC-13E79AAEA4E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
