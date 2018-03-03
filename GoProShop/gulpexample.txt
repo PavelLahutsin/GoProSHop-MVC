@@ -1,0 +1,114 @@
+require('es6-promise').polyfill();
+
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var inject = require('gulp-inject');
+var autoprefixer = require('gulp-autoprefixer');
+var rename = require('gulp-rename');
+var cheerio = require('gulp-cheerio');
+var del = require('del');
+
+// Config
+var paths = {
+    project: '../BGL.Components.ChangeEmail.TestHarness',
+    common: {
+        scripts: '/Content/Common/scripts/**/*',
+        sass: '/Content/Common/sass/*.scss',
+        images: '/Content/Common/img/**/*'
+    },
+    component: {
+        project: '../BGL.Components.ChangeEmail',
+        scripts: '/Scripts/**/*',
+        views: '/Views/*.cshtml',
+        images: '/Content/img/**/*',
+        sass: '/Content/sass/*.scss'
+    },
+    components: {
+        scripts: '/Content/Components/scripts/**/*',
+        sass: '/Content/Components/sass/*.scss',
+        images: '/Content/Components/img/**/*'
+    },
+    brand: {
+        sass: '/Content/sass/*.scss', //For TestHarness overwrite DoodleResource sass with custom due to Pages sass.
+        images: '/Content/DoodleResources/images/**/*'
+    },
+    dest: {
+        views: '/Views/Components/ChangeEmail',
+        sass: '/Content/Components/sass',
+        scripts: '/Content/Scripts',
+        css: '/Content/Css',
+        images: '/Content/img'
+    }
+};
+
+// Default build tasks
+gulp.task('build', ['CopyComponentViews', 'CopyScripts', 'ProcessSass', 'CopyImages']);
+
+// Delete all component views prior to copying in new ones
+gulp.task('CleanComponentViews', function () {
+    return del([paths.project + paths.dest.views], { force: true });
+});
+
+// Delete all scripts prior to copying in new ones
+gulp.task('CleanScripts', function () {
+    return del([paths.project + paths.dest.scripts], { force: true });
+});
+
+// Delete all css prior to processing in new ones
+gulp.task('CleanSass', function () {
+    return del([paths.project + paths.dest.css], { force: true });
+});
+
+// Delete all images
+gulp.task('CleanImages', function () {
+    return del([paths.project + paths.dest.images], { force: true });
+});
+
+// Copy component views from component project into TestHarness project
+gulp.task('CopyComponentViews', ['CleanComponentViews'], function () {
+    gulp.src(paths.component.project + paths.component.views).pipe(gulp.dest(paths.project + paths.dest.views));
+});
+
+// Copy component sass from component project into TestHarness project
+gulp.task('CopyComponentSass', function () {
+    gulp.src(paths.component.project + paths.component.sass).pipe(gulp.dest(paths.project + paths.dest.sass));
+});
+
+// Copy scripts from common and component folders
+gulp.task('CopyScripts', ['CleanScripts'], function () {
+    gulp.src(paths.project + paths.common.scripts).pipe(gulp.dest(paths.project + paths.dest.scripts));
+    gulp.src(paths.project + paths.components.scripts).pipe(gulp.dest(paths.project + paths.dest.scripts));
+    gulp.src(paths.component.project + paths.component.scripts).pipe(gulp.dest(paths.project + paths.dest.scripts));
+});
+
+// Preprocess Sass [Core + Components + Website]
+gulp.task('ProcessSass', ['CleanSass', 'CopyComponentSass'], function () {
+    var componentsSass = paths.project + paths.components.sass;
+    var brandSass = paths.project + paths.brand.sass;
+
+    return gulp
+        .src(brandSass)
+        .pipe(
+            inject(gulp.src(componentsSass,
+                    { read: false },
+                    { relative: false }),
+                {
+                    starttag: '/* inject:imports */',
+                    endtag: '/* endinject */',
+                    transform: function(filepath) {
+                        return '@import ".' + filepath + '";';
+                    }
+                }
+            ))
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
+        .pipe(gulp.dest(paths.project + paths.dest.css));
+});
+
+// Copy images
+gulp.task('CopyImages', ['CleanImages'], function () {
+    gulp.src(paths.project + paths.common.images).pipe(gulp.dest(paths.project + paths.dest.images));
+    gulp.src(paths.project + paths.components.images).pipe(gulp.dest(paths.project + paths.dest.images));
+    gulp.src(paths.project + paths.brand.images).pipe(gulp.dest(paths.project + paths.dest.images));
+    gulp.src(paths.component.project + paths.component.images).pipe(gulp.dest(paths.project + paths.dest.images));
+});

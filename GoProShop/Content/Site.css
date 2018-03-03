@@ -298,7 +298,8 @@ modal-footer a {
 }
 
     .catalog-item-box a.btn {
-        visibility: hidden;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
     }
 
 .catalog-item-box-header {
@@ -329,7 +330,7 @@ modal-footer a {
 }
 
     .catalog-item-box:hover a.btn {
-        visibility: visible;
+        opacity: 1;
     }
 
 .catalog-main-menu {
@@ -906,6 +907,10 @@ select.form-control {
 .error-box {
     border: 3px solid #428bca;
     border-radius: 5px;
-    box-shadow: 0 0 10px 0px rgba(0,0,0, 0.30);
+    box-shadow: 0 0 10px 0 rgba(0,0,0, 0.30);
     padding: 20px;
+}
+
+#product-content img {
+    cursor: pointer;
 }

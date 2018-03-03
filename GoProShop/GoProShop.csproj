@@ -601,6 +601,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\Sass\test.scss" />
     <Content Include="package.json" />
+    <Content Include="Content\Sass\test1.scss" />
     <None Include="packages.config" />
     <Content Include="gulpfile.js" />
     <Content Include="Scripts\bootstrap.js" />
