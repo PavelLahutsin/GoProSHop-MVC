@@ -456,6 +456,7 @@
     <Content Include="Content\ProductGroup\footer-catalog.css" />
     <Content Include="Content\ProductGroup\side-menu.css" />
     <Content Include="Content\Search\Index.css" />
+    <Content Include="Content\testcss.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -598,7 +599,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\Sass\test.scss" />
+    <Content Include="package.json" />
     <None Include="packages.config" />
+    <Content Include="gulpfile.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -790,6 +794,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Attributes\" />
     <Folder Include="Content\Catalog\" />
+    <Folder Include="Content\Css\" />
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\Chosen\" />
   </ItemGroup>

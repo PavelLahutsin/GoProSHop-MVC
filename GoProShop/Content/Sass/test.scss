@@ -1,0 +1,11 @@
+﻿$blue-color: #428bca;
+
+body {
+    background-color: $blue-color;
+
+    nav{
+        background: $blue-color;
+        display: inline-block;
+    }
+}
+
