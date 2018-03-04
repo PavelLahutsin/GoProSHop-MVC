@@ -33,3 +33,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('.list-group-item').on('click', function (e) {
+        $('.list-group').find('.active').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    $('.list-group > .list-group-item').on('click', function (e) {
+        $('.list-group').find('.collapse.in').collapse('hide');
+    });
+
+</script>

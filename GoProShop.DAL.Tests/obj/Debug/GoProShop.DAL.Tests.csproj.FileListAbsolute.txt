@@ -90,8 +90,6 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DA
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\bin\Debug\WebDriver.Support.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\bin\Debug\Microsoft.Owin.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\bin\Debug\Owin.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\bin\Debug\GoProShop.DAL.pdb
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\bin\Debug\GoProShop.DAL.dll.config
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\bin\Debug\Castle.Core.xml
@@ -115,7 +113,6 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DA
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\bin\Debug\WebDriver.Support.xml
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\bin\Debug\Microsoft.Owin.xml
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\obj\Debug\GoProShop.DAL.Tests.csprojResolveAssemblyReference.cache
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\obj\Debug\GoProShop.DAL.Tests.csproj.CoreCompileInputs.cache
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProSHop-MVC\GoProShop.DAL.Tests\obj\Debug\GoProShop.DAL.Tests1.dll

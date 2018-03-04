@@ -23,6 +23,7 @@ function updateNotificationMessage(element, response) {
 }
 
 function searchProduct(event, element) {
+
     event.preventDefault();
     var value = $(element).val();
     var searchResult = $('.search-product-box');
@@ -33,6 +34,7 @@ function searchProduct(event, element) {
             function (data) {
 
                 if (data.length) {
+
                     var list = $('<ul/>')
                         .addClass('search-product-list');
 
@@ -389,18 +391,6 @@ function updateOrderInfo() {
     $("#order-info").load("/Cart/OrderInfo/");
 }
 
-$('.condition-dropdown').change(function (e) {
-    var dropdown = $(this);
-    var parentRow = dropdown.closest("tr");
-
-    if (dropdown.val() === "1") {
-        parentRow.switchClass("table-row-success", "table-row-warning", 300);
-    }
-    else if (dropdown.val() === "2") {
-        parentRow.switchClass("table-row-warning", "table-row-success", 300);
-    }
-});
-
 $('.nav-tabs').on('click', 'li', function () {
     $('.nav-tabs li.active').removeClass('active');
     $(this).addClass('active');
@@ -409,4 +399,17 @@ $('.nav-tabs').on('click', 'li', function () {
 $('.list-group-item').on('click', function (e) {
     $('.list-group').find('.active').removeClass('active');
     $(this).addClass('active');
+});
+
+$('.list-group > .list-group-item').on('click', function (e) {
+    $('.list-group').find('.collapse.in').collapse('hide');
+});
+
+$('.img-view-product img').click(function (e) {
+    var img = $('<img/>')
+        .attr('src', $(this).attr('src'))
+        .addClass('modal-image');
+
+    $('#mainDialogContent').html(img);
+    $('#mainModal').modal('show');
 });

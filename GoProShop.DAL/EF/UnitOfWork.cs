@@ -1,14 +1,9 @@
 ﻿using GoProShop.DAL.Interfaces;
 using GoProShop.DAL.Repositories;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using GoProShop.DAL.Entities;
-using GoProShop.DAL.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin.Security;
 using System.Data.Entity;
 
 namespace GoProShop.DAL.EF
@@ -24,14 +19,11 @@ namespace GoProShop.DAL.EF
         private IBaseRepository<Store> _storeRepository;
         private IBaseRepository<ProductGroup> _productGroupRepository;
         private IBaseRepository<Feedback> _feedbackRepository;
-        private ApplicationUserManager _userManager;
-        private ApplicationRoleManager _roleManager;
         private bool disposed;
         private readonly GoProShopContext _context;
 
-        public UnitOfWork(IAuthenticationManager authenticationManager)
+        public UnitOfWork()
         {
-            AuthenticationManager = authenticationManager ?? throw new ArgumentNullException(nameof(authenticationManager));
             _context = new GoProShopContext();          
         }
 
@@ -62,18 +54,11 @@ namespace GoProShop.DAL.EF
        public IBaseRepository<Feedback> Feedbacks => _feedbackRepository ??
            (_feedbackRepository = new BaseRepository<Feedback>(_context));
 
-        public ApplicationUserManager UserManager => _userManager ??
-            (_userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_context)));
-
-        public ApplicationRoleManager RoleManager => _roleManager ?? 
-            (_roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(_context)));
-
-        public IAuthenticationManager AuthenticationManager { get; set; }
-
         public Database Database => _context.Database;
 
-        public async Task Commit()
-            => await _context.SaveChangesAsync();
+        public async Task Commit() => await _context.SaveChangesAsync();
+
+        public GoProShopContext Context => _context;
 
         public void Rollback()
             => _context.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());

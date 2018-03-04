@@ -1,13 +1,4 @@
 ﻿@model GoProShop.ViewModels.ProductVM
-@{
-    var options = new AjaxOptions
-    {
-        OnSuccess = "SuccessShoppingCartHandler",
-        HttpMethod = "GET",
-        InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "shopping-cart"
-    };
-}
 <div class="container-fluid">
     <div class="container" style="padding-top: 25px">
         <div class="row">
@@ -17,14 +8,14 @@
             <div class="col-md-9">
                 <div id="product-content">
                     <div class="row">
-                        <div class="col-md-4" style="padding-left: 0">
+                        <div class="col-md-4 text-center img-view-product" style="padding-left: 0">
                             @if (Model.MimeType == null)
                             {
-                                <img height="250" class="text-center" width="250" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
+                                <img height="250" width="250" src="~/Content/Images/No_Image_Available.png" alt="Фото" />
                             }
                             else
                             {
-                                <img height="205" width="245" src="@Url.Action("GetImage", "Product", new { productId = Model.Id })" alt="Фото">
+                                <img height="180" style="width: auto; padding-top: 35px;" src="@Url.Action("GetImage", "Product", new { productId = Model.Id })" alt="Фото">
                             }
                         </div>
 
@@ -106,7 +97,7 @@
                     </div>
                     <div class="row" style="margin-top: 30px;">
                         <div class="col-md-12" style="padding-left: 0">
-                            <ul class="nav nav-tabs">
+                            <ul class="nav nav-tabs" style="position: static; border-bottom: 1px solid #ddd">
 
                                 <li class="active"><a class="ajax-get-link" href="@Url.Action("Description","Product", new { productId = Model.Id })" data-element-to-update="#view-product-content">Описание</a></li>
                                 <li id="feedback-tab">

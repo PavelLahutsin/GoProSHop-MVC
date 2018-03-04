@@ -4,6 +4,7 @@ using GoProShop.DAL.Entities;
 using GoProShop.DAL.Identity;
 using Microsoft.Owin.Security;
 using System.Data.Entity;
+using GoProShop.DAL.EF;
 
 namespace GoProShop.DAL.Interfaces
 {
@@ -27,11 +28,7 @@ namespace GoProShop.DAL.Interfaces
 
         IBaseRepository<Feedback> Feedbacks { get; }
 
-        ApplicationUserManager UserManager { get; }
-
-        ApplicationRoleManager RoleManager { get; }
-
-        IAuthenticationManager AuthenticationManager { get; }
+        GoProShopContext Context { get; }
 
         Database Database { get; }
 

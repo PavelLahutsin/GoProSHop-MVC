@@ -1,6 +1,6 @@
 ﻿@model GoProShop.ViewModels.FeedbackVM
 
-    @using (Html.BeginForm("Create", "Feedback", FormMethod.Post, new { id = "create-feedback-form" }))
+    @using (Html.BeginForm("Create", "Feedback", FormMethod.Post, new { id = "create-feedback-form"}))
     {
         @Html.AntiForgeryToken()
         <div class="row">
