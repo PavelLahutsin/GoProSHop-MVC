@@ -33,8 +33,6 @@ namespace GoProShop.DAL.Tests1
 
         private IWebElement _notificationMessage => _webDriver.FindElement(By.ClassName("table-notification-message"));
 
-        private IWebElement _catalogMenuItem1 => _webDriver.FindElement(By.Id("catalog-menu-item-1"));
-
         private IWebElement _catalogSubMenuItem1 => _webDriver.FindElement(By.Id("catalog-submenu-item-1"));       
 
         private IWebElement _catalogMenu => _webDriver.FindElement(By.Id("catalog-menu"));
@@ -103,8 +101,6 @@ namespace GoProShop.DAL.Tests1
 
         public void ClickCatalogMenu() => _catalogMenu.Click();
 
-        public void ClickCatalogSubMenuItem1() => _catalogSubMenuItem1.Click();
-
         public void ClickProductButton(int index) => GetElementFromList(_products, index, "a.btn.btn-success").Click();
 
         public void ClickStarRate5() => _feedbackRate5.Click();
@@ -135,21 +131,21 @@ namespace GoProShop.DAL.Tests1
 
         // Boolean Values
 
-        public bool IsNotificationDisplayed() => _notificationMessage?.Displayed ?? false;
+        public bool IsNotificationDisplayed() => _notificationMessage?.Displayed  == true;
 
-        public bool IsModalWindowDisplayed => _modalWindow?.Displayed ?? false;
+        public bool IsModalWindowDisplayed => _modalWindow?.Displayed == true;
 
-        public bool IsCheckOutFormDisplayed => _checkoutForm?.Displayed ?? false;
+        public bool IsCheckOutFormDisplayed => _checkoutForm?.Displayed == true;
 
-        public bool IsPaymentTypeErrorMessageDisplayed => _paymentTypeErrorMessage?.Displayed ?? false;
+        public bool IsPaymentTypeErrorMessageDisplayed => _paymentTypeErrorMessage?.Displayed == true;
 
-        public bool IsOrderDateErrorMessageDisplayed => _orderDateErrorMessage?.Displayed ?? false;
+        public bool IsOrderDateErrorMessageDisplayed => _orderDateErrorMessage?.Displayed == true;
 
-        public bool IsEmailErrorMessageDisplayed => _emailErrorMessage?.Displayed ?? false;
+        public bool IsEmailErrorMessageDisplayed => _emailErrorMessage?.Displayed == true;
 
-        public bool IsPhoneErrorMessageDisplayed => _phoneErrorMessage?.Displayed ?? false;
+        public bool IsPhoneErrorMessageDisplayed => _phoneErrorMessage?.Displayed == true;
 
-        public bool IsDeliveryTypeErrorMessageDisplayed => _deliveryTypeErrorMessage?.Displayed ?? false;
+        public bool IsDeliveryTypeErrorMessageDisplayed => _deliveryTypeErrorMessage?.Displayed == true;
 
         // Actions
 

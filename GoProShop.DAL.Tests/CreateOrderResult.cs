@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GoProShop.DAL.Tests1
+﻿namespace GoProShop.DAL.Tests1
 {
-    class CreateOrderResult
+    public class CreateOrderResult
     {
         public bool IsPaymentTypeErrorMessageDisplayed { get; set; }
 
