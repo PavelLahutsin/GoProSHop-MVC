@@ -20,7 +20,7 @@ namespace GoProShop.BLL.Services
 
         public async Task<IEnumerable<ChosenItemDto>> GetProductsAsync()
         {
-            var products = await _uow.Products.Entities.ToListAsync();
+            var products = await _uow.Repository<Product>().Entities.ToListAsync();
 
             var chosenItems = Mapper.Map<List<Product>, IEnumerable<ChosenItemDto>>(products);
 

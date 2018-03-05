@@ -32,7 +32,7 @@ namespace GoProShop.BLL.Services
             if (!searchResult.Response.IsSuccess)
                 return searchResult;
 
-            var products = _uow.Products.Entities.Where(x => x.Name.Contains(searchString)
+            var products = _uow.Repository<Product>().Entities.Where(x => x.Name.Contains(searchString)
               || x.Description.Contains(searchString));
 
             searchResult.SearchedItems = Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products.ToList());
@@ -42,7 +42,7 @@ namespace GoProShop.BLL.Services
 
         public IEnumerable<ProductDTO> GetProducts(string searchString)
        {
-            var products = _uow.Products.Entities.Where(x => x.Name.Contains(searchString)).Take(5).ToList();
+            var products = _uow.Repository<Product>().Entities.Where(x => x.Name.Contains(searchString)).Take(5).ToList();
             var productsDto = Mapper.Map<List<Product>, List<ProductDTO>>(products);
 
             return productsDto;

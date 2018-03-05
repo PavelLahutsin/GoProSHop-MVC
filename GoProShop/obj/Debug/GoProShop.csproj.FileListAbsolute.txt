@@ -20,13 +20,11 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bi
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\Microsoft.VisualBasic.Core.targets
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\Microsoft.Win32.Primitives.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.AppContext.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.Collections.Immutable.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.Console.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.Diagnostics.Process.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.Diagnostics.StackTrace.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.Compression.dll
-D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.Pipes.dll
@@ -143,3 +141,5 @@ D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\ob
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\obj\Debug\GoProShop.csproj.CoreCompileInputs.cache
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\obj\Debug\GoProShop.dll
 D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\obj\Debug\GoProShop.pdb
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.Collections.Immutable.dll
+D:\Programming stuff\Projects\GoProShop\GoProShop-MVC\GoProShop-MVC\GoProShop\bin\roslyn\System.IO.FileSystem.dll

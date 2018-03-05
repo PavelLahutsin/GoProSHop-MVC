@@ -17,7 +17,7 @@ namespace GoProShop.BLL.Services
     {
         private readonly ApplicationUserManager _userManager;
         private readonly ApplicationRoleManager _roleManager;
-        public readonly IAuthenticationManager _authenticationManager;
+        private readonly IAuthenticationManager _authenticationManager;
 
         public UserService(IUnitOfWork uow, IAuthenticationManager authenticationManager)
             : base(uow)
