@@ -444,6 +444,7 @@
     <Content Include="Content\Images\carousel-item-3.png" />
     <Content Include="Content\Images\chosen-sprite%402x.png" />
     <Content Include="Content\Images\chosen-sprite.png" />
+    <Content Include="Content\Images\error-icon.png" />
     <Content Include="Content\Images\GoProLogoBlack.png" />
     <Content Include="Content\Images\home-page-item-1.png" />
     <Content Include="Content\Images\home-page-item-2.png" />

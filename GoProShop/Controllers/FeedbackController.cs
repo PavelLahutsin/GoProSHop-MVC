@@ -38,13 +38,17 @@ namespace GoProShop.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(FeedbackVM feedbackVM)
         {
+           await Task.Delay(700);
             if (!ModelState.IsValid)
             {
-                Thread.Sleep(300);
+                if (feedbackVM.ProductId.HasValue)
+                {
+                    ViewBag.ProductId = feedbackVM.ProductId;
+                }
+
                 return PartialView("_Create", feedbackVM);
             }
                
-
             await _feedbackService.CreateAsync(Mapper.Map<FeedbackDTO>(feedbackVM));
             var response = Mapper.Map<ResponseVM>(_responseService.Create(true,
                 "Cпасибо за ваш отзыв. Нам важно ваше мнение!"));

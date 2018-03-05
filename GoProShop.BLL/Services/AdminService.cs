@@ -1,5 +1,6 @@
 ﻿using GoProShop.BLL.DTO;
 using GoProShop.BLL.Services.Interfaces;
+using GoProShop.DAL.Entities;
 using GoProShop.DAL.Interfaces;
 using System;
 using System.Linq;
@@ -15,8 +16,8 @@ namespace GoProShop.BLL.Services
 
         public AdminPageDTO Build()
         {
-            var newFeedbacksCount = _uow.Feedbacks.Entities.Where(x => !x.IsViewed).Count();
-            var newOrdersCount = _uow.Orders.Entities.Where(x => !x.IsViewed).Count();
+            var newFeedbacksCount = _uow.Repository<Feedback>().Entities.Where(x => !x.IsViewed).Count();
+            var newOrdersCount = _uow.Repository<Order>().Entities.Where(x => !x.IsViewed).Count();
 
             return new AdminPageDTO
             {

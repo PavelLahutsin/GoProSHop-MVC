@@ -18,7 +18,7 @@ namespace GoProShop.BLL.Services
 
         public async Task SendSuccessOrderEmail(int orderId)
         {
-            var order = await _uow.Orders.GetAsync(orderId);
+            var order = await _uow.Repository<Order>().GetAsync(orderId);
 
             using (var mailMessage = new MailMessage())
             {

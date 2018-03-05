@@ -25,7 +25,7 @@ namespace GoProShop.BLL.Services
                 try
                 {
                     var order = Mapper.Map<Order>(orderDTO);
-                    var user = await _uow.Customers.Entities.FirstOrDefaultAsync(x => x.Email == orderDTO.Customer.Email);
+                    var user = await _uow.Repository<Customer>().Entities.FirstOrDefaultAsync(x => x.Email == orderDTO.Customer.Email);
 
                     if (user != null)
                     {
@@ -42,7 +42,7 @@ namespace GoProShop.BLL.Services
                         Price = x.Product.Price,
                         Quantity = x.Quantity
                     }).ToList();
-                    _uow.Orders.Create(order);
+                    _uow.Repository<Order>().Create(order);
 
                     await _uow.Commit();
 
@@ -65,7 +65,7 @@ namespace GoProShop.BLL.Services
                 try
                 {
                     var order = Mapper.Map<Order>(orderDto);
-                    var user = await _uow.Customers.Entities.FirstOrDefaultAsync(x => x.Email == orderDto.Customer.Email);
+                    var user = await _uow.Repository<Customer>().Entities.FirstOrDefaultAsync(x => x.Email == orderDto.Customer.Email);
 
                     if (user != null)
                     {
@@ -74,7 +74,7 @@ namespace GoProShop.BLL.Services
                     }
                     order.TotalPrice = orderDto.OrdersList.Sum(x => x.Product.Price);
 
-                    _uow.Orders.Create(order);
+                    _uow.Repository<Order>().Create(order);
                     await _uow.Commit();
                     transaction.Commit();
                     return new ResponseDTO(true, "Заказ был успешно создан");
@@ -89,12 +89,12 @@ namespace GoProShop.BLL.Services
 
         public async Task<ResponseDTO> DeleteAsync(int id)
         {
-            var order = await _uow.Orders.GetAsync(id);
+            var order = await _uow.Repository<Order>().GetAsync(id);
 
             if (order == null)
                 return new ResponseDTO(false, "Данного заказа не существует в базе данных");
 
-            await _uow.Orders.DeleteAsync(order);
+            await _uow.Repository<Order>().DeleteAsync(order);
             await _uow.Commit();
 
             return new ResponseDTO(true, "Заказ успешно удален из базы данных");
@@ -102,7 +102,7 @@ namespace GoProShop.BLL.Services
 
         public async Task<OrderDTO> GetAsync(int id)
         {
-            var order = await _uow.Orders.GetAsync(id);
+            var order = await _uow.Repository<Order>().GetAsync(id);
             var orderDto= Mapper.Map<OrderDTO>(order);
 
             return orderDto;
@@ -110,7 +110,7 @@ namespace GoProShop.BLL.Services
 
         public IEnumerable<OrderDTO> GetOrders()
         {
-            var orders = _uow.Orders.Entities.ToList();
+            var orders = _uow.Repository<Order>().Entities.ToList();
             var ordersDto = Mapper.Map<List<Order>, IEnumerable<OrderDTO>>(orders);
 
             return ordersDto.Reverse();
@@ -118,25 +118,25 @@ namespace GoProShop.BLL.Services
 
         public async Task<int> ViewOrder(int id)
         {
-            var order = await _uow.Orders.GetAsync(id);
+            var order = await _uow.Repository<Order>().GetAsync(id);
 
             if (order?.IsViewed == false)
             {
                 order.IsViewed = true;
-                await _uow.Orders.UpdateAsync(order);
+                await _uow.Repository<Order>().UpdateAsync(order);
                 await _uow.Commit();
             }
 
-            return _uow.Orders.Entities.Count(x => !x.IsViewed);
+            return _uow.Repository<Order>().Entities.Count(x => !x.IsViewed);
         }
 
         public async Task<ResponseDTO> UpdateAsync(OrderDTO orderDto)
         {
-            var orderedProducts = await _uow.OrderedProducts.Entities.Where(x => x.OrderId == orderDto.Id).ToListAsync();
+            var orderedProducts = await _uow.Repository<OrderedProduct>().Entities.Where(x => x.OrderId == orderDto.Id).ToListAsync();
             var order = Mapper.Map<Order>(orderDto);
             order.OrdersList = orderedProducts;
 
-            var result  = await _uow.Orders.UpdateAsync(order);
+            var result  = await _uow.Repository<Order>().UpdateAsync(order);
 
             if (result == null)
                 return new ResponseDTO(false, "Данного заказа не существует в базе данных");

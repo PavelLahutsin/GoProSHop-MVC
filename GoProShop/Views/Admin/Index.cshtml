@@ -1,30 +1,32 @@
 ﻿@model GoProShop.ViewModels.AdminPageVM
 
-<div class="container-admin" style="font-size: 13px">
-    <ul class="nav nav-tabs container" style="padding-top: 20px; margin-bottom: 20px;">
-        <li class="active">
-            <a class="ajax-get-link" href="@Url.Action("Orders", "Admin")" data-element-to-update="#adminContent">
-                <i class="fa fa-list-alt admin-tab-icon"></i>Заказы
-                <span class="badge badge-admin-tab" id="new-orders-count">@Model.NewOrdersCount</span>
-            </a>
-        </li>
-        <li>
-            <a class="ajax-get-link" href="@Url.Action("Price", "Admin")" data-element-to-update="#adminContent">
-                <i class="fa fa-table admin-tab-icon"></i>Прайс
-            </a>
-        </li>
-        <li>
-            <a data-toggle="tab" href="#menu2">
-                <i class="fa fa-tasks admin-tab-icon"></i>Склады
-            </a>
-        </li>
-        <li>
-            <a class="ajax-get-link" href="@Url.Action("Feedbacks","Admin")" data-element-to-update="#adminContent">
-                <i class="fa fa-envelope-square admin-tab-icon"></i>Отзывы
-                <span class="badge badge-admin-tab" id="new-feedbacks-count">@Model.NewFeedbacksCount</span>
-            </a>
-        </li>
-    </ul>
+<div class="container-admin">
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a class="ajax-get-link" href="@Url.Action("Orders", "Admin")" data-element-to-update="#adminContent">
+                    <i class="fa fa-list-alt admin-tab-icon"></i>Заказы
+                    <span class="badge badge-admin-tab" id="new-orders-count">@Model.NewOrdersCount</span>
+                </a>
+            </li>
+            <li>
+                <a class="ajax-get-link" href="@Url.Action("Price", "Admin")" data-element-to-update="#adminContent">
+                    <i class="fa fa-table admin-tab-icon"></i>Прайс
+                </a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#menu2">
+                    <i class="fa fa-tasks admin-tab-icon"></i>Склады
+                </a>
+            </li>
+            <li>
+                <a class="ajax-get-link" href="@Url.Action("Feedbacks","Admin")" data-element-to-update="#adminContent">
+                    <i class="fa fa-envelope-square admin-tab-icon"></i>Отзывы
+                    <span class="badge badge-admin-tab" id="new-feedbacks-count">@Model.NewFeedbacksCount</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>
 
 <div class="container">

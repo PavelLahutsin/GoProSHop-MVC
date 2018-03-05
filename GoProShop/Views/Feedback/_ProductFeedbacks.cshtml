@@ -9,7 +9,7 @@
                 <div class="col-md-12">
                     <div class="col-md-3 text-left" style="padding-top: 15px">
                         <h5 style="font-weight: normal"><strong>@feedback.Name</strong></h5>
-                        <h6 style="padding: 0" class="text-muted">@feedback.Date.ToString("MM/dd/yyyy")  <span class="fa fa-clock-o fa-lg" aria-hidden="true"></span></h6>
+                        <h6 style="padding: 0" class="text-muted">@feedback.Date.ToString("dd MMMM yyyy")  <span class="fa fa-clock-o fa-lg" aria-hidden="true"></span></h6>
                     </div>
 
                     <div class="col-md-9" style="padding-right: 0;">
@@ -38,7 +38,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="table-notification-message" style="@(Model.Any() ? "display: none" : string.Empty)">
+            <div class="table-notification-message" style="@(Model.Any() ? "display: none" : "display: block")">
                 <div class="alert alert-info">
                     <i class="fa fa-warning fa-lg"></i>
                     <span>На текущий момент данный товар не имеет отзывов</span>

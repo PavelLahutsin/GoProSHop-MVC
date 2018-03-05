@@ -20,7 +20,7 @@ namespace GoProShop.BLL.Services
         {
             foreach (var productId in productsId)
             {
-                var price = _uow.Products.Entities.FirstOrDefault(x => x.Id == productId).Price;
+                var price = _uow.Repository<Product>().Entities.FirstOrDefault(x => x.Id == productId).Price;
 
                 var productsOrdered = new OrderedProduct
                 {
@@ -30,7 +30,7 @@ namespace GoProShop.BLL.Services
                     Price = price
                 };
 
-                _uow.OrderedProducts.Create(productsOrdered);
+                _uow.Repository<OrderedProduct>().Create(productsOrdered);
             }
                 
             await _uow.Commit();    
@@ -38,12 +38,12 @@ namespace GoProShop.BLL.Services
 
         public async Task<ResponseDTO> DeleteAsync(int id)
         {
-            var orderedProduct = await _uow.OrderedProducts.GetAsync(id);
+            var orderedProduct = await _uow.Repository<OrderedProduct>().GetAsync(id);
 
             if (orderedProduct == null)
                 return new ResponseDTO(false, "Товар не содержится в заказе");
 
-            await _uow.OrderedProducts.DeleteAsync(orderedProduct);
+            await _uow.Repository<OrderedProduct>().DeleteAsync(orderedProduct);
             await _uow.Commit();
 
             return new ResponseDTO(true, "Товар успешно удален из заказа");
@@ -51,7 +51,7 @@ namespace GoProShop.BLL.Services
 
         public IEnumerable<OrderedProductDTO> GetOrderedProducts(int orderId)
         {
-            var orderedProducts = _uow.OrderedProducts.Entities.Where(x => x.OrderId == orderId).ToList();
+            var orderedProducts = _uow.Repository<OrderedProduct>().Entities.Where(x => x.OrderId == orderId).ToList();
 
             var orderedProductsDto = Mapper.Map<List<OrderedProduct>, IEnumerable<OrderedProductDTO>>(orderedProducts);
 

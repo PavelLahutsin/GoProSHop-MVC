@@ -29,7 +29,7 @@ namespace GoProShop.BLL.Services
                 MapProductImage(product, uploadedFile);
             }
 
-            _uow.Products.Create(Mapper.Map<Product>(product));
+            _uow.Repository<Product>().Create(Mapper.Map<Product>(product));
             await _uow.Commit();
         }
 
@@ -42,7 +42,7 @@ namespace GoProShop.BLL.Services
 
         private IEnumerable<ProductDTO> GetSortedSubGroupProducts(string sortCriteria, int id)
         {
-            var products = _uow.Products.Entities.Where(x => x.ProductSubGroupId == id);
+            var products = _uow.Repository<Product>().Entities.Where(x => x.ProductSubGroupId == id);
 
             switch (sortCriteria)
             {
@@ -67,7 +67,7 @@ namespace GoProShop.BLL.Services
 
         public async Task<ProductDTO> GetAsync(int id)
         {
-            var product = Mapper.Map<ProductDTO>(await _uow.Products.GetAsync(id));
+            var product = Mapper.Map<ProductDTO>(await _uow.Repository<Product>().GetAsync(id));
             return product;
         }
 
@@ -78,14 +78,14 @@ namespace GoProShop.BLL.Services
                 MapProductImage(product, uploadedFile);
             }
 
-            await _uow.Products.UpdateAsync(Mapper.Map<Product>(product));
+            await _uow.Repository<Product>().UpdateAsync(Mapper.Map<Product>(product));
             await _uow.Commit();
         }
 
         public IEnumerable<ProductDTO> GetProductsOfDay()
         {
-            var products = _uow.Products.Entities.Where(x => x.ProductSubGroup.Name.Contains("Экшн-камеры")).Take(4).ToList();
-            products.AddRange(_uow.Products.Entities.Where(x => x.ProductSubGroup.Name.Contains("Готовые комплекты")).Take(4).ToList());
+            var products = _uow.Repository<Product>().Entities.Where(x => x.ProductSubGroup.Name.Contains("Экшн-камеры")).Take(4).ToList();
+            products.AddRange(_uow.Repository<Product>().Entities.Where(x => x.ProductSubGroup.Name.Contains("Готовые комплекты")).Take(4).ToList());
 
             var productsDto = Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products);
             return productsDto;
@@ -93,13 +93,13 @@ namespace GoProShop.BLL.Services
 
         public async Task DeleteAsync(ProductDTO product)
         {
-            await _uow.Products.DeleteAsync(Mapper.Map<Product>(product));
+            await _uow.Repository<Product>().DeleteAsync(Mapper.Map<Product>(product));
             await _uow.Commit();
         }
 
         public IEnumerable<ProductDTO> GetAll()
         {
-            var products = _uow.Products.Entities.ToList();
+            var products = _uow.Repository<Product>().Entities.ToList();
 
             return Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products);
 
@@ -107,7 +107,7 @@ namespace GoProShop.BLL.Services
 
         public async Task<IEnumerable<ProductDTO>> GetAdminProductsAsync(int id)
         {
-            var products = await _uow.Products.Entities.Where(x => x.ProductSubGroupId == id).ToListAsync();
+            var products = await _uow.Repository<Product>().Entities.Where(x => x.ProductSubGroupId == id).ToListAsync();
 
             return Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products);
         }

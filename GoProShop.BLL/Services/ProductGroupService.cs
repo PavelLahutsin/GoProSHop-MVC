@@ -21,7 +21,7 @@ namespace GoProShop.BLL.Services
         public IEnumerable<ProductGroupDTO> GetProductGroups()
         {
             var productGroups =
-                 Mapper.Map<List<ProductGroup>, List<ProductGroupDTO>>(_uow.ProductGroups.Entities.ToList());
+                 Mapper.Map<List<ProductGroup>, List<ProductGroupDTO>>(_uow.Repository<ProductGroup>().Entities.ToList());
 
             return productGroups;
         }
