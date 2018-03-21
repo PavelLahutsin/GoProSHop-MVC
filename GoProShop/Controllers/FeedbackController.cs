@@ -110,7 +110,7 @@ namespace GoProShop.Controllers
             if (!ModelState.IsValid)
                 return PartialView("_Edit", feedback);
 
-            var response = await _feedbackService.UpdateAsync(Mapper.Map<FeedbackDTO>(feedback));
+            var response = await _feedbackService.UpdateAsync(Mapper.Map<FeedbackDTO>(feedback), "Отзыв");
 
             return Json(response);
         }
@@ -118,7 +118,7 @@ namespace GoProShop.Controllers
         [Authorize(Roles = "admin")]
         public async Task<ActionResult> Delete(int id)
         {
-            var response = Mapper.Map<ResponseVM>(await _feedbackService.DeleteAsync(id));
+            var response = Mapper.Map<ResponseVM>(await _feedbackService.DeleteAsync(id, "Отзыв"));
             return Json(response, JsonRequestBehavior.AllowGet);
         }
     }

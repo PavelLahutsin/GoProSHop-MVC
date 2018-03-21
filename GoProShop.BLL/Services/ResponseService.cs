@@ -1,6 +1,7 @@
 ﻿using GoProShop.BLL.DTO;
+using GoProShop.BLL.Services.Interfaces;
 
-namespace GoProShop.BLL.Services.Interfaces
+namespace GoProShop.BLL.Services
 {
     public class ResponseService : IResponseService
     {

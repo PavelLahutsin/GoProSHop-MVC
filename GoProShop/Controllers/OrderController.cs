@@ -102,7 +102,7 @@ namespace GoProShop.Controllers
         [Authorize(Roles = "admin")]
         public async Task<ActionResult> Delete(int id)
         {
-            var response = Mapper.Map<ResponseVM>(await _orderService.DeleteAsync(id));
+            var response = Mapper.Map<ResponseVM>(await _orderService.DeleteAsync(id, "Заказ"));
             return Json(response, JsonRequestBehavior.AllowGet);
         }
     }

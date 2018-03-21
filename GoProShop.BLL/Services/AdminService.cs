@@ -16,8 +16,8 @@ namespace GoProShop.BLL.Services
 
         public AdminPageDTO Build()
         {
-            var newFeedbacksCount = _uow.Repository<Feedback>().Entities.Where(x => !x.IsViewed).Count();
-            var newOrdersCount = _uow.Repository<Order>().Entities.Where(x => !x.IsViewed).Count();
+            var newFeedbacksCount = _uow.Repository<Feedback>().Entities.Count(x => !x.IsViewed);
+            var newOrdersCount = _uow.Repository<Order>().Entities.Count(x => !x.IsViewed);
 
             return new AdminPageDTO
             {

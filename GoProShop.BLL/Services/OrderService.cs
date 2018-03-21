@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace GoProShop.BLL.Services
 {
-    public class OrderService : BaseService, IOrderService
+    public class OrderService : CrudService<Order, OrderDTO>, IOrderService
     {
         public OrderService(IUnitOfWork uow)
             : base(uow)
@@ -58,7 +58,7 @@ namespace GoProShop.BLL.Services
             }
         }
 
-        public async Task<ResponseDTO> CreateAsync(OrderDTO orderDto)
+        public new async Task<ResponseDTO> CreateAsync(OrderDTO orderDto)
         {
             using (var transaction = _uow.Database.BeginTransaction())
             {
@@ -87,34 +87,7 @@ namespace GoProShop.BLL.Services
             }
         }
 
-        public async Task<ResponseDTO> DeleteAsync(int id)
-        {
-            var order = await _uow.Repository<Order>().GetAsync(id);
-
-            if (order == null)
-                return new ResponseDTO(false, "Данного заказа не существует в базе данных");
-
-            await _uow.Repository<Order>().DeleteAsync(order);
-            await _uow.Commit();
-
-            return new ResponseDTO(true, "Заказ успешно удален из базы данных");
-        }
-
-        public async Task<OrderDTO> GetAsync(int id)
-        {
-            var order = await _uow.Repository<Order>().GetAsync(id);
-            var orderDto= Mapper.Map<OrderDTO>(order);
-
-            return orderDto;
-        }
-
-        public IEnumerable<OrderDTO> GetOrders()
-        {
-            var orders = _uow.Repository<Order>().Entities.ToList();
-            var ordersDto = Mapper.Map<List<Order>, IEnumerable<OrderDTO>>(orders);
-
-            return ordersDto.Reverse();
-        }
+        public IEnumerable<OrderDTO> GetOrders() => GetAll().Reverse();
 
         public async Task<int> ViewOrder(int id)
         {

@@ -7,7 +7,7 @@ namespace GoProShop.BLL.Services
     {
         protected readonly IUnitOfWork _uow;
 
-        public BaseService(IUnitOfWork uow)
+        protected BaseService(IUnitOfWork uow)
         {
             _uow = uow ?? throw new ArgumentNullException(nameof(uow));
         }

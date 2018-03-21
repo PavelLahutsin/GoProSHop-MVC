@@ -1,8 +1,6 @@
-﻿using System;
-using System.Net.Mail;
+﻿using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-using GoProShop.BLL.DTO;
 using GoProShop.BLL.Services.Interfaces;
 using GoProShop.DAL.Entities;
 using GoProShop.DAL.Interfaces;

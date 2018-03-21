@@ -19,7 +19,7 @@ namespace GoProShop.Controllers
 
         public ActionResult MegaMenu()
         {
-            var productGroupsDTO = _mainProductGroupService.GetProductGroups();
+            var productGroupsDTO = _mainProductGroupService.GetAll();
             var productGroupsVM =
                 Mapper.Map<IEnumerable<ProductGroupDTO>, IEnumerable<ProductGroupVM>>(productGroupsDTO);
 
@@ -28,7 +28,7 @@ namespace GoProShop.Controllers
 
         public ActionResult UserSideMenu()
         {
-            var productGroupsDTO = _mainProductGroupService.GetProductGroups();
+            var productGroupsDTO = _mainProductGroupService.GetAll();
             var productGroupsVM =
                 Mapper.Map<IEnumerable<ProductGroupDTO>, IEnumerable<ProductGroupVM>>(productGroupsDTO);
 
@@ -37,7 +37,7 @@ namespace GoProShop.Controllers
 
         public ActionResult AdminSideMenu()
         {
-            var productGroupsDTO = _mainProductGroupService.GetProductGroups();
+            var productGroupsDTO = _mainProductGroupService.GetAll();
             var productGroupsVM =
                 Mapper.Map<IEnumerable<ProductGroupDTO>, IEnumerable<ProductGroupVM>>(productGroupsDTO);
 
@@ -46,7 +46,7 @@ namespace GoProShop.Controllers
 
         public ActionResult FooterCatalog()
         {
-            var productGroupsDTO = _mainProductGroupService.GetProductGroups();
+            var productGroupsDTO = _mainProductGroupService.GetAll();
             var productGroupsVM =
                 Mapper.Map<IEnumerable<ProductGroupDTO>, IEnumerable<ProductGroupVM>>(productGroupsDTO);
 

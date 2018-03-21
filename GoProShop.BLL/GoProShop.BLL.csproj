@@ -110,11 +110,13 @@
     <Compile Include="Infrastructure\AutoMapperBLLConfig.cs" />
     <Compile Include="DTO\CustomerDTO.cs" />
     <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\CrudService.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\ChosenService.cs" />
     <Compile Include="Services\FeedbackService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\Interfaces\IChosenService.cs" />
+    <Compile Include="Services\Interfaces\ICrudService.cs" />
     <Compile Include="Services\Interfaces\IEmailService.cs" />
     <Compile Include="Services\Interfaces\IOrderedProductService.cs" />
     <Compile Include="Services\Interfaces\IOrderService.cs" />

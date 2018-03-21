@@ -24,7 +24,7 @@ namespace GoProShop.DAL.EF
 
         public IBaseRepository<T> Repository<T>() where T : IdProvider
         {
-            if (_repositories.Keys.Contains(typeof(T)) == true)
+            if (_repositories.Keys.Contains(typeof(T)))
             {
                 return _repositories[typeof(T)] as IBaseRepository<T>;
             }

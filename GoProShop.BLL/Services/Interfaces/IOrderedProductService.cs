@@ -10,6 +10,6 @@ namespace GoProShop.BLL.Services.Interfaces
 
         IEnumerable<OrderedProductDTO> GetOrderedProducts(int orderId);
 
-        Task<ResponseDTO> DeleteAsync(int id);
+        Task<ResponseDTO> DeleteAsync(int id, string itemName);
     }
 }

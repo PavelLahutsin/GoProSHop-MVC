@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GoProShop.BLL.Services
 {
-    public class OrderedProductService : BaseService, IOrderedProductService
+    public class OrderedProductService : CrudService<OrderedProduct, OrderedProductDTO>, IOrderedProductService
     {
         public OrderedProductService(IUnitOfWork uow)
             : base(uow)
@@ -20,14 +20,14 @@ namespace GoProShop.BLL.Services
         {
             foreach (var productId in productsId)
             {
-                var price = _uow.Repository<Product>().Entities.FirstOrDefault(x => x.Id == productId).Price;
+                var price = _uow.Repository<Product>().Entities.FirstOrDefault(x => x.Id == productId)?.Price;
 
                 var productsOrdered = new OrderedProduct
                 {
                     OrderId = orderId,
                     ProductId = productId,
                     Quantity = 1,
-                    Price = price
+                    Price = price ?? 0
                 };
 
                 _uow.Repository<OrderedProduct>().Create(productsOrdered);
@@ -36,26 +36,6 @@ namespace GoProShop.BLL.Services
             await _uow.Commit();    
         }
 
-        public async Task<ResponseDTO> DeleteAsync(int id)
-        {
-            var orderedProduct = await _uow.Repository<OrderedProduct>().GetAsync(id);
-
-            if (orderedProduct == null)
-                return new ResponseDTO(false, "Товар не содержится в заказе");
-
-            await _uow.Repository<OrderedProduct>().DeleteAsync(orderedProduct);
-            await _uow.Commit();
-
-            return new ResponseDTO(true, "Товар успешно удален из заказа");
-        }
-
-        public IEnumerable<OrderedProductDTO> GetOrderedProducts(int orderId)
-        {
-            var orderedProducts = _uow.Repository<OrderedProduct>().Entities.Where(x => x.OrderId == orderId).ToList();
-
-            var orderedProductsDto = Mapper.Map<List<OrderedProduct>, IEnumerable<OrderedProductDTO>>(orderedProducts);
-
-            return orderedProductsDto;
-        }
+        public IEnumerable<OrderedProductDTO> GetOrderedProducts(int orderId) => GetAll(x => x.OrderId == orderId);
     }
 }

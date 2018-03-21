@@ -47,8 +47,8 @@
                     @item.Id
                 </td>
                 <td width="150">
-                    <a class="pull-left" href="@Url.Action("Edit","Feedback", new { id = @item.Id })" onclick="editOrder(event, this,@item.Id)">
-                      <span class="fa fa-clock-o"></span> @item.OrderDate.ToString("dd/MM/yyyy")
+                    <a class="pull-left" href="@Url.Action("Edit","Feedback", new { id = item.Id })" onclick="editOrder(event, this,@item.Id)">
+                      <span class="fa fa-clock-o"></span> @item.OrderDate.ToString("dd MMMM yyyy")
                     </a>
                     @if (!item.IsViewed)
                     {

@@ -1,16 +1,11 @@
 ﻿using GoProShop.BLL.Services.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GoProShop.BLL.DTO;
 using GoProShop.DAL.Interfaces;
 using System.Text.RegularExpressions;
 using GoProShop.DAL.Entities;
 using AutoMapper;
-using PagedList;
 
 namespace GoProShop.BLL.Services
 {
@@ -25,9 +20,11 @@ namespace GoProShop.BLL.Services
 
         public SearchResultDTO<ProductDTO> SearchProducts(string searchString)
         {
-            var searchResult = new SearchResultDTO<ProductDTO>();
-            searchResult.Response = ValidateSearchString(searchString);
-            searchResult.SearchString = searchString;
+            var searchResult = new SearchResultDTO<ProductDTO>
+            {
+                Response = ValidateSearchString(searchString),
+                SearchString = searchString
+            };
 
             if (!searchResult.Response.IsSuccess)
                 return searchResult;

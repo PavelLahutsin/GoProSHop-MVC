@@ -5,7 +5,6 @@ using GoProShop.ViewModels;
 using PagedList;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -78,7 +77,7 @@ namespace GoProShop.Controllers
         public async Task<ActionResult> GetAdminProducts(int id)
         {
             var products
-                = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(await _productService.GetAdminProductsAsync(id));
+                = Mapper.Map<IEnumerable<ProductDTO>, IEnumerable<ProductVM>>(await _productService.GetAllAsync(x => x.ProductSubGroupId == id));
 
             return PartialView("_AdminProducts", products);
         }
@@ -112,10 +111,8 @@ namespace GoProShop.Controllers
         [Authorize(Roles = "admin")]
         public async Task<ActionResult> Delete(int id)
         {
-            var productToRemove = Mapper.Map<ProductVM>(await _productService.GetAsync(id));
-
-            await _productService.DeleteAsync(Mapper.Map<ProductDTO>(productToRemove));
-            return RedirectToAction("SubGroupAdminProducts", new { id = productToRemove.ProductSubGroupId });
+            var response = await _productService.DeleteAsync(id, "товар");
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
 
         [Authorize(Roles = "admin")]

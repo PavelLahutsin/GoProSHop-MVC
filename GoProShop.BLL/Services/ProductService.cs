@@ -8,11 +8,10 @@ using AutoMapper;
 using GoProShop.BLL.Services.Interfaces;
 using System.Threading.Tasks;
 using System.Web;
-using System.Data.Entity;
 
 namespace GoProShop.BLL.Services
 {
-    public class ProductService : BaseService, IProductService
+    public class ProductService : CrudService<Product, ProductDTO>, IProductService
     {
         private const string Desc = "desc";
         private const string Asc = "asc";
@@ -29,20 +28,12 @@ namespace GoProShop.BLL.Services
                 MapProductImage(product, uploadedFile);
             }
 
-            _uow.Repository<Product>().Create(Mapper.Map<Product>(product));
-            await _uow.Commit();
+            await base.CreateAsync(product);
         }
 
         public IEnumerable<ProductDTO> GetGroupProducts(string sortCriteria, int id)
         {
-            var productsDTO = GetSortedSubGroupProducts(sortCriteria, id);
-
-            return productsDTO;
-        }
-
-        private IEnumerable<ProductDTO> GetSortedSubGroupProducts(string sortCriteria, int id)
-        {
-            var products = _uow.Repository<Product>().Entities.Where(x => x.ProductSubGroupId == id);
+            var products = GetAll(x => x.ProductSubGroupId == id);
 
             switch (sortCriteria)
             {
@@ -55,20 +46,11 @@ namespace GoProShop.BLL.Services
                     break;
 
                 default:
-                    products = products.OrderByDescending(x => x.Feedbacks.Average(y => y.Rating));
+                    products = products.OrderByDescending(x => x.AverageRating);
                     break;
             }
 
-            var productsDto =
-                 Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products.ToList());
-
-            return productsDto;
-        }
-
-        public async Task<ProductDTO> GetAsync(int id)
-        {
-            var product = Mapper.Map<ProductDTO>(await _uow.Repository<Product>().GetAsync(id));
-            return product;
+            return products.ToList();
         }
 
         public async Task UpdateAsync(ProductDTO product, HttpPostedFileBase uploadedFile)
@@ -78,38 +60,15 @@ namespace GoProShop.BLL.Services
                 MapProductImage(product, uploadedFile);
             }
 
-            await _uow.Repository<Product>().UpdateAsync(Mapper.Map<Product>(product));
-            await _uow.Commit();
+            await base.UpdateAsync(product, "Товар");
         }
 
         public IEnumerable<ProductDTO> GetProductsOfDay()
         {
-            var products = _uow.Repository<Product>().Entities.Where(x => x.ProductSubGroup.Name.Contains("Экшн-камеры")).Take(4).ToList();
-            products.AddRange(_uow.Repository<Product>().Entities.Where(x => x.ProductSubGroup.Name.Contains("Готовые комплекты")).Take(4).ToList());
+            var products = GetAll(x => x.ProductSubGroup.Name.Contains("Экшн-камеры")).Take(4).ToList();
+            products.AddRange(GetAll(x => x.ProductSubGroup.Name.Contains("Готовые комплекты")).Take(4).ToList());
 
-            var productsDto = Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products);
-            return productsDto;
-        }
-
-        public async Task DeleteAsync(ProductDTO product)
-        {
-            await _uow.Repository<Product>().DeleteAsync(Mapper.Map<Product>(product));
-            await _uow.Commit();
-        }
-
-        public IEnumerable<ProductDTO> GetAll()
-        {
-            var products = _uow.Repository<Product>().Entities.ToList();
-
-            return Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products);
-
-        }
-
-        public async Task<IEnumerable<ProductDTO>> GetAdminProductsAsync(int id)
-        {
-            var products = await _uow.Repository<Product>().Entities.Where(x => x.ProductSubGroupId == id).ToListAsync();
-
-            return Mapper.Map<List<Product>, IEnumerable<ProductDTO>>(products);
+            return products;
         }
 
         private void MapProductImage(ProductDTO product, HttpPostedFileBase uploadedFile)
