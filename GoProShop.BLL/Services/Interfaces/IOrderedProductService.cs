@@ -1,15 +1,12 @@
 ﻿using GoProShop.BLL.DTO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using GoProShop.DAL.Entities;
 
 namespace GoProShop.BLL.Services.Interfaces
 {
-    public interface IOrderedProductService
+    public interface IOrderedProductService : ICrudService<OrderedProduct, OrderedProductDTO>
     {
         Task AddOrderedProductsAsync(IEnumerable<int> productsId, int orderId);
-
-        IEnumerable<OrderedProductDTO> GetOrderedProducts(int orderId);
-
-        Task<ResponseDTO> DeleteAsync(int id, string itemName);
     }
 }

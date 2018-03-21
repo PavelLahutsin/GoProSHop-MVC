@@ -86,4 +86,3 @@ E:\MyProjects\GoProSHop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csproj.Generat
 E:\MyProjects\GoProSHop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csproj.CoreCompileInputs.cache
 E:\MyProjects\GoProSHop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.dll
 E:\MyProjects\GoProSHop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.pdb
-E:\MyProjects\GoProSHop-MVC\GoProShop.DAL\obj\Debug\GoProShop.DAL.csprojResolveAssemblyReference.cache

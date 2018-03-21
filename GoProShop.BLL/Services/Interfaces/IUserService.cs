@@ -17,7 +17,5 @@ namespace GoProShop.BLL.Services.Interfaces
         void SignOut();
 
         Task<bool> IsUserExist(string userName);
-
-        
     }    
 }

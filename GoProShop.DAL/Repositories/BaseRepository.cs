@@ -24,7 +24,7 @@ namespace GoProShop.DAL.Repositories
             return entity;
         }
 
-        public async virtual Task DeleteAsync(T entity)
+        public async Task DeleteAsync(T entity)
         {
             var storedEntity = await Entities.FirstOrDefaultAsync(x => x.Id == entity.Id);
             Entities.Remove(storedEntity);
@@ -33,11 +33,11 @@ namespace GoProShop.DAL.Repositories
         public virtual IQueryable<T> GetAll()
             => _context.Set<T>();
 
-        public async virtual Task<T> GetAsync(int id)
+        public async Task<T> GetAsync(int id)
             => await Entities.FirstOrDefaultAsync(x => x.Id == id);
 
 
-        public async virtual Task<T> UpdateAsync(T entity)
+        public async Task<T> UpdateAsync(T entity)
         {
             var storedEntity = await Entities.FirstOrDefaultAsync(x => x.Id == entity.Id);
             _context.Entry(storedEntity).CurrentValues.SetValues(entity);

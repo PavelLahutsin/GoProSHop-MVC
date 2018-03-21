@@ -32,7 +32,7 @@ namespace GoProShop.Controllers
 
         public ActionResult GetOrderedProducts(int id)
         {
-            var orderedProducts = _orderedProductService.GetOrderedProducts(id);
+            var orderedProducts = _orderedProductService.GetAll(x => x.ProductId == id);
             var orderedProductsVm = Mapper.Map<IEnumerable<OrderedProductDTO>, IEnumerable<OrderedProductVM>>(orderedProducts);
 
             return PartialView("_OrderedProducts", orderedProductsVm);
@@ -41,7 +41,7 @@ namespace GoProShop.Controllers
         [Authorize(Roles = "admin")]
         public async Task<ActionResult> Delete(int orderedProductId)
         {
-            var response = Mapper.Map<ResponseVM>(await _orderedProductService.DeleteAsync(orderedProductId));
+            var response = Mapper.Map<ResponseVM>(await _orderedProductService.DeleteAsync(orderedProductId, "Delete"));
             return Json(response, JsonRequestBehavior.AllowGet);
         }
     }

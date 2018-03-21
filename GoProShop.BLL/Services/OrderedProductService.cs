@@ -35,7 +35,5 @@ namespace GoProShop.BLL.Services
                 
             await _uow.Commit();    
         }
-
-        public IEnumerable<OrderedProductDTO> GetOrderedProducts(int orderId) => GetAll(x => x.OrderId == orderId);
     }
 }

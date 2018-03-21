@@ -1,10 +1,9 @@
 ﻿using GoProShop.BLL.DTO;
-using System.Collections.Generic;
+using GoProShop.DAL.Entities;
 
 namespace GoProShop.BLL.Services.Interfaces
 {
-    public interface IProductSubGroupService
+    public interface IProductSubGroupService : ICrudService<ProductSubGroup, ProductSubGroupDTO>
     {
-        IEnumerable<ProductSubGroupDTO> GetAll();
     }
 }
